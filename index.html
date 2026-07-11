@@ -12,33 +12,27 @@
   <title>Cổng dịch vụ nội bộ - TEST</title>
 
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap');
 
     :root{
       --primary:#1558d6;
-      --primary-2:#0f78c8;
-      --success:#16a34a;
-      --warning:#d97706;
-      --danger:#dc2626;
+      --primary-dark:#0f46ad;
+      --success:#159947;
+      --warning:#c96b08;
+      --danger:#c92a2a;
       --ink:#172033;
       --muted:#667085;
       --line:#d9e2ef;
-      --surface:#fff;
-      --surface-2:#f7f9fc;
-      --bg:#edf3fa;
+      --bg:#eef4fb;
+      --surface:#ffffff;
+      --soft:#f7f9fc;
       --shadow:0 10px 28px rgba(15,34,65,.08);
       --radius:18px;
       --safe-bottom:env(safe-area-inset-bottom,0px);
     }
 
-    *{
-      box-sizing:border-box;
-    }
-
-    html{
-      scroll-behavior:smooth;
-      -webkit-text-size-adjust:100%;
-    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 
     body{
       margin:0;
@@ -50,12 +44,7 @@
       padding-bottom:calc(78px + var(--safe-bottom));
     }
 
-    button,
-    input,
-    select,
-    textarea{
-      font:inherit;
-    }
+    button,input,select,textarea{font:inherit}
 
     button{
       min-height:44px;
@@ -64,12 +53,7 @@
       padding:10px 15px;
       font-weight:700;
       cursor:pointer;
-      transition:.18s ease;
       touch-action:manipulation;
-    }
-
-    button:active{
-      transform:translateY(1px);
     }
 
     button:disabled{
@@ -92,7 +76,7 @@
     }
 
     textarea{
-      min-height:86px;
+      min-height:92px;
       resize:vertical;
     }
 
@@ -110,8 +94,12 @@
 
     .wrap{
       width:100%;
-      max-width:1080px;
+      max-width:920px;
       margin:0 auto;
+    }
+
+    .hidden{
+      display:none!important;
     }
 
     .appHeader{
@@ -140,18 +128,18 @@
       font-size:20px;
       line-height:1.25;
       margin:0;
-      font-weight:700;
+      font-weight:800;
     }
 
     .appHeader p{
       font-size:12.5px;
       margin:4px 0 0;
-      opacity:.92;
+      opacity:.94;
     }
 
     .card{
       background:var(--surface);
-      border:1px solid rgba(217,226,239,.8);
+      border:1px solid rgba(217,226,239,.88);
       border-radius:var(--radius);
       padding:16px;
       margin-top:12px;
@@ -174,6 +162,11 @@
       line-height:1.25;
     }
 
+    .small{
+      color:var(--muted);
+      font-size:12.5px;
+    }
+
     .userBar{
       display:grid;
       grid-template-columns:auto 1fr auto;
@@ -193,13 +186,8 @@
     }
 
     .userName{
-      font-weight:700;
+      font-weight:800;
       font-size:15px;
-    }
-
-    .small{
-      color:var(--muted);
-      font-size:12.5px;
     }
 
     .iconActions{
@@ -221,6 +209,33 @@
 
     .iconBtn.dangerLite{
       color:#b42318;
+    }
+
+    .summaryGrid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:9px;
+      margin-top:12px;
+    }
+
+    .summaryCard{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:15px;
+      padding:12px;
+      text-align:center;
+    }
+
+    .summaryCard strong{
+      display:block;
+      font-size:22px;
+      color:#174ea6;
+      line-height:1.1;
+    }
+
+    .summaryCard span{
+      font-size:11.5px;
+      color:var(--muted);
     }
 
     .noticeBar{
@@ -258,49 +273,6 @@
       padding:8px 12px;
     }
 
-    .summaryGrid{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:9px;
-      margin-top:12px;
-    }
-
-    .summaryCard{
-      background:var(--surface);
-      border:1px solid var(--line);
-      border-radius:15px;
-      padding:12px;
-      text-align:center;
-    }
-
-    .summaryCard strong{
-      display:block;
-      font-size:22px;
-      color:#174ea6;
-      line-height:1.1;
-    }
-
-    .summaryCard span{
-      font-size:11.5px;
-      color:var(--muted);
-    }
-
-    .grid{
-      display:grid;
-      gap:11px;
-    }
-
-    .two{
-      grid-template-columns:1fr;
-    }
-
-    label{
-      display:block;
-      font-size:13px;
-      font-weight:650;
-      margin:11px 0 6px;
-    }
-
     .primary{
       background:var(--primary);
       color:#fff;
@@ -316,10 +288,9 @@
       color:#fff;
     }
 
-    .warning{
-      background:#fff7ed;
-      color:#b54708;
-      border:1px solid #fed7aa;
+    .ghost{
+      background:#eef2f7;
+      color:#344054;
     }
 
     .danger{
@@ -328,14 +299,74 @@
       border:1px solid #fecaca;
     }
 
-    .ghost{
-      background:#eef2f7;
-      color:#344054;
+    .warning{
+      background:#fff7ed;
+      color:#b54708;
+      border:1px solid #fed7aa;
     }
 
     .fullBtn{
       width:100%;
       margin-top:13px;
+    }
+
+    .appView{
+      display:block;
+    }
+
+    .viewTitle{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:10px;
+    }
+
+    .viewTitle p{
+      margin:4px 0 0;
+      color:var(--muted);
+      font-size:12.5px;
+    }
+
+    .quickGrid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:10px;
+      margin-top:12px;
+    }
+
+    .quickCard{
+      border:1px solid var(--line);
+      background:var(--soft);
+      border-radius:15px;
+      padding:14px;
+      text-align:left;
+    }
+
+    .quickCard strong{
+      display:block;
+      color:#174ea6;
+      font-size:14px;
+    }
+
+    .quickCard span{
+      font-size:12px;
+      color:var(--muted);
+    }
+
+    .grid{
+      display:grid;
+      gap:11px;
+    }
+
+    .two{
+      grid-template-columns:1fr;
+    }
+
+    label{
+      display:block;
+      font-size:13px;
+      font-weight:700;
+      margin:11px 0 6px;
     }
 
     .msg{
@@ -372,8 +403,37 @@
       padding:22px;
       text-align:center;
       color:var(--muted);
-      background:var(--surface-2);
+      background:var(--soft);
       border-radius:14px;
+    }
+
+    .filterChips{
+      display:flex;
+      gap:8px;
+      overflow-x:auto;
+      padding-bottom:4px;
+      margin-bottom:10px;
+      scrollbar-width:none;
+    }
+
+    .filterChips::-webkit-scrollbar{
+      display:none;
+    }
+
+    .chip{
+      white-space:nowrap;
+      background:#eef2f7;
+      color:#475467;
+      min-height:38px;
+      padding:8px 12px;
+      border-radius:999px;
+      font-size:12px;
+    }
+
+    .chip.active{
+      background:#e5efff;
+      color:#174ea6;
+      border:1px solid #b7d0ff;
     }
 
     .requestCard{
@@ -401,7 +461,7 @@
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      max-width:180px;
+      max-width:190px;
       border-radius:999px;
       padding:6px 9px;
       background:#e8f2ff;
@@ -446,90 +506,53 @@
       color:#344054;
     }
 
-    .linkbtn{
-      display:inline-flex;
+    .stepBadge{
+      display:flex;
       align-items:center;
-      justify-content:center;
-      text-decoration:none;
-      background:#16213a;
-      color:#fff;
+      gap:8px;
+      margin-top:12px;
+      padding:9px 11px;
       border-radius:12px;
-      padding:9px 12px;
+      background:#f0f5ff;
+      color:#174ea6;
+      font-size:12px;
       font-weight:700;
-      font-size:13px;
-      margin-top:10px;
-      min-height:42px;
     }
 
-    .progressWrap{
-      margin:15px 0 6px;
+    .stepMini{
+      height:6px;
+      flex:1;
+      border-radius:99px;
+      background:#dce6f5;
+      overflow:hidden;
     }
 
-    .progressLine{
+    .stepMini span{
+      display:block;
+      height:100%;
+      background:linear-gradient(90deg,#1558d6,#18a96b);
+      border-radius:99px;
+    }
+
+    .cardActions{
       display:grid;
-      grid-template-columns:repeat(5,minmax(0,1fr));
-      position:relative;
+      grid-template-columns:1fr;
+      gap:8px;
+      margin-top:11px;
     }
 
-    .progressItem{
-      position:relative;
-      text-align:center;
-      min-width:0;
+    .detailTop{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      margin-bottom:12px;
     }
 
-    .progressItem:not(:last-child)::after{
-      content:'';
-      position:absolute;
-      top:14px;
-      left:58%;
-      width:84%;
-      height:3px;
-      background:#dfe6ef;
-      z-index:0;
-    }
-
-    .progressItem.done:not(:last-child)::after{
-      background:#22a85a;
-    }
-
-    .progressDot{
-      width:29px;
-      height:29px;
-      border-radius:50%;
-      margin:0 auto 6px;
-      display:grid;
-      place-items:center;
-      background:#e7edf5;
-      color:#667085;
-      border:3px solid #fff;
-      box-shadow:0 2px 7px rgba(15,34,65,.13);
-      font-size:11px;
-      font-weight:800;
-      position:relative;
-      z-index:1;
-    }
-
-    .progressItem.done .progressDot{
-      background:#22a85a;
-      color:#fff;
-    }
-
-    .progressItem.active .progressDot{
-      background:var(--primary);
-      color:#fff;
-    }
-
-    .progressLabel{
-      font-size:9.5px;
-      font-weight:700;
-      color:#7a8699;
-      line-height:1.2;
-      word-break:break-word;
-    }
-
-    .progressItem.done .progressLabel,
-    .progressItem.active .progressLabel{
+    .backBtn{
+      background:#eef2f7;
       color:#344054;
+      min-width:44px;
+      padding:8px;
     }
 
     .detailPanel{
@@ -537,6 +560,63 @@
       border:1px solid var(--line);
       border-radius:14px;
       padding:13px;
+    }
+
+    .timeline{
+      margin-top:14px;
+      padding-left:6px;
+    }
+
+    .timelineItem{
+      display:grid;
+      grid-template-columns:30px 1fr;
+      gap:10px;
+      position:relative;
+      padding-bottom:16px;
+    }
+
+    .timelineItem:not(:last-child)::after{
+      content:'';
+      position:absolute;
+      left:14px;
+      top:30px;
+      bottom:0;
+      width:2px;
+      background:#dbe4f0;
+    }
+
+    .timelineDot{
+      width:30px;
+      height:30px;
+      border-radius:50%;
+      display:grid;
+      place-items:center;
+      background:#e7edf5;
+      color:#667085;
+      font-size:12px;
+      font-weight:800;
+      z-index:1;
+    }
+
+    .timelineItem.done .timelineDot{
+      background:#16a34a;
+      color:#fff;
+    }
+
+    .timelineItem.active .timelineDot{
+      background:#1558d6;
+      color:#fff;
+    }
+
+    .timelineTitle{
+      font-weight:800;
+      font-size:13px;
+    }
+
+    .timelineNote{
+      font-size:12px;
+      color:var(--muted);
+      margin-top:2px;
     }
 
     .check{
@@ -559,7 +639,7 @@
       right:0;
       bottom:0;
       z-index:50;
-      background:rgba(255,255,255,.96);
+      background:rgba(255,255,255,.97);
       backdrop-filter:blur(12px);
       border-top:1px solid var(--line);
       padding:7px 10px calc(7px + var(--safe-bottom));
@@ -583,135 +663,36 @@
       line-height:1.15;
     }
 
-    .bottomNav button:active{
+    .bottomNav button.active{
       background:#eef4ff;
       color:#174ea6;
     }
 
-    .hidden{
-      display:none!important;
-    }
-
     @media(min-width:720px){
-      body{
-        padding-bottom:18px;
-      }
-
-      .page{
-        padding:20px;
-      }
-
-      .appHeader{
-        padding:20px 22px;
-      }
-
-      .appHeader h1{
-        font-size:25px;
-      }
-
-      .appHeader p{
-        font-size:14px;
-      }
-
-      .card{
-        padding:20px;
-        margin-top:15px;
-      }
-
-      .two{
-        grid-template-columns:1fr 1fr;
-      }
-
-      .bottomNav{
-        display:none;
-      }
-
-      .summaryGrid{
-        grid-template-columns:repeat(3,180px);
-        justify-content:start;
-      }
-
-      .progressLabel{
-        font-size:11.5px;
-      }
-
-      .progressDot{
-        width:34px;
-        height:34px;
-      }
-
-      .progressItem:not(:last-child)::after{
-        top:16px;
-      }
-
-      .requestCode{
-        font-size:18px;
-      }
-
-      .requestMeta{
-        font-size:14px;
-      }
+      body{padding-bottom:18px}
+      .page{padding:20px}
+      .appHeader{padding:20px 22px}
+      .appHeader h1{font-size:25px}
+      .appHeader p{font-size:14px}
+      .card{padding:20px;margin-top:15px}
+      .two{grid-template-columns:1fr 1fr}
+      .bottomNav{display:none}
+      .summaryGrid{grid-template-columns:repeat(3,180px);justify-content:start}
+      .cardActions{grid-template-columns:repeat(2,1fr)}
     }
   </style>
 
-  <script
-    src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js"
-    defer>
-  </script>
-
-  <script>
-    window.CONG_LENH_ONESIGNAL_APP_ID =
-      "c7579ace-17b7-4357-9607-33f074e689b2";
-
-    window.CONG_LENH_ONESIGNAL_SAFARI_WEB_ID =
-      "web.onesignal.auto.36c77d1a-9357-4d49-966b-0de749957ba2";
-
-    window.OneSignalDeferred =
-      window.OneSignalDeferred || [];
-
-    window.OneSignalDeferred.push(
-      async function(OneSignal){
-        try{
-          const basePath =
-            window.location.pathname.replace(/\/[^/]*$/, "/");
-
-          await OneSignal.init({
-            appId:window.CONG_LENH_ONESIGNAL_APP_ID,
-            safari_web_id:
-              window.CONG_LENH_ONESIGNAL_SAFARI_WEB_ID,
-            serviceWorkerPath:
-              basePath + "OneSignalSDKWorker.js",
-            serviceWorkerParam:{
-              scope:basePath
-            },
-            notifyButton:{
-              enable:false
-            }
-          });
-        }catch(error){
-          console.warn(
-            "Không khởi tạo được OneSignal:",
-            error
-          );
-        }
-      }
-    );
-  </script>
+  <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
 </head>
 
 <body>
   <main class="page">
     <div class="wrap">
-
-      <header class="appHeader" id="homeSection">
+      <header class="appHeader">
         <div class="appLogo">📄</div>
-
         <div>
           <h1>Cổng dịch vụ nội bộ</h1>
-          <p>
-            Đăng ký công lệnh · Theo dõi tiến độ ·
-            Xác nhận đã nhận
-          </p>
+          <p>Đăng ký công lệnh · Theo dõi tiến độ · Xác nhận đã nhận</p>
         </div>
       </header>
 
@@ -725,26 +706,14 @@
         </div>
 
         <label for="loginName">Họ và tên</label>
-        <input
-          id="loginName"
-          autocomplete="name"
-          placeholder="Nhập họ và tên"
-        >
+        <input id="loginName" autocomplete="name" placeholder="Nhập họ và tên">
 
         <label for="loginPin">Mã PIN</label>
-        <input
-          id="loginPin"
-          type="password"
-          inputmode="numeric"
-          autocomplete="current-password"
-          placeholder="Nhập mã PIN"
-        >
+        <input id="loginPin" type="password" inputmode="numeric"
+               autocomplete="current-password" placeholder="Nhập mã PIN">
 
-        <button
-          id="btnLogin"
-          type="button"
-          class="primary fullBtn"
-          onclick="login()">
+        <button id="btnLogin" type="button" class="primary fullBtn"
+                onclick="login()">
           ĐĂNG NHẬP
         </button>
 
@@ -752,195 +721,224 @@
       </section>
 
       <section id="appBox" class="hidden">
-
         <section class="card userBar">
-          <div id="userAvatar" class="avatar">
-            VC
-          </div>
+          <div id="userAvatar" class="avatar">VC</div>
 
           <div>
-            <div id="helloUser" class="userName">
-              Xin chào
-            </div>
-
+            <div id="helloUser" class="userName">Xin chào</div>
             <div id="userInfo" class="small"></div>
           </div>
 
           <div class="iconActions">
-            <button
-              class="iconBtn"
-              type="button"
-              onclick="loadMyRequests()"
-              aria-label="Tải lại">
+            <button class="iconBtn" type="button"
+                    onclick="refreshCurrentView()" aria-label="Tải lại">
               <span>↻</span>
             </button>
 
-            <button
-              class="iconBtn dangerLite"
-              type="button"
-              onclick="logout()"
-              aria-label="Đăng xuất">
+            <button class="iconBtn dangerLite" type="button"
+                    onclick="logout()" aria-label="Đăng xuất">
               <span>⇥</span>
             </button>
           </div>
         </section>
 
-        <section
-          class="summaryGrid"
-          aria-label="Tổng quan hồ sơ">
+        <!-- MÀN HÌNH TRANG CHỦ -->
+        <section id="homeView" class="appView">
+          <section class="summaryGrid">
+            <div class="summaryCard">
+              <strong id="sumTotal">0</strong>
+              <span>Tổng hồ sơ</span>
+            </div>
 
-          <div class="summaryCard">
-            <strong id="sumTotal">0</strong>
-            <span>Tổng hồ sơ</span>
-          </div>
+            <div class="summaryCard">
+              <strong id="sumProcessing">0</strong>
+              <span>Đang xử lý</span>
+            </div>
 
-          <div class="summaryCard">
-            <strong id="sumProcessing">0</strong>
-            <span>Đang xử lý</span>
-          </div>
+            <div class="summaryCard">
+              <strong id="sumCompleted">0</strong>
+              <span>Hoàn tất</span>
+            </div>
+          </section>
 
-          <div class="summaryCard">
-            <strong id="sumCompleted">0</strong>
-            <span>Hoàn tất</span>
-          </div>
+          <section id="pushSection" class="noticeBar hidden">
+            <div class="noticeIcon">🔔</div>
+
+            <div>
+              <b>Thông báo điện thoại</b>
+              <div class="small">Nhận thông báo khi hồ sơ thay đổi.</div>
+            </div>
+
+            <button type="button" onclick="enablePushAndTest()">Bật</button>
+          </section>
+
+          <section class="card">
+            <div class="viewTitle">
+              <div>
+                <h2>Xin chào 👋</h2>
+                <p>Thao tác nhanh với hồ sơ công lệnh của anh/chị.</p>
+              </div>
+            </div>
+
+            <div class="quickGrid">
+              <button class="quickCard" type="button"
+                      onclick="showView('request')">
+                <strong>＋ Tạo yêu cầu</strong>
+                <span>Gửi yêu cầu công lệnh mới</span>
+              </button>
+
+              <button class="quickCard" type="button"
+                      onclick="showView('records')">
+                <strong>▤ Hồ sơ của tôi</strong>
+                <span>Xem tiến độ và kết quả</span>
+              </button>
+            </div>
+          </section>
+
+          <section class="card">
+            <div class="sectionHead">
+              <h2>Hồ sơ gần nhất</h2>
+
+              <button class="ghost" type="button"
+                      onclick="showView('records')">
+                Xem tất cả
+              </button>
+            </div>
+
+            <div id="latestRecord"></div>
+          </section>
         </section>
 
-        <section
-          id="pushSection"
-          class="noticeBar hidden">
-
-          <div class="noticeIcon">🔔</div>
-
-          <div>
-            <b>Thông báo điện thoại</b>
-            <div class="small">
-              Nhận thông báo khi hồ sơ thay đổi.
-            </div>
-          </div>
-
-          <button
-            type="button"
-            onclick="enablePushAndTest()">
-            Bật
-          </button>
-        </section>
-
-        <section id="requestSection" class="card">
-          <div class="sectionHead">
-            <h2>Gửi yêu cầu</h2>
-            <span class="small">Công lệnh</span>
-          </div>
-
-          <div class="grid two">
-            <div>
-              <label for="diTu">Đi từ</label>
-              <input
-                id="diTu"
-                placeholder="TTBTXH Tân Hiệp">
+        <!-- MÀN HÌNH GỬI YÊU CẦU -->
+        <section id="requestView" class="appView hidden">
+          <section class="card">
+            <div class="viewTitle">
+              <div>
+                <h2>Tạo yêu cầu công lệnh</h2>
+                <p>Vui lòng nhập đầy đủ thông tin trước khi gửi.</p>
+              </div>
             </div>
 
-            <div>
-              <label for="den">Đến</label>
-              <input
-                id="den"
-                placeholder="Bệnh viện/địa điểm đến">
-            </div>
-          </div>
+            <div class="grid two">
+              <div>
+                <label for="diTu">Đi từ</label>
+                <input id="diTu" placeholder="TTBTXH Tân Hiệp">
+              </div>
 
-          <label for="noiDung">
-            Nội dung công tác
-          </label>
-
-          <textarea
-            id="noiDung"
-            placeholder="Đi công tác, chuyển viện, nuôi bệnh...">
-          </textarea>
-
-          <div class="grid two">
-            <div>
-              <label for="ngayDi">Ngày đi</label>
-              <input id="ngayDi" type="date">
+              <div>
+                <label for="den">Đến</label>
+                <input id="den" placeholder="Bệnh viện/địa điểm đến">
+              </div>
             </div>
 
-            <div>
-              <label for="ngayVe">Ngày về</label>
-              <input id="ngayVe" type="date">
+            <label for="noiDung">Nội dung công tác</label>
+            <textarea id="noiDung"
+                      placeholder="Đi công tác, chuyển viện, nuôi bệnh..."></textarea>
+
+            <div class="grid two">
+              <div>
+                <label for="ngayDi">Ngày đi</label>
+                <input id="ngayDi" type="date">
+              </div>
+
+              <div>
+                <label for="ngayVe">Ngày về</label>
+                <input id="ngayVe" type="date">
+              </div>
             </div>
-          </div>
 
-          <label for="phuongTien">
-            Phương tiện
-          </label>
+            <label for="phuongTien">Phương tiện</label>
+            <input id="phuongTien"
+                   placeholder="Xe cơ quan, xe cứu thương, xe cá nhân...">
 
-          <input
-            id="phuongTien"
-            placeholder="Xe cơ quan, xe cứu thương, xe cá nhân...">
+            <label for="ghiChu">Ghi chú</label>
+            <textarea id="ghiChu"
+                      placeholder="Nội dung cần lưu ý nếu có"></textarea>
 
-          <label for="ghiChu">Ghi chú</label>
-
-          <textarea
-            id="ghiChu"
-            placeholder="Nội dung cần lưu ý nếu có">
-          </textarea>
-
-          <button
-            id="btnSend"
-            type="button"
-            class="primary fullBtn"
-            onclick="sendRequest()">
-            GỬI YÊU CẦU
-          </button>
-
-          <div id="newMsg" class="msg"></div>
-        </section>
-
-        <section id="recordsSection" class="card">
-          <div class="sectionHead">
-            <h2>Hồ sơ của tôi</h2>
-
-            <button
-              class="ghost"
-              type="button"
-              onclick="loadMyRequests()">
-              Làm mới
+            <button id="btnSend" type="button" class="primary fullBtn"
+                    onclick="sendRequest()">
+              GỬI YÊU CẦU
             </button>
-          </div>
 
-          <div id="myList"></div>
+            <div id="newMsg" class="msg"></div>
+          </section>
         </section>
 
-        <section
-          id="detailCard"
-          class="card hidden">
+        <!-- MÀN HÌNH HỒ SƠ -->
+        <section id="recordsView" class="appView hidden">
+          <section class="card">
+            <div class="sectionHead">
+              <h2>Hồ sơ của tôi</h2>
 
-          <div id="detailBox"></div>
+              <button class="ghost" type="button"
+                      onclick="loadMyRequests()">
+                Làm mới
+              </button>
+            </div>
+
+            <div class="filterChips">
+              <button class="chip active" type="button"
+                      onclick="setRecordFilter('all',this)">
+                Tất cả
+              </button>
+
+              <button class="chip" type="button"
+                      onclick="setRecordFilter('processing',this)">
+                Đang xử lý
+              </button>
+
+              <button class="chip" type="button"
+                      onclick="setRecordFilter('waiting',this)">
+                Chờ nhận
+              </button>
+
+              <button class="chip" type="button"
+                      onclick="setRecordFilter('completed',this)">
+                Hoàn tất
+              </button>
+            </div>
+
+            <div id="myList"></div>
+          </section>
+        </section>
+
+        <!-- MÀN HÌNH CHI TIẾT -->
+        <section id="detailView" class="appView hidden">
+          <section class="card">
+            <div class="detailTop">
+              <button class="backBtn" type="button"
+                      onclick="showView('records')">
+                ←
+              </button>
+
+              <div>
+                <h2 style="margin:0">Chi tiết hồ sơ</h2>
+                <div class="small">Theo dõi toàn bộ quá trình xử lý</div>
+              </div>
+            </div>
+
+            <div id="detailBox"></div>
+          </section>
         </section>
       </section>
     </div>
   </main>
 
-  <nav
-    id="userBottomNav"
-    class="bottomNav hidden"
-    aria-label="Điều hướng">
-
-    <button
-      type="button"
-      onclick="scrollSection('homeSection')">
+  <nav id="userBottomNav" class="bottomNav hidden">
+    <button id="navHome" class="active" type="button"
+            onclick="showView('home')">
       <span>⌂</span>
       Trang chủ
     </button>
 
-    <button
-      type="button"
-      onclick="scrollSection('requestSection')">
+    <button id="navRequest" type="button"
+            onclick="showView('request')">
       <span>＋</span>
       Gửi yêu cầu
     </button>
 
-    <button
-      type="button"
-      onclick="scrollSection('recordsSection')">
+    <button id="navRecords" type="button"
+            onclick="showView('records')">
       <span>▤</span>
       Hồ sơ
     </button>
@@ -950,8 +948,13 @@
     const API_URL =
       "https://script.google.com/macros/s/AKfycbwu7jzAGZyxrJ5QEBikW0I6KSNUfwtxSEKPP2Ecajo3WL_KDXdytkEUX0qP9sHot2t4/exec";
 
-    const API_TOKEN =
-      "DICHVU_NOIBO_TEST_2026";
+    const API_TOKEN = "DICHVU_NOIBO_TEST_2026";
+
+    const ONESIGNAL_APP_ID =
+      "c7579ace-17b7-4357-9607-33f074e689b2";
+
+    const ONESIGNAL_SAFARI_WEB_ID =
+      "web.onesignal.auto.36c77d1a-9357-4d49-966b-0de749957ba2";
 
     const FLOW = [
       "MỚI GỬI",
@@ -962,30 +965,38 @@
     ];
 
     let currentUser =
-      JSON.parse(
-        localStorage.getItem("dv_user") || "null"
-      );
+      JSON.parse(localStorage.getItem("dv_user") || "null");
 
     let requests = [];
+    let currentView = "home";
+    let recordFilter = "all";
+    let oneSignalInitPromise = null;
+
+    window.OneSignalDeferred =
+      window.OneSignalDeferred || [];
 
     function $(id){
       return document.getElementById(id);
     }
 
     function esc(value){
-      return String(value ?? "")
-        .replace(
-          /[&<>'"]/g,
-          function(character){
-            return {
-              "&":"&amp;",
-              "<":"&lt;",
-              ">":"&gt;",
-              "'":"&#39;",
-              '"':"&quot;"
-            }[character];
-          }
-        );
+      return String(value ?? "").replace(
+        /[&<>'"]/g,
+        function(character){
+          return {
+            "&":"&amp;",
+            "<":"&lt;",
+            ">":"&gt;",
+            "'":"&#39;",
+            '"':"&quot;"
+          }[character];
+        }
+      );
+    }
+
+    function js(value){
+      return JSON.stringify(String(value ?? ""))
+        .replace(/</g,"\\u003c");
     }
 
     function showMsg(id,type,html){
@@ -995,11 +1006,8 @@
         return;
       }
 
-      element.className =
-        "msg " + type;
-
-      element.innerHTML =
-        html;
+      element.className = "msg " + type;
+      element.innerHTML = html;
     }
 
     function clearMsg(id){
@@ -1014,86 +1022,60 @@
     }
 
     function jsonp(params){
-      return new Promise(
-        function(resolve,reject){
-          if(!API_URL){
-            reject(
-              new Error(
-                "Chưa cấu hình API_URL trong index.html"
-              )
-            );
-            return;
-          }
-
-          const callbackName =
-            "cb_" +
-            Date.now() +
-            "_" +
-            Math.floor(Math.random() * 100000);
-
-          const script =
-            document.createElement("script");
-
-          const timer =
-            setTimeout(
-              function(){
-                try{
-                  delete window[callbackName];
-                  script.remove();
-                }catch(error){}
-
-                reject(
-                  new Error(
-                    "Kết nối Apps Script quá thời gian chờ."
-                  )
-                );
-              },
-              30000
-            );
-
-          window[callbackName] =
-            function(data){
-              clearTimeout(timer);
-              delete window[callbackName];
-              script.remove();
-              resolve(data);
-            };
-
-          const query =
-            new URLSearchParams(params);
-
-          query.set(
-            "callback",
-            callbackName
-          );
-
-          script.src =
-            API_URL +
-            "?" +
-            query.toString();
-
-          script.onerror =
-            function(){
-              clearTimeout(timer);
-              delete window[callbackName];
-              script.remove();
-
-              reject(
-                new Error(
-                  "Không kết nối được Apps Script."
-                )
-              );
-            };
-
-          document.body.appendChild(script);
+      return new Promise(function(resolve,reject){
+        if(!API_URL){
+          reject(new Error("Chưa cấu hình API_URL"));
+          return;
         }
-      );
+
+        const callbackName =
+          "cb_" +
+          Date.now() +
+          "_" +
+          Math.floor(Math.random() * 100000);
+
+        const script = document.createElement("script");
+
+        const timer = setTimeout(function(){
+          try{
+            delete window[callbackName];
+            script.remove();
+          }catch(error){}
+
+          reject(
+            new Error("Kết nối Apps Script quá thời gian chờ.")
+          );
+        },30000);
+
+        window[callbackName] = function(data){
+          clearTimeout(timer);
+          delete window[callbackName];
+          script.remove();
+          resolve(data);
+        };
+
+        const query = new URLSearchParams(params);
+        query.set("callback",callbackName);
+
+        script.src =
+          API_URL + "?" + query.toString();
+
+        script.onerror = function(){
+          clearTimeout(timer);
+          delete window[callbackName];
+          script.remove();
+
+          reject(
+            new Error("Không kết nối được Apps Script.")
+          );
+        };
+
+        document.body.appendChild(script);
+      });
     }
 
     function api(action,data){
-      const params =
-        Object.assign({},data || {});
-
+      const params = Object.assign({},data || {});
       params.action = action;
       params.token = API_TOKEN;
 
@@ -1103,22 +1085,28 @@
     function setToday(){
       const date = new Date();
 
-      const dateText =
+      const text =
         date.getFullYear() +
         "-" +
-        String(
-          date.getMonth() + 1
-        ).padStart(2,"0") +
+        String(date.getMonth() + 1).padStart(2,"0") +
         "-" +
-        String(
-          date.getDate()
-        ).padStart(2,"0");
+        String(date.getDate()).padStart(2,"0");
 
-      $("ngayDi").value =
-        dateText;
+      $("ngayDi").value = text;
+      $("ngayVe").value = text;
+    }
 
-      $("ngayVe").value =
-        dateText;
+    function getInitials(name){
+      return (
+        String(name || "VC")
+          .trim()
+          .split(/\s+/)
+          .slice(-2)
+          .map(function(value){
+            return value.charAt(0).toUpperCase();
+          })
+          .join("") || "VC"
+      );
     }
 
     function init(){
@@ -1130,21 +1118,12 @@
     }
 
     function openApp(){
-      $("loginCard")
-        .classList
-        .add("hidden");
-
-      $("appBox")
-        .classList
-        .remove("hidden");
-
-      $("userBottomNav")
-        .classList
-        .remove("hidden");
+      $("loginCard").classList.add("hidden");
+      $("appBox").classList.remove("hidden");
+      $("userBottomNav").classList.remove("hidden");
 
       $("helloUser").textContent =
-        "Xin chào, " +
-        currentUser.hoTen;
+        "Xin chào, " + currentUser.hoTen;
 
       $("userInfo").textContent =
         [
@@ -1155,13 +1134,12 @@
         .join(" · ");
 
       $("userAvatar").textContent =
-        getInitials(
-          currentUser.hoTen
-        );
+        getInitials(currentUser.hoTen);
 
-      loadMyRequests();
       showPushBox();
-      lienKetOneSignalNguoiDung(false);
+      showView("home",false);
+      loadMyRequests(false);
+      linkOneSignal(false);
     }
 
     async function login(){
@@ -1185,14 +1163,13 @@
       $("btnLogin").disabled = true;
 
       try{
-        const response =
-          await api(
-            "login",
-            {
-              hoTen:hoTen,
-              pin:pin
-            }
-          );
+        const response = await api(
+          "login",
+          {
+            hoTen:hoTen,
+            pin:pin
+          }
+        );
 
         if(!response.ok){
           showMsg(
@@ -1203,8 +1180,7 @@
           return;
         }
 
-        currentUser =
-          response.user;
+        currentUser = response.user;
 
         localStorage.setItem(
           "dv_user",
@@ -1224,15 +1200,82 @@
     }
 
     async function logout(){
-      await dangXuatOneSignal();
+      await logoutOneSignal();
 
-      localStorage.removeItem(
-        "dv_user"
-      );
+      localStorage.removeItem("dv_user");
 
       currentUser = null;
-
       location.reload();
+    }
+
+    function showView(name,scroll){
+      if(scroll === undefined){
+        scroll = true;
+      }
+
+      currentView = name;
+
+      [
+        "homeView",
+        "requestView",
+        "recordsView",
+        "detailView"
+      ].forEach(function(id){
+        $(id).classList.add("hidden");
+      });
+
+      const map = {
+        home:"homeView",
+        request:"requestView",
+        records:"recordsView",
+        detail:"detailView"
+      };
+
+      $(map[name]).classList.remove("hidden");
+
+      [
+        "navHome",
+        "navRequest",
+        "navRecords"
+      ].forEach(function(id){
+        $(id).classList.remove("active");
+      });
+
+      if(name === "home"){
+        $("navHome").classList.add("active");
+      }
+
+      if(name === "request"){
+        $("navRequest").classList.add("active");
+      }
+
+      if(name === "records" || name === "detail"){
+        $("navRecords").classList.add("active");
+      }
+
+      if(name === "records"){
+        renderRecords();
+      }
+
+      if(scroll){
+        window.scrollTo({
+          top:0,
+          behavior:"smooth"
+        });
+      }
+    }
+
+    function refreshCurrentView(){
+      if(currentView === "home" || currentView === "records"){
+        loadMyRequests();
+      }else if(
+        currentView === "detail" &&
+        $("detailBox").dataset.id
+      ){
+        viewDetail($("detailBox").dataset.id);
+      }else{
+        setToday();
+      }
     }
 
     function clearForm(){
@@ -1242,11 +1285,9 @@
         "noiDung",
         "phuongTien",
         "ghiChu"
-      ].forEach(
-        function(id){
-          $(id).value = "";
-        }
-      );
+      ].forEach(function(id){
+        $(id).value = "";
+      });
 
       setToday();
       clearMsg("newMsg");
@@ -1256,29 +1297,14 @@
       clearMsg("newMsg");
 
       const data = {
-        maNguoiDung:
-          currentUser.maNguoiDung,
-
-        diTu:
-          $("diTu").value.trim(),
-
-        den:
-          $("den").value.trim(),
-
-        noiDung:
-          $("noiDung").value.trim(),
-
-        ngayDi:
-          $("ngayDi").value,
-
-        ngayVe:
-          $("ngayVe").value,
-
-        phuongTien:
-          $("phuongTien").value.trim(),
-
-        ghiChu:
-          $("ghiChu").value.trim()
+        maNguoiDung:currentUser.maNguoiDung,
+        diTu:$("diTu").value.trim(),
+        den:$("den").value.trim(),
+        noiDung:$("noiDung").value.trim(),
+        ngayDi:$("ngayDi").value,
+        ngayVe:$("ngayVe").value,
+        phuongTien:$("phuongTien").value.trim(),
+        ghiChu:$("ghiChu").value.trim()
       };
 
       if(
@@ -1298,15 +1324,13 @@
       }
 
       $("btnSend").disabled = true;
-      $("btnSend").textContent =
-        "ĐANG GỬI...";
+      $("btnSend").textContent = "ĐANG GỬI...";
 
       try{
-        const response =
-          await api(
-            "tao_yeu_cau",
-            data
-          );
+        const response = await api(
+          "tao_yeu_cau",
+          data
+        );
 
         if(!response.ok){
           showMsg(
@@ -1323,11 +1347,13 @@
           "✅ Đã gửi yêu cầu: <b>" +
           esc(response.maYeuCau) +
           "</b><br>Trạng thái: " +
-          esc(response.trangThai)
+          esc(response.trangThai) +
+          "<br><button class='secondary fullBtn' " +
+          "type='button' onclick='showView(\"records\")'>" +
+          "XEM HỒ SƠ VỪA GỬI</button>"
         );
 
         clearForm();
-
         await loadMyRequests(false);
       }catch(error){
         showMsg(
@@ -1337,81 +1363,155 @@
         );
       }finally{
         $("btnSend").disabled = false;
-        $("btnSend").textContent =
-          "GỬI YÊU CẦU";
+        $("btnSend").textContent = "GỬI YÊU CẦU";
       }
     }
 
-    async function loadMyRequests(
-      showLoading = true
-    ){
-      if(showLoading){
+    async function loadMyRequests(showLoading){
+      if(showLoading === undefined){
+        showLoading = true;
+      }
+
+      if(showLoading && $("myList")){
         $("myList").innerHTML =
-          '<div class="empty">' +
-          'Đang tải hồ sơ...' +
-          '</div>';
+          '<div class="empty">Đang tải hồ sơ...</div>';
       }
 
       try{
-        const response =
-          await api(
-            "ho_so_cua_toi",
-            {
-              maNguoiDung:
-                currentUser.maNguoiDung
-            }
-          );
+        const response = await api(
+          "ho_so_cua_toi",
+          {
+            maNguoiDung:currentUser.maNguoiDung
+          }
+        );
 
         if(!response.ok){
+          if($("myList")){
+            $("myList").innerHTML =
+              '<div class="empty">❌ ' +
+              esc(response.message) +
+              '</div>';
+          }
+          return;
+        }
+
+        requests = response.data || [];
+
+        updateSummary();
+        renderLatest();
+        renderRecords();
+      }catch(error){
+        if($("myList")){
           $("myList").innerHTML =
             '<div class="empty">❌ ' +
-            esc(response.message) +
+            esc(error.message) +
             '</div>';
-          return;
         }
-
-        requests =
-          response.data || [];
-
-        updateUserSummary();
-
-        if(!requests.length){
-          $("myList").innerHTML =
-            '<div class="empty">' +
-            'Chưa có yêu cầu nào.' +
-            '</div>';
-          return;
-        }
-
-        $("myList").innerHTML =
-          requests
-            .map(renderItem)
-            .join("");
-      }catch(error){
-        $("myList").innerHTML =
-          '<div class="empty">❌ ' +
-          esc(error.message) +
-          '</div>';
       }
     }
 
-    function statusPill(status){
-      const statusText =
-        String(status || "");
+    function updateSummary(){
+      const total = requests.length;
 
+      const completed =
+        requests.filter(function(item){
+          return String(item.trangThai || "")
+            .includes("HOÀN TẤT");
+        }).length;
+
+      const processing = total - completed;
+
+      $("sumTotal").textContent = total;
+      $("sumProcessing").textContent = processing;
+      $("sumCompleted").textContent = completed;
+    }
+
+    function renderLatest(){
+      if(!requests.length){
+        $("latestRecord").innerHTML =
+          '<div class="empty">Chưa có hồ sơ nào.</div>';
+        return;
+      }
+
+      $("latestRecord").innerHTML =
+        renderRecordCard(requests[0],true);
+    }
+
+    function setRecordFilter(filter,button){
+      recordFilter = filter;
+
+      document
+        .querySelectorAll(".chip")
+        .forEach(function(item){
+          item.classList.remove("active");
+        });
+
+      button.classList.add("active");
+
+      renderRecords();
+    }
+
+    function filteredRequests(){
+      return requests.filter(function(item){
+        const status =
+          String(item.trangThai || "");
+
+        if(recordFilter === "completed"){
+          return status.includes("HOÀN TẤT");
+        }
+
+        if(recordFilter === "waiting"){
+          return (
+            status.includes("BÀN GIAO") ||
+            status === "CHỜ NHẬN" ||
+            status === "ĐÃ CẤP CÔNG LỆNH"
+          );
+        }
+
+        if(recordFilter === "processing"){
+          return (
+            !status.includes("HOÀN TẤT") &&
+            !status.includes("BÀN GIAO") &&
+            status !== "CHỜ NHẬN"
+          );
+        }
+
+        return true;
+      });
+    }
+
+    function renderRecords(){
+      if(!$("myList")){
+        return;
+      }
+
+      const data = filteredRequests();
+
+      if(!data.length){
+        $("myList").innerHTML =
+          '<div class="empty">Không có hồ sơ phù hợp.</div>';
+        return;
+      }
+
+      $("myList").innerHTML =
+        data
+          .map(function(item){
+            return renderRecordCard(item,false);
+          })
+          .join("");
+    }
+
+    function statusPill(status){
+      const text = String(status || "");
       let className = "";
 
-      if(
-        statusText.includes("HOÀN TẤT")
-      ){
+      if(text.includes("HOÀN TẤT")){
         className = "greenText";
-      }else if(
-        statusText.includes("TỪ CHỐI")
-      ){
+      }else if(text.includes("TỪ CHỐI")){
         className = "redText";
       }else if(
-        statusText.includes("CẦN") ||
-        statusText.includes("CHỜ")
+        text.includes("CẦN") ||
+        text.includes("CHỜ")
       ){
         className = "orangeText";
       }
@@ -1420,85 +1520,36 @@
         '<span class="statusPill ' +
         className +
         '">' +
-        esc(statusText) +
+        esc(text) +
         '</span>'
       );
     }
 
-    function progressIndex(status){
-      let currentIndex =
-        FLOW.indexOf(status);
+    function stepIndex(status){
+      let index = FLOW.indexOf(status);
 
       if(status === "CHỜ NHẬN"){
-        currentIndex = 2;
+        index = 2;
       }
 
       if(status === "ĐANG XỬ LÝ"){
-        currentIndex = 1;
+        index = 1;
       }
 
       if(
         status === "TỪ CHỐI" ||
         status === "CẦN BỔ SUNG"
       ){
-        currentIndex = 1;
+        index = 1;
       }
 
-      return Math.max(
-        currentIndex,
-        0
-      );
+      return Math.max(index,0);
     }
 
-    function progressBar(status){
-      const labels = [
-        "Gửi",
-        "Tiếp nhận",
-        "Đã cấp",
-        "Bàn giao",
-        "Hoàn tất"
-      ];
+    function renderRecordCard(item,compact){
+      const step = stepIndex(item.trangThai) + 1;
+      const percent = Math.min(100,(step / 5) * 100);
 
-      const currentIndex =
-        progressIndex(status);
-
-      return (
-        '<div class="progressWrap">' +
-          '<div class="progressLine">' +
-            labels.map(
-              function(label,index){
-                const stateClass =
-                  index < currentIndex
-                    ? "done"
-                    : index === currentIndex
-                      ? "active"
-                      : "";
-
-                const dotValue =
-                  index < currentIndex
-                    ? "✓"
-                    : index + 1;
-
-                return (
-                  '<div class="progressItem ' +
-                    stateClass +
-                  '">' +
-                    '<div class="progressDot">' +
-                      dotValue +
-                    '</div>' +
-                    '<div class="progressLabel">' +
-                      label +
-                    '</div>' +
-                  '</div>'
-                );
-              }
-            ).join("") +
-          '</div>' +
-        '</div>'
-      );
-    }
-
-    function renderItem(item){
       return (
         '<article class="requestCard">' +
 
@@ -1512,17 +1563,8 @@
           '<div class="requestMeta">' +
 
             '<div class="metaRow">' +
-              '<span>🕒</span>' +
-              '<div>' +
-                '<b>Gửi lúc:</b> ' +
-                esc(item.thoiGianGui) +
-              '</div>' +
-            '</div>' +
-
-            '<div class="metaRow">' +
               '<span>📍</span>' +
-              '<div>' +
-                '<b>Hành trình:</b> ' +
+              '<div><b>Hành trình:</b> ' +
                 esc(item.diTu) +
                 ' → ' +
                 esc(item.den) +
@@ -1531,8 +1573,7 @@
 
             '<div class="metaRow">' +
               '<span>📅</span>' +
-              '<div>' +
-                '<b>Thời gian:</b> ' +
+              '<div><b>Thời gian:</b> ' +
                 esc(item.ngayDi) +
                 ' → ' +
                 esc(item.ngayVe) +
@@ -1540,12 +1581,24 @@
             '</div>' +
 
             (
+              !compact
+                ? (
+                  '<div class="metaRow">' +
+                    '<span>🕒</span>' +
+                    '<div><b>Gửi lúc:</b> ' +
+                      esc(item.thoiGianGui) +
+                    '</div>' +
+                  '</div>'
+                )
+                : ""
+            ) +
+
+            (
               item.soCongLenh
                 ? (
                   '<div class="metaRow">' +
                     '<span>📄</span>' +
-                    '<div>' +
-                      '<b>Số công lệnh:</b> ' +
+                    '<div><b>Số công lệnh:</b> ' +
                       esc(item.soCongLenh) +
                     '</div>' +
                   '</div>'
@@ -1555,43 +1608,40 @@
 
           '</div>' +
 
-          progressBar(
-            item.trangThai
-          ) +
+          '<div class="stepBadge">' +
+            '<span>Bước ' + step + '/5</span>' +
+            '<div class="stepMini">' +
+              '<span style="width:' + percent + '%"></span>' +
+            '</div>' +
+          '</div>' +
 
-          '<button ' +
-            'class="secondary fullBtn" ' +
-            'type="button" ' +
-            'onclick="viewDetail(\'' +
-              esc(item.maYeuCau) +
-            '\')">' +
-            'Xem chi tiết' +
-          '</button>' +
+          '<div class="cardActions">' +
+            '<button class="secondary" type="button" ' +
+              'onclick=\'viewDetail(' +
+                js(item.maYeuCau) +
+              ')\'>Xem chi tiết</button>' +
+          '</div>' +
 
         '</article>'
       );
     }
 
     async function viewDetail(maYeuCau){
-      $("detailCard")
-        .classList
-        .remove("hidden");
+      showView("detail");
+
+      $("detailBox").dataset.id = maYeuCau;
 
       $("detailBox").innerHTML =
-        '<div class="empty">' +
-        'Đang tải chi tiết...' +
-        '</div>';
+        '<div class="empty">Đang tải chi tiết...</div>';
 
       try{
-        const response =
-          await api(
-            "chi_tiet_yeu_cau",
-            {
-              maYeuCau:maYeuCau,
-              maNguoiDung:
-                currentUser.maNguoiDung
-            }
-          );
+        const response = await api(
+          "chi_tiet_yeu_cau",
+          {
+            maYeuCau:maYeuCau,
+            maNguoiDung:currentUser.maNguoiDung
+          }
+        );
 
         if(!response.ok){
           $("detailBox").innerHTML =
@@ -1603,11 +1653,6 @@
 
         $("detailBox").innerHTML =
           renderDetail(response.data);
-
-        $("detailCard")
-          .scrollIntoView({
-            behavior:"smooth"
-          });
       }catch(error){
         $("detailBox").innerHTML =
           '<div class="empty">❌ ' +
@@ -1616,27 +1661,95 @@
       }
     }
 
+    function renderTimeline(item){
+      const labels = [
+        "Đã gửi yêu cầu",
+        "Phòng Tổ chức tiếp nhận",
+        "Đã cấp công lệnh",
+        "Đã bàn giao",
+        "Đã nhận - hoàn tất"
+      ];
+
+      const index = stepIndex(item.trangThai);
+
+      return (
+        '<div class="timeline">' +
+
+        labels.map(function(label,itemIndex){
+          const className =
+            itemIndex < index
+              ? "done"
+              : itemIndex === index
+                ? "active"
+                : "";
+
+          let note = "";
+
+          if(itemIndex === 0){
+            note = esc(item.thoiGianGui || "");
+          }else if(itemIndex === 1){
+            note = esc(item.thoiGianTiepNhan || "");
+          }else if(itemIndex === 2){
+            note = esc(item.thoiGianCap || "");
+          }else if(itemIndex === 3){
+            note = esc(item.thoiGianBanGiao || "");
+          }else if(itemIndex === 4){
+            note = esc(item.thoiGianXacNhanNhan || "");
+          }
+
+          if(!note){
+            note =
+              itemIndex === index
+                ? "Đang ở bước này"
+                : "Chưa thực hiện";
+          }
+
+          return (
+            '<div class="timelineItem ' +
+            className +
+            '">' +
+
+              '<div class="timelineDot">' +
+                (
+                  itemIndex < index
+                    ? "✓"
+                    : itemIndex + 1
+                ) +
+              '</div>' +
+
+              '<div>' +
+                '<div class="timelineTitle">' +
+                  label +
+                '</div>' +
+                '<div class="timelineNote">' +
+                  note +
+                '</div>' +
+              '</div>' +
+
+            '</div>'
+          );
+        }).join("") +
+
+        '</div>'
+      );
+    }
+
     function renderDetail(item){
       return (
-        '<div class="sectionHead">' +
-          '<h2>' +
+        '<div class="requestHead">' +
+          '<div class="requestCode">' +
             esc(item.maYeuCau) +
-          '</h2>' +
+          '</div>' +
           statusPill(item.trangThai) +
         '</div>' +
 
-        progressBar(
-          item.trangThai
-        ) +
-
-        '<div class="detailPanel">' +
+        '<div class="detailPanel" style="margin-top:12px">' +
 
           '<div class="requestMeta">' +
 
             '<div class="metaRow">' +
               '<span>👤</span>' +
-              '<div>' +
-                '<b>Người đăng ký:</b> ' +
+              '<div><b>Người đăng ký:</b> ' +
                 esc(item.nguoiDangKy) +
                 ' · ' +
                 esc(item.phongKhu) +
@@ -1645,8 +1758,7 @@
 
             '<div class="metaRow">' +
               '<span>📍</span>' +
-              '<div>' +
-                '<b>Hành trình:</b> ' +
+              '<div><b>Hành trình:</b> ' +
                 esc(item.diTu) +
                 ' → ' +
                 esc(item.den) +
@@ -1655,16 +1767,14 @@
 
             '<div class="metaRow">' +
               '<span>📝</span>' +
-              '<div>' +
-                '<b>Nội dung:</b> ' +
+              '<div><b>Nội dung:</b> ' +
                 esc(item.noiDung) +
               '</div>' +
             '</div>' +
 
             '<div class="metaRow">' +
               '<span>📅</span>' +
-              '<div>' +
-                '<b>Ngày:</b> ' +
+              '<div><b>Ngày:</b> ' +
                 esc(item.ngayDi) +
                 ' → ' +
                 esc(item.ngayVe) +
@@ -1673,19 +1783,30 @@
 
             '<div class="metaRow">' +
               '<span>🚗</span>' +
-              '<div>' +
-                '<b>Phương tiện:</b> ' +
+              '<div><b>Phương tiện:</b> ' +
                 esc(item.phuongTien) +
               '</div>' +
             '</div>' +
+
+            (
+              item.soCongLenh
+                ? (
+                  '<div class="metaRow">' +
+                    '<span>📄</span>' +
+                    '<div><b>Số công lệnh:</b> ' +
+                      esc(item.soCongLenh) +
+                    '</div>' +
+                  '</div>'
+                )
+                : ""
+            ) +
 
             (
               item.ghiChuXuLy
                 ? (
                   '<div class="metaRow">' +
                     '<span>💬</span>' +
-                    '<div>' +
-                      '<b>Ghi chú xử lý:</b> ' +
+                    '<div><b>Ghi chú xử lý:</b> ' +
                       esc(item.ghiChuXuLy) +
                     '</div>' +
                   '</div>'
@@ -1698,81 +1819,63 @@
           (
             item.linkPDF
               ? (
-                '<a ' +
-                  'class="linkbtn" ' +
-                  'target="_blank" ' +
-                  'href="' +
-                    esc(item.linkPDF) +
-                  '">' +
-                  'Mở PDF công lệnh' +
-                '</a>'
+                '<a class="secondary fullBtn" ' +
+                  'style="display:flex;text-decoration:none;' +
+                  'align-items:center;justify-content:center" ' +
+                  'target="_blank" href="' +
+                  esc(item.linkPDF) +
+                  '">MỞ PDF CÔNG LỆNH</a>'
               )
               : ""
           ) +
 
         '</div>' +
 
+        renderTimeline(item) +
+
         renderConfirmBox(item)
       );
     }
 
     function renderConfirmBox(item){
-      const allowedStatuses = [
+      const allowed = [
         "ĐÃ CẤP CÔNG LỆNH",
         "CHỜ NHẬN",
         "ĐÃ BÀN GIAO - CHỜ XÁC NHẬN"
       ];
 
-      if(
-        !allowedStatuses.includes(
-          item.trangThai
-        )
-      ){
+      if(!allowed.includes(item.trangThai)){
         return "";
       }
 
       return (
-        '<div class="detailPanel" ' +
-          'style="margin-top:12px">' +
+        '<div class="detailPanel" style="margin-top:12px">' +
 
-          '<div class="sectionHead">' +
-            '<h2>Xác nhận đã nhận</h2>' +
-          '</div>' +
+          '<h2 style="margin:0 0 10px">' +
+            'Xác nhận đã nhận' +
+          '</h2>' +
 
           '<label>Người nhận thực tế</label>' +
 
-          '<input ' +
-            'id="nguoiNhanThucTe" ' +
-            'value="' +
-              esc(currentUser.hoTen) +
-            '">' +
+          '<input id="nguoiNhanThucTe" value="' +
+            esc(currentUser.hoTen) +
+          '">' +
 
-          '<label>' +
-            'Lý do nhận thay nếu có' +
-          '</label>' +
+          '<label>Lý do nhận thay nếu có</label>' +
 
-          '<textarea ' +
-            'id="lyDoNhanThay" ' +
-            'placeholder="' +
-              'Nhập nếu người nhận thực tế khác người được cấp' +
-            '">' +
+          '<textarea id="lyDoNhanThay" ' +
+            'placeholder="Nhập nếu người nhận thực tế khác người được cấp">' +
           '</textarea>' +
 
           '<div class="check">' +
             '<input id="dongY" type="checkbox">' +
-            '<span>' +
-              'Tôi xác nhận đã nhận công lệnh nêu trên.' +
-            '</span>' +
+            '<span>Tôi xác nhận đã nhận công lệnh nêu trên.</span>' +
           '</div>' +
 
-          '<button ' +
-            'class="success fullBtn" ' +
-            'type="button" ' +
-            'onclick="confirmReceived(\'' +
-              esc(item.maYeuCau) +
-            '\')">' +
-            'TÔI ĐÃ NHẬN' +
-          '</button>' +
+          '<button class="success fullBtn" type="button" ' +
+            'onclick=\'confirmReceived(' +
+              js(item.maYeuCau) +
+            ')\'>TÔI ĐÃ NHẬN</button>' +
 
           '<div id="confirmMsg" class="msg"></div>' +
 
@@ -1793,14 +1896,10 @@
       }
 
       const nguoiNhanThucTe =
-        $("nguoiNhanThucTe")
-          .value
-          .trim();
+        $("nguoiNhanThucTe").value.trim();
 
       const lyDoNhanThay =
-        $("lyDoNhanThay")
-          .value
-          .trim();
+        $("lyDoNhanThay").value.trim();
 
       if(!nguoiNhanThucTe){
         showMsg(
@@ -1812,19 +1911,15 @@
       }
 
       try{
-        const response =
-          await api(
-            "xac_nhan_da_nhan",
-            {
-              maYeuCau:maYeuCau,
-              maNguoiDung:
-                currentUser.maNguoiDung,
-              nguoiNhanThucTe:
-                nguoiNhanThucTe,
-              lyDoNhanThay:
-                lyDoNhanThay
-            }
-          );
+        const response = await api(
+          "xac_nhan_da_nhan",
+          {
+            maYeuCau:maYeuCau,
+            maNguoiDung:currentUser.maNguoiDung,
+            nguoiNhanThucTe:nguoiNhanThucTe,
+            lyDoNhanThay:lyDoNhanThay
+          }
+        );
 
         if(!response.ok){
           showMsg(
@@ -1852,164 +1947,138 @@
       }
     }
 
-    function isOneSignalConfigured(){
-      return Boolean(
-        window.CONG_LENH_ONESIGNAL_APP_ID &&
-        window.CONG_LENH_ONESIGNAL_APP_ID !==
-          "DAN_ONESIGNAL_APP_ID_CONG_LENH_VAO_DAY"
-      );
-    }
-
     function showPushBox(){
       if(
-        isOneSignalConfigured() &&
+        ONESIGNAL_APP_ID &&
         $("pushSection")
       ){
-        $("pushSection")
-          .classList
-          .remove("hidden");
+        $("pushSection").classList.remove("hidden");
       }
     }
 
-    function getOneSignalExternalId(){
+    function externalId(){
       return (
         currentUser &&
         currentUser.maNguoiDung
       )
         ? (
           "CL_" +
-          String(
-            currentUser.maNguoiDung
-          ).trim()
+          String(currentUser.maNguoiDung).trim()
         )
         : "";
     }
 
-    async function ganTagOneSignal(OneSignal){
-      await OneSignal.User.addTag(
-        "heThong",
-        "cong_lenh"
-      );
+    function initOneSignal(){
+      if(oneSignalInitPromise){
+        return oneSignalInitPromise;
+      }
 
-      await OneSignal.User.addTag(
-        "vaiTro",
-        currentUser &&
-        currentUser.quyenQuanTri
-          ? "phong_to_chuc"
-          : "vien_chuc"
-      );
-
-      await OneSignal.User.addTag(
-        "maNguoiDung",
-        String(
-          currentUser &&
-          currentUser.maNguoiDung
-            ? currentUser.maNguoiDung
-            : ""
-        )
-      );
-    }
-
-    function lienKetOneSignalNguoiDung(
-      requestPermission
-    ){
-      return new Promise(
-        function(resolve){
-          if(
-            !currentUser ||
-            !isOneSignalConfigured() ||
-            !window.OneSignalDeferred
-          ){
-            resolve(false);
-            return;
-          }
-
+      oneSignalInitPromise =
+        new Promise(function(resolve){
           window.OneSignalDeferred.push(
             async function(OneSignal){
               try{
-                const externalId =
-                  getOneSignalExternalId();
+                const basePath =
+                  location.pathname.replace(/\/[^/]*$/,"/");
 
-                if(!externalId){
-                  resolve(false);
-                  return;
-                }
+                await OneSignal.init({
+                  appId:ONESIGNAL_APP_ID,
+                  safari_web_id:ONESIGNAL_SAFARI_WEB_ID,
+                  serviceWorkerPath:
+                    basePath + "OneSignalSDKWorker.js",
+                  serviceWorkerParam:{
+                    scope:basePath
+                  },
+                  notifyButton:{
+                    enable:false
+                  }
+                });
 
-                await OneSignal.login(
-                  externalId
-                );
-
-                await ganTagOneSignal(
-                  OneSignal
-                );
-
-                if(requestPermission){
-                  await OneSignal
-                    .Notifications
-                    .requestPermission();
-                }
-
-                console.log(
-                  "Đã liên kết OneSignal:",
-                  externalId
-                );
-
-                resolve(true);
+                resolve(OneSignal);
               }catch(error){
                 console.warn(
-                  "Không liên kết được OneSignal:",
+                  "OneSignal init error",
                   error
                 );
 
-                resolve(false);
+                resolve(null);
               }
             }
           );
+        });
+
+      return oneSignalInitPromise;
+    }
+
+    async function linkOneSignal(requestPermission){
+      if(!currentUser){
+        return false;
+      }
+
+      const OneSignal =
+        await initOneSignal();
+
+      if(!OneSignal){
+        return false;
+      }
+
+      try{
+        await OneSignal.login(externalId());
+
+        await OneSignal.User.addTag(
+          "heThong",
+          "cong_lenh"
+        );
+
+        await OneSignal.User.addTag(
+          "vaiTro",
+          currentUser.quyenQuanTri
+            ? "phong_to_chuc"
+            : "vien_chuc"
+        );
+
+        await OneSignal.User.addTag(
+          "maNguoiDung",
+          String(currentUser.maNguoiDung || "")
+        );
+
+        if(requestPermission){
+          await OneSignal.Notifications.requestPermission();
         }
-      );
+
+        return true;
+      }catch(error){
+        console.warn(
+          "OneSignal link error",
+          error
+        );
+
+        return false;
+      }
     }
 
     async function enablePushAndTest(){
-      if(!currentUser){
-        alert(
-          "Vui lòng đăng nhập trước khi bật thông báo."
-        );
-        return;
-      }
-
-      if(!isOneSignalConfigured()){
-        alert(
-          "Chưa cấu hình OneSignal App ID."
-        );
-        return;
-      }
-
       const linked =
-        await lienKetOneSignalNguoiDung(true);
+        await linkOneSignal(true);
 
       if(!linked){
         alert(
-          "Không thể liên kết thiết bị với OneSignal. " +
-          "Vui lòng kiểm tra quyền thông báo và thử lại."
+          "Không thể liên kết thiết bị với OneSignal."
         );
         return;
       }
 
-      await new Promise(
-        function(resolve){
-          setTimeout(resolve,1200);
-        }
-      );
+      await new Promise(function(resolve){
+        setTimeout(resolve,1200);
+      });
 
       try{
-        const response =
-          await api(
-            "test_push",
-            {
-              maNguoiDung:
-                currentUser.maNguoiDung
-            }
-          );
+        const response = await api(
+          "test_push",
+          {
+            maNguoiDung:currentUser.maNguoiDung
+          }
+        );
 
         alert(
           response.ok
@@ -2021,33 +2090,15 @@
       }
     }
 
-    async function dangXuatOneSignal(){
-      return new Promise(
-        function(resolve){
-          if(
-            !window.OneSignalDeferred ||
-            !isOneSignalConfigured()
-          ){
-            resolve();
-            return;
-          }
+    async function logoutOneSignal(){
+      try{
+        const OneSignal =
+          await initOneSignal();
 
-          window.OneSignalDeferred.push(
-            async function(OneSignal){
-              try{
-                await OneSignal.logout();
-              }catch(error){
-                console.warn(
-                  "Không đăng xuất được OneSignal:",
-                  error
-                );
-              }finally{
-                resolve();
-              }
-            }
-          );
+        if(OneSignal){
+          await OneSignal.logout();
         }
-      );
+      }catch(error){}
     }
 
     document.addEventListener(
@@ -2056,88 +2107,23 @@
         [
           "loginName",
           "loginPin"
-        ].forEach(
-          function(id){
-            const element = $(id);
+        ].forEach(function(id){
+          const element = $(id);
 
-            if(element){
-              element.addEventListener(
-                "keydown",
-                function(event){
-                  if(event.key === "Enter"){
-                    event.preventDefault();
-                    login();
-                  }
+          if(element){
+            element.addEventListener(
+              "keydown",
+              function(event){
+                if(event.key === "Enter"){
+                  event.preventDefault();
+                  login();
                 }
-              );
-            }
-          }
-        );
-      }
-    );
-
-    function getInitials(name){
-      return (
-        String(name || "VC")
-          .trim()
-          .split(/\s+/)
-          .slice(-2)
-          .map(
-            function(value){
-              return value
-                .charAt(0)
-                .toUpperCase();
-            }
-          )
-          .join("") ||
-        "VC"
-      );
-    }
-
-    function scrollSection(id){
-      const element = $(id);
-
-      if(element){
-        element.scrollIntoView({
-          behavior:"smooth",
-          block:"start"
-        });
-      }
-    }
-
-    function updateUserSummary(){
-      const total =
-        requests.length;
-
-      const completed =
-        requests.filter(
-          function(item){
-            return String(
-              item.trangThai || ""
-            ).includes(
-              "HOÀN TẤT"
+              }
             );
           }
-        ).length;
-
-      const processing =
-        total - completed;
-
-      if($("sumTotal")){
-        $("sumTotal").textContent =
-          total;
+        });
       }
-
-      if($("sumProcessing")){
-        $("sumProcessing").textContent =
-          processing;
-      }
-
-      if($("sumCompleted")){
-        $("sumCompleted").textContent =
-          completed;
-      }
-    }
+    );
 
     init();
   </script>
