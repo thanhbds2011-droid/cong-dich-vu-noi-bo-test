@@ -10,58 +10,160 @@
   <meta name="robots" content="noindex,nofollow" />
   <link rel="manifest" href="manifest.json" />
   <title>Quản trị công lệnh - TEST</title>
+
   <style>
-    *{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#eef4fb;color:#0f172a}.page{min-height:100vh;padding:16px;display:flex;justify-content:center}.wrap{width:100%;max-width:1000px}.hero{background:linear-gradient(135deg,#1d4ed8,#16a34a);color:#fff;border-radius:26px;padding:24px;box-shadow:0 18px 45px rgba(15,23,42,.15)}.hero h1{margin:0;font-size:26px;line-height:1.2}.hero p{margin:10px 0 0;line-height:1.45;opacity:.95}.card{background:#fff;border-radius:24px;padding:20px;margin-top:16px;box-shadow:0 10px 28px rgba(15,23,42,.1)}h2{margin:0 0 14px;color:#2563eb}label{display:block;margin:12px 0 6px;font-weight:900;font-size:14px}input,select,textarea{width:100%;border:1.5px solid #cbd5e1;border-radius:16px;padding:13px 14px;font-size:16px;outline:none;font-family:Arial,Helvetica,sans-serif}input:focus,textarea:focus,select:focus{border-color:#2563eb;box-shadow:0 0 0 3px rgba(37,99,235,.12)}button{border:0;border-radius:16px;background:#2563eb;color:#fff;padding:12px 14px;font-weight:900;font-size:14px;cursor:pointer}button:disabled{background:#94a3b8}.secondary{background:#0f172a}.ghost{background:#e2e8f0;color:#0f172a}.danger{background:#dc2626}.warn{background:#ea580c}.hidden{display:none!important}.row{display:flex;gap:10px;flex-wrap:wrap}.grid{display:grid;grid-template-columns:1fr;gap:12px}.four{grid-template-columns:1fr 1fr}.topbar{display:flex;justify-content:space-between;gap:12px;align-items:center}.msg{display:none;margin-top:14px;border-radius:16px;padding:13px;line-height:1.45;font-weight:700}.msg.ok{display:block;background:#dcfce7;color:#166534;border:1px solid #86efac}.msg.err{display:block;background:#fee2e2;color:#991b1b;border:1px solid #fecaca}.item{border:1px solid #e2e8f0;border-radius:18px;padding:14px;margin-top:12px;background:#f8fafc}.item h3{margin:0 0 8px}.meta{font-size:14px;color:#475569;line-height:1.55}.pill{display:inline-block;border-radius:999px;padding:6px 10px;font-size:12px;font-weight:900;background:#e0f2fe;color:#075985}.pill.green{background:#dcfce7;color:#166534}.pill.orange{background:#ffedd5;color:#9a3412}.pill.red{background:#fee2e2;color:#991b1b}.stat{background:#f8fafc;border:1px solid #e2e8f0;border-radius:18px;padding:16px}.stat b{font-size:26px;display:block}.small{font-size:13px;color:#64748b}.empty{text-align:center;color:#64748b;background:#f8fafc;border-radius:18px;padding:18px}.linkbtn{display:inline-block;text-decoration:none;background:#0f172a;color:#fff;border-radius:14px;padding:10px 12px;font-weight:900;margin-top:10px}.warnbox{background:#fff7ed;border:1px solid #fed7aa;color:#9a3412;border-radius:16px;padding:12px;line-height:1.45}.filter{display:grid;grid-template-columns:1fr;gap:10px}@media(min-width:760px){.filter{grid-template-columns:1fr 1fr auto}.four{grid-template-columns:repeat(4,1fr)}}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#eef4fb;color:#0f172a}
+    .page{min-height:100vh;padding:16px;display:flex;justify-content:center}
+    .wrap{width:100%;max-width:1000px}
+    .hero{background:linear-gradient(135deg,#1d4ed8,#16a34a);color:#fff;border-radius:26px;padding:24px;box-shadow:0 18px 45px rgba(15,23,42,.15)}
+    .hero h1{margin:0;font-size:26px;line-height:1.2}
+    .hero p{margin:10px 0 0;line-height:1.45;opacity:.95}
+    .card{background:#fff;border-radius:24px;padding:20px;margin-top:16px;box-shadow:0 10px 28px rgba(15,23,42,.1)}
+    h2{margin:0 0 14px;color:#2563eb}
+    label{display:block;margin:12px 0 6px;font-weight:900;font-size:14px}
+    input,select,textarea{width:100%;border:1.5px solid #cbd5e1;border-radius:16px;padding:13px 14px;font-size:16px;outline:none;font-family:Arial,Helvetica,sans-serif}
+    input:focus,textarea:focus,select:focus{border-color:#2563eb;box-shadow:0 0 0 3px rgba(37,99,235,.12)}
+    button{border:0;border-radius:16px;background:#2563eb;color:#fff;padding:12px 14px;font-weight:900;font-size:14px;cursor:pointer}
+    button:disabled{background:#94a3b8}
+    .secondary{background:#0f172a}
+    .ghost{background:#e2e8f0;color:#0f172a}
+    .danger{background:#dc2626}
+    .warn{background:#ea580c}
+    .hidden{display:none!important}
+    .row{display:flex;gap:10px;flex-wrap:wrap}
+    .grid{display:grid;grid-template-columns:1fr;gap:12px}
+    .four{grid-template-columns:1fr 1fr}
+    .topbar{display:flex;justify-content:space-between;gap:12px;align-items:center}
+    .msg{display:none;margin-top:14px;border-radius:16px;padding:13px;line-height:1.45;font-weight:700}
+    .msg.ok{display:block;background:#dcfce7;color:#166534;border:1px solid #86efac}
+    .msg.err{display:block;background:#fee2e2;color:#991b1b;border:1px solid #fecaca}
+    .item{border:1px solid #e2e8f0;border-radius:18px;padding:14px;margin-top:12px;background:#f8fafc}
+    .item h3{margin:0 0 8px}
+    .meta{font-size:14px;color:#475569;line-height:1.55}
+    .pill{display:inline-block;border-radius:999px;padding:6px 10px;font-size:12px;font-weight:900;background:#e0f2fe;color:#075985}
+    .pill.green{background:#dcfce7;color:#166534}
+    .pill.orange{background:#ffedd5;color:#9a3412}
+    .pill.red{background:#fee2e2;color:#991b1b}
+    .stat{background:#f8fafc;border:1px solid #e2e8f0;border-radius:18px;padding:16px}
+    .stat b{font-size:26px;display:block}
+    .small{font-size:13px;color:#64748b}
+    .empty{text-align:center;color:#64748b;background:#f8fafc;border-radius:18px;padding:18px}
+    .linkbtn{display:inline-block;text-decoration:none;background:#0f172a;color:#fff;border-radius:14px;padding:10px 12px;font-weight:900;margin-top:10px}
+    .warnbox{background:#fff7ed;border:1px solid #fed7aa;color:#9a3412;border-radius:16px;padding:12px;line-height:1.45}
+    .filter{display:grid;grid-template-columns:1fr;gap:10px}
+    @media(min-width:760px){.filter{grid-template-columns:1fr 1fr auto}.four{grid-template-columns:repeat(4,1fr)}}
   </style>
 </head>
+
 <body>
-  <main class="page"><div class="wrap">
-    <section class="hero"><h1>🗂️ Quản trị yêu cầu công lệnh - TEST</h1><p>Dành cho Phòng Tổ chức tiếp nhận, xử lý, cấp công lệnh và theo dõi xác nhận nhận giấy.</p></section>
-
-    <section id="loginCard" class="card">
-      <h2>Đăng nhập quản trị</h2>
-      <div class="warnbox">Vì sheet đã rút gọn, quyền quản trị được xác định theo <b>Mã người dùng</b>. Mã của Phòng Tổ chức nên bắt đầu bằng <b>TC</b>, <b>TCHC</b>, <b>PTOC</b> hoặc <b>ADMIN</b>. Ví dụ: <b>TC001</b>.</div>
-      <label>Họ và tên</label><input id="loginName" placeholder="Nhập họ và tên">
-      <label>Mã PIN</label><input id="loginPin" type="password" inputmode="numeric" placeholder="Nhập mã PIN">
-      <button id="btnLogin" onclick="login()">ĐĂNG NHẬP</button>
-      <div id="loginMsg" class="msg"></div>
-    </section>
-
-    <section id="appBox" class="hidden">
-      <div class="card topbar">
-        <div><b id="helloUser">Xin chào</b><div id="userInfo" class="small"></div></div>
-        <div class="row"><button class="ghost" onclick="loadAll()">Tải lại</button><button class="ghost" onclick="logout()">Đăng xuất</button></div>
-      </div>
-
-      <section class="card">
-        <h2>Dashboard</h2>
-        <div id="dashboard" class="grid four"></div>
+  <main class="page">
+    <div class="wrap">
+      <section class="hero">
+        <h1>🗂️ Quản trị yêu cầu công lệnh - TEST</h1>
+        <p>Dành cho Phòng Tổ chức tiếp nhận, xử lý, cấp công lệnh và theo dõi xác nhận nhận giấy.</p>
       </section>
 
-      <section class="card">
-        <h2>Danh sách yêu cầu</h2>
-        <div class="filter">
-          <select id="locTrangThai">
-            <option value="">Tất cả trạng thái</option>
-            <option>MỚI GỬI</option><option>ĐÃ TIẾP NHẬN</option><option>ĐANG XỬ LÝ</option><option>CẦN BỔ SUNG</option><option>TỪ CHỐI</option><option>ĐÃ CẤP CÔNG LỆNH</option><option>CHỜ NHẬN</option><option>ĐÃ BÀN GIAO - CHỜ XÁC NHẬN</option><option>ĐÃ NHẬN - HOÀN TẤT</option>
-          </select>
-          <input id="tuKhoa" placeholder="Tìm mã yêu cầu, họ tên, nội dung, số công lệnh">
-          <button onclick="loadRequests()">Lọc</button>
+      <section id="loginCard" class="card">
+        <h2>Đăng nhập quản trị</h2>
+
+        <div class="warnbox">
+          Vì sheet đã rút gọn, quyền quản trị được xác định theo <b>Mã người dùng</b>.
+          Mã của Phòng Tổ chức nên bắt đầu bằng <b>TC</b>, <b>TCHC</b>, <b>PTOC</b> hoặc <b>ADMIN</b>.
+          Ví dụ: <b>TC001</b>.
         </div>
-        <div id="listBox"></div>
+
+        <label>Họ và tên</label>
+        <input id="loginName" placeholder="Nhập họ và tên">
+
+        <label>Mã PIN</label>
+        <input id="loginPin" type="password" inputmode="numeric" placeholder="Nhập mã PIN">
+
+        <button id="btnLogin" onclick="login()">ĐĂNG NHẬP</button>
+        <div id="loginMsg" class="msg"></div>
       </section>
-    </section>
-  </div></main>
+
+      <section id="appBox" class="hidden">
+        <div class="card topbar">
+          <div>
+            <b id="helloUser">Xin chào</b>
+            <div id="userInfo" class="small"></div>
+          </div>
+
+          <div class="row">
+            <button class="ghost" onclick="loadAll()">Tải lại</button>
+            <button class="ghost" onclick="logout()">Đăng xuất</button>
+          </div>
+        </div>
+
+        <section class="card">
+          <h2>Dashboard</h2>
+          <div id="dashboard" class="grid four"></div>
+        </section>
+
+        <section class="card">
+          <h2>Danh sách yêu cầu</h2>
+
+          <div class="filter">
+            <select id="locTrangThai">
+              <option value="">Tất cả trạng thái</option>
+              <option>MỚI GỬI</option>
+              <option>ĐÃ TIẾP NHẬN</option>
+              <option>ĐANG XỬ LÝ</option>
+              <option>CẦN BỔ SUNG</option>
+              <option>TỪ CHỐI</option>
+              <option>ĐÃ CẤP CÔNG LỆNH</option>
+              <option>CHỜ NHẬN</option>
+              <option>ĐÃ BÀN GIAO - CHỜ XÁC NHẬN</option>
+              <option>ĐÃ NHẬN - HOÀN TẤT</option>
+            </select>
+
+            <input id="tuKhoa" placeholder="Tìm mã yêu cầu, họ tên, nội dung, số công lệnh">
+
+            <button onclick="loadRequests()">Lọc</button>
+          </div>
+
+          <div id="listBox"></div>
+        </section>
+      </section>
+    </div>
+  </main>
 
 <script>
 const API_URL = "https://script.google.com/macros/s/AKfycbwu7jzAGZyxrJ5QEBikW0I6KSNUfwtxSEKPP2Ecajo3WL_KDXdytkEUX0qP9sHot2t4/exec";
 const API_TOKEN = "DICHVU_NOIBO_TEST_2026";
+
 let currentUser = JSON.parse(localStorage.getItem("dv_admin_user") || "null");
 let requests = [];
 
-function esc(s){return String(s||"").replace(/[&<>'"]/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;","'":"&#39;",'"':"&quot;"}[m]));}
-function showMsg(id,type,html){const el=document.getElementById(id);el.className="msg "+type;el.innerHTML=html;}
-function clearMsg(id){const el=document.getElementById(id);el.className="msg";el.innerHTML="";}
+function $(id) {
+  return document.getElementById(id);
+}
+
+function esc(s) {
+  return String(s || "").replace(/[&<>'"]/g, function(m) {
+    return {
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      "'": "&#39;",
+      '"': "&quot;"
+    }[m];
+  });
+}
+
+function showMsg(id, type, html) {
+  const el = $(id);
+  el.className = "msg " + type;
+  el.innerHTML = html;
+}
+
+function clearMsg(id) {
+  const el = $(id);
+  el.className = "msg";
+  el.innerHTML = "";
+}
+
 function jsonp(params) {
   return new Promise(function(resolve, reject) {
     if (!API_URL || API_URL === "DAN_WEB_APP_URL_APPS_SCRIPT_TEST_VAO_DAY") {
@@ -70,14 +172,22 @@ function jsonp(params) {
     }
 
     const cbName = "cb_" + Date.now() + "_" + Math.floor(Math.random() * 100000);
+    let script = document.createElement("script");
+
+    const timer = setTimeout(function() {
+      try {
+        delete window[cbName];
+        script.remove();
+      } catch (e) {}
+      reject(new Error("Kết nối Apps Script quá thời gian chờ."));
+    }, 30000);
 
     window[cbName] = function(data) {
+      clearTimeout(timer);
       delete window[cbName];
       script.remove();
       resolve(data);
     };
-
-    const script = document.createElement("script");
 
     const query = new URLSearchParams(params);
     query.set("callback", cbName);
@@ -85,6 +195,7 @@ function jsonp(params) {
     script.src = API_URL + "?" + query.toString();
 
     script.onerror = function() {
+      clearTimeout(timer);
       delete window[cbName];
       script.remove();
       reject(new Error("Không kết nối được Apps Script."));
@@ -93,19 +204,261 @@ function jsonp(params) {
     document.body.appendChild(script);
   });
 }
-function init(){if(currentUser){openApp();}}
-function openApp(){document.getElementById("loginCard").classList.add("hidden");document.getElementById("appBox").classList.remove("hidden");helloUser.textContent="Xin chào, "+currentUser.hoTen;userInfo.textContent=(currentUser.chucVu||"")+" - "+(currentUser.phongKhu||"");loadAll();}
-async function login(){clearMsg("loginMsg");const hoTen=loginName.value.trim(),pin=loginPin.value.trim();if(!hoTen||!pin){showMsg("loginMsg","err","❌ Vui lòng nhập họ tên và mã PIN.");return;}btnLogin.disabled=true;try{const res=await api("login",{hoTen,pin});if(!res.ok){showMsg("loginMsg","err","❌ "+res.message);return;}if(!res.user.quyenQuanTri){showMsg("loginMsg","err","❌ Tài khoản không có quyền quản trị. Mã người dùng Phòng Tổ chức nên bắt đầu bằng TC/TCHC/PTOC/ADMIN.");return;}currentUser=res.user;localStorage.setItem("dv_admin_user",JSON.stringify(currentUser));openApp();}catch(e){showMsg("loginMsg","err","❌ "+e.message);}finally{btnLogin.disabled=false;}}
-function logout(){localStorage.removeItem("dv_admin_user");currentUser=null;location.reload();}
-async function loadAll(){await loadDashboard();await loadRequests();}
-async function loadDashboard(){dashboard.innerHTML='<div class="empty">Đang tải...</div>';try{const res=await api("admin_dashboard",{maNguoiDung:currentUser.maNguoiDung});if(!res.ok){dashboard.innerHTML='<div class="empty">❌ '+esc(res.message)+'</div>';return;}const d=res.data;dashboard.innerHTML=`<div class="stat"><b>${d.tong}</b><span>Tổng yêu cầu</span></div><div class="stat"><b>${d.moiGui}</b><span>Mới gửi</span></div><div class="stat"><b>${d.dangXuLy}</b><span>Đang xử lý</span></div><div class="stat"><b>${d.hoanTat}</b><span>Hoàn tất</span></div>`;}catch(e){dashboard.innerHTML='<div class="empty">❌ '+esc(e.message)+'</div>';}}
-async function loadRequests(){listBox.innerHTML='<div class="empty">Đang tải danh sách...</div>';try{const res=await api("admin_danh_sach",{maNguoiDung:currentUser.maNguoiDung,trangThai:locTrangThai.value,tuKhoa:tuKhoa.value.trim()});if(!res.ok){listBox.innerHTML='<div class="empty">❌ '+esc(res.message)+'</div>';return;}requests=res.data||[];if(!requests.length){listBox.innerHTML='<div class="empty">Không có yêu cầu phù hợp.</div>';return;}listBox.innerHTML=requests.map(renderItem).join("");}catch(e){listBox.innerHTML='<div class="empty">❌ '+esc(e.message)+'</div>';}}
-function statusPill(st){let c="";if(st.includes("HOÀN TẤT"))c="green";else if(st.includes("TỪ CHỐI"))c="red";else if(st.includes("CẦN")||st.includes("CHỜ"))c="orange";return `<span class="pill ${c}">${esc(st)}</span>`;}
-function renderItem(x){return `<div class="item" id="item_${esc(x.maYeuCau)}"><div class="topbar"><h3>${esc(x.maYeuCau)}</h3>${statusPill(x.trangThai)}</div><div class="meta"><b>${esc(x.nguoiDangKy)}</b> - ${esc(x.chucVu)} - ${esc(x.phongKhu)}<br><b>Đi:</b> ${esc(x.diTu)} → ${esc(x.den)}<br><b>Thời gian:</b> ${esc(x.ngayDi)} → ${esc(x.ngayVe)}<br><b>Nội dung:</b> ${esc(x.noiDung)}<br><b>Phương tiện:</b> ${esc(x.phuongTien)}${x.soCongLenh?`<br><b>Số công lệnh:</b> ${esc(x.soCongLenh)}`:""}${x.linkPDF?`<br><a class="linkbtn" target="_blank" href="${esc(x.linkPDF)}">Mở PDF</a>`:""}${x.ghiChuXuLy?`<br><b>Ghi chú:</b> ${esc(x.ghiChuXuLy)}`:""}</div>${renderActions(x)}<div id="msg_${esc(x.maYeuCau)}" class="msg"></div></div>`;}
-function renderActions(x){let actions=[];if(x.trangThai==="MỚI GỬI")actions.push(btn(x,"tiep_nhan","Tiếp nhận"),btn(x,"bo_sung","Yêu cầu bổ sung","warn"),btn(x,"tu_choi","Từ chối","danger"));if(["MỚI GỬI","ĐÃ TIẾP NHẬN","ĐANG XỬ LÝ","CẦN BỔ SUNG"].includes(x.trangThai))actions.push(`<button class="secondary" onclick="capCongLenh('${esc(x.maYeuCau)}')">Cấp công lệnh</button>`);if(x.trangThai==="ĐÃ CẤP CÔNG LỆNH")actions.push(btn(x,"ban_giao","Đã bàn giao","secondary"));if(!actions.length)actions.push(`<button class="ghost" onclick="alert('Hồ sơ đang ở trạng thái: ${esc(x.trangThai)}')">Xem trạng thái</button>`);return `<div class="row" style="margin-top:12px">${actions.join("")}</div>`;}
-function btn(x,action,label,cls=""){return `<button class="${cls}" onclick="updateStatus('${esc(x.maYeuCau)}','${action}')">${label}</button>`;}
-async function updateStatus(ma,hanhDong){const needNote=["bo_sung","tu_choi"].includes(hanhDong);let ghiChu="";if(needNote){ghiChu=prompt(hanhDong==="bo_sung"?"Nhập nội dung yêu cầu bổ sung":"Nhập lý do từ chối")||"";if(!ghiChu.trim()){alert("Chưa nhập nội dung.");return;}}else if(hanhDong==="ban_giao"){ghiChu=prompt("Ghi chú bàn giao nếu có","")||"";}const msgId="msg_"+ma;clearMsg(msgId);try{const res=await api("admin_cap_nhat",{maNguoiDung:currentUser.maNguoiDung,maYeuCau:ma,hanhDong,ghiChu});if(!res.ok){showMsg(msgId,"err","❌ "+res.message);return;}showMsg(msgId,"ok","✅ "+res.message);await loadAll();}catch(e){showMsg(msgId,"err","❌ "+e.message);}}
-async function capCongLenh(ma){if(!confirm("Xác nhận cấp công lệnh TEST cho yêu cầu "+ma+"?"))return;const msgId="msg_"+ma;clearMsg(msgId);showMsg(msgId,"ok","⏳ Đang cấp công lệnh, vui lòng chờ...");try{const res=await api("admin_cap_cong_lenh",{maNguoiDung:currentUser.maNguoiDung,maYeuCau:ma});if(!res.ok){showMsg(msgId,"err","❌ "+res.message);return;}showMsg(msgId,"ok",`✅ ${esc(res.message)}<br><a class="linkbtn" target="_blank" href="${esc(res.linkPDF)}">Mở PDF</a>`);await loadAll();}catch(e){showMsg(msgId,"err","❌ "+e.message);}}
+
+function api(action, data) {
+  const params = Object.assign({}, data || {});
+  params.action = action;
+  params.token = API_TOKEN;
+  return jsonp(params);
+}
+
+function init() {
+  if (currentUser) {
+    openApp();
+  }
+}
+
+function openApp() {
+  $("loginCard").classList.add("hidden");
+  $("appBox").classList.remove("hidden");
+  $("helloUser").textContent = "Xin chào, " + currentUser.hoTen;
+  $("userInfo").textContent = (currentUser.chucVu || "") + " - " + (currentUser.phongKhu || "");
+  loadAll();
+}
+
+async function login() {
+  clearMsg("loginMsg");
+
+  const hoTen = $("loginName").value.trim();
+  const pin = $("loginPin").value.trim();
+
+  if (!hoTen || !pin) {
+    showMsg("loginMsg", "err", "❌ Vui lòng nhập họ tên và mã PIN.");
+    return;
+  }
+
+  $("btnLogin").disabled = true;
+
+  try {
+    const res = await api("login", { hoTen, pin });
+
+    if (!res.ok) {
+      showMsg("loginMsg", "err", "❌ " + res.message);
+      return;
+    }
+
+    if (!res.user.quyenQuanTri) {
+      showMsg("loginMsg", "err", "❌ Tài khoản không có quyền quản trị. Mã người dùng Phòng Tổ chức nên bắt đầu bằng TC/TCHC/PTOC/ADMIN.");
+      return;
+    }
+
+    currentUser = res.user;
+    localStorage.setItem("dv_admin_user", JSON.stringify(currentUser));
+    openApp();
+
+  } catch (e) {
+    showMsg("loginMsg", "err", "❌ " + e.message);
+  } finally {
+    $("btnLogin").disabled = false;
+  }
+}
+
+function logout() {
+  localStorage.removeItem("dv_admin_user");
+  currentUser = null;
+  location.reload();
+}
+
+async function loadAll() {
+  await loadDashboard();
+  await loadRequests();
+}
+
+async function loadDashboard() {
+  $("dashboard").innerHTML = '<div class="empty">Đang tải...</div>';
+
+  try {
+    const res = await api("admin_dashboard", { maNguoiDung: currentUser.maNguoiDung });
+
+    if (!res.ok) {
+      $("dashboard").innerHTML = '<div class="empty">❌ ' + esc(res.message) + '</div>';
+      return;
+    }
+
+    const d = res.data;
+
+    $("dashboard").innerHTML = `
+      <div class="stat"><b>${esc(d.tong)}</b><span>Tổng yêu cầu</span></div>
+      <div class="stat"><b>${esc(d.moiGui)}</b><span>Mới gửi</span></div>
+      <div class="stat"><b>${esc(d.dangXuLy)}</b><span>Đang xử lý</span></div>
+      <div class="stat"><b>${esc(d.hoanTat)}</b><span>Hoàn tất</span></div>
+    `;
+
+  } catch (e) {
+    $("dashboard").innerHTML = '<div class="empty">❌ ' + esc(e.message) + '</div>';
+  }
+}
+
+async function loadRequests() {
+  $("listBox").innerHTML = '<div class="empty">Đang tải danh sách...</div>';
+
+  try {
+    const res = await api("admin_danh_sach", {
+      maNguoiDung: currentUser.maNguoiDung,
+      trangThai: $("locTrangThai").value,
+      tuKhoa: $("tuKhoa").value.trim()
+    });
+
+    if (!res.ok) {
+      $("listBox").innerHTML = '<div class="empty">❌ ' + esc(res.message) + '</div>';
+      return;
+    }
+
+    requests = res.data || [];
+
+    if (!requests.length) {
+      $("listBox").innerHTML = '<div class="empty">Không có yêu cầu phù hợp.</div>';
+      return;
+    }
+
+    $("listBox").innerHTML = requests.map(renderItem).join("");
+
+  } catch (e) {
+    $("listBox").innerHTML = '<div class="empty">❌ ' + esc(e.message) + '</div>';
+  }
+}
+
+function statusPill(st) {
+  const s = String(st || "");
+  let c = "";
+
+  if (s.includes("HOÀN TẤT")) c = "green";
+  else if (s.includes("TỪ CHỐI")) c = "red";
+  else if (s.includes("CẦN") || s.includes("CHỜ")) c = "orange";
+
+  return '<span class="pill ' + c + '">' + esc(s) + '</span>';
+}
+
+function renderItem(x) {
+  return `
+    <div class="item" id="item_${esc(x.maYeuCau)}">
+      <div class="topbar">
+        <h3>${esc(x.maYeuCau)}</h3>
+        ${statusPill(x.trangThai)}
+      </div>
+
+      <div class="meta">
+        <b>${esc(x.nguoiDangKy)}</b> - ${esc(x.chucVu)} - ${esc(x.phongKhu)}<br>
+        <b>Đi:</b> ${esc(x.diTu)} → ${esc(x.den)}<br>
+        <b>Thời gian:</b> ${esc(x.ngayDi)} → ${esc(x.ngayVe)}<br>
+        <b>Nội dung:</b> ${esc(x.noiDung)}<br>
+        <b>Phương tiện:</b> ${esc(x.phuongTien)}
+        ${x.soCongLenh ? `<br><b>Số công lệnh:</b> ${esc(x.soCongLenh)}` : ""}
+        ${x.linkPDF ? `<br><a class="linkbtn" target="_blank" href="${esc(x.linkPDF)}">Mở PDF</a>` : ""}
+        ${x.ghiChuXuLy ? `<br><b>Ghi chú:</b> ${esc(x.ghiChuXuLy)}` : ""}
+      </div>
+
+      ${renderActions(x)}
+      <div id="msg_${esc(x.maYeuCau)}" class="msg"></div>
+    </div>
+  `;
+}
+
+function renderActions(x) {
+  let actions = [];
+  const st = String(x.trangThai || "");
+
+  if (st === "MỚI GỬI") {
+    actions.push(btn(x, "tiep_nhan", "Tiếp nhận"));
+    actions.push(btn(x, "bo_sung", "Yêu cầu bổ sung", "warn"));
+    actions.push(btn(x, "tu_choi", "Từ chối", "danger"));
+  }
+
+  if (["MỚI GỬI", "ĐÃ TIẾP NHẬN", "ĐANG XỬ LÝ", "CẦN BỔ SUNG"].includes(st)) {
+    actions.push(`<button class="secondary" onclick="capCongLenh('${esc(x.maYeuCau)}')">Cấp công lệnh</button>`);
+  }
+
+  if (st === "ĐÃ CẤP CÔNG LỆNH") {
+    actions.push(btn(x, "ban_giao", "Đã bàn giao", "secondary"));
+  }
+
+  if (!actions.length) {
+    actions.push(`<button class="ghost" onclick="alert('Hồ sơ đang ở trạng thái: ${esc(st)}')">Xem trạng thái</button>`);
+  }
+
+  return `<div class="row" style="margin-top:12px">${actions.join("")}</div>`;
+}
+
+function btn(x, action, label, cls) {
+  return `<button class="${cls || ""}" onclick="updateStatus('${esc(x.maYeuCau)}','${action}')">${label}</button>`;
+}
+
+async function updateStatus(ma, hanhDong) {
+  const needNote = ["bo_sung", "tu_choi"].includes(hanhDong);
+  let ghiChu = "";
+
+  if (needNote) {
+    ghiChu = prompt(hanhDong === "bo_sung" ? "Nhập nội dung yêu cầu bổ sung" : "Nhập lý do từ chối") || "";
+    if (!ghiChu.trim()) {
+      alert("Chưa nhập nội dung.");
+      return;
+    }
+  } else if (hanhDong === "ban_giao") {
+    ghiChu = prompt("Ghi chú bàn giao nếu có", "") || "";
+  }
+
+  const msgId = "msg_" + ma;
+  clearMsg(msgId);
+
+  try {
+    const res = await api("admin_cap_nhat", {
+      maNguoiDung: currentUser.maNguoiDung,
+      maYeuCau: ma,
+      hanhDong,
+      ghiChu
+    });
+
+    if (!res.ok) {
+      showMsg(msgId, "err", "❌ " + res.message);
+      return;
+    }
+
+    showMsg(msgId, "ok", "✅ " + res.message);
+    await loadAll();
+
+  } catch (e) {
+    showMsg(msgId, "err", "❌ " + e.message);
+  }
+}
+
+async function capCongLenh(ma) {
+  if (!confirm("Xác nhận cấp công lệnh TEST cho yêu cầu " + ma + "?")) {
+    return;
+  }
+
+  const msgId = "msg_" + ma;
+  clearMsg(msgId);
+  showMsg(msgId, "ok", "⏳ Đang cấp công lệnh, vui lòng chờ...");
+
+  try {
+    const res = await api("admin_cap_cong_lenh", {
+      maNguoiDung: currentUser.maNguoiDung,
+      maYeuCau: ma
+    });
+
+    if (!res.ok) {
+      showMsg(msgId, "err", "❌ " + res.message);
+      return;
+    }
+
+    showMsg(msgId, "ok", `✅ ${esc(res.message)}<br><a class="linkbtn" target="_blank" href="${esc(res.linkPDF)}">Mở PDF</a>`);
+    await loadAll();
+
+  } catch (e) {
+    showMsg(msgId, "err", "❌ " + e.message);
+  }
+}
+
 init();
 </script>
 </body>
