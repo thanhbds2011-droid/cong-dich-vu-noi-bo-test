@@ -40,22 +40,31 @@
     @media(min-width:760px){.two{grid-template-columns:1fr 1fr}.grid.auto{grid-template-columns:1fr 1fr 1fr}}
   </style>
   <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
-<script>
-  const ONESIGNAL_APP_ID = "c7579ace-17b7-4357-9607-33f074e689b2";
-  const ONESIGNAL_SAFARI_WEB_ID = "web.onesignal.auto.36c77d1a-9357-4d49-966b-0de749957ba2";
+  <script>
+    window.CONG_LENH_ONESIGNAL_APP_ID = "c7579ace-17b7-4357-9607-33f074e689b2";
+    window.CONG_LENH_ONESIGNAL_SAFARI_WEB_ID = "web.onesignal.auto.36c77d1a-9357-4d49-966b-0de749957ba2";
+    window.OneSignalDeferred = window.OneSignalDeferred || [];
 
-  window.OneSignalDeferred = window.OneSignalDeferred || [];
+    window.OneSignalDeferred.push(async function (OneSignal) {
+      try {
+        const basePath = window.location.pathname.replace(/\/[^/]*$/, "/");
 
-  OneSignalDeferred.push(async function(OneSignal) {
-    await OneSignal.init({
-      appId: ONESIGNAL_APP_ID,
-      safari_web_id: ONESIGNAL_SAFARI_WEB_ID,
-      notifyButton: {
-        enable: true
+        await OneSignal.init({
+          appId: window.CONG_LENH_ONESIGNAL_APP_ID,
+          safari_web_id: window.CONG_LENH_ONESIGNAL_SAFARI_WEB_ID,
+          serviceWorkerPath: basePath + "OneSignalSDKWorker.js",
+          serviceWorkerParam: {
+            scope: basePath
+          },
+          notifyButton: {
+            enable: true
+          }
+        });
+      } catch (error) {
+        console.warn("Không khởi tạo được OneSignal:", error);
       }
     });
-  });
-</script>
+  </script>
 </head>
 <body>
   <main class="page"><div class="wrap">
@@ -66,7 +75,7 @@
       <div class="service-note">Nhập đúng họ tên và mã PIN đã được tạo trong tab <b>TEST_NGƯỜI DÙNG</b>. Sau khi đăng nhập, anh/chị có thể gửi yêu cầu và theo dõi tiến trình xử lý.</div>
       <label>Họ và tên</label><input id="loginName" placeholder="Nhập họ và tên đã đăng ký">
       <label>Mã PIN</label><input id="loginPin" type="password" inputmode="numeric" placeholder="Nhập mã PIN">
-      <button id="btnLogin" onclick="login()">ĐĂNG NHẬP</button>
+      <button id="btnLogin" type="button" onclick="login()">ĐĂNG NHẬP</button>
       <div id="loginMsg" class="msg"></div>
     </section>
 
@@ -100,7 +109,6 @@
 <script>
 const API_URL = "https://script.google.com/macros/s/AKfycbwu7jzAGZyxrJ5QEBikW0I6KSNUfwtxSEKPP2Ecajo3WL_KDXdytkEUX0qP9sHot2t4/exec";
 const API_TOKEN = "DICHVU_NOIBO_TEST_2026";
-const ONESIGNAL_APP_ID = "DAN_ONESIGNAL_APP_ID_CONG_LENH_VAO_DAY";
 const FLOW = ["MỚI GỬI","ĐÃ TIẾP NHẬN","ĐÃ CẤP CÔNG LỆNH","ĐÃ BÀN GIAO - CHỜ XÁC NHẬN","ĐÃ NHẬN - HOÀN TẤT"];
 let currentUser = JSON.parse(localStorage.getItem("dv_user") || "null");
 let requests = [];
@@ -112,9 +120,14 @@ function jsonp(params){return new Promise(function(resolve,reject){if(!API_URL||
 function api(action,data){const params=Object.assign({},data||{});params.action=action;params.token=API_TOKEN;return jsonp(params);}
 function setToday(){const d=new Date();const s=d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");$("ngayDi").value=s;$("ngayVe").value=s;}
 function init(){setToday();if(currentUser)openApp();}
-function openApp(){$("loginCard").classList.add("hidden");$("appBox").classList.remove("hidden");$("helloUser").textContent="Xin chào, "+currentUser.hoTen;$("userInfo").textContent=(currentUser.chucVu||"")+" - "+(currentUser.phongKhu||"");loadMyRequests();showPushBox();initOneSignal(false);}
+function openApp(){$("loginCard").classList.add("hidden");$("appBox").classList.remove("hidden");$("helloUser").textContent="Xin chào, "+currentUser.hoTen;$("userInfo").textContent=(currentUser.chucVu||"")+" - "+(currentUser.phongKhu||"");loadMyRequests();showPushBox();lienKetOneSignalNguoiDung(false);}
 async function login(){clearMsg("loginMsg");const hoTen=$("loginName").value.trim(),pin=$("loginPin").value.trim();if(!hoTen||!pin){showMsg("loginMsg","err","❌ Vui lòng nhập họ tên và mã PIN.");return;}$("btnLogin").disabled=true;try{const res=await api("login",{hoTen,pin});if(!res.ok){showMsg("loginMsg","err","❌ "+res.message);return;}currentUser=res.user;localStorage.setItem("dv_user",JSON.stringify(currentUser));openApp();}catch(e){showMsg("loginMsg","err","❌ "+e.message);}finally{$("btnLogin").disabled=false;}}
-function logout(){try{if(window.OneSignalDeferred&&currentUser&&isOneSignalConfigured()){OneSignalDeferred.push(async function(OneSignal){try{await OneSignal.logout();}catch(e){}})}}catch(e){}localStorage.removeItem("dv_user");currentUser=null;location.reload();}
+async function logout() {
+  await dangXuatOneSignal();
+  localStorage.removeItem("dv_user");
+  currentUser = null;
+  location.reload();
+}
 function clearForm(){["diTu","den","noiDung","phuongTien","ghiChu"].forEach(id=>$(id).value="");setToday();clearMsg("newMsg");}
 async function sendRequest(){clearMsg("newMsg");const data={maNguoiDung:currentUser.maNguoiDung,diTu:$("diTu").value.trim(),den:$("den").value.trim(),noiDung:$("noiDung").value.trim(),ngayDi:$("ngayDi").value,ngayVe:$("ngayVe").value,phuongTien:$("phuongTien").value.trim(),ghiChu:$("ghiChu").value.trim()};if(!data.diTu||!data.den||!data.noiDung||!data.ngayDi||!data.ngayVe||!data.phuongTien){showMsg("newMsg","err","❌ Vui lòng nhập đủ thông tin bắt buộc.");return;}$("btnSend").disabled=true;$("btnSend").textContent="ĐANG GỬI...";try{const res=await api("tao_yeu_cau",data);if(!res.ok){showMsg("newMsg","err","❌ "+res.message);return;}showMsg("newMsg","ok","✅ Đã gửi yêu cầu: <b>"+esc(res.maYeuCau)+"</b><br>Trạng thái: "+esc(res.trangThai));clearForm();await loadMyRequests(false);}catch(e){showMsg("newMsg","err","❌ "+e.message);}finally{$("btnSend").disabled=false;$("btnSend").textContent="GỬI YÊU CẦU";}}
 async function loadMyRequests(showLoading=true){if(showLoading)$("myList").innerHTML='<div class="empty">Đang tải hồ sơ...</div>';try{const res=await api("ho_so_cua_toi",{maNguoiDung:currentUser.maNguoiDung});if(!res.ok){$("myList").innerHTML='<div class="empty">❌ '+esc(res.message)+'</div>';return;}requests=res.data||[];if(!requests.length){$("myList").innerHTML='<div class="empty">Chưa có yêu cầu nào.</div>';return;}$("myList").innerHTML=requests.map(renderItem).join("");}catch(e){$("myList").innerHTML='<div class="empty">❌ '+esc(e.message)+'</div>';}}
@@ -125,12 +138,140 @@ async function viewDetail(ma){$("detailCard").classList.remove("hidden");$("deta
 function renderDetail(x){return `<h2>${esc(x.maYeuCau)}</h2>${statusPill(x.trangThai)}${progressBar(x.trangThai)}<div class="item"><div class="meta"><b>Người đăng ký:</b> ${esc(x.nguoiDangKy)}<br><b>Phòng/Khu:</b> ${esc(x.phongKhu)}<br><b>Đi từ:</b> ${esc(x.diTu)}<br><b>Đến:</b> ${esc(x.den)}<br><b>Nội dung:</b> ${esc(x.noiDung)}<br><b>Ngày đi:</b> ${esc(x.ngayDi)}<br><b>Ngày về:</b> ${esc(x.ngayVe)}<br><b>Phương tiện:</b> ${esc(x.phuongTien)}${x.ghiChuXuLy?`<br><b>Ghi chú xử lý:</b> ${esc(x.ghiChuXuLy)}`:""}</div>${x.linkPDF?`<a class="linkbtn" target="_blank" href="${esc(x.linkPDF)}">Mở PDF công lệnh</a>`:""}</div>${renderConfirmBox(x)}`;}
 function renderConfirmBox(x){if(!["ĐÃ CẤP CÔNG LỆNH","CHỜ NHẬN","ĐÃ BÀN GIAO - CHỜ XÁC NHẬN"].includes(x.trangThai))return "";return `<div class="item"><h3>Xác nhận đã nhận</h3><label>Người nhận thực tế</label><input id="nguoiNhanThucTe" value="${esc(currentUser.hoTen)}"><label>Lý do nhận thay nếu có</label><textarea id="lyDoNhanThay" placeholder="Nhập nếu người nhận thực tế khác người được cấp"></textarea><div class="check"><input id="dongY" type="checkbox"><span>Tôi xác nhận đã nhận công lệnh nêu trên.</span></div><button onclick="confirmReceived('${esc(x.maYeuCau)}')">TÔI ĐÃ NHẬN</button><div id="confirmMsg" class="msg"></div></div>`;}
 async function confirmReceived(ma){clearMsg("confirmMsg");if(!$("dongY").checked){showMsg("confirmMsg","err","❌ Vui lòng tích xác nhận.");return;}const nguoiNhan=$("nguoiNhanThucTe").value.trim();const lyDo=$("lyDoNhanThay").value.trim();if(!nguoiNhan){showMsg("confirmMsg","err","❌ Vui lòng nhập người nhận thực tế.");return;}try{const res=await api("xac_nhan_da_nhan",{maYeuCau:ma,maNguoiDung:currentUser.maNguoiDung,nguoiNhanThucTe:nguoiNhan,lyDoNhanThay:lyDo});if(!res.ok){showMsg("confirmMsg","err","❌ "+res.message);return;}showMsg("confirmMsg","ok","✅ "+res.message);await loadMyRequests(false);await viewDetail(ma);}catch(e){showMsg("confirmMsg","err","❌ "+e.message);}}
-function isOneSignalConfigured(){return ONESIGNAL_APP_ID && ONESIGNAL_APP_ID!=="DAN_ONESIGNAL_APP_ID_CONG_LENH_VAO_DAY";}
-function showPushBox(){if(isOneSignalConfigured())$("pushBox").classList.remove("hidden");}
-function getOneSignalExternalId(){return currentUser&&currentUser.maNguoiDung?"CL_"+String(currentUser.maNguoiDung).trim():"";}
-async function ganTagOneSignal(OneSignal){try{await OneSignal.User.addTag("heThong","cong_lenh");await OneSignal.User.addTag("vaiTro",currentUser&&currentUser.quyenQuanTri?"phong_to_chuc":"vien_chuc");await OneSignal.User.addTag("maNguoiDung",String(currentUser.maNguoiDung||""));}catch(e){console.warn("OneSignal tag error",e);}}
-function initOneSignal(requestPermission){if(!currentUser||!isOneSignalConfigured()||!window.OneSignalDeferred)return;const basePath=location.pathname.replace(/\/[^/]*$/, "/");window.OneSignalDeferred.push(async function(OneSignal){try{await OneSignal.init({appId:ONESIGNAL_APP_ID,serviceWorkerPath:basePath+"OneSignalSDKWorker.js",serviceWorkerParam:{scope:basePath}});await OneSignal.login(getOneSignalExternalId());await ganTagOneSignal(OneSignal);if(requestPermission){await OneSignal.Notifications.requestPermission();}}catch(e){console.warn("OneSignal init error",e);}});}
-async function enablePushAndTest(){if(!isOneSignalConfigured()){alert("Chưa thay ONESIGNAL_APP_ID công lệnh trong index.html/admin.html.");return;}initOneSignal(true);setTimeout(async function(){try{const res=await api("test_push",{maNguoiDung:currentUser.maNguoiDung});alert(res.ok?res.message:("Lỗi: "+res.message));}catch(e){alert(e.message);}},1800);}
+function isOneSignalConfigured() {
+  return Boolean(
+    window.CONG_LENH_ONESIGNAL_APP_ID &&
+    window.CONG_LENH_ONESIGNAL_APP_ID !== "DAN_ONESIGNAL_APP_ID_CONG_LENH_VAO_DAY"
+  );
+}
+
+function showPushBox() {
+  if (isOneSignalConfigured() && $("pushBox")) {
+    $("pushBox").classList.remove("hidden");
+  }
+}
+
+function getOneSignalExternalId() {
+  return currentUser && currentUser.maNguoiDung
+    ? "CL_" + String(currentUser.maNguoiDung).trim()
+    : "";
+}
+
+async function ganTagOneSignal(OneSignal) {
+  await OneSignal.User.addTag("heThong", "cong_lenh");
+  await OneSignal.User.addTag(
+    "vaiTro",
+    currentUser && currentUser.quyenQuanTri ? "phong_to_chuc" : "vien_chuc"
+  );
+  await OneSignal.User.addTag(
+    "maNguoiDung",
+    String((currentUser && currentUser.maNguoiDung) || "")
+  );
+}
+
+function lienKetOneSignalNguoiDung(requestPermission) {
+  return new Promise(function (resolve) {
+    if (
+      !currentUser ||
+      !isOneSignalConfigured() ||
+      !window.OneSignalDeferred
+    ) {
+      resolve(false);
+      return;
+    }
+
+    window.OneSignalDeferred.push(async function (OneSignal) {
+      try {
+        const externalId = getOneSignalExternalId();
+
+        if (!externalId) {
+          resolve(false);
+          return;
+        }
+
+        await OneSignal.login(externalId);
+        await ganTagOneSignal(OneSignal);
+
+        if (requestPermission) {
+          await OneSignal.Notifications.requestPermission();
+        }
+
+        console.log("Đã liên kết OneSignal:", externalId);
+        resolve(true);
+      } catch (error) {
+        console.warn("Không liên kết được OneSignal:", error);
+        resolve(false);
+      }
+    });
+  });
+}
+
+async function enablePushAndTest() {
+  if (!currentUser) {
+    alert("Vui lòng đăng nhập trước khi bật thông báo.");
+    return;
+  }
+
+  if (!isOneSignalConfigured()) {
+    alert("Chưa cấu hình OneSignal App ID.");
+    return;
+  }
+
+  const linked = await lienKetOneSignalNguoiDung(true);
+
+  if (!linked) {
+    alert("Không thể liên kết thiết bị với OneSignal. Vui lòng kiểm tra quyền thông báo và thử lại.");
+    return;
+  }
+
+  await new Promise(function (resolve) {
+    setTimeout(resolve, 1200);
+  });
+
+  try {
+    const res = await api("test_push", {
+      maNguoiDung: currentUser.maNguoiDung
+    });
+
+    alert(res.ok ? res.message : "Lỗi: " + res.message);
+  } catch (error) {
+    alert(error.message);
+  }
+}
+
+async function dangXuatOneSignal() {
+  return new Promise(function (resolve) {
+    if (!window.OneSignalDeferred || !isOneSignalConfigured()) {
+      resolve();
+      return;
+    }
+
+    window.OneSignalDeferred.push(async function (OneSignal) {
+      try {
+        await OneSignal.logout();
+      } catch (error) {
+        console.warn("Không đăng xuất được OneSignal:", error);
+      } finally {
+        resolve();
+      }
+    });
+  });
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+  ["loginName", "loginPin"].forEach(function (id) {
+    const el = $(id);
+    if (el) {
+      el.addEventListener("keydown", function (event) {
+        if (event.key === "Enter") {
+          event.preventDefault();
+          login();
+        }
+      });
+    }
+  });
+});
+
 init();
 </script>
 </body>
