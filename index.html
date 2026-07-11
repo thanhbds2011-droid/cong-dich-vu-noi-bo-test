@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#2563eb" />
+  <meta name="robots" content="noindex,nofollow" />
+  <link rel="manifest" href="manifest.json" />
+  <title>Cổng dịch vụ nội bộ - TEST</title>
+  <style>
+    *{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#eef4fb;color:#0f172a}.page{min-height:100vh;padding:16px;display:flex;justify-content:center}.wrap{width:100%;max-width:760px}.hero{background:linear-gradient(135deg,#2563eb,#22c55e);color:#fff;border-radius:26px;padding:24px;box-shadow:0 18px 45px rgba(15,23,42,.15)}.hero h1{margin:0;font-size:26px;line-height:1.2}.hero p{margin:10px 0 0;line-height:1.45;opacity:.95}.card{background:#fff;border-radius:24px;padding:20px;margin-top:16px;box-shadow:0 10px 28px rgba(15,23,42,.09)}.grid{display:grid;grid-template-columns:1fr;gap:12px}@media(min-width:720px){.grid.two{grid-template-columns:1fr 1fr}.grid.three{grid-template-columns:repeat(3,1fr)}}label{display:block;margin:13px 0 7px;font-weight:900;font-size:14px}input,select,textarea{width:100%;border:1.5px solid #cbd5e1;border-radius:16px;padding:13px 14px;font-size:16px;outline:none;font-family:Arial,Helvetica,sans-serif;background:#fff}textarea{min-height:92px;resize:vertical}input:focus,textarea:focus,select:focus{border-color:#2563eb;box-shadow:0 0 0 3px rgba(37,99,235,.12)}button{border:0;border-radius:16px;background:#2563eb;color:#fff;padding:13px 16px;font-size:15px;font-weight:900;cursor:pointer}button.secondary{background:#0f172a}button.ghost{background:#e2e8f0;color:#0f172a}button.danger{background:#dc2626}button:disabled{background:#94a3b8;cursor:not-allowed}.row{display:flex;gap:10px;flex-wrap:wrap}.row button{flex:1;min-width:140px}.hidden{display:none!important}.msg{display:none;margin-top:14px;padding:14px;border-radius:16px;font-weight:800;line-height:1.45}.msg.ok{display:block;background:#dcfce7;color:#166534;border:1px solid #86efac}.msg.err{display:block;background:#fee2e2;color:#991b1b;border:1px solid #fecaca}.pill{display:inline-block;border-radius:999px;padding:6px 10px;font-size:12px;font-weight:900;background:#e0f2fe;color:#075985}.pill.green{background:#dcfce7;color:#166534}.pill.orange{background:#ffedd5;color:#9a3412}.pill.red{background:#fee2e2;color:#991b1b}.item{border:1px solid #e2e8f0;border-radius:18px;padding:14px;margin-top:12px;background:#f8fafc}.item h3{margin:0 0 8px;font-size:17px}.meta{color:#475569;font-size:14px;line-height:1.5}.steps{margin-top:12px;border-left:3px solid #cbd5e1;padding-left:13px}.step{padding:8px 0}.step b{display:block}.step.done b{color:#166534}.step.current b{color:#2563eb}.topbar{display:flex;justify-content:space-between;align-items:center;gap:12px}.userbox{font-size:14px;color:#475569}.nav{position:sticky;bottom:10px;margin:16px auto 0;background:#fff;border:1px solid #e2e8f0;border-radius:20px;padding:8px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;box-shadow:0 10px 25px rgba(15,23,42,.12)}.nav button{padding:11px 8px;border-radius:14px;background:#e2e8f0;color:#0f172a}.nav button.active{background:#2563eb;color:#fff}.small{font-size:13px;color:#64748b;line-height:1.45}.linkbtn{display:inline-block;text-decoration:none;background:#0f172a;color:#fff;border-radius:14px;padding:10px 12px;font-weight:900;margin-top:10px}.empty{padding:18px;border-radius:18px;background:#f8fafc;color:#64748b;text-align:center}.warn{background:#fff7ed;border:1px solid #fed7aa;color:#9a3412;border-radius:16px;padding:12px;line-height:1.45}
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="wrap">
+      <section class="hero">
+        <h1>📲 Cổng dịch vụ nội bộ - TEST</h1>
+        <p>Đăng ký cấp công lệnh, theo dõi tiến độ và xác nhận đã nhận trên điện thoại.</p>
+      </section>
+
+      <section id="loginCard" class="card">
+        <h2>Đăng nhập viên chức</h2>
+        <div class="warn">Đây là bản TEST. Dữ liệu ghi vào các sheet bản sao, không ảnh hưởng hệ thống chính thức.</div>
+        <label>Họ và tên</label>
+        <input id="loginName" placeholder="Nhập họ và tên" autocomplete="name" />
+        <label>Mã PIN</label>
+        <input id="loginPin" type="password" inputmode="numeric" placeholder="Nhập mã PIN" />
+        <button id="btnLogin" onclick="login()">ĐĂNG NHẬP</button>
+        <div id="loginMsg" class="msg"></div>
+      </section>
+
+      <section id="appBox" class="hidden">
+        <div class="card topbar">
+          <div>
+            <b id="helloUser">Xin chào</b>
+            <div id="userInfo" class="userbox"></div>
+          </div>
+          <button class="ghost" onclick="logout()">Đăng xuất</button>
+        </div>
+
+        <section id="screenHome" class="card screen">
+          <h2>Trang chủ</h2>
+          <div class="grid three">
+            <button onclick="showScreen('new')">➕ Gửi yêu cầu mới</button>
+            <button class="secondary" onclick="showScreen('list'); loadMyRequests()">📄 Hồ sơ của tôi</button>
+            <button class="ghost" onclick="showScreen('guide')">ℹ️ Hướng dẫn</button>
+          </div>
+          <div class="small" style="margin-top:14px">Sau khi Phòng Tổ chức cấp công lệnh, hồ sơ sẽ hiển thị số công lệnh, link PDF và nút xác nhận đã nhận.</div>
+        </section>
+
+        <section id="screenNew" class="card screen hidden">
+          <h2>Đăng ký cấp công lệnh</h2>
+          <div class="grid two">
+            <div><label>Đi từ</label><input id="diTu" placeholder="Ví dụ: Trung tâm BTXH Tân Hiệp" /></div>
+            <div><label>Đến</label><input id="den" placeholder="Ví dụ: TTYT KV Bình Long" /></div>
+          </div>
+          <label>Nội dung công tác</label>
+          <textarea id="noiDung" placeholder="Nhập nội dung công tác"></textarea>
+          <div class="grid two">
+            <div><label>Ngày đi</label><input id="ngayDi" type="date" /></div>
+            <div><label>Ngày về</label><input id="ngayVe" type="date" /></div>
+          </div>
+          <div class="grid two">
+            <div><label>Phương tiện</label><input id="phuongTien" placeholder="Xe ô tô / xe máy / khác" /></div>
+            <div><label>Giấy tờ mang theo</label><input id="giayTo" placeholder="Giấy giới thiệu, hồ sơ..." /></div>
+          </div>
+          <label>Ghi chú thêm</label>
+          <textarea id="ghiChu" placeholder="Không bắt buộc"></textarea>
+          <div class="row"><button id="btnSend" onclick="sendRequest()">GỬI YÊU CẦU</button><button class="ghost" onclick="clearForm()">Làm mới</button></div>
+          <div id="newMsg" class="msg"></div>
+        </section>
+
+        <section id="screenList" class="card screen hidden">
+          <div class="topbar"><h2>Hồ sơ của tôi</h2><button class="ghost" onclick="loadMyRequests()">Tải lại</button></div>
+          <div id="requestList"></div>
+        </section>
+
+        <section id="screenDetail" class="card screen hidden">
+          <button class="ghost" onclick="showScreen('list')">← Quay lại danh sách</button>
+          <div id="detailBox"></div>
+        </section>
+
+        <section id="screenGuide" class="card screen hidden">
+          <h2>Hướng dẫn</h2>
+          <div class="steps">
+            <div class="step done"><b>1. Gửi yêu cầu</b><span class="small">Nhập đủ thông tin công tác.</span></div>
+            <div class="step done"><b>2. Phòng Tổ chức tiếp nhận</b><span class="small">Hồ sơ chuyển sang trạng thái đã tiếp nhận hoặc cần bổ sung.</span></div>
+            <div class="step done"><b>3. Cấp công lệnh</b><span class="small">Khi hoàn tất, hồ sơ có số công lệnh và link PDF.</span></div>
+            <div class="step done"><b>4. Xác nhận đã nhận</b><span class="small">Sau khi nhận giấy, bấm xác nhận để hoàn tất.</span></div>
+          </div>
+        </section>
+
+        <nav class="nav">
+          <button id="navHome" class="active" onclick="showScreen('home')">Trang chủ</button>
+          <button id="navNew" onclick="showScreen('new')">Gửi yêu cầu</button>
+          <button id="navList" onclick="showScreen('list'); loadMyRequests()">Hồ sơ</button>
+        </nav>
+      </section>
+    </div>
+  </main>
+
+<script>
+const API_URL = "DAN_WEB_APP_URL_APPS_SCRIPT_TEST_VAO_DAY";
+const API_TOKEN = "DICHVU_NOIBO_TEST_2026";
+let currentUser = JSON.parse(localStorage.getItem("dv_user") || "null");
+let currentRequests = [];
+
+function showMsg(id, type, html){const el=document.getElementById(id);el.className="msg "+type;el.innerHTML=html;}
+function clearMsg(id){const el=document.getElementById(id);el.className="msg";el.innerHTML="";}
+function esc(s){return String(s||"").replace(/[&<>'"]/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;","'":"&#39;",'"':"&quot;"}[m]));}
+function norm(s){return String(s||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/đ/g,"d").replace(/Đ/g,"d").toLowerCase().trim().replace(/\s+/g," ");}
+function jsonp(params){return new Promise((resolve,reject)=>{if(!API_URL || API_URL.includes("DAN_WEB_APP_URL")){reject(new Error("Chưa cấu hình API_URL trong index.html"));return;}const cb="cb_"+Date.now()+"_"+Math.floor(Math.random()*99999);params.set("callback",cb);window[cb]=data=>{delete window[cb];script.remove();resolve(data);};const script=document.createElement("script");script.src=API_URL+"?"+params.toString();script.onerror=()=>{delete window[cb];script.remove();reject(new Error("Không kết nối được Apps Script."));};document.body.appendChild(script);});}
+async function api(action, extra={}){const p=new URLSearchParams();p.set("token",API_TOKEN);p.set("action",action);Object.keys(extra).forEach(k=>p.set(k,extra[k]??""));return await jsonp(p);}
+
+function init(){if(currentUser){renderUser();document.getElementById("loginCard").classList.add("hidden");document.getElementById("appBox").classList.remove("hidden");showScreen("home");setToday();}else setToday();if("serviceWorker" in navigator){navigator.serviceWorker.register("sw.js").catch(()=>{});}}
+function setToday(){const d=new Date(),yyyy=d.getFullYear(),mm=String(d.getMonth()+1).padStart(2,"0"),dd=String(d.getDate()).padStart(2,"0");["ngayDi","ngayVe"].forEach(id=>{const el=document.getElementById(id);if(el&&!el.value)el.value=yyyy+"-"+mm+"-"+dd;});}
+function renderUser(){document.getElementById("helloUser").textContent="Xin chào, "+currentUser.hoTen;document.getElementById("userInfo").textContent=(currentUser.chucVu||"")+" - "+(currentUser.phongKhu||"");}
+async function login(){clearMsg("loginMsg");const hoTen=document.getElementById("loginName").value.trim();const pin=document.getElementById("loginPin").value.trim();if(!hoTen||!pin){showMsg("loginMsg","err","❌ Vui lòng nhập họ tên và mã PIN.");return;}document.getElementById("btnLogin").disabled=true;try{const res=await api("login",{hoTen,pin});if(!res.ok){showMsg("loginMsg","err","❌ "+res.message);return;}currentUser=res.user;localStorage.setItem("dv_user",JSON.stringify(currentUser));document.getElementById("loginCard").classList.add("hidden");document.getElementById("appBox").classList.remove("hidden");renderUser();showScreen("home");}catch(e){showMsg("loginMsg","err","❌ "+e.message);}finally{document.getElementById("btnLogin").disabled=false;}}
+function logout(){localStorage.removeItem("dv_user");currentUser=null;location.reload();}
+function showScreen(name){document.querySelectorAll(".screen").forEach(el=>el.classList.add("hidden"));document.querySelectorAll(".nav button").forEach(el=>el.classList.remove("active"));const map={home:"screenHome",new:"screenNew",list:"screenList",detail:"screenDetail",guide:"screenGuide"};document.getElementById(map[name]).classList.remove("hidden");const nav=document.getElementById("nav"+name.charAt(0).toUpperCase()+name.slice(1));if(nav)nav.classList.add("active");}
+function clearForm(){["diTu","den","noiDung","phuongTien","giayTo","ghiChu"].forEach(id=>document.getElementById(id).value="");setToday();clearMsg("newMsg");}
+async function sendRequest(){clearMsg("newMsg");const data={maNguoiDung:currentUser.maNguoiDung,diTu:diTu.value.trim(),den:den.value.trim(),noiDung:noiDung.value.trim(),ngayDi:ngayDi.value,ngayVe:ngayVe.value,phuongTien:phuongTien.value.trim(),giayTo:giayTo.value.trim(),ghiChu:ghiChu.value.trim()};if(!data.diTu||!data.den||!data.noiDung||!data.ngayDi||!data.ngayVe||!data.phuongTien){showMsg("newMsg","err","❌ Vui lòng nhập đủ thông tin bắt buộc.");return;}btnSend.disabled=true;btnSend.textContent="ĐANG GỬI...";try{const res=await api("tao_yeu_cau",data);if(!res.ok){showMsg("newMsg","err","❌ "+res.message);return;}showMsg("newMsg","ok","✅ Đã gửi yêu cầu: <b>"+esc(res.maYeuCau)+"</b><br>Trạng thái: "+esc(res.trangThai));clearForm();await loadMyRequests(false);}catch(e){showMsg("newMsg","err","❌ "+e.message);}finally{btnSend.disabled=false;btnSend.textContent="GỬI YÊU CẦU";}}
+async function loadMyRequests(show=true){if(show)showScreen("list");const box=document.getElementById("requestList");box.innerHTML='<div class="empty">Đang tải hồ sơ...</div>';try{const res=await api("ho_so_cua_toi",{maNguoiDung:currentUser.maNguoiDung});if(!res.ok){box.innerHTML='<div class="empty">❌ '+esc(res.message)+'</div>';return;}currentRequests=res.data||[];if(!currentRequests.length){box.innerHTML='<div class="empty">Chưa có hồ sơ nào.</div>';return;}box.innerHTML=currentRequests.map(item=>renderRequestItem(item)).join("");}catch(e){box.innerHTML='<div class="empty">❌ '+esc(e.message)+'</div>';}}
+function renderRequestItem(x){return `<div class="item"><div class="topbar"><h3>${esc(x.maYeuCau)}</h3>${statusPill(x.trangThai)}</div><div class="meta"><b>${esc(x.nguoiDangKy)}</b> - ${esc(x.phongKhu)}<br>Đi: ${esc(x.ngayDi)} → ${esc(x.ngayVe)}<br>Nội dung: ${esc(x.noiDung)}${x.soCongLenh?`<br><b>Số công lệnh:</b> ${esc(x.soCongLenh)}`:""}</div><button style="margin-top:10px" onclick="openDetail('${esc(x.maYeuCau)}')">Xem chi tiết</button></div>`;}
+function statusPill(st){let c="";if(st.includes("HOÀN TẤT"))c="green";else if(st.includes("TỪ CHỐI"))c="red";else if(st.includes("CẦN")||st.includes("CHỜ"))c="orange";return `<span class="pill ${c}">${esc(st)}</span>`;}
+async function openDetail(ma){showScreen("detail");detailBox.innerHTML='<div class="empty">Đang tải chi tiết...</div>';try{const res=await api("chi_tiet_yeu_cau",{maYeuCau:ma,maNguoiDung:currentUser.maNguoiDung});if(!res.ok){detailBox.innerHTML='<div class="empty">❌ '+esc(res.message)+'</div>';return;}detailBox.innerHTML=renderDetail(res.data);}catch(e){detailBox.innerHTML='<div class="empty">❌ '+esc(e.message)+'</div>';}}
+function renderDetail(x){return `<h2>${esc(x.maYeuCau)}</h2>${statusPill(x.trangThai)}<div class="item"><div class="meta"><b>Người đăng ký:</b> ${esc(x.nguoiDangKy)}<br><b>Phòng/Khu:</b> ${esc(x.phongKhu)}<br><b>Đi từ:</b> ${esc(x.diTu)}<br><b>Đến:</b> ${esc(x.den)}<br><b>Nội dung:</b> ${esc(x.noiDung)}<br><b>Ngày đi:</b> ${esc(x.ngayDi)}<br><b>Ngày về:</b> ${esc(x.ngayVe)}<br><b>Phương tiện:</b> ${esc(x.phuongTien)}<br><b>Giấy tờ:</b> ${esc(x.giayTo)}${x.ghiChuXuLy?`<br><b>Ghi chú xử lý:</b> ${esc(x.ghiChuXuLy)}`:""}</div>${x.linkPDF?`<a class="linkbtn" target="_blank" href="${esc(x.linkPDF)}">Mở PDF công lệnh</a>`:""}</div>${renderSteps(x)}${renderConfirmBox(x)}`;}
+function renderSteps(x){const steps=[['Đã gửi yêu cầu',!!x.thoiGianGui,x.thoiGianGui],['Phòng Tổ chức tiếp nhận',!!x.thoiGianTiepNhan,x.thoiGianTiepNhan],['Đã cấp công lệnh',!!x.soCongLenh,x.soCongLenh?('Số '+x.soCongLenh+' - '+x.thoiGianCap):''],['Đã bàn giao',!!x.thoiGianBanGiao,x.thoiGianBanGiao],['Đã nhận - hoàn tất',x.trangThai.includes('HOÀN TẤT'),x.thoiGianXacNhanNhan]];return `<div class="card"><h3>Tiến độ xử lý</h3><div class="steps">${steps.map(s=>`<div class="step ${s[1]?'done':'current'}"><b>${s[1]?'✓':'●'} ${esc(s[0])}</b><span class="small">${esc(s[2]||'Đang chờ')}</span></div>`).join('')}</div></div>`;}
+function renderConfirmBox(x){if(!(x.trangThai.includes('ĐÃ CẤP')||x.trangThai.includes('CHỜ NHẬN')||x.trangThai.includes('BÀN GIAO')))return "";return `<div class="card"><h3>Xác nhận sau khi đã nhận giấy</h3><label>Người nhận thực tế</label><input id="nguoiNhanThucTe" value="${esc(currentUser.hoTen)}"><label>Lý do nhận thay</label><textarea id="lyDoNhanThay" placeholder="Chỉ nhập nếu nhận thay"></textarea><button onclick="confirmReceived('${esc(x.maYeuCau)}')">TÔI ĐÃ NHẬN</button><div id="confirmMsg" class="msg"></div></div>`;}
+async function confirmReceived(ma){clearMsg("confirmMsg");const nguoiNhanThucTe=document.getElementById("nguoiNhanThucTe").value.trim();const lyDoNhanThay=document.getElementById("lyDoNhanThay").value.trim();if(norm(nguoiNhanThucTe)!==norm(currentUser.hoTen)&&!lyDoNhanThay){showMsg("confirmMsg","err","❌ Vui lòng nhập lý do nhận thay.");return;}try{const res=await api("xac_nhan_da_nhan",{maYeuCau:ma,maNguoiDung:currentUser.maNguoiDung,nguoiNhanThucTe,lyDoNhanThay});if(!res.ok){showMsg("confirmMsg","err","❌ "+res.message);return;}showMsg("confirmMsg","ok","✅ "+res.message);setTimeout(()=>openDetail(ma),700);}catch(e){showMsg("confirmMsg","err","❌ "+e.message);}}
+
+init();
+</script>
+</body>
+</html>
