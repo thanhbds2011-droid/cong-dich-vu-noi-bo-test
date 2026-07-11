@@ -42,6 +42,23 @@
     .toastbar{display:flex;justify-content:space-between;gap:10px;align-items:center;background:#eff6ff;border:1px solid #bfdbfe;color:#1e3a8a;border-radius:18px;padding:12px;margin-top:14px}
     @media(min-width:760px){.two{grid-template-columns:1fr 1fr}.grid.auto{grid-template-columns:1fr 1fr 1fr}}
   </style>
+  <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+<script>
+  const ONESIGNAL_APP_ID = "c7579ace-17b7-4357-9607-33f074e689b2";
+  const ONESIGNAL_SAFARI_WEB_ID = "web.onesignal.auto.36c77d1a-9357-4d49-966b-0de749957ba2";
+
+  window.OneSignalDeferred = window.OneSignalDeferred || [];
+
+  OneSignalDeferred.push(async function(OneSignal) {
+    await OneSignal.init({
+      appId: ONESIGNAL_APP_ID,
+      safari_web_id: ONESIGNAL_SAFARI_WEB_ID,
+      notifyButton: {
+        enable: true
+      }
+    });
+  });
+</script>
 </head>
 <body>
   <main class="page"><div class="wrap">
