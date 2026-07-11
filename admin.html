@@ -6,211 +6,2122 @@
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <meta name="theme-color" content="#1d4ed8" />
+  <meta name="theme-color" content="#1558d6" />
   <meta name="robots" content="noindex,nofollow" />
   <link rel="manifest" href="manifest.json" />
   <title>Quản trị công lệnh - TEST</title>
+
   <style>
-    :root{--blue:#1d4ed8;--blue2:#2563eb;--green:#16a34a;--dark:#0f172a;--muted:#64748b;--line:#dbe4f0;--soft:#f8fafc;--bg:#eef4fb;--white:#fff;--red:#dc2626;--orange:#ea580c;--shadow:0 16px 40px rgba(15,23,42,.12);--radius:22px}
-    *{box-sizing:border-box}body{margin:0;font-family:"Times New Roman",Times,serif;background:var(--bg);color:var(--dark);font-size:17px}.page{min-height:100vh;padding:18px;display:flex;justify-content:center}.wrap{width:100%;max-width:1160px}.hero{background:linear-gradient(135deg,#1d4ed8,#16a34a);color:#fff;border-radius:28px;padding:28px 30px;box-shadow:var(--shadow)}.hero h1{margin:0;font-size:32px;line-height:1.2}.hero p{margin:10px 0 0;font-size:18px;opacity:.97}.card{background:#fff;border-radius:24px;padding:22px;margin-top:16px;box-shadow:0 10px 28px rgba(15,23,42,.09)}h2{margin:0 0 16px;color:#1d4ed8;font-size:28px}label{display:block;margin:12px 0 6px;font-weight:700;font-size:16px}input,select,textarea{width:100%;border:1.5px solid #cbd5e1;border-radius:16px;padding:13px 14px;font-size:17px;outline:none;font-family:"Times New Roman",Times,serif}input:focus,textarea:focus,select:focus{border-color:#2563eb;box-shadow:0 0 0 3px rgba(37,99,235,.12)}button{border:0;border-radius:16px;background:#2563eb;color:#fff;padding:12px 15px;font-weight:700;font-size:16px;cursor:pointer;font-family:"Times New Roman",Times,serif}button:disabled{background:#94a3b8}.secondary{background:#0f172a}.ghost{background:#e2e8f0;color:#0f172a}.danger{background:#dc2626}.warn{background:#ea580c}.green{background:#16a34a}.hidden{display:none!important}.row{display:flex;gap:10px;flex-wrap:wrap}.grid{display:grid;grid-template-columns:1fr;gap:12px}.stats{display:grid;grid-template-columns:1fr 1fr;gap:12px}.topbar{display:flex;justify-content:space-between;gap:12px;align-items:center}.msg{display:none;margin-top:14px;border-radius:16px;padding:13px;line-height:1.45;font-weight:700}.msg.ok{display:block;background:#dcfce7;color:#166534;border:1px solid #86efac}.msg.err{display:block;background:#fee2e2;color:#991b1b;border:1px solid #fecaca}.item{border:1px solid #dbe4f0;border-radius:20px;padding:16px;margin-top:12px;background:#fbfdff}.item h3{margin:0 0 8px;font-size:22px}.meta{font-size:16px;color:#334155;line-height:1.65}.pill{display:inline-block;border-radius:999px;padding:7px 12px;font-size:13px;font-weight:700;background:#e0f2fe;color:#075985;white-space:nowrap}.pill.greenText{background:#dcfce7;color:#166534}.pill.orangeText{background:#ffedd5;color:#9a3412}.pill.redText{background:#fee2e2;color:#991b1b}.stat{background:#f8fafc;border:1px solid #dbe4f0;border-radius:18px;padding:16px}.stat b{font-size:30px;display:block}.small{font-size:15px;color:#64748b}.empty{text-align:center;color:#64748b;background:#f8fafc;border-radius:18px;padding:18px}.linkbtn{display:inline-block;text-decoration:none;background:#0f172a;color:#fff;border-radius:14px;padding:10px 13px;font-weight:700;margin-top:10px}.warnbox{background:#fff7ed;border:1px solid #fed7aa;color:#9a3412;border-radius:16px;padding:12px;line-height:1.45}.filter{display:grid;grid-template-columns:1fr;gap:10px}.progressBox{overflow-x:auto;padding:14px 4px 4px;margin:14px 0 4px}.progressLine{display:flex;align-items:flex-start;min-width:720px;position:relative}.progressLine:before{content:"";position:absolute;left:38px;right:38px;top:21px;height:4px;background:#e2e8f0;border-radius:99px}.progressItem{position:relative;z-index:1;flex:1;text-align:center}.dot{width:44px;height:44px;border-radius:999px;margin:0 auto 8px;display:flex;align-items:center;justify-content:center;background:#e2e8f0;color:#475569;font-weight:700;border:4px solid #fff;box-shadow:0 3px 10px rgba(15,23,42,.12)}.progressItem.done .dot{background:#16a34a;color:#fff}.progressItem.active .dot{background:#2563eb;color:#fff}.stepText{font-size:14px;line-height:1.25;font-weight:700;color:#475569}.progressItem.done .stepText,.progressItem.active .stepText{color:#0f172a}.toastbar{display:flex;justify-content:space-between;gap:10px;align-items:center;background:#eff6ff;border:1px solid #bfdbfe;color:#1e3a8a;border-radius:18px;padding:12px;margin-top:14px}@media(min-width:760px){.filter{grid-template-columns:1fr 1fr auto}.stats{grid-template-columns:repeat(6,1fr)}}
-  </style>
-  <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
-  <script>
-    window.CONG_LENH_ONESIGNAL_APP_ID = "c7579ace-17b7-4357-9607-33f074e689b2";
-    window.CONG_LENH_ONESIGNAL_SAFARI_WEB_ID = "web.onesignal.auto.36c77d1a-9357-4d49-966b-0de749957ba2";
-    window.OneSignalDeferred = window.OneSignalDeferred || [];
+    @import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap');
 
-    window.OneSignalDeferred.push(async function (OneSignal) {
-      try {
-        const basePath = window.location.pathname.replace(/\/[^/]*$/, "/");
-
-        await OneSignal.init({
-          appId: window.CONG_LENH_ONESIGNAL_APP_ID,
-          safari_web_id: window.CONG_LENH_ONESIGNAL_SAFARI_WEB_ID,
-          serviceWorkerPath: basePath + "OneSignalSDKWorker.js",
-          serviceWorkerParam: {
-            scope: basePath
-          },
-          notifyButton: {
-            enable: true
-          }
-        });
-      } catch (error) {
-        console.warn("Không khởi tạo được OneSignal:", error);
-      }
-    });
-  </script>
-</head>
-<body>
-  <main class="page"><div class="wrap">
-    <section class="hero"><h1>🗂️ Quản trị yêu cầu công lệnh - TEST</h1><p>Dành cho Phòng Tổ chức tiếp nhận, xử lý, cấp công lệnh và theo dõi xác nhận nhận giấy.</p></section>
-    <section id="loginCard" class="card"><h2>Đăng nhập quản trị</h2><div class="warnbox">Quyền quản trị xác định theo <b>Mã người dùng</b> trong tab <b>TEST_NGƯỜI DÙNG</b>. Mã Phòng Tổ chức nên bắt đầu bằng <b>TC</b>, <b>TCHC</b>, <b>PTOC</b> hoặc <b>ADMIN</b>.</div><label>Họ và tên</label><input id="loginName" placeholder="Nhập họ và tên"><label>Mã PIN</label><input id="loginPin" type="password" inputmode="numeric" placeholder="Nhập mã PIN"><button id="btnLogin" type="button" onclick="login()">ĐĂNG NHẬP</button><div id="loginMsg" class="msg"></div></section>
-    <section id="appBox" class="hidden">
-      <div class="card topbar"><div><b id="helloUser">Xin chào</b><div id="userInfo" class="small"></div></div><div class="row"><button class="ghost" onclick="loadAll()">Tải lại</button><button class="ghost" onclick="logout()">Đăng xuất</button></div></div>
-      <div id="pushBox" class="toastbar hidden"><div><b>🔔 Thông báo quản trị</b><br><span class="small">Bật thông báo để nhận khi có yêu cầu công lệnh mới.</span></div><button class="green" onclick="enablePushAndTest()">Bật thông báo</button></div>
-      <section class="card"><h2>Dashboard</h2><div id="dashboard" class="stats"></div></section>
-      <section class="card"><h2>Danh sách yêu cầu</h2><div class="filter"><select id="locTrangThai"><option value="">Tất cả trạng thái</option><option>MỚI GỬI</option><option>ĐÃ TIẾP NHẬN</option><option>ĐANG XỬ LÝ</option><option>CẦN BỔ SUNG</option><option>TỪ CHỐI</option><option>ĐÃ CẤP CÔNG LỆNH</option><option>CHỜ NHẬN</option><option>ĐÃ BÀN GIAO - CHỜ XÁC NHẬN</option><option>ĐÃ NHẬN - HOÀN TẤT</option></select><input id="tuKhoa" placeholder="Tìm mã yêu cầu, họ tên, nội dung, số công lệnh"><button onclick="loadRequests()">Lọc</button></div><div id="listBox"></div></section>
-    </section>
-  </div></main>
-<script>
-const API_URL="https://script.google.com/macros/s/AKfycbwu7jzAGZyxrJ5QEBikW0I6KSNUfwtxSEKPP2Ecajo3WL_KDXdytkEUX0qP9sHot2t4/exec";
-const API_TOKEN="DICHVU_NOIBO_TEST_2026";
-const FLOW=["MỚI GỬI","ĐÃ TIẾP NHẬN","ĐÃ CẤP CÔNG LỆNH","ĐÃ BÀN GIAO - CHỜ XÁC NHẬN","ĐÃ NHẬN - HOÀN TẤT"];
-let currentUser=JSON.parse(localStorage.getItem("dv_admin_user")||"null");let requests=[];
-function $(id){return document.getElementById(id)}function esc(s){return String(s||"").replace(/[&<>'"]/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;","'":"&#39;",'"':"&quot;"}[m]));}function showMsg(id,type,html){const el=$(id);el.className="msg "+type;el.innerHTML=html;}function clearMsg(id){const el=$(id);el.className="msg";el.innerHTML="";}
-function jsonp(params){return new Promise(function(resolve,reject){if(!API_URL||API_URL==="DAN_WEB_APP_URL_APPS_SCRIPT_TEST_VAO_DAY"){reject(new Error("Chưa cấu hình API_URL trong admin.html"));return;}const cbName="cb_"+Date.now()+"_"+Math.floor(Math.random()*100000);let script=document.createElement("script");const timer=setTimeout(function(){try{delete window[cbName];script.remove()}catch(e){}reject(new Error("Kết nối Apps Script quá thời gian chờ."));},30000);window[cbName]=function(data){clearTimeout(timer);delete window[cbName];script.remove();resolve(data);};const query=new URLSearchParams(params);query.set("callback",cbName);script.src=API_URL+"?"+query.toString();script.onerror=function(){clearTimeout(timer);delete window[cbName];script.remove();reject(new Error("Không kết nối được Apps Script."));};document.body.appendChild(script);});}
-function api(action,data){const params=Object.assign({},data||{});params.action=action;params.token=API_TOKEN;return jsonp(params);}function init(){if(currentUser)openApp();}function openApp(){$("loginCard").classList.add("hidden");$("appBox").classList.remove("hidden");$("helloUser").textContent="Xin chào, "+currentUser.hoTen;$("userInfo").textContent=(currentUser.chucVu||"")+" - "+(currentUser.phongKhu||"");loadAll();showPushBox();lienKetOneSignalNguoiDung(false);}
-async function login(){clearMsg("loginMsg");const hoTen=$("loginName").value.trim(),pin=$("loginPin").value.trim();if(!hoTen||!pin){showMsg("loginMsg","err","❌ Vui lòng nhập họ tên và mã PIN.");return;}$("btnLogin").disabled=true;try{const res=await api("login",{hoTen,pin});if(!res.ok){showMsg("loginMsg","err","❌ "+res.message);return;}if(!res.user.quyenQuanTri){showMsg("loginMsg","err","❌ Tài khoản không có quyền quản trị. Mã người dùng Phòng Tổ chức nên bắt đầu bằng TC/TCHC/PTOC/ADMIN.");return;}currentUser=res.user;localStorage.setItem("dv_admin_user",JSON.stringify(currentUser));openApp();}catch(e){showMsg("loginMsg","err","❌ "+e.message);}finally{$("btnLogin").disabled=false;}}
-async function logout() {
-  await dangXuatOneSignal();
-  localStorage.removeItem("dv_admin_user");
-  currentUser = null;
-  location.reload();
-}
-async function loadAll(){await loadDashboard();await loadRequests();}
-async function loadDashboard(){$("dashboard").innerHTML='<div class="empty">Đang tải...</div>';try{const res=await api("admin_dashboard",{maNguoiDung:currentUser.maNguoiDung});if(!res.ok){$("dashboard").innerHTML='<div class="empty">❌ '+esc(res.message)+'</div>';return;}const d=res.data;$("dashboard").innerHTML=`<div class="stat"><b>${esc(d.tong)}</b><span>Tổng</span></div><div class="stat"><b>${esc(d.moiGui)}</b><span>Mới gửi</span></div><div class="stat"><b>${esc(d.dangXuLy)}</b><span>Đang xử lý</span></div><div class="stat"><b>${esc(d.daCap)}</b><span>Đã cấp</span></div><div class="stat"><b>${esc(d.choNhan)}</b><span>Chờ nhận</span></div><div class="stat"><b>${esc(d.hoanTat)}</b><span>Hoàn tất</span></div>`;}catch(e){$("dashboard").innerHTML='<div class="empty">❌ '+esc(e.message)+'</div>';}}
-async function loadRequests(){$("listBox").innerHTML='<div class="empty">Đang tải danh sách...</div>';try{const res=await api("admin_danh_sach",{maNguoiDung:currentUser.maNguoiDung,trangThai:$("locTrangThai").value,tuKhoa:$("tuKhoa").value.trim()});if(!res.ok){$("listBox").innerHTML='<div class="empty">❌ '+esc(res.message)+'</div>';return;}requests=res.data||[];if(!requests.length){$("listBox").innerHTML='<div class="empty">Không có yêu cầu phù hợp.</div>';return;}$("listBox").innerHTML=requests.map(renderItem).join("");}catch(e){$("listBox").innerHTML='<div class="empty">❌ '+esc(e.message)+'</div>';}}
-function statusPill(st){const s=String(st||"");let c="";if(s.includes("HOÀN TẤT"))c="greenText";else if(s.includes("TỪ CHỐI"))c="redText";else if(s.includes("CẦN")||s.includes("CHỜ"))c="orangeText";return '<span class="pill '+c+'">'+esc(s)+'</span>';}function progressBar(st){let current=FLOW.indexOf(st);if(st==="CHỜ NHẬN")current=2;if(st==="ĐANG XỬ LÝ")current=1;if(st==="TỪ CHỐI"||st==="CẦN BỔ SUNG")current=1;return '<div class="progressBox"><div class="progressLine">'+FLOW.map((s,i)=>'<div class="progressItem '+(i<current?'done':(i===current?'active':''))+'"><div class="dot">'+(i<current?'✓':i+1)+'</div><div class="stepText">'+esc(s)+'</div></div>').join('')+'</div></div>';}
-function renderItem(x){return `<div class="item" id="item_${esc(x.maYeuCau)}"><div class="topbar"><h3>${esc(x.maYeuCau)}</h3>${statusPill(x.trangThai)}</div><div class="meta"><b>${esc(x.nguoiDangKy)}</b> - ${esc(x.chucVu)} - ${esc(x.phongKhu)}<br><b>Đi:</b> ${esc(x.diTu)} → ${esc(x.den)}<br><b>Thời gian:</b> ${esc(x.ngayDi)} → ${esc(x.ngayVe)}<br><b>Nội dung:</b> ${esc(x.noiDung)}<br><b>Phương tiện:</b> ${esc(x.phuongTien)}${x.soCongLenh?`<br><b>Số công lệnh:</b> ${esc(x.soCongLenh)}`:""}${x.linkPDF?`<br><a class="linkbtn" target="_blank" href="${esc(x.linkPDF)}">Mở PDF</a>`:""}${x.ghiChuXuLy?`<br><b>Ghi chú:</b> ${esc(x.ghiChuXuLy)}`:""}</div>${progressBar(x.trangThai)}${renderActions(x)}<div id="msg_${esc(x.maYeuCau)}" class="msg"></div></div>`;}
-function renderActions(x){let actions=[];const st=String(x.trangThai||"");if(st==="MỚI GỬI"){actions.push(btn(x,"tiep_nhan","Tiếp nhận"));actions.push(`<button class="secondary" onclick="capCongLenh('${esc(x.maYeuCau)}',false)">Cấp nhanh</button>`);actions.push(`<button class="green" onclick="capCongLenh('${esc(x.maYeuCau)}',true)">Cấp & bàn giao</button>`);actions.push(btn(x,"bo_sung","Yêu cầu bổ sung","warn"));actions.push(btn(x,"tu_choi","Từ chối","danger"));}else if(["ĐÃ TIẾP NHẬN","ĐANG XỬ LÝ","CẦN BỔ SUNG"].includes(st)){actions.push(`<button class="secondary" onclick="capCongLenh('${esc(x.maYeuCau)}',false)">Cấp công lệnh</button>`);actions.push(`<button class="green" onclick="capCongLenh('${esc(x.maYeuCau)}',true)">Cấp & bàn giao</button>`);}if(st==="ĐÃ CẤP CÔNG LỆNH")actions.push(btn(x,"ban_giao","Đã bàn giao","secondary"));if(!actions.length)actions.push(`<button class="ghost" onclick="alert('Hồ sơ đang ở trạng thái: ${esc(st)}')">Xem trạng thái</button>`);return `<div class="row" style="margin-top:12px">${actions.join("")}</div>`;}
-function btn(x,action,label,cls=""){return `<button class="${cls}" onclick="updateStatus('${esc(x.maYeuCau)}','${action}')">${label}</button>`;}
-async function updateStatus(ma,hanhDong){const needNote=["bo_sung","tu_choi"].includes(hanhDong);let ghiChu="";if(needNote){ghiChu=prompt(hanhDong==="bo_sung"?"Nhập nội dung yêu cầu bổ sung":"Nhập lý do từ chối")||"";if(!ghiChu.trim()){alert("Chưa nhập nội dung.");return;}}else if(hanhDong==="ban_giao"){ghiChu=prompt("Ghi chú bàn giao nếu có","")||"";}const msgId="msg_"+ma;clearMsg(msgId);try{const res=await api("admin_cap_nhat",{maNguoiDung:currentUser.maNguoiDung,maYeuCau:ma,hanhDong,ghiChu});if(!res.ok){showMsg(msgId,"err","❌ "+res.message);return;}showMsg(msgId,"ok","✅ "+res.message);await loadAll();}catch(e){showMsg(msgId,"err","❌ "+e.message);}}
-async function capCongLenh(ma,tuDongBanGiao){if(!confirm((tuDongBanGiao?"Xác nhận cấp và chuyển chờ người nhận xác nhận cho yêu cầu ":"Xác nhận cấp công lệnh TEST cho yêu cầu ")+ma+"?"))return;const msgId="msg_"+ma;clearMsg(msgId);showMsg(msgId,"ok","⏳ Đang cấp công lệnh, vui lòng chờ...");try{const res=await api("admin_cap_cong_lenh",{maNguoiDung:currentUser.maNguoiDung,maYeuCau:ma,tuDongBanGiao:tuDongBanGiao?"1":"0"});if(!res.ok){showMsg(msgId,"err","❌ "+res.message);return;}showMsg(msgId,"ok",`✅ ${esc(res.message)}<br><a class="linkbtn" target="_blank" href="${esc(res.linkPDF)}">Mở PDF</a>`);await loadAll();}catch(e){showMsg(msgId,"err","❌ "+e.message);}}
-function isOneSignalConfigured() {
-  return Boolean(
-    window.CONG_LENH_ONESIGNAL_APP_ID &&
-    window.CONG_LENH_ONESIGNAL_APP_ID !== "DAN_ONESIGNAL_APP_ID_CONG_LENH_VAO_DAY"
-  );
-}
-
-function showPushBox() {
-  if (isOneSignalConfigured() && $("pushBox")) {
-    $("pushBox").classList.remove("hidden");
-  }
-}
-
-function getOneSignalExternalId() {
-  return currentUser && currentUser.maNguoiDung
-    ? "CL_" + String(currentUser.maNguoiDung).trim()
-    : "";
-}
-
-async function ganTagOneSignal(OneSignal) {
-  await OneSignal.User.addTag("heThong", "cong_lenh");
-  await OneSignal.User.addTag(
-    "vaiTro",
-    currentUser && currentUser.quyenQuanTri ? "phong_to_chuc" : "vien_chuc"
-  );
-  await OneSignal.User.addTag(
-    "maNguoiDung",
-    String((currentUser && currentUser.maNguoiDung) || "")
-  );
-}
-
-function lienKetOneSignalNguoiDung(requestPermission) {
-  return new Promise(function (resolve) {
-    if (
-      !currentUser ||
-      !isOneSignalConfigured() ||
-      !window.OneSignalDeferred
-    ) {
-      resolve(false);
-      return;
+    :root{
+      --primary:#1558d6;
+      --primary-2:#0f78c8;
+      --success:#16a34a;
+      --warning:#d97706;
+      --danger:#dc2626;
+      --ink:#172033;
+      --muted:#667085;
+      --line:#d9e2ef;
+      --surface:#fff;
+      --surface-2:#f7f9fc;
+      --bg:#edf3fa;
+      --shadow:0 10px 28px rgba(15,34,65,.08);
+      --radius:18px;
+      --safe-bottom:env(safe-area-inset-bottom,0px);
     }
 
-    window.OneSignalDeferred.push(async function (OneSignal) {
-      try {
-        const externalId = getOneSignalExternalId();
+    *{
+      box-sizing:border-box;
+    }
 
-        if (!externalId) {
-          resolve(false);
+    html{
+      scroll-behavior:smooth;
+      -webkit-text-size-adjust:100%;
+    }
+
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--ink);
+      font-family:'Be Vietnam Pro',Arial,sans-serif;
+      font-size:15px;
+      line-height:1.5;
+      padding-bottom:calc(78px + var(--safe-bottom));
+    }
+
+    button,
+    input,
+    select,
+    textarea{
+      font:inherit;
+    }
+
+    button{
+      min-height:44px;
+      border:0;
+      border-radius:13px;
+      padding:10px 15px;
+      font-weight:700;
+      cursor:pointer;
+      transition:.18s ease;
+      touch-action:manipulation;
+    }
+
+    button:active{
+      transform:translateY(1px);
+    }
+
+    button:disabled{
+      opacity:.55;
+      cursor:not-allowed;
+    }
+
+    input,
+    select,
+    textarea{
+      width:100%;
+      min-height:46px;
+      border:1px solid #cbd6e4;
+      border-radius:13px;
+      padding:11px 13px;
+      background:#fff;
+      color:var(--ink);
+      font-size:16px;
+      outline:none;
+    }
+
+    textarea{
+      min-height:86px;
+      resize:vertical;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus{
+      border-color:var(--primary);
+      box-shadow:0 0 0 3px rgba(21,88,214,.12);
+    }
+
+    .page{
+      min-height:100vh;
+      padding:12px;
+    }
+
+    .wrap{
+      width:100%;
+      max-width:1080px;
+      margin:0 auto;
+    }
+
+    .appHeader{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      background:linear-gradient(135deg,#1558d6,#18a96b);
+      color:#fff;
+      border-radius:20px;
+      padding:16px 17px;
+      box-shadow:var(--shadow);
+    }
+
+    .appLogo{
+      width:44px;
+      height:44px;
+      border-radius:14px;
+      background:rgba(255,255,255,.18);
+      display:grid;
+      place-items:center;
+      font-size:24px;
+      flex:0 0 auto;
+    }
+
+    .appHeader h1{
+      font-size:20px;
+      line-height:1.25;
+      margin:0;
+      font-weight:700;
+    }
+
+    .appHeader p{
+      font-size:12.5px;
+      margin:4px 0 0;
+      opacity:.92;
+    }
+
+    .card{
+      background:var(--surface);
+      border:1px solid rgba(217,226,239,.8);
+      border-radius:var(--radius);
+      padding:16px;
+      margin-top:12px;
+      box-shadow:var(--shadow);
+    }
+
+    .sectionHead{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:10px;
+      margin-bottom:12px;
+    }
+
+    .sectionHead h2,
+    .card h2{
+      margin:0;
+      color:#174ea6;
+      font-size:20px;
+      line-height:1.25;
+    }
+
+    .userBar{
+      display:grid;
+      grid-template-columns:auto 1fr auto;
+      align-items:center;
+      gap:11px;
+    }
+
+    .avatar{
+      width:42px;
+      height:42px;
+      border-radius:50%;
+      display:grid;
+      place-items:center;
+      background:#e6efff;
+      color:#174ea6;
+      font-weight:800;
+    }
+
+    .userName{
+      font-weight:700;
+      font-size:15px;
+    }
+
+    .small{
+      color:var(--muted);
+      font-size:12.5px;
+    }
+
+    .iconActions{
+      display:flex;
+      gap:7px;
+    }
+
+    .iconBtn{
+      min-width:42px;
+      padding:8px;
+      background:#eef2f7;
+      color:#344054;
+      font-size:0;
+    }
+
+    .iconBtn span{
+      font-size:18px;
+    }
+
+    .iconBtn.dangerLite{
+      color:#b42318;
+    }
+
+    .noticeBar{
+      display:grid;
+      grid-template-columns:auto 1fr auto;
+      align-items:center;
+      gap:10px;
+      background:#eef6ff;
+      border:1px solid #bfdbfe;
+      border-radius:16px;
+      padding:12px;
+      margin-top:12px;
+      color:#174ea6;
+    }
+
+    .noticeIcon{
+      font-size:22px;
+    }
+
+    .noticeBar b{
+      display:block;
+      font-size:14px;
+    }
+
+    .noticeBar .small{
+      font-size:12px;
+      color:#4b6794;
+    }
+
+    .noticeBar button{
+      background:var(--success);
+      color:#fff;
+      white-space:nowrap;
+      min-height:40px;
+      padding:8px 12px;
+    }
+
+    .grid{
+      display:grid;
+      gap:11px;
+    }
+
+    label{
+      display:block;
+      font-size:13px;
+      font-weight:650;
+      margin:11px 0 6px;
+    }
+
+    .primary{
+      background:var(--primary);
+      color:#fff;
+    }
+
+    .secondary{
+      background:#16213a;
+      color:#fff;
+    }
+
+    .success{
+      background:var(--success);
+      color:#fff;
+    }
+
+    .warning{
+      background:#fff7ed;
+      color:#b54708;
+      border:1px solid #fed7aa;
+    }
+
+    .danger{
+      background:#fff1f1;
+      color:#b42318;
+      border:1px solid #fecaca;
+    }
+
+    .ghost{
+      background:#eef2f7;
+      color:#344054;
+    }
+
+    .fullBtn{
+      width:100%;
+      margin-top:13px;
+    }
+
+    .msg{
+      display:none;
+      margin-top:11px;
+      border-radius:13px;
+      padding:11px 12px;
+      font-weight:600;
+      font-size:13px;
+    }
+
+    .msg.ok{
+      display:block;
+      background:#ecfdf3;
+      color:#067647;
+      border:1px solid #abefc6;
+    }
+
+    .msg.err{
+      display:block;
+      background:#fef3f2;
+      color:#b42318;
+      border:1px solid #fecdca;
+    }
+
+    .empty{
+      padding:22px;
+      text-align:center;
+      color:var(--muted);
+      background:var(--surface-2);
+      border-radius:14px;
+    }
+
+    .stats{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:9px;
+    }
+
+    .stat{
+      background:#f8fafc;
+      border:1px solid var(--line);
+      border-radius:15px;
+      padding:12px;
+    }
+
+    .stat b{
+      display:block;
+      font-size:24px;
+      color:#174ea6;
+      line-height:1.1;
+    }
+
+    .stat span{
+      font-size:11.5px;
+      color:var(--muted);
+    }
+
+    .filterGrid{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:9px;
+    }
+
+    .requestCard{
+      border:1px solid var(--line);
+      border-radius:16px;
+      background:#fbfdff;
+      padding:14px;
+      margin-top:11px;
+    }
+
+    .requestHead{
+      display:grid;
+      grid-template-columns:minmax(0,1fr) auto;
+      gap:9px;
+      align-items:start;
+    }
+
+    .requestCode{
+      font-size:16px;
+      font-weight:800;
+      overflow-wrap:anywhere;
+    }
+
+    .statusPill{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      max-width:180px;
+      border-radius:999px;
+      padding:6px 9px;
+      background:#e8f2ff;
+      color:#175cd3;
+      font-size:10.5px;
+      font-weight:800;
+      line-height:1.25;
+      text-align:center;
+    }
+
+    .statusPill.greenText{
+      background:#dcfae6;
+      color:#067647;
+    }
+
+    .statusPill.orangeText{
+      background:#fff1d6;
+      color:#b54708;
+    }
+
+    .statusPill.redText{
+      background:#fee4e2;
+      color:#b42318;
+    }
+
+    .requestMeta{
+      margin-top:10px;
+      display:grid;
+      gap:6px;
+      color:#475467;
+      font-size:13px;
+    }
+
+    .metaRow{
+      display:grid;
+      grid-template-columns:21px 1fr;
+      gap:7px;
+      align-items:start;
+    }
+
+    .metaRow b{
+      color:#344054;
+    }
+
+    .linkbtn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      text-decoration:none;
+      background:#16213a;
+      color:#fff;
+      border-radius:12px;
+      padding:9px 12px;
+      font-weight:700;
+      font-size:13px;
+      margin-top:10px;
+      min-height:42px;
+    }
+
+    .progressWrap{
+      margin:15px 0 6px;
+    }
+
+    .progressLine{
+      display:grid;
+      grid-template-columns:repeat(5,minmax(0,1fr));
+      position:relative;
+    }
+
+    .progressItem{
+      position:relative;
+      text-align:center;
+      min-width:0;
+    }
+
+    .progressItem:not(:last-child)::after{
+      content:'';
+      position:absolute;
+      top:14px;
+      left:58%;
+      width:84%;
+      height:3px;
+      background:#dfe6ef;
+      z-index:0;
+    }
+
+    .progressItem.done:not(:last-child)::after{
+      background:#22a85a;
+    }
+
+    .progressDot{
+      width:29px;
+      height:29px;
+      border-radius:50%;
+      margin:0 auto 6px;
+      display:grid;
+      place-items:center;
+      background:#e7edf5;
+      color:#667085;
+      border:3px solid #fff;
+      box-shadow:0 2px 7px rgba(15,34,65,.13);
+      font-size:11px;
+      font-weight:800;
+      position:relative;
+      z-index:1;
+    }
+
+    .progressItem.done .progressDot{
+      background:#22a85a;
+      color:#fff;
+    }
+
+    .progressItem.active .progressDot{
+      background:var(--primary);
+      color:#fff;
+    }
+
+    .progressLabel{
+      font-size:9.5px;
+      font-weight:700;
+      color:#7a8699;
+      line-height:1.2;
+      word-break:break-word;
+    }
+
+    .progressItem.done .progressLabel,
+    .progressItem.active .progressLabel{
+      color:#344054;
+    }
+
+    .actionGrid{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:8px;
+      margin-top:12px;
+    }
+
+    .actionGrid button{
+      width:100%;
+      font-size:13px;
+      padding:9px 8px;
+    }
+
+    .moreActions{
+      margin-top:8px;
+      border-top:1px dashed var(--line);
+      padding-top:8px;
+    }
+
+    .moreActions summary{
+      cursor:pointer;
+      color:#475467;
+      font-weight:700;
+      font-size:13px;
+      list-style:none;
+    }
+
+    .moreActions summary::-webkit-details-marker{
+      display:none;
+    }
+
+    .bottomNav{
+      position:fixed;
+      left:0;
+      right:0;
+      bottom:0;
+      z-index:50;
+      background:rgba(255,255,255,.96);
+      backdrop-filter:blur(12px);
+      border-top:1px solid var(--line);
+      padding:7px 10px calc(7px + var(--safe-bottom));
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:5px;
+    }
+
+    .bottomNav button{
+      background:transparent;
+      color:#667085;
+      min-height:48px;
+      padding:5px;
+      font-size:10.5px;
+      border-radius:11px;
+    }
+
+    .bottomNav button span{
+      display:block;
+      font-size:18px;
+      line-height:1.15;
+    }
+
+    .bottomNav button:active{
+      background:#eef4ff;
+      color:#174ea6;
+    }
+
+    .hidden{
+      display:none!important;
+    }
+
+    @media(min-width:720px){
+      body{
+        padding-bottom:18px;
+      }
+
+      .page{
+        padding:20px;
+      }
+
+      .appHeader{
+        padding:20px 22px;
+      }
+
+      .appHeader h1{
+        font-size:25px;
+      }
+
+      .appHeader p{
+        font-size:14px;
+      }
+
+      .card{
+        padding:20px;
+        margin-top:15px;
+      }
+
+      .filterGrid{
+        grid-template-columns:1fr 1.4fr auto;
+      }
+
+      .stats{
+        grid-template-columns:repeat(6,1fr);
+      }
+
+      .bottomNav{
+        display:none;
+      }
+
+      .progressLabel{
+        font-size:11.5px;
+      }
+
+      .progressDot{
+        width:34px;
+        height:34px;
+      }
+
+      .progressItem:not(:last-child)::after{
+        top:16px;
+      }
+
+      .requestCode{
+        font-size:18px;
+      }
+
+      .requestMeta{
+        font-size:14px;
+      }
+
+      .actionGrid{
+        grid-template-columns:repeat(3,minmax(0,1fr));
+      }
+    }
+  </style>
+
+  <script
+    src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js"
+    defer>
+  </script>
+
+  <script>
+    window.CONG_LENH_ONESIGNAL_APP_ID =
+      "c7579ace-17b7-4357-9607-33f074e689b2";
+
+    window.CONG_LENH_ONESIGNAL_SAFARI_WEB_ID =
+      "web.onesignal.auto.36c77d1a-9357-4d49-966b-0de749957ba2";
+
+    window.OneSignalDeferred =
+      window.OneSignalDeferred || [];
+
+    window.OneSignalDeferred.push(
+      async function(OneSignal){
+        try{
+          const basePath =
+            window.location.pathname.replace(/\/[^/]*$/, "/");
+
+          await OneSignal.init({
+            appId:window.CONG_LENH_ONESIGNAL_APP_ID,
+            safari_web_id:
+              window.CONG_LENH_ONESIGNAL_SAFARI_WEB_ID,
+            serviceWorkerPath:
+              basePath + "OneSignalSDKWorker.js",
+            serviceWorkerParam:{
+              scope:basePath
+            },
+            notifyButton:{
+              enable:false
+            }
+          });
+        }catch(error){
+          console.warn(
+            "Không khởi tạo được OneSignal:",
+            error
+          );
+        }
+      }
+    );
+  </script>
+</head>
+
+<body>
+  <main class="page">
+    <div class="wrap">
+
+      <header
+        class="appHeader"
+        id="adminHomeSection">
+
+        <div class="appLogo">🗂️</div>
+
+        <div>
+          <h1>Quản trị công lệnh</h1>
+          <p>
+            Tiếp nhận · Cấp công lệnh ·
+            Bàn giao · Theo dõi hoàn tất
+          </p>
+        </div>
+      </header>
+
+      <section id="loginCard" class="card">
+        <div class="sectionHead">
+          <h2>Đăng nhập quản trị</h2>
+        </div>
+
+        <div class="small" style="margin-bottom:10px">
+          Tài khoản Phòng Tổ chức sử dụng mã người dùng
+          TC/TCHC/PTOC/ADMIN.
+        </div>
+
+        <label for="loginName">Họ và tên</label>
+
+        <input
+          id="loginName"
+          autocomplete="name"
+          placeholder="Nhập họ và tên"
+        >
+
+        <label for="loginPin">Mã PIN</label>
+
+        <input
+          id="loginPin"
+          type="password"
+          inputmode="numeric"
+          autocomplete="current-password"
+          placeholder="Nhập mã PIN"
+        >
+
+        <button
+          id="btnLogin"
+          type="button"
+          class="primary fullBtn"
+          onclick="login()">
+          ĐĂNG NHẬP
+        </button>
+
+        <div id="loginMsg" class="msg"></div>
+      </section>
+
+      <section id="appBox" class="hidden">
+
+        <section class="card userBar">
+          <div id="adminAvatar" class="avatar">
+            QT
+          </div>
+
+          <div>
+            <div id="helloUser" class="userName">
+              Xin chào
+            </div>
+
+            <div id="userInfo" class="small"></div>
+          </div>
+
+          <div class="iconActions">
+            <button
+              class="iconBtn"
+              type="button"
+              onclick="loadAll()"
+              aria-label="Tải lại">
+              <span>↻</span>
+            </button>
+
+            <button
+              class="iconBtn dangerLite"
+              type="button"
+              onclick="logout()"
+              aria-label="Đăng xuất">
+              <span>⇥</span>
+            </button>
+          </div>
+        </section>
+
+        <section
+          id="adminPushSection"
+          class="noticeBar hidden">
+
+          <div class="noticeIcon">🔔</div>
+
+          <div>
+            <b>Thông báo quản trị</b>
+            <div class="small">
+              Nhận thông báo khi có yêu cầu mới.
+            </div>
+          </div>
+
+          <button
+            type="button"
+            onclick="enablePushAndTest()">
+            Bật
+          </button>
+        </section>
+
+        <section
+          id="dashboardSection"
+          class="card">
+
+          <div class="sectionHead">
+            <h2>Tổng quan</h2>
+            <span class="small">
+              Cập nhật trực tiếp
+            </span>
+          </div>
+
+          <div
+            id="dashboard"
+            class="stats">
+          </div>
+        </section>
+
+        <section
+          id="requestsSection"
+          class="card">
+
+          <div class="sectionHead">
+            <h2>Danh sách yêu cầu</h2>
+
+            <button
+              class="ghost"
+              type="button"
+              onclick="loadRequests()">
+              Làm mới
+            </button>
+          </div>
+
+          <div class="filterGrid">
+            <select id="locTrangThai">
+              <option value="">
+                Tất cả trạng thái
+              </option>
+
+              <option>MỚI GỬI</option>
+              <option>ĐÃ TIẾP NHẬN</option>
+              <option>ĐANG XỬ LÝ</option>
+              <option>CẦN BỔ SUNG</option>
+              <option>TỪ CHỐI</option>
+              <option>ĐÃ CẤP CÔNG LỆNH</option>
+              <option>CHỜ NHẬN</option>
+              <option>
+                ĐÃ BÀN GIAO - CHỜ XÁC NHẬN
+              </option>
+              <option>
+                ĐÃ NHẬN - HOÀN TẤT
+              </option>
+            </select>
+
+            <input
+              id="tuKhoa"
+              placeholder="Tìm mã, họ tên, nội dung, số công lệnh"
+            >
+
+            <button
+              class="primary"
+              type="button"
+              onclick="loadRequests()">
+              Lọc
+            </button>
+          </div>
+
+          <div id="listBox"></div>
+        </section>
+      </section>
+    </div>
+  </main>
+
+  <nav
+    id="adminBottomNav"
+    class="bottomNav hidden"
+    aria-label="Điều hướng quản trị">
+
+    <button
+      type="button"
+      onclick="scrollSection('adminHomeSection')">
+      <span>⌂</span>
+      Trang chủ
+    </button>
+
+    <button
+      type="button"
+      onclick="scrollSection('dashboardSection')">
+      <span>▦</span>
+      Tổng quan
+    </button>
+
+    <button
+      type="button"
+      onclick="scrollSection('requestsSection')">
+      <span>▤</span>
+      Yêu cầu
+    </button>
+  </nav>
+
+  <script>
+    const API_URL =
+      "https://script.google.com/macros/s/AKfycbwu7jzAGZyxrJ5QEBikW0I6KSNUfwtxSEKPP2Ecajo3WL_KDXdytkEUX0qP9sHot2t4/exec";
+
+    const API_TOKEN =
+      "DICHVU_NOIBO_TEST_2026";
+
+    const FLOW = [
+      "MỚI GỬI",
+      "ĐÃ TIẾP NHẬN",
+      "ĐÃ CẤP CÔNG LỆNH",
+      "ĐÃ BÀN GIAO - CHỜ XÁC NHẬN",
+      "ĐÃ NHẬN - HOÀN TẤT"
+    ];
+
+    let currentUser =
+      JSON.parse(
+        localStorage.getItem(
+          "dv_admin_user"
+        ) || "null"
+      );
+
+    let requests = [];
+
+    function $(id){
+      return document.getElementById(id);
+    }
+
+    function esc(value){
+      return String(value ?? "")
+        .replace(
+          /[&<>'"]/g,
+          function(character){
+            return {
+              "&":"&amp;",
+              "<":"&lt;",
+              ">":"&gt;",
+              "'":"&#39;",
+              '"':"&quot;"
+            }[character];
+          }
+        );
+    }
+
+    function showMsg(id,type,html){
+      const element = $(id);
+
+      if(!element){
+        return;
+      }
+
+      element.className =
+        "msg " + type;
+
+      element.innerHTML =
+        html;
+    }
+
+    function clearMsg(id){
+      const element = $(id);
+
+      if(!element){
+        return;
+      }
+
+      element.className = "msg";
+      element.innerHTML = "";
+    }
+
+    function jsonp(params){
+      return new Promise(
+        function(resolve,reject){
+          if(!API_URL){
+            reject(
+              new Error(
+                "Chưa cấu hình API_URL trong admin.html"
+              )
+            );
+            return;
+          }
+
+          const callbackName =
+            "cb_" +
+            Date.now() +
+            "_" +
+            Math.floor(Math.random() * 100000);
+
+          const script =
+            document.createElement("script");
+
+          const timer =
+            setTimeout(
+              function(){
+                try{
+                  delete window[callbackName];
+                  script.remove();
+                }catch(error){}
+
+                reject(
+                  new Error(
+                    "Kết nối Apps Script quá thời gian chờ."
+                  )
+                );
+              },
+              30000
+            );
+
+          window[callbackName] =
+            function(data){
+              clearTimeout(timer);
+              delete window[callbackName];
+              script.remove();
+              resolve(data);
+            };
+
+          const query =
+            new URLSearchParams(params);
+
+          query.set(
+            "callback",
+            callbackName
+          );
+
+          script.src =
+            API_URL +
+            "?" +
+            query.toString();
+
+          script.onerror =
+            function(){
+              clearTimeout(timer);
+              delete window[callbackName];
+              script.remove();
+
+              reject(
+                new Error(
+                  "Không kết nối được Apps Script."
+                )
+              );
+            };
+
+          document.body.appendChild(script);
+        }
+      );
+    }
+
+    function api(action,data){
+      const params =
+        Object.assign({},data || {});
+
+      params.action = action;
+      params.token = API_TOKEN;
+
+      return jsonp(params);
+    }
+
+    function init(){
+      if(currentUser){
+        openApp();
+      }
+    }
+
+    function openApp(){
+      $("loginCard")
+        .classList
+        .add("hidden");
+
+      $("appBox")
+        .classList
+        .remove("hidden");
+
+      $("adminBottomNav")
+        .classList
+        .remove("hidden");
+
+      $("helloUser").textContent =
+        "Xin chào, " +
+        currentUser.hoTen;
+
+      $("userInfo").textContent =
+        [
+          currentUser.chucVu,
+          currentUser.phongKhu
+        ]
+        .filter(Boolean)
+        .join(" · ");
+
+      $("adminAvatar").textContent =
+        getInitials(
+          currentUser.hoTen
+        );
+
+      loadAll();
+      showPushBox();
+      lienKetOneSignalNguoiDung(false);
+    }
+
+    async function login(){
+      clearMsg("loginMsg");
+
+      const hoTen =
+        $("loginName").value.trim();
+
+      const pin =
+        $("loginPin").value.trim();
+
+      if(!hoTen || !pin){
+        showMsg(
+          "loginMsg",
+          "err",
+          "❌ Vui lòng nhập họ tên và mã PIN."
+        );
+        return;
+      }
+
+      $("btnLogin").disabled = true;
+
+      try{
+        const response =
+          await api(
+            "login",
+            {
+              hoTen:hoTen,
+              pin:pin
+            }
+          );
+
+        if(!response.ok){
+          showMsg(
+            "loginMsg",
+            "err",
+            "❌ " + response.message
+          );
           return;
         }
 
-        await OneSignal.login(externalId);
-        await ganTagOneSignal(OneSignal);
-
-        if (requestPermission) {
-          await OneSignal.Notifications.requestPermission();
+        if(!response.user.quyenQuanTri){
+          showMsg(
+            "loginMsg",
+            "err",
+            "❌ Tài khoản không có quyền quản trị."
+          );
+          return;
         }
 
-        console.log("Đã liên kết OneSignal:", externalId);
-        resolve(true);
-      } catch (error) {
-        console.warn("Không liên kết được OneSignal:", error);
-        resolve(false);
+        currentUser =
+          response.user;
+
+        localStorage.setItem(
+          "dv_admin_user",
+          JSON.stringify(currentUser)
+        );
+
+        openApp();
+      }catch(error){
+        showMsg(
+          "loginMsg",
+          "err",
+          "❌ " + error.message
+        );
+      }finally{
+        $("btnLogin").disabled = false;
       }
-    });
-  });
-}
-
-async function enablePushAndTest() {
-  if (!currentUser) {
-    alert("Vui lòng đăng nhập trước khi bật thông báo.");
-    return;
-  }
-
-  if (!isOneSignalConfigured()) {
-    alert("Chưa cấu hình OneSignal App ID.");
-    return;
-  }
-
-  const linked = await lienKetOneSignalNguoiDung(true);
-
-  if (!linked) {
-    alert("Không thể liên kết thiết bị với OneSignal. Vui lòng kiểm tra quyền thông báo và thử lại.");
-    return;
-  }
-
-  await new Promise(function (resolve) {
-    setTimeout(resolve, 1200);
-  });
-
-  try {
-    const res = await api("test_push", {
-      maNguoiDung: currentUser.maNguoiDung
-    });
-
-    alert(res.ok ? res.message : "Lỗi: " + res.message);
-  } catch (error) {
-    alert(error.message);
-  }
-}
-
-async function dangXuatOneSignal() {
-  return new Promise(function (resolve) {
-    if (!window.OneSignalDeferred || !isOneSignalConfigured()) {
-      resolve();
-      return;
     }
 
-    window.OneSignalDeferred.push(async function (OneSignal) {
-      try {
-        await OneSignal.logout();
-      } catch (error) {
-        console.warn("Không đăng xuất được OneSignal:", error);
-      } finally {
-        resolve();
-      }
-    });
-  });
-}
+    async function logout(){
+      await dangXuatOneSignal();
 
-document.addEventListener("DOMContentLoaded", function () {
-  ["loginName", "loginPin"].forEach(function (id) {
-    const el = $(id);
-    if (el) {
-      el.addEventListener("keydown", function (event) {
-        if (event.key === "Enter") {
-          event.preventDefault();
-          login();
+      localStorage.removeItem(
+        "dv_admin_user"
+      );
+
+      currentUser = null;
+
+      location.reload();
+    }
+
+    async function loadAll(){
+      await loadDashboard();
+      await loadRequests();
+    }
+
+    async function loadDashboard(){
+      $("dashboard").innerHTML =
+        '<div class="empty">' +
+        'Đang tải...' +
+        '</div>';
+
+      try{
+        const response =
+          await api(
+            "admin_dashboard",
+            {
+              maNguoiDung:
+                currentUser.maNguoiDung
+            }
+          );
+
+        if(!response.ok){
+          $("dashboard").innerHTML =
+            '<div class="empty">❌ ' +
+            esc(response.message) +
+            '</div>';
+          return;
         }
-      });
-    }
-  });
-});
 
-init();
-</script>
+        const data =
+          response.data || {};
+
+        $("dashboard").innerHTML =
+          '<div class="stat">' +
+            '<b>' +
+              esc(data.tong ?? 0) +
+            '</b>' +
+            '<span>Tổng yêu cầu</span>' +
+          '</div>' +
+
+          '<div class="stat">' +
+            '<b>' +
+              esc(data.moiGui ?? 0) +
+            '</b>' +
+            '<span>Mới gửi</span>' +
+          '</div>' +
+
+          '<div class="stat">' +
+            '<b>' +
+              esc(data.dangXuLy ?? 0) +
+            '</b>' +
+            '<span>Đang xử lý</span>' +
+          '</div>' +
+
+          '<div class="stat">' +
+            '<b>' +
+              esc(data.daCap ?? 0) +
+            '</b>' +
+            '<span>Đã cấp</span>' +
+          '</div>' +
+
+          '<div class="stat">' +
+            '<b>' +
+              esc(data.choNhan ?? 0) +
+            '</b>' +
+            '<span>Chờ nhận</span>' +
+          '</div>' +
+
+          '<div class="stat">' +
+            '<b>' +
+              esc(data.hoanTat ?? 0) +
+            '</b>' +
+            '<span>Hoàn tất</span>' +
+          '</div>';
+      }catch(error){
+        $("dashboard").innerHTML =
+          '<div class="empty">❌ ' +
+          esc(error.message) +
+          '</div>';
+      }
+    }
+
+    async function loadRequests(){
+      $("listBox").innerHTML =
+        '<div class="empty">' +
+        'Đang tải danh sách...' +
+        '</div>';
+
+      try{
+        const response =
+          await api(
+            "admin_danh_sach",
+            {
+              maNguoiDung:
+                currentUser.maNguoiDung,
+
+              trangThai:
+                $("locTrangThai").value,
+
+              tuKhoa:
+                $("tuKhoa").value.trim()
+            }
+          );
+
+        if(!response.ok){
+          $("listBox").innerHTML =
+            '<div class="empty">❌ ' +
+            esc(response.message) +
+            '</div>';
+          return;
+        }
+
+        requests =
+          response.data || [];
+
+        if(!requests.length){
+          $("listBox").innerHTML =
+            '<div class="empty">' +
+            'Không có yêu cầu phù hợp.' +
+            '</div>';
+          return;
+        }
+
+        $("listBox").innerHTML =
+          requests
+            .map(renderItem)
+            .join("");
+      }catch(error){
+        $("listBox").innerHTML =
+          '<div class="empty">❌ ' +
+          esc(error.message) +
+          '</div>';
+      }
+    }
+
+    function statusPill(status){
+      const statusText =
+        String(status || "");
+
+      let className = "";
+
+      if(
+        statusText.includes("HOÀN TẤT")
+      ){
+        className = "greenText";
+      }else if(
+        statusText.includes("TỪ CHỐI")
+      ){
+        className = "redText";
+      }else if(
+        statusText.includes("CẦN") ||
+        statusText.includes("CHỜ")
+      ){
+        className = "orangeText";
+      }
+
+      return (
+        '<span class="statusPill ' +
+        className +
+        '">' +
+        esc(statusText) +
+        '</span>'
+      );
+    }
+
+    function progressIndex(status){
+      let currentIndex =
+        FLOW.indexOf(status);
+
+      if(status === "CHỜ NHẬN"){
+        currentIndex = 2;
+      }
+
+      if(status === "ĐANG XỬ LÝ"){
+        currentIndex = 1;
+      }
+
+      if(
+        status === "TỪ CHỐI" ||
+        status === "CẦN BỔ SUNG"
+      ){
+        currentIndex = 1;
+      }
+
+      return Math.max(
+        currentIndex,
+        0
+      );
+    }
+
+    function progressBar(status){
+      const labels = [
+        "Gửi",
+        "Tiếp nhận",
+        "Đã cấp",
+        "Bàn giao",
+        "Hoàn tất"
+      ];
+
+      const currentIndex =
+        progressIndex(status);
+
+      return (
+        '<div class="progressWrap">' +
+          '<div class="progressLine">' +
+            labels.map(
+              function(label,index){
+                const stateClass =
+                  index < currentIndex
+                    ? "done"
+                    : index === currentIndex
+                      ? "active"
+                      : "";
+
+                const dotValue =
+                  index < currentIndex
+                    ? "✓"
+                    : index + 1;
+
+                return (
+                  '<div class="progressItem ' +
+                    stateClass +
+                  '">' +
+                    '<div class="progressDot">' +
+                      dotValue +
+                    '</div>' +
+                    '<div class="progressLabel">' +
+                      label +
+                    '</div>' +
+                  '</div>'
+                );
+              }
+            ).join("") +
+          '</div>' +
+        '</div>'
+      );
+    }
+
+    function renderItem(item){
+      return (
+        '<article ' +
+          'class="requestCard" ' +
+          'id="item_' +
+            esc(item.maYeuCau) +
+          '">' +
+
+          '<div class="requestHead">' +
+            '<div class="requestCode">' +
+              esc(item.maYeuCau) +
+            '</div>' +
+            statusPill(item.trangThai) +
+          '</div>' +
+
+          '<div class="requestMeta">' +
+
+            '<div class="metaRow">' +
+              '<span>👤</span>' +
+              '<div>' +
+                '<b>' +
+                  esc(item.nguoiDangKy) +
+                '</b> · ' +
+                esc(item.chucVu) +
+                ' · ' +
+                esc(item.phongKhu) +
+              '</div>' +
+            '</div>' +
+
+            '<div class="metaRow">' +
+              '<span>📍</span>' +
+              '<div>' +
+                '<b>Hành trình:</b> ' +
+                esc(item.diTu) +
+                ' → ' +
+                esc(item.den) +
+              '</div>' +
+            '</div>' +
+
+            '<div class="metaRow">' +
+              '<span>📅</span>' +
+              '<div>' +
+                '<b>Thời gian:</b> ' +
+                esc(item.ngayDi) +
+                ' → ' +
+                esc(item.ngayVe) +
+              '</div>' +
+            '</div>' +
+
+            '<div class="metaRow">' +
+              '<span>📝</span>' +
+              '<div>' +
+                '<b>Nội dung:</b> ' +
+                esc(item.noiDung) +
+              '</div>' +
+            '</div>' +
+
+            '<div class="metaRow">' +
+              '<span>🚗</span>' +
+              '<div>' +
+                '<b>Phương tiện:</b> ' +
+                esc(item.phuongTien) +
+              '</div>' +
+            '</div>' +
+
+            (
+              item.soCongLenh
+                ? (
+                  '<div class="metaRow">' +
+                    '<span>📄</span>' +
+                    '<div>' +
+                      '<b>Số công lệnh:</b> ' +
+                      esc(item.soCongLenh) +
+                    '</div>' +
+                  '</div>'
+                )
+                : ""
+            ) +
+
+            (
+              item.ghiChuXuLy
+                ? (
+                  '<div class="metaRow">' +
+                    '<span>💬</span>' +
+                    '<div>' +
+                      '<b>Ghi chú:</b> ' +
+                      esc(item.ghiChuXuLy) +
+                    '</div>' +
+                  '</div>'
+                )
+                : ""
+            ) +
+
+          '</div>' +
+
+          (
+            item.linkPDF
+              ? (
+                '<a ' +
+                  'class="linkbtn" ' +
+                  'target="_blank" ' +
+                  'href="' +
+                    esc(item.linkPDF) +
+                  '">' +
+                  'Mở PDF' +
+                '</a>'
+              )
+              : ""
+          ) +
+
+          progressBar(
+            item.trangThai
+          ) +
+
+          renderActions(item) +
+
+          '<div ' +
+            'id="msg_' +
+              esc(item.maYeuCau) +
+            '" ' +
+            'class="msg">' +
+          '</div>' +
+
+        '</article>'
+      );
+    }
+
+    function renderActions(item){
+      const status =
+        String(item.trangThai || "");
+
+      const mainActions = [];
+      const moreActions = [];
+
+      if(status === "MỚI GỬI"){
+        mainActions.push(
+          createActionButton(
+            item,
+            "tiep_nhan",
+            "Tiếp nhận",
+            "primary"
+          )
+        );
+
+        mainActions.push(
+          '<button ' +
+            'class="success" ' +
+            'type="button" ' +
+            'onclick="capCongLenh(\'' +
+              esc(item.maYeuCau) +
+            '\',true)">' +
+            'Cấp & bàn giao' +
+          '</button>'
+        );
+
+        moreActions.push(
+          '<button ' +
+            'class="secondary" ' +
+            'type="button" ' +
+            'onclick="capCongLenh(\'' +
+              esc(item.maYeuCau) +
+            '\',false)">' +
+            'Cấp nhanh' +
+          '</button>'
+        );
+
+        moreActions.push(
+          createActionButton(
+            item,
+            "bo_sung",
+            "Yêu cầu bổ sung",
+            "warning"
+          )
+        );
+
+        moreActions.push(
+          createActionButton(
+            item,
+            "tu_choi",
+            "Từ chối",
+            "danger"
+          )
+        );
+      }else if(
+        [
+          "ĐÃ TIẾP NHẬN",
+          "ĐANG XỬ LÝ",
+          "CẦN BỔ SUNG"
+        ].includes(status)
+      ){
+        mainActions.push(
+          '<button ' +
+            'class="secondary" ' +
+            'type="button" ' +
+            'onclick="capCongLenh(\'' +
+              esc(item.maYeuCau) +
+            '\',false)">' +
+            'Cấp công lệnh' +
+          '</button>'
+        );
+
+        mainActions.push(
+          '<button ' +
+            'class="success" ' +
+            'type="button" ' +
+            'onclick="capCongLenh(\'' +
+              esc(item.maYeuCau) +
+            '\',true)">' +
+            'Cấp & bàn giao' +
+          '</button>'
+        );
+      }else if(
+        status === "ĐÃ CẤP CÔNG LỆNH"
+      ){
+        mainActions.push(
+          createActionButton(
+            item,
+            "ban_giao",
+            "Xác nhận bàn giao",
+            "primary"
+          )
+        );
+      }else{
+        mainActions.push(
+          '<button ' +
+            'class="ghost" ' +
+            'type="button" ' +
+            'onclick="alert(\'Hồ sơ đang ở trạng thái: ' +
+              esc(status) +
+            '\')">' +
+            'Xem trạng thái' +
+          '</button>'
+        );
+      }
+
+      let html =
+        '<div class="actionGrid">' +
+          mainActions.join("") +
+        '</div>';
+
+      if(moreActions.length){
+        html +=
+          '<details class="moreActions">' +
+            '<summary>' +
+              'Thao tác khác ▾' +
+            '</summary>' +
+
+            '<div class="actionGrid">' +
+              moreActions.join("") +
+            '</div>' +
+          '</details>';
+      }
+
+      return html;
+    }
+
+    function createActionButton(
+      item,
+      action,
+      label,
+      className
+    ){
+      return (
+        '<button ' +
+          'class="' +
+            className +
+          '" ' +
+          'type="button" ' +
+          'onclick="updateStatus(\'' +
+            esc(item.maYeuCau) +
+            '\',\'' +
+            action +
+          '\')">' +
+          label +
+        '</button>'
+      );
+    }
+
+    async function updateStatus(
+      maYeuCau,
+      hanhDong
+    ){
+      const requiresNote =
+        [
+          "bo_sung",
+          "tu_choi"
+        ].includes(hanhDong);
+
+      let ghiChu = "";
+
+      if(requiresNote){
+        ghiChu =
+          prompt(
+            hanhDong === "bo_sung"
+              ? "Nhập nội dung yêu cầu bổ sung"
+              : "Nhập lý do từ chối"
+          ) || "";
+
+        if(!ghiChu.trim()){
+          alert("Chưa nhập nội dung.");
+          return;
+        }
+      }else if(
+        hanhDong === "ban_giao"
+      ){
+        ghiChu =
+          prompt(
+            "Ghi chú bàn giao nếu có",
+            ""
+          ) || "";
+      }
+
+      const messageId =
+        "msg_" + maYeuCau;
+
+      clearMsg(messageId);
+
+      try{
+        const response =
+          await api(
+            "admin_cap_nhat",
+            {
+              maNguoiDung:
+                currentUser.maNguoiDung,
+              maYeuCau:maYeuCau,
+              hanhDong:hanhDong,
+              ghiChu:ghiChu
+            }
+          );
+
+        if(!response.ok){
+          showMsg(
+            messageId,
+            "err",
+            "❌ " + response.message
+          );
+          return;
+        }
+
+        showMsg(
+          messageId,
+          "ok",
+          "✅ " + response.message
+        );
+
+        await loadAll();
+      }catch(error){
+        showMsg(
+          messageId,
+          "err",
+          "❌ " + error.message
+        );
+      }
+    }
+
+    async function capCongLenh(
+      maYeuCau,
+      tuDongBanGiao
+    ){
+      const message =
+        tuDongBanGiao
+          ? (
+            "Xác nhận cấp và chuyển chờ người nhận xác nhận cho yêu cầu "
+          )
+          : (
+            "Xác nhận cấp công lệnh TEST cho yêu cầu "
+          );
+
+      if(
+        !confirm(
+          message + maYeuCau + "?"
+        )
+      ){
+        return;
+      }
+
+      const messageId =
+        "msg_" + maYeuCau;
+
+      clearMsg(messageId);
+
+      showMsg(
+        messageId,
+        "ok",
+        "⏳ Đang cấp công lệnh, vui lòng chờ..."
+      );
+
+      try{
+        const response =
+          await api(
+            "admin_cap_cong_lenh",
+            {
+              maNguoiDung:
+                currentUser.maNguoiDung,
+              maYeuCau:maYeuCau,
+              tuDongBanGiao:
+                tuDongBanGiao
+                  ? "1"
+                  : "0"
+            }
+          );
+
+        if(!response.ok){
+          showMsg(
+            messageId,
+            "err",
+            "❌ " + response.message
+          );
+          return;
+        }
+
+        showMsg(
+          messageId,
+          "ok",
+          "✅ " +
+          esc(response.message) +
+          '<br>' +
+          '<a ' +
+            'class="linkbtn" ' +
+            'target="_blank" ' +
+            'href="' +
+              esc(response.linkPDF) +
+            '">' +
+            'Mở PDF' +
+          '</a>'
+        );
+
+        await loadAll();
+      }catch(error){
+        showMsg(
+          messageId,
+          "err",
+          "❌ " + error.message
+        );
+      }
+    }
+
+    function isOneSignalConfigured(){
+      return Boolean(
+        window.CONG_LENH_ONESIGNAL_APP_ID &&
+        window.CONG_LENH_ONESIGNAL_APP_ID !==
+          "DAN_ONESIGNAL_APP_ID_CONG_LENH_VAO_DAY"
+      );
+    }
+
+    function showPushBox(){
+      if(
+        isOneSignalConfigured() &&
+        $("adminPushSection")
+      ){
+        $("adminPushSection")
+          .classList
+          .remove("hidden");
+      }
+    }
+
+    function getOneSignalExternalId(){
+      return (
+        currentUser &&
+        currentUser.maNguoiDung
+      )
+        ? (
+          "CL_" +
+          String(
+            currentUser.maNguoiDung
+          ).trim()
+        )
+        : "";
+    }
+
+    async function ganTagOneSignal(OneSignal){
+      await OneSignal.User.addTag(
+        "heThong",
+        "cong_lenh"
+      );
+
+      await OneSignal.User.addTag(
+        "vaiTro",
+        currentUser &&
+        currentUser.quyenQuanTri
+          ? "phong_to_chuc"
+          : "vien_chuc"
+      );
+
+      await OneSignal.User.addTag(
+        "maNguoiDung",
+        String(
+          currentUser &&
+          currentUser.maNguoiDung
+            ? currentUser.maNguoiDung
+            : ""
+        )
+      );
+    }
+
+    function lienKetOneSignalNguoiDung(
+      requestPermission
+    ){
+      return new Promise(
+        function(resolve){
+          if(
+            !currentUser ||
+            !isOneSignalConfigured() ||
+            !window.OneSignalDeferred
+          ){
+            resolve(false);
+            return;
+          }
+
+          window.OneSignalDeferred.push(
+            async function(OneSignal){
+              try{
+                const externalId =
+                  getOneSignalExternalId();
+
+                if(!externalId){
+                  resolve(false);
+                  return;
+                }
+
+                await OneSignal.login(
+                  externalId
+                );
+
+                await ganTagOneSignal(
+                  OneSignal
+                );
+
+                if(requestPermission){
+                  await OneSignal
+                    .Notifications
+                    .requestPermission();
+                }
+
+                console.log(
+                  "Đã liên kết OneSignal:",
+                  externalId
+                );
+
+                resolve(true);
+              }catch(error){
+                console.warn(
+                  "Không liên kết được OneSignal:",
+                  error
+                );
+
+                resolve(false);
+              }
+            }
+          );
+        }
+      );
+    }
+
+    async function enablePushAndTest(){
+      if(!currentUser){
+        alert(
+          "Vui lòng đăng nhập trước khi bật thông báo."
+        );
+        return;
+      }
+
+      if(!isOneSignalConfigured()){
+        alert(
+          "Chưa cấu hình OneSignal App ID."
+        );
+        return;
+      }
+
+      const linked =
+        await lienKetOneSignalNguoiDung(true);
+
+      if(!linked){
+        alert(
+          "Không thể liên kết thiết bị với OneSignal. " +
+          "Vui lòng kiểm tra quyền thông báo và thử lại."
+        );
+        return;
+      }
+
+      await new Promise(
+        function(resolve){
+          setTimeout(resolve,1200);
+        }
+      );
+
+      try{
+        const response =
+          await api(
+            "test_push",
+            {
+              maNguoiDung:
+                currentUser.maNguoiDung
+            }
+          );
+
+        alert(
+          response.ok
+            ? response.message
+            : "Lỗi: " + response.message
+        );
+      }catch(error){
+        alert(error.message);
+      }
+    }
+
+    async function dangXuatOneSignal(){
+      return new Promise(
+        function(resolve){
+          if(
+            !window.OneSignalDeferred ||
+            !isOneSignalConfigured()
+          ){
+            resolve();
+            return;
+          }
+
+          window.OneSignalDeferred.push(
+            async function(OneSignal){
+              try{
+                await OneSignal.logout();
+              }catch(error){
+                console.warn(
+                  "Không đăng xuất được OneSignal:",
+                  error
+                );
+              }finally{
+                resolve();
+              }
+            }
+          );
+        }
+      );
+    }
+
+    document.addEventListener(
+      "DOMContentLoaded",
+      function(){
+        [
+          "loginName",
+          "loginPin"
+        ].forEach(
+          function(id){
+            const element = $(id);
+
+            if(element){
+              element.addEventListener(
+                "keydown",
+                function(event){
+                  if(event.key === "Enter"){
+                    event.preventDefault();
+                    login();
+                  }
+                }
+              );
+            }
+          }
+        );
+      }
+    );
+
+    function getInitials(name){
+      return (
+        String(name || "QT")
+          .trim()
+          .split(/\s+/)
+          .slice(-2)
+          .map(
+            function(value){
+              return value
+                .charAt(0)
+                .toUpperCase();
+            }
+          )
+          .join("") ||
+        "QT"
+      );
+    }
+
+    function scrollSection(id){
+      const element = $(id);
+
+      if(element){
+        element.scrollIntoView({
+          behavior:"smooth",
+          block:"start"
+        });
+      }
+    }
+
+    init();
+  </script>
 </body>
 </html>
