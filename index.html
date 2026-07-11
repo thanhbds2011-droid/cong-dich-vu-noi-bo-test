@@ -67,8 +67,37 @@ let requests = [];
 function esc(s){return String(s||"").replace(/[&<>'"]/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;","'":"&#39;",'"':"&quot;"}[m]));}
 function showMsg(id,type,html){const el=document.getElementById(id);el.className="msg "+type;el.innerHTML=html;}
 function clearMsg(id){const el=document.getElementById(id);el.className="msg";el.innerHTML="";}
-function jsonp(params){return new Promise((resolve,reject)=>{if(!API_URL || API_URL.includes("https://script.google.com/macros/s/AKfycbwu7jzAGZyxrJ5QEBikW0I6KSNUfwtxSEKPP2Ecajo3WL_KDXdytkEUX0qP9sHot2t4/exec")){reject(new Error("Chưa cấu hình API_URL trong index.html"));return;}const cb="cb_"+Date.now()+"_"+Math.floor(Math.random()*99999);params.set("callback",cb);window[cb]=data=>{delete window[cb];script.remove();resolve(data);};const script=document.createElement("script");script.src=API_URL+"?"+params.toString();script.onerror=()=>{delete window[cb];script.remove();reject(new Error("Không kết nối được Apps Script."));};document.body.appendChild(script);});}
-async function api(action, extra={}){const p=new URLSearchParams();p.set("token",API_TOKEN);p.set("action",action);Object.keys(extra).forEach(k=>p.set(k,extra[k]??""));return await jsonp(p);}
+function jsonp(params) {
+  return new Promise(function(resolve, reject) {
+    if (!API_URL || API_URL === "DAN_WEB_APP_URL_APPS_SCRIPT_TEST_VAO_DAY") {
+      reject(new Error("Chưa cấu hình API_URL trong index.html"));
+      return;
+    }
+
+    const cbName = "cb_" + Date.now() + "_" + Math.floor(Math.random() * 100000);
+
+    window[cbName] = function(data) {
+      delete window[cbName];
+      script.remove();
+      resolve(data);
+    };
+
+    const script = document.createElement("script");
+
+    const query = new URLSearchParams(params);
+    query.set("callback", cbName);
+
+    script.src = API_URL + "?" + query.toString();
+
+    script.onerror = function() {
+      delete window[cbName];
+      script.remove();
+      reject(new Error("Không kết nối được Apps Script."));
+    };
+
+    document.body.appendChild(script);
+  });
+}
 function setToday(){const d=new Date();const s=d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");ngayDi.value=s;ngayVe.value=s;}
 function init(){setToday();if(currentUser){openApp();}}
 function openApp(){document.getElementById("loginCard").classList.add("hidden");document.getElementById("appBox").classList.remove("hidden");helloUser.textContent="Xin chào, "+currentUser.hoTen;userInfo.textContent=(currentUser.chucVu||"")+" - "+(currentUser.phongKhu||"");loadMyRequests();}
