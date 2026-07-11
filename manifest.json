@@ -2,9 +2,8 @@
   "name": "Cổng dịch vụ nội bộ TEST",
   "short_name": "Dịch vụ TEST",
   "start_url": "index.html",
-  "scope": "./",
   "display": "standalone",
   "background_color": "#eef4fb",
-  "theme_color": "#2563eb",
-  "description": "Ứng dụng TEST đăng ký cấp công lệnh nội bộ Trung tâm."
+  "theme_color": "#1d4ed8",
+  "icons": []
 }
