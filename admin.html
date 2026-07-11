@@ -15,27 +15,36 @@
     *{box-sizing:border-box}body{margin:0;font-family:"Times New Roman",Times,serif;background:var(--bg);color:var(--dark);font-size:17px}.page{min-height:100vh;padding:18px;display:flex;justify-content:center}.wrap{width:100%;max-width:1160px}.hero{background:linear-gradient(135deg,#1d4ed8,#16a34a);color:#fff;border-radius:28px;padding:28px 30px;box-shadow:var(--shadow)}.hero h1{margin:0;font-size:32px;line-height:1.2}.hero p{margin:10px 0 0;font-size:18px;opacity:.97}.card{background:#fff;border-radius:24px;padding:22px;margin-top:16px;box-shadow:0 10px 28px rgba(15,23,42,.09)}h2{margin:0 0 16px;color:#1d4ed8;font-size:28px}label{display:block;margin:12px 0 6px;font-weight:700;font-size:16px}input,select,textarea{width:100%;border:1.5px solid #cbd5e1;border-radius:16px;padding:13px 14px;font-size:17px;outline:none;font-family:"Times New Roman",Times,serif}input:focus,textarea:focus,select:focus{border-color:#2563eb;box-shadow:0 0 0 3px rgba(37,99,235,.12)}button{border:0;border-radius:16px;background:#2563eb;color:#fff;padding:12px 15px;font-weight:700;font-size:16px;cursor:pointer;font-family:"Times New Roman",Times,serif}button:disabled{background:#94a3b8}.secondary{background:#0f172a}.ghost{background:#e2e8f0;color:#0f172a}.danger{background:#dc2626}.warn{background:#ea580c}.green{background:#16a34a}.hidden{display:none!important}.row{display:flex;gap:10px;flex-wrap:wrap}.grid{display:grid;grid-template-columns:1fr;gap:12px}.stats{display:grid;grid-template-columns:1fr 1fr;gap:12px}.topbar{display:flex;justify-content:space-between;gap:12px;align-items:center}.msg{display:none;margin-top:14px;border-radius:16px;padding:13px;line-height:1.45;font-weight:700}.msg.ok{display:block;background:#dcfce7;color:#166534;border:1px solid #86efac}.msg.err{display:block;background:#fee2e2;color:#991b1b;border:1px solid #fecaca}.item{border:1px solid #dbe4f0;border-radius:20px;padding:16px;margin-top:12px;background:#fbfdff}.item h3{margin:0 0 8px;font-size:22px}.meta{font-size:16px;color:#334155;line-height:1.65}.pill{display:inline-block;border-radius:999px;padding:7px 12px;font-size:13px;font-weight:700;background:#e0f2fe;color:#075985;white-space:nowrap}.pill.greenText{background:#dcfce7;color:#166534}.pill.orangeText{background:#ffedd5;color:#9a3412}.pill.redText{background:#fee2e2;color:#991b1b}.stat{background:#f8fafc;border:1px solid #dbe4f0;border-radius:18px;padding:16px}.stat b{font-size:30px;display:block}.small{font-size:15px;color:#64748b}.empty{text-align:center;color:#64748b;background:#f8fafc;border-radius:18px;padding:18px}.linkbtn{display:inline-block;text-decoration:none;background:#0f172a;color:#fff;border-radius:14px;padding:10px 13px;font-weight:700;margin-top:10px}.warnbox{background:#fff7ed;border:1px solid #fed7aa;color:#9a3412;border-radius:16px;padding:12px;line-height:1.45}.filter{display:grid;grid-template-columns:1fr;gap:10px}.progressBox{overflow-x:auto;padding:14px 4px 4px;margin:14px 0 4px}.progressLine{display:flex;align-items:flex-start;min-width:720px;position:relative}.progressLine:before{content:"";position:absolute;left:38px;right:38px;top:21px;height:4px;background:#e2e8f0;border-radius:99px}.progressItem{position:relative;z-index:1;flex:1;text-align:center}.dot{width:44px;height:44px;border-radius:999px;margin:0 auto 8px;display:flex;align-items:center;justify-content:center;background:#e2e8f0;color:#475569;font-weight:700;border:4px solid #fff;box-shadow:0 3px 10px rgba(15,23,42,.12)}.progressItem.done .dot{background:#16a34a;color:#fff}.progressItem.active .dot{background:#2563eb;color:#fff}.stepText{font-size:14px;line-height:1.25;font-weight:700;color:#475569}.progressItem.done .stepText,.progressItem.active .stepText{color:#0f172a}.toastbar{display:flex;justify-content:space-between;gap:10px;align-items:center;background:#eff6ff;border:1px solid #bfdbfe;color:#1e3a8a;border-radius:18px;padding:12px;margin-top:14px}@media(min-width:760px){.filter{grid-template-columns:1fr 1fr auto}.stats{grid-template-columns:repeat(6,1fr)}}
   </style>
   <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
-<script>
-  const ONESIGNAL_APP_ID = "c7579ace-17b7-4357-9607-33f074e689b2";
-  const ONESIGNAL_SAFARI_WEB_ID = "web.onesignal.auto.36c77d1a-9357-4d49-966b-0de749957ba2";
+  <script>
+    window.CONG_LENH_ONESIGNAL_APP_ID = "c7579ace-17b7-4357-9607-33f074e689b2";
+    window.CONG_LENH_ONESIGNAL_SAFARI_WEB_ID = "web.onesignal.auto.36c77d1a-9357-4d49-966b-0de749957ba2";
+    window.OneSignalDeferred = window.OneSignalDeferred || [];
 
-  window.OneSignalDeferred = window.OneSignalDeferred || [];
+    window.OneSignalDeferred.push(async function (OneSignal) {
+      try {
+        const basePath = window.location.pathname.replace(/\/[^/]*$/, "/");
 
-  OneSignalDeferred.push(async function(OneSignal) {
-    await OneSignal.init({
-      appId: ONESIGNAL_APP_ID,
-      safari_web_id: ONESIGNAL_SAFARI_WEB_ID,
-      notifyButton: {
-        enable: true
+        await OneSignal.init({
+          appId: window.CONG_LENH_ONESIGNAL_APP_ID,
+          safari_web_id: window.CONG_LENH_ONESIGNAL_SAFARI_WEB_ID,
+          serviceWorkerPath: basePath + "OneSignalSDKWorker.js",
+          serviceWorkerParam: {
+            scope: basePath
+          },
+          notifyButton: {
+            enable: true
+          }
+        });
+      } catch (error) {
+        console.warn("Không khởi tạo được OneSignal:", error);
       }
     });
-  });
-</script>
+  </script>
 </head>
 <body>
   <main class="page"><div class="wrap">
     <section class="hero"><h1>🗂️ Quản trị yêu cầu công lệnh - TEST</h1><p>Dành cho Phòng Tổ chức tiếp nhận, xử lý, cấp công lệnh và theo dõi xác nhận nhận giấy.</p></section>
-    <section id="loginCard" class="card"><h2>Đăng nhập quản trị</h2><div class="warnbox">Quyền quản trị xác định theo <b>Mã người dùng</b> trong tab <b>TEST_NGƯỜI DÙNG</b>. Mã Phòng Tổ chức nên bắt đầu bằng <b>TC</b>, <b>TCHC</b>, <b>PTOC</b> hoặc <b>ADMIN</b>.</div><label>Họ và tên</label><input id="loginName" placeholder="Nhập họ và tên"><label>Mã PIN</label><input id="loginPin" type="password" inputmode="numeric" placeholder="Nhập mã PIN"><button id="btnLogin" onclick="login()">ĐĂNG NHẬP</button><div id="loginMsg" class="msg"></div></section>
+    <section id="loginCard" class="card"><h2>Đăng nhập quản trị</h2><div class="warnbox">Quyền quản trị xác định theo <b>Mã người dùng</b> trong tab <b>TEST_NGƯỜI DÙNG</b>. Mã Phòng Tổ chức nên bắt đầu bằng <b>TC</b>, <b>TCHC</b>, <b>PTOC</b> hoặc <b>ADMIN</b>.</div><label>Họ và tên</label><input id="loginName" placeholder="Nhập họ và tên"><label>Mã PIN</label><input id="loginPin" type="password" inputmode="numeric" placeholder="Nhập mã PIN"><button id="btnLogin" type="button" onclick="login()">ĐĂNG NHẬP</button><div id="loginMsg" class="msg"></div></section>
     <section id="appBox" class="hidden">
       <div class="card topbar"><div><b id="helloUser">Xin chào</b><div id="userInfo" class="small"></div></div><div class="row"><button class="ghost" onclick="loadAll()">Tải lại</button><button class="ghost" onclick="logout()">Đăng xuất</button></div></div>
       <div id="pushBox" class="toastbar hidden"><div><b>🔔 Thông báo quản trị</b><br><span class="small">Bật thông báo để nhận khi có yêu cầu công lệnh mới.</span></div><button class="green" onclick="enablePushAndTest()">Bật thông báo</button></div>
@@ -46,14 +55,18 @@
 <script>
 const API_URL="https://script.google.com/macros/s/AKfycbwu7jzAGZyxrJ5QEBikW0I6KSNUfwtxSEKPP2Ecajo3WL_KDXdytkEUX0qP9sHot2t4/exec";
 const API_TOKEN="DICHVU_NOIBO_TEST_2026";
-const ONESIGNAL_APP_ID="DAN_ONESIGNAL_APP_ID_CONG_LENH_VAO_DAY";
 const FLOW=["MỚI GỬI","ĐÃ TIẾP NHẬN","ĐÃ CẤP CÔNG LỆNH","ĐÃ BÀN GIAO - CHỜ XÁC NHẬN","ĐÃ NHẬN - HOÀN TẤT"];
 let currentUser=JSON.parse(localStorage.getItem("dv_admin_user")||"null");let requests=[];
 function $(id){return document.getElementById(id)}function esc(s){return String(s||"").replace(/[&<>'"]/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;","'":"&#39;",'"':"&quot;"}[m]));}function showMsg(id,type,html){const el=$(id);el.className="msg "+type;el.innerHTML=html;}function clearMsg(id){const el=$(id);el.className="msg";el.innerHTML="";}
 function jsonp(params){return new Promise(function(resolve,reject){if(!API_URL||API_URL==="DAN_WEB_APP_URL_APPS_SCRIPT_TEST_VAO_DAY"){reject(new Error("Chưa cấu hình API_URL trong admin.html"));return;}const cbName="cb_"+Date.now()+"_"+Math.floor(Math.random()*100000);let script=document.createElement("script");const timer=setTimeout(function(){try{delete window[cbName];script.remove()}catch(e){}reject(new Error("Kết nối Apps Script quá thời gian chờ."));},30000);window[cbName]=function(data){clearTimeout(timer);delete window[cbName];script.remove();resolve(data);};const query=new URLSearchParams(params);query.set("callback",cbName);script.src=API_URL+"?"+query.toString();script.onerror=function(){clearTimeout(timer);delete window[cbName];script.remove();reject(new Error("Không kết nối được Apps Script."));};document.body.appendChild(script);});}
-function api(action,data){const params=Object.assign({},data||{});params.action=action;params.token=API_TOKEN;return jsonp(params);}function init(){if(currentUser)openApp();}function openApp(){$("loginCard").classList.add("hidden");$("appBox").classList.remove("hidden");$("helloUser").textContent="Xin chào, "+currentUser.hoTen;$("userInfo").textContent=(currentUser.chucVu||"")+" - "+(currentUser.phongKhu||"");loadAll();showPushBox();initOneSignal(false);}
+function api(action,data){const params=Object.assign({},data||{});params.action=action;params.token=API_TOKEN;return jsonp(params);}function init(){if(currentUser)openApp();}function openApp(){$("loginCard").classList.add("hidden");$("appBox").classList.remove("hidden");$("helloUser").textContent="Xin chào, "+currentUser.hoTen;$("userInfo").textContent=(currentUser.chucVu||"")+" - "+(currentUser.phongKhu||"");loadAll();showPushBox();lienKetOneSignalNguoiDung(false);}
 async function login(){clearMsg("loginMsg");const hoTen=$("loginName").value.trim(),pin=$("loginPin").value.trim();if(!hoTen||!pin){showMsg("loginMsg","err","❌ Vui lòng nhập họ tên và mã PIN.");return;}$("btnLogin").disabled=true;try{const res=await api("login",{hoTen,pin});if(!res.ok){showMsg("loginMsg","err","❌ "+res.message);return;}if(!res.user.quyenQuanTri){showMsg("loginMsg","err","❌ Tài khoản không có quyền quản trị. Mã người dùng Phòng Tổ chức nên bắt đầu bằng TC/TCHC/PTOC/ADMIN.");return;}currentUser=res.user;localStorage.setItem("dv_admin_user",JSON.stringify(currentUser));openApp();}catch(e){showMsg("loginMsg","err","❌ "+e.message);}finally{$("btnLogin").disabled=false;}}
-function logout(){try{if(window.OneSignalDeferred&&currentUser&&isOneSignalConfigured()){OneSignalDeferred.push(async function(OneSignal){try{await OneSignal.logout();}catch(e){}})}}catch(e){}localStorage.removeItem("dv_admin_user");currentUser=null;location.reload();}
+async function logout() {
+  await dangXuatOneSignal();
+  localStorage.removeItem("dv_admin_user");
+  currentUser = null;
+  location.reload();
+}
 async function loadAll(){await loadDashboard();await loadRequests();}
 async function loadDashboard(){$("dashboard").innerHTML='<div class="empty">Đang tải...</div>';try{const res=await api("admin_dashboard",{maNguoiDung:currentUser.maNguoiDung});if(!res.ok){$("dashboard").innerHTML='<div class="empty">❌ '+esc(res.message)+'</div>';return;}const d=res.data;$("dashboard").innerHTML=`<div class="stat"><b>${esc(d.tong)}</b><span>Tổng</span></div><div class="stat"><b>${esc(d.moiGui)}</b><span>Mới gửi</span></div><div class="stat"><b>${esc(d.dangXuLy)}</b><span>Đang xử lý</span></div><div class="stat"><b>${esc(d.daCap)}</b><span>Đã cấp</span></div><div class="stat"><b>${esc(d.choNhan)}</b><span>Chờ nhận</span></div><div class="stat"><b>${esc(d.hoanTat)}</b><span>Hoàn tất</span></div>`;}catch(e){$("dashboard").innerHTML='<div class="empty">❌ '+esc(e.message)+'</div>';}}
 async function loadRequests(){$("listBox").innerHTML='<div class="empty">Đang tải danh sách...</div>';try{const res=await api("admin_danh_sach",{maNguoiDung:currentUser.maNguoiDung,trangThai:$("locTrangThai").value,tuKhoa:$("tuKhoa").value.trim()});if(!res.ok){$("listBox").innerHTML='<div class="empty">❌ '+esc(res.message)+'</div>';return;}requests=res.data||[];if(!requests.length){$("listBox").innerHTML='<div class="empty">Không có yêu cầu phù hợp.</div>';return;}$("listBox").innerHTML=requests.map(renderItem).join("");}catch(e){$("listBox").innerHTML='<div class="empty">❌ '+esc(e.message)+'</div>';}}
@@ -63,11 +76,140 @@ function renderActions(x){let actions=[];const st=String(x.trangThai||"");if(st=
 function btn(x,action,label,cls=""){return `<button class="${cls}" onclick="updateStatus('${esc(x.maYeuCau)}','${action}')">${label}</button>`;}
 async function updateStatus(ma,hanhDong){const needNote=["bo_sung","tu_choi"].includes(hanhDong);let ghiChu="";if(needNote){ghiChu=prompt(hanhDong==="bo_sung"?"Nhập nội dung yêu cầu bổ sung":"Nhập lý do từ chối")||"";if(!ghiChu.trim()){alert("Chưa nhập nội dung.");return;}}else if(hanhDong==="ban_giao"){ghiChu=prompt("Ghi chú bàn giao nếu có","")||"";}const msgId="msg_"+ma;clearMsg(msgId);try{const res=await api("admin_cap_nhat",{maNguoiDung:currentUser.maNguoiDung,maYeuCau:ma,hanhDong,ghiChu});if(!res.ok){showMsg(msgId,"err","❌ "+res.message);return;}showMsg(msgId,"ok","✅ "+res.message);await loadAll();}catch(e){showMsg(msgId,"err","❌ "+e.message);}}
 async function capCongLenh(ma,tuDongBanGiao){if(!confirm((tuDongBanGiao?"Xác nhận cấp và chuyển chờ người nhận xác nhận cho yêu cầu ":"Xác nhận cấp công lệnh TEST cho yêu cầu ")+ma+"?"))return;const msgId="msg_"+ma;clearMsg(msgId);showMsg(msgId,"ok","⏳ Đang cấp công lệnh, vui lòng chờ...");try{const res=await api("admin_cap_cong_lenh",{maNguoiDung:currentUser.maNguoiDung,maYeuCau:ma,tuDongBanGiao:tuDongBanGiao?"1":"0"});if(!res.ok){showMsg(msgId,"err","❌ "+res.message);return;}showMsg(msgId,"ok",`✅ ${esc(res.message)}<br><a class="linkbtn" target="_blank" href="${esc(res.linkPDF)}">Mở PDF</a>`);await loadAll();}catch(e){showMsg(msgId,"err","❌ "+e.message);}}
-function isOneSignalConfigured(){return ONESIGNAL_APP_ID&&ONESIGNAL_APP_ID!=="DAN_ONESIGNAL_APP_ID_CONG_LENH_VAO_DAY";}function showPushBox(){if(isOneSignalConfigured())$("pushBox").classList.remove("hidden");}
-function getOneSignalExternalId(){return currentUser&&currentUser.maNguoiDung?"CL_"+String(currentUser.maNguoiDung).trim():"";}
-async function ganTagOneSignal(OneSignal){try{await OneSignal.User.addTag("heThong","cong_lenh");await OneSignal.User.addTag("vaiTro",currentUser&&currentUser.quyenQuanTri?"phong_to_chuc":"vien_chuc");await OneSignal.User.addTag("maNguoiDung",String(currentUser.maNguoiDung||""));}catch(e){console.warn("OneSignal tag error",e);}}
-function initOneSignal(requestPermission){if(!currentUser||!isOneSignalConfigured()||!window.OneSignalDeferred)return;const basePath=location.pathname.replace(/\/[^/]*$/, "/");window.OneSignalDeferred.push(async function(OneSignal){try{await OneSignal.init({appId:ONESIGNAL_APP_ID,serviceWorkerPath:basePath+"OneSignalSDKWorker.js",serviceWorkerParam:{scope:basePath}});await OneSignal.login(getOneSignalExternalId());await ganTagOneSignal(OneSignal);if(requestPermission){await OneSignal.Notifications.requestPermission();}}catch(e){console.warn("OneSignal init error",e);}});}
-async function enablePushAndTest(){if(!isOneSignalConfigured()){alert("Chưa thay ONESIGNAL_APP_ID công lệnh trong index.html/admin.html.");return;}initOneSignal(true);setTimeout(async function(){try{const res=await api("test_push",{maNguoiDung:currentUser.maNguoiDung});alert(res.ok?res.message:("Lỗi: "+res.message));}catch(e){alert(e.message);}},1800);}
+function isOneSignalConfigured() {
+  return Boolean(
+    window.CONG_LENH_ONESIGNAL_APP_ID &&
+    window.CONG_LENH_ONESIGNAL_APP_ID !== "DAN_ONESIGNAL_APP_ID_CONG_LENH_VAO_DAY"
+  );
+}
+
+function showPushBox() {
+  if (isOneSignalConfigured() && $("pushBox")) {
+    $("pushBox").classList.remove("hidden");
+  }
+}
+
+function getOneSignalExternalId() {
+  return currentUser && currentUser.maNguoiDung
+    ? "CL_" + String(currentUser.maNguoiDung).trim()
+    : "";
+}
+
+async function ganTagOneSignal(OneSignal) {
+  await OneSignal.User.addTag("heThong", "cong_lenh");
+  await OneSignal.User.addTag(
+    "vaiTro",
+    currentUser && currentUser.quyenQuanTri ? "phong_to_chuc" : "vien_chuc"
+  );
+  await OneSignal.User.addTag(
+    "maNguoiDung",
+    String((currentUser && currentUser.maNguoiDung) || "")
+  );
+}
+
+function lienKetOneSignalNguoiDung(requestPermission) {
+  return new Promise(function (resolve) {
+    if (
+      !currentUser ||
+      !isOneSignalConfigured() ||
+      !window.OneSignalDeferred
+    ) {
+      resolve(false);
+      return;
+    }
+
+    window.OneSignalDeferred.push(async function (OneSignal) {
+      try {
+        const externalId = getOneSignalExternalId();
+
+        if (!externalId) {
+          resolve(false);
+          return;
+        }
+
+        await OneSignal.login(externalId);
+        await ganTagOneSignal(OneSignal);
+
+        if (requestPermission) {
+          await OneSignal.Notifications.requestPermission();
+        }
+
+        console.log("Đã liên kết OneSignal:", externalId);
+        resolve(true);
+      } catch (error) {
+        console.warn("Không liên kết được OneSignal:", error);
+        resolve(false);
+      }
+    });
+  });
+}
+
+async function enablePushAndTest() {
+  if (!currentUser) {
+    alert("Vui lòng đăng nhập trước khi bật thông báo.");
+    return;
+  }
+
+  if (!isOneSignalConfigured()) {
+    alert("Chưa cấu hình OneSignal App ID.");
+    return;
+  }
+
+  const linked = await lienKetOneSignalNguoiDung(true);
+
+  if (!linked) {
+    alert("Không thể liên kết thiết bị với OneSignal. Vui lòng kiểm tra quyền thông báo và thử lại.");
+    return;
+  }
+
+  await new Promise(function (resolve) {
+    setTimeout(resolve, 1200);
+  });
+
+  try {
+    const res = await api("test_push", {
+      maNguoiDung: currentUser.maNguoiDung
+    });
+
+    alert(res.ok ? res.message : "Lỗi: " + res.message);
+  } catch (error) {
+    alert(error.message);
+  }
+}
+
+async function dangXuatOneSignal() {
+  return new Promise(function (resolve) {
+    if (!window.OneSignalDeferred || !isOneSignalConfigured()) {
+      resolve();
+      return;
+    }
+
+    window.OneSignalDeferred.push(async function (OneSignal) {
+      try {
+        await OneSignal.logout();
+      } catch (error) {
+        console.warn("Không đăng xuất được OneSignal:", error);
+      } finally {
+        resolve();
+      }
+    });
+  });
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+  ["loginName", "loginPin"].forEach(function (id) {
+    const el = $(id);
+    if (el) {
+      el.addEventListener("keydown", function (event) {
+        if (event.key === "Enter") {
+          event.preventDefault();
+          login();
+        }
+      });
+    }
+  });
+});
+
 init();
 </script>
 </body>
