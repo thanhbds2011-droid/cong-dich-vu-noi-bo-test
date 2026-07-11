@@ -6,524 +6,115 @@
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <meta name="theme-color" content="#2563eb" />
+  <meta name="theme-color" content="#1d4ed8" />
   <meta name="robots" content="noindex,nofollow" />
   <link rel="manifest" href="manifest.json" />
   <title>Cổng dịch vụ nội bộ - TEST</title>
 
+  <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+
   <style>
+    :root{
+      --blue:#1d4ed8;--blue2:#2563eb;--green:#16a34a;--dark:#0f172a;--muted:#64748b;
+      --line:#dbe4f0;--soft:#f8fafc;--bg:#eef4fb;--white:#fff;--red:#dc2626;--orange:#ea580c;
+      --shadow:0 16px 40px rgba(15,23,42,.12);--radius:22px;
+    }
     *{box-sizing:border-box}
-    body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#eef4fb;color:#0f172a}
-    .page{min-height:100vh;padding:16px;display:flex;justify-content:center}
-    .wrap{width:100%;max-width:760px}
-    .hero{background:linear-gradient(135deg,#2563eb,#22c55e);color:#fff;border-radius:26px;padding:24px;box-shadow:0 18px 45px rgba(15,23,42,.15)}
-    .hero h1{margin:0;font-size:26px;line-height:1.2}
-    .hero p{margin:10px 0 0;line-height:1.45;opacity:.95}
-    .card{background:#fff;border-radius:24px;padding:20px;margin-top:16px;box-shadow:0 10px 28px rgba(15,23,42,.1)}
-    h2{margin:0 0 14px;color:#2563eb}
-    label{display:block;margin:12px 0 6px;font-weight:900;font-size:14px}
-    input,select,textarea{width:100%;border:1.5px solid #cbd5e1;border-radius:16px;padding:13px 14px;font-size:16px;outline:none;font-family:Arial,Helvetica,sans-serif}
-    textarea{min-height:90px;resize:vertical}
-    input:focus,textarea:focus,select:focus{border-color:#2563eb;box-shadow:0 0 0 3px rgba(37,99,235,.12)}
-    button{border:0;border-radius:16px;background:#2563eb;color:#fff;padding:13px 15px;font-weight:900;font-size:15px;cursor:pointer}
-    button:disabled{background:#94a3b8}
-    .secondary{background:#0f172a}
-    .ghost{background:#e2e8f0;color:#0f172a}
-    .danger{background:#dc2626}
-    .warn{background:#ea580c}
-    .hidden{display:none!important}
-    .row{display:flex;gap:10px;flex-wrap:wrap}
-    .grid{display:grid;grid-template-columns:1fr;gap:12px}
-    .two{grid-template-columns:1fr}
-    .msg{display:none;margin-top:14px;border-radius:16px;padding:13px;line-height:1.45;font-weight:700}
-    .msg.ok{display:block;background:#dcfce7;color:#166534;border:1px solid #86efac}
-    .msg.err{display:block;background:#fee2e2;color:#991b1b;border:1px solid #fecaca}
-    .item{border:1px solid #e2e8f0;border-radius:18px;padding:14px;margin-top:12px;background:#f8fafc}
-    .item h3{margin:0 0 8px}
-    .meta{font-size:14px;color:#475569;line-height:1.55}
-    .pill{display:inline-block;border-radius:999px;padding:6px 10px;font-size:12px;font-weight:900;background:#e0f2fe;color:#075985}
-    .pill.green{background:#dcfce7;color:#166534}
-    .pill.orange{background:#ffedd5;color:#9a3412}
-    .pill.red{background:#fee2e2;color:#991b1b}
-    .topbar{display:flex;justify-content:space-between;gap:12px;align-items:center}
-    .small{font-size:13px;color:#64748b}
-    .empty{text-align:center;color:#64748b;background:#f8fafc;border-radius:18px;padding:18px}
-    .linkbtn{display:inline-block;text-decoration:none;background:#0f172a;color:#fff;border-radius:14px;padding:10px 12px;font-weight:900;margin-top:10px}
-    .steps{border-left:4px solid #e2e8f0;margin:14px 0 0;padding-left:14px}
-    .step{margin:10px 0}
-    .step.done b{color:#166534}
-    .check{display:flex;gap:10px;align-items:flex-start;margin-top:12px}
-    .check input{width:20px;height:20px;flex:0 0 auto}
-    @media(min-width:720px){.two{grid-template-columns:1fr 1fr}.grid.auto{grid-template-columns:1fr 1fr 1fr}}
+    body{margin:0;font-family:"Times New Roman",Times,serif;background:var(--bg);color:var(--dark);font-size:17px}
+    .page{min-height:100vh;padding:18px;display:flex;justify-content:center}.wrap{width:100%;max-width:940px}
+    .hero{background:linear-gradient(135deg,#1d4ed8,#22c55e);color:#fff;border-radius:28px;padding:28px 30px;box-shadow:var(--shadow)}
+    .hero h1{margin:0;font-size:32px;line-height:1.2;font-weight:700}.hero p{margin:10px 0 0;line-height:1.45;font-size:18px;opacity:.97}
+    .card{background:#fff;border-radius:24px;padding:22px;margin-top:16px;box-shadow:0 10px 28px rgba(15,23,42,.09)}
+    h2{margin:0 0 16px;color:#1d4ed8;font-size:28px}.section-title{display:flex;align-items:center;justify-content:space-between;gap:12px}
+    label{display:block;margin:12px 0 6px;font-weight:700;font-size:16px}
+    input,select,textarea{width:100%;border:1.5px solid #cbd5e1;border-radius:16px;padding:13px 14px;font-size:17px;outline:none;font-family:"Times New Roman",Times,serif;background:#fff}
+    textarea{min-height:94px;resize:vertical}input:focus,textarea:focus,select:focus{border-color:#2563eb;box-shadow:0 0 0 3px rgba(37,99,235,.12)}
+    button{border:0;border-radius:16px;background:#2563eb;color:#fff;padding:12px 16px;font-weight:700;font-size:16px;cursor:pointer;font-family:"Times New Roman",Times,serif}button:disabled{background:#94a3b8;cursor:not-allowed}
+    .secondary{background:#0f172a}.ghost{background:#e2e8f0;color:#0f172a}.green{background:#16a34a}.warn{background:#ea580c}.danger{background:#dc2626}.hidden{display:none!important}
+    .row{display:flex;gap:10px;flex-wrap:wrap}.grid{display:grid;grid-template-columns:1fr;gap:12px}.two{grid-template-columns:1fr}.topbar{display:flex;justify-content:space-between;gap:12px;align-items:center}.small{font-size:15px;color:#64748b}
+    .msg{display:none;margin-top:14px;border-radius:16px;padding:13px;line-height:1.45;font-weight:700}.msg.ok{display:block;background:#dcfce7;color:#166534;border:1px solid #86efac}.msg.err{display:block;background:#fee2e2;color:#991b1b;border:1px solid #fecaca}.msg.info{display:block;background:#e0f2fe;color:#075985;border:1px solid #bae6fd}
+    .item{border:1px solid #dbe4f0;border-radius:20px;padding:16px;margin-top:12px;background:#fbfdff}.item h3{margin:0 0 8px;font-size:22px}.meta{font-size:16px;color:#334155;line-height:1.65}
+    .pill{display:inline-block;border-radius:999px;padding:7px 12px;font-size:13px;font-weight:700;background:#e0f2fe;color:#075985;white-space:nowrap}.pill.greenText{background:#dcfce7;color:#166534}.pill.orangeText{background:#ffedd5;color:#9a3412}.pill.redText{background:#fee2e2;color:#991b1b}
+    .empty{text-align:center;color:#64748b;background:#f8fafc;border-radius:18px;padding:18px}.linkbtn{display:inline-block;text-decoration:none;background:#0f172a;color:#fff;border-radius:14px;padding:10px 13px;font-weight:700;margin-top:10px}
+    .service-note{background:#f8fafc;border:1px solid #e2e8f0;border-radius:18px;padding:14px;line-height:1.55;color:#334155}
+    .progressBox{overflow-x:auto;padding:14px 4px 4px;margin:14px 0 4px}.progressLine{display:flex;align-items:flex-start;min-width:720px;position:relative}.progressLine:before{content:"";position:absolute;left:38px;right:38px;top:21px;height:4px;background:#e2e8f0;border-radius:99px}.progressItem{position:relative;z-index:1;flex:1;text-align:center}.dot{width:44px;height:44px;border-radius:999px;margin:0 auto 8px;display:flex;align-items:center;justify-content:center;background:#e2e8f0;color:#475569;font-weight:700;border:4px solid #fff;box-shadow:0 3px 10px rgba(15,23,42,.12)}.progressItem.done .dot{background:#16a34a;color:#fff}.progressItem.active .dot{background:#2563eb;color:#fff}.stepText{font-size:14px;line-height:1.25;font-weight:700;color:#475569}.progressItem.done .stepText,.progressItem.active .stepText{color:#0f172a}
+    .check{display:flex;gap:10px;align-items:flex-start;margin-top:12px}.check input{width:20px;height:20px;flex:0 0 auto}
+    .toastbar{display:flex;justify-content:space-between;gap:10px;align-items:center;background:#eff6ff;border:1px solid #bfdbfe;color:#1e3a8a;border-radius:18px;padding:12px;margin-top:14px}
+    @media(min-width:760px){.two{grid-template-columns:1fr 1fr}.grid.auto{grid-template-columns:1fr 1fr 1fr}}
   </style>
 </head>
-
 <body>
-  <main class="page">
-    <div class="wrap">
-      <section class="hero">
-        <h1>📲 Cổng dịch vụ nội bộ - TEST</h1>
-        <p>Đăng ký cấp công lệnh, theo dõi tiến độ và xác nhận đã nhận trên điện thoại.</p>
+  <main class="page"><div class="wrap">
+    <section class="hero"><h1>📲 Cổng dịch vụ nội bộ - TEST</h1><p>Đăng ký cấp công lệnh, theo dõi tiến độ và xác nhận đã nhận trên điện thoại.</p></section>
+
+    <section id="loginCard" class="card">
+      <h2>Đăng nhập</h2>
+      <div class="service-note">Nhập đúng họ tên và mã PIN đã được tạo trong tab <b>TEST_NGƯỜI DÙNG</b>. Sau khi đăng nhập, anh/chị có thể gửi yêu cầu và theo dõi tiến trình xử lý.</div>
+      <label>Họ và tên</label><input id="loginName" placeholder="Nhập họ và tên đã đăng ký">
+      <label>Mã PIN</label><input id="loginPin" type="password" inputmode="numeric" placeholder="Nhập mã PIN">
+      <button id="btnLogin" onclick="login()">ĐĂNG NHẬP</button>
+      <div id="loginMsg" class="msg"></div>
+    </section>
+
+    <section id="appBox" class="hidden">
+      <div class="card topbar">
+        <div><b id="helloUser">Xin chào</b><div id="userInfo" class="small"></div></div>
+        <div class="row"><button class="ghost" onclick="loadMyRequests()">Tải lại</button><button class="ghost" onclick="logout()">Đăng xuất</button></div>
+      </div>
+
+      <div id="pushBox" class="toastbar hidden">
+        <div><b>🔔 Thông báo điện thoại</b><br><span class="small">Bật thông báo để nhận khi công lệnh được cấp hoặc cần bổ sung.</span></div>
+        <button class="green" onclick="enablePushAndTest()">Bật thông báo</button>
+      </div>
+
+      <section class="card">
+        <h2>Gửi yêu cầu cấp công lệnh</h2>
+        <div class="grid two"><div><label>Đi từ</label><input id="diTu" placeholder="Ví dụ: TTBTXH Tân Hiệp"></div><div><label>Đến</label><input id="den" placeholder="Ví dụ: Bệnh viện Chợ Rẫy"></div></div>
+        <label>Nội dung công tác</label><textarea id="noiDung" placeholder="Nhập nội dung đi công tác/chuyển viện/nuôi bệnh..."></textarea>
+        <div class="grid two"><div><label>Ngày đi</label><input id="ngayDi" type="date"></div><div><label>Ngày về</label><input id="ngayVe" type="date"></div></div>
+        <label>Phương tiện</label><input id="phuongTien" placeholder="Ví dụ: Xe cơ quan, xe cứu thương, xe cá nhân...">
+        <label>Ghi chú thêm</label><textarea id="ghiChu" placeholder="Nội dung cần lưu ý nếu có"></textarea>
+        <button id="btnSend" onclick="sendRequest()">GỬI YÊU CẦU</button>
+        <div id="newMsg" class="msg"></div>
       </section>
 
-      <section id="loginCard" class="card">
-        <h2>Đăng nhập</h2>
-        <label>Họ và tên</label>
-        <input id="loginName" placeholder="Nhập họ và tên đã đăng ký">
-
-        <label>Mã PIN</label>
-        <input id="loginPin" type="password" inputmode="numeric" placeholder="Nhập mã PIN">
-
-        <button id="btnLogin" onclick="login()">ĐĂNG NHẬP</button>
-        <div id="loginMsg" class="msg"></div>
-      </section>
-
-      <section id="appBox" class="hidden">
-        <div class="card topbar">
-          <div>
-            <b id="helloUser">Xin chào</b>
-            <div id="userInfo" class="small"></div>
-          </div>
-          <div class="row">
-            <button class="ghost" onclick="loadMyRequests()">Tải lại</button>
-            <button class="ghost" onclick="logout()">Đăng xuất</button>
-          </div>
-        </div>
-
-        <section class="card">
-          <h2>Gửi yêu cầu cấp công lệnh</h2>
-
-          <div class="grid two">
-            <div>
-              <label>Đi từ</label>
-              <input id="diTu" placeholder="Ví dụ: Trung tâm BTXH Tân Hiệp">
-            </div>
-            <div>
-              <label>Đến</label>
-              <input id="den" placeholder="Ví dụ: Bệnh viện ĐK Bình Phước">
-            </div>
-          </div>
-
-          <label>Nội dung công tác</label>
-          <textarea id="noiDung" placeholder="Nhập nội dung đi công tác/chuyển viện/nuôi bệnh..."></textarea>
-
-          <div class="grid two">
-            <div>
-              <label>Ngày đi</label>
-              <input id="ngayDi" type="date">
-            </div>
-            <div>
-              <label>Ngày về</label>
-              <input id="ngayVe" type="date">
-            </div>
-          </div>
-
-          <label>Phương tiện</label>
-          <input id="phuongTien" placeholder="Ví dụ: Xe cơ quan, xe cứu thương, xe cá nhân...">
-
-          <label>Ghi chú thêm</label>
-          <textarea id="ghiChu" placeholder="Nội dung cần lưu ý nếu có"></textarea>
-
-          <button id="btnSend" onclick="sendRequest()">GỬI YÊU CẦU</button>
-          <div id="newMsg" class="msg"></div>
-        </section>
-
-        <section class="card">
-          <h2>Hồ sơ của tôi</h2>
-          <div id="myList"></div>
-        </section>
-
-        <section id="detailCard" class="card hidden">
-          <div id="detailBox"></div>
-        </section>
-      </section>
-    </div>
-  </main>
+      <section class="card"><div class="section-title"><h2>Hồ sơ của tôi</h2></div><div id="myList"></div></section>
+      <section id="detailCard" class="card hidden"><div id="detailBox"></div></section>
+    </section>
+  </div></main>
 
 <script>
 const API_URL = "https://script.google.com/macros/s/AKfycbwu7jzAGZyxrJ5QEBikW0I6KSNUfwtxSEKPP2Ecajo3WL_KDXdytkEUX0qP9sHot2t4/exec";
 const API_TOKEN = "DICHVU_NOIBO_TEST_2026";
-
+const ONESIGNAL_APP_ID = "DAN_ONESIGNAL_APP_ID_VAO_DAY";
+const FLOW = ["MỚI GỬI","ĐÃ TIẾP NHẬN","ĐÃ CẤP CÔNG LỆNH","ĐÃ BÀN GIAO - CHỜ XÁC NHẬN","ĐÃ NHẬN - HOÀN TẤT"];
 let currentUser = JSON.parse(localStorage.getItem("dv_user") || "null");
 let requests = [];
-
-function $(id) {
-  return document.getElementById(id);
-}
-
-function esc(s) {
-  return String(s || "").replace(/[&<>'"]/g, function(m) {
-    return {
-      "&": "&amp;",
-      "<": "&lt;",
-      ">": "&gt;",
-      "'": "&#39;",
-      '"': "&quot;"
-    }[m];
-  });
-}
-
-function showMsg(id, type, html) {
-  const el = $(id);
-  el.className = "msg " + type;
-  el.innerHTML = html;
-}
-
-function clearMsg(id) {
-  const el = $(id);
-  el.className = "msg";
-  el.innerHTML = "";
-}
-
-function jsonp(params) {
-  return new Promise(function(resolve, reject) {
-    if (!API_URL || API_URL === "DAN_WEB_APP_URL_APPS_SCRIPT_TEST_VAO_DAY") {
-      reject(new Error("Chưa cấu hình API_URL trong index.html"));
-      return;
-    }
-
-    const cbName = "cb_" + Date.now() + "_" + Math.floor(Math.random() * 100000);
-    let script = document.createElement("script");
-
-    const timer = setTimeout(function() {
-      try {
-        delete window[cbName];
-        script.remove();
-      } catch (e) {}
-      reject(new Error("Kết nối Apps Script quá thời gian chờ."));
-    }, 30000);
-
-    window[cbName] = function(data) {
-      clearTimeout(timer);
-      delete window[cbName];
-      script.remove();
-      resolve(data);
-    };
-
-    const query = new URLSearchParams(params);
-    query.set("callback", cbName);
-
-    script.src = API_URL + "?" + query.toString();
-
-    script.onerror = function() {
-      clearTimeout(timer);
-      delete window[cbName];
-      script.remove();
-      reject(new Error("Không kết nối được Apps Script."));
-    };
-
-    document.body.appendChild(script);
-  });
-}
-
-function api(action, data) {
-  const params = Object.assign({}, data || {});
-  params.action = action;
-  params.token = API_TOKEN;
-  return jsonp(params);
-}
-
-function setToday() {
-  const d = new Date();
-  const s = d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0");
-  $("ngayDi").value = s;
-  $("ngayVe").value = s;
-}
-
-function init() {
-  setToday();
-  if (currentUser) {
-    openApp();
-  }
-}
-
-function openApp() {
-  $("loginCard").classList.add("hidden");
-  $("appBox").classList.remove("hidden");
-  $("helloUser").textContent = "Xin chào, " + currentUser.hoTen;
-  $("userInfo").textContent = (currentUser.chucVu || "") + " - " + (currentUser.phongKhu || "");
-  loadMyRequests();
-}
-
-async function login() {
-  clearMsg("loginMsg");
-
-  const hoTen = $("loginName").value.trim();
-  const pin = $("loginPin").value.trim();
-
-  if (!hoTen || !pin) {
-    showMsg("loginMsg", "err", "❌ Vui lòng nhập họ tên và mã PIN.");
-    return;
-  }
-
-  $("btnLogin").disabled = true;
-
-  try {
-    const res = await api("login", { hoTen, pin });
-
-    if (!res.ok) {
-      showMsg("loginMsg", "err", "❌ " + res.message);
-      return;
-    }
-
-    currentUser = res.user;
-    localStorage.setItem("dv_user", JSON.stringify(currentUser));
-    openApp();
-
-  } catch (e) {
-    showMsg("loginMsg", "err", "❌ " + e.message);
-  } finally {
-    $("btnLogin").disabled = false;
-  }
-}
-
-function logout() {
-  localStorage.removeItem("dv_user");
-  currentUser = null;
-  location.reload();
-}
-
-function clearForm() {
-  ["diTu", "den", "noiDung", "phuongTien", "ghiChu"].forEach(function(id) {
-    $(id).value = "";
-  });
-  setToday();
-  clearMsg("newMsg");
-}
-
-async function sendRequest() {
-  clearMsg("newMsg");
-
-  const data = {
-    maNguoiDung: currentUser.maNguoiDung,
-    diTu: $("diTu").value.trim(),
-    den: $("den").value.trim(),
-    noiDung: $("noiDung").value.trim(),
-    ngayDi: $("ngayDi").value,
-    ngayVe: $("ngayVe").value,
-    phuongTien: $("phuongTien").value.trim(),
-    ghiChu: $("ghiChu").value.trim()
-  };
-
-  if (!data.diTu || !data.den || !data.noiDung || !data.ngayDi || !data.ngayVe || !data.phuongTien) {
-    showMsg("newMsg", "err", "❌ Vui lòng nhập đủ thông tin bắt buộc.");
-    return;
-  }
-
-  $("btnSend").disabled = true;
-  $("btnSend").textContent = "ĐANG GỬI...";
-
-  try {
-    const res = await api("tao_yeu_cau", data);
-
-    if (!res.ok) {
-      showMsg("newMsg", "err", "❌ " + res.message);
-      return;
-    }
-
-    showMsg("newMsg", "ok", "✅ Đã gửi yêu cầu: <b>" + esc(res.maYeuCau) + "</b><br>Trạng thái: " + esc(res.trangThai));
-    clearForm();
-    await loadMyRequests(false);
-
-  } catch (e) {
-    showMsg("newMsg", "err", "❌ " + e.message);
-  } finally {
-    $("btnSend").disabled = false;
-    $("btnSend").textContent = "GỬI YÊU CẦU";
-  }
-}
-
-async function loadMyRequests(showLoading) {
-  if (showLoading !== false) {
-    $("myList").innerHTML = '<div class="empty">Đang tải hồ sơ...</div>';
-  }
-
-  try {
-    const res = await api("ho_so_cua_toi", { maNguoiDung: currentUser.maNguoiDung });
-
-    if (!res.ok) {
-      $("myList").innerHTML = '<div class="empty">❌ ' + esc(res.message) + '</div>';
-      return;
-    }
-
-    requests = res.data || [];
-
-    if (!requests.length) {
-      $("myList").innerHTML = '<div class="empty">Chưa có yêu cầu nào.</div>';
-      return;
-    }
-
-    $("myList").innerHTML = requests.map(renderItem).join("");
-
-  } catch (e) {
-    $("myList").innerHTML = '<div class="empty">❌ ' + esc(e.message) + '</div>';
-  }
-}
-
-function statusPill(st) {
-  const s = String(st || "");
-  let c = "";
-
-  if (s.includes("HOÀN TẤT")) c = "green";
-  else if (s.includes("TỪ CHỐI")) c = "red";
-  else if (s.includes("CẦN") || s.includes("CHỜ")) c = "orange";
-
-  return '<span class="pill ' + c + '">' + esc(s) + '</span>';
-}
-
-function renderItem(x) {
-  return `
-    <div class="item">
-      <div class="topbar">
-        <h3>${esc(x.maYeuCau)}</h3>
-        ${statusPill(x.trangThai)}
-      </div>
-      <div class="meta">
-        <b>Thời gian gửi:</b> ${esc(x.thoiGianGui)}<br>
-        <b>Đi:</b> ${esc(x.diTu)} → ${esc(x.den)}<br>
-        <b>Ngày:</b> ${esc(x.ngayDi)} → ${esc(x.ngayVe)}
-        ${x.soCongLenh ? `<br><b>Số công lệnh:</b> ${esc(x.soCongLenh)}` : ""}
-      </div>
-      <button class="secondary" onclick="viewDetail('${esc(x.maYeuCau)}')">Xem chi tiết</button>
-    </div>
-  `;
-}
-
-async function viewDetail(ma) {
-  $("detailCard").classList.remove("hidden");
-  $("detailBox").innerHTML = '<div class="empty">Đang tải chi tiết...</div>';
-
-  try {
-    const res = await api("chi_tiet_yeu_cau", {
-      maYeuCau: ma,
-      maNguoiDung: currentUser.maNguoiDung
-    });
-
-    if (!res.ok) {
-      $("detailBox").innerHTML = '<div class="empty">❌ ' + esc(res.message) + '</div>';
-      return;
-    }
-
-    $("detailBox").innerHTML = renderDetail(res.data);
-    $("detailCard").scrollIntoView({ behavior: "smooth" });
-
-  } catch (e) {
-    $("detailBox").innerHTML = '<div class="empty">❌ ' + esc(e.message) + '</div>';
-  }
-}
-
-function renderDetail(x) {
-  return `
-    <h2>${esc(x.maYeuCau)}</h2>
-    ${statusPill(x.trangThai)}
-
-    <div class="item">
-      <div class="meta">
-        <b>Người đăng ký:</b> ${esc(x.nguoiDangKy)}<br>
-        <b>Phòng/Khu:</b> ${esc(x.phongKhu)}<br>
-        <b>Đi từ:</b> ${esc(x.diTu)}<br>
-        <b>Đến:</b> ${esc(x.den)}<br>
-        <b>Nội dung:</b> ${esc(x.noiDung)}<br>
-        <b>Ngày đi:</b> ${esc(x.ngayDi)}<br>
-        <b>Ngày về:</b> ${esc(x.ngayVe)}<br>
-        <b>Phương tiện:</b> ${esc(x.phuongTien)}
-        ${x.ghiChuXuLy ? `<br><b>Ghi chú xử lý:</b> ${esc(x.ghiChuXuLy)}` : ""}
-      </div>
-      ${x.linkPDF ? `<a class="linkbtn" target="_blank" href="${esc(x.linkPDF)}">Mở PDF công lệnh</a>` : ""}
-    </div>
-
-    ${renderSteps(x)}
-    ${renderConfirmBox(x)}
-  `;
-}
-
-function renderSteps(x) {
-  const sts = [
-    "MỚI GỬI",
-    "ĐÃ TIẾP NHẬN",
-    "ĐÃ CẤP CÔNG LỆNH",
-    "ĐÃ BÀN GIAO - CHỜ XÁC NHẬN",
-    "ĐÃ NHẬN - HOÀN TẤT"
-  ];
-
-  let current = sts.indexOf(x.trangThai);
-
-  if (x.trangThai === "CHỜ NHẬN") current = 2;
-  if (x.trangThai === "TỪ CHỐI" || x.trangThai === "CẦN BỔ SUNG") current = 1;
-
-  return `
-    <div class="steps">
-      ${sts.map(function(s, i) {
-        return `<div class="step ${i <= current ? "done" : ""}"><b>${i <= current ? "✓" : "○"} ${esc(s)}</b></div>`;
-      }).join("")}
-    </div>
-  `;
-}
-
-function renderConfirmBox(x) {
-  if (!["ĐÃ CẤP CÔNG LỆNH", "CHỜ NHẬN", "ĐÃ BÀN GIAO - CHỜ XÁC NHẬN"].includes(x.trangThai)) {
-    return "";
-  }
-
-  return `
-    <div class="item">
-      <h3>Xác nhận đã nhận</h3>
-
-      <label>Người nhận thực tế</label>
-      <input id="nguoiNhanThucTe" value="${esc(currentUser.hoTen)}">
-
-      <label>Lý do nhận thay nếu có</label>
-      <textarea id="lyDoNhanThay" placeholder="Nhập nếu người nhận thực tế khác người được cấp"></textarea>
-
-      <div class="check">
-        <input id="dongY" type="checkbox">
-        <span>Tôi xác nhận đã nhận công lệnh nêu trên.</span>
-      </div>
-
-      <button onclick="confirmReceived('${esc(x.maYeuCau)}')">TÔI ĐÃ NHẬN</button>
-      <div id="confirmMsg" class="msg"></div>
-    </div>
-  `;
-}
-
-async function confirmReceived(ma) {
-  clearMsg("confirmMsg");
-
-  if (!$("dongY").checked) {
-    showMsg("confirmMsg", "err", "❌ Vui lòng tích xác nhận.");
-    return;
-  }
-
-  const nguoiNhan = $("nguoiNhanThucTe").value.trim();
-  const lyDo = $("lyDoNhanThay").value.trim();
-
-  if (!nguoiNhan) {
-    showMsg("confirmMsg", "err", "❌ Vui lòng nhập người nhận thực tế.");
-    return;
-  }
-
-  try {
-    const res = await api("xac_nhan_da_nhan", {
-      maYeuCau: ma,
-      maNguoiDung: currentUser.maNguoiDung,
-      nguoiNhanThucTe: nguoiNhan,
-      lyDoNhanThay: lyDo
-    });
-
-    if (!res.ok) {
-      showMsg("confirmMsg", "err", "❌ " + res.message);
-      return;
-    }
-
-    showMsg("confirmMsg", "ok", "✅ " + res.message);
-    await loadMyRequests(false);
-    await viewDetail(ma);
-
-  } catch (e) {
-    showMsg("confirmMsg", "err", "❌ " + e.message);
-  }
-}
-
+function $(id){return document.getElementById(id)}
+function esc(s){return String(s||"").replace(/[&<>'"]/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;","'":"&#39;",'"':"&quot;"}[m]));}
+function showMsg(id,type,html){const el=$(id);el.className="msg "+type;el.innerHTML=html;}
+function clearMsg(id){const el=$(id);el.className="msg";el.innerHTML="";}
+function jsonp(params){return new Promise(function(resolve,reject){if(!API_URL||API_URL==="DAN_WEB_APP_URL_APPS_SCRIPT_TEST_VAO_DAY"){reject(new Error("Chưa cấu hình API_URL trong index.html"));return;}const cbName="cb_"+Date.now()+"_"+Math.floor(Math.random()*100000);let script=document.createElement("script");const timer=setTimeout(function(){try{delete window[cbName];script.remove()}catch(e){}reject(new Error("Kết nối Apps Script quá thời gian chờ."));},30000);window[cbName]=function(data){clearTimeout(timer);delete window[cbName];script.remove();resolve(data);};const query=new URLSearchParams(params);query.set("callback",cbName);script.src=API_URL+"?"+query.toString();script.onerror=function(){clearTimeout(timer);delete window[cbName];script.remove();reject(new Error("Không kết nối được Apps Script."));};document.body.appendChild(script);});}
+function api(action,data){const params=Object.assign({},data||{});params.action=action;params.token=API_TOKEN;return jsonp(params);}
+function setToday(){const d=new Date();const s=d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");$("ngayDi").value=s;$("ngayVe").value=s;}
+function init(){setToday();if(currentUser)openApp();}
+function openApp(){$("loginCard").classList.add("hidden");$("appBox").classList.remove("hidden");$("helloUser").textContent="Xin chào, "+currentUser.hoTen;$("userInfo").textContent=(currentUser.chucVu||"")+" - "+(currentUser.phongKhu||"");loadMyRequests();showPushBox();initOneSignal(false);}
+async function login(){clearMsg("loginMsg");const hoTen=$("loginName").value.trim(),pin=$("loginPin").value.trim();if(!hoTen||!pin){showMsg("loginMsg","err","❌ Vui lòng nhập họ tên và mã PIN.");return;}$("btnLogin").disabled=true;try{const res=await api("login",{hoTen,pin});if(!res.ok){showMsg("loginMsg","err","❌ "+res.message);return;}currentUser=res.user;localStorage.setItem("dv_user",JSON.stringify(currentUser));openApp();}catch(e){showMsg("loginMsg","err","❌ "+e.message);}finally{$("btnLogin").disabled=false;}}
+function logout(){try{if(window.OneSignalDeferred&&currentUser&&isOneSignalConfigured()){OneSignalDeferred.push(async function(OneSignal){try{await OneSignal.logout();}catch(e){}})}}catch(e){}localStorage.removeItem("dv_user");currentUser=null;location.reload();}
+function clearForm(){["diTu","den","noiDung","phuongTien","ghiChu"].forEach(id=>$(id).value="");setToday();clearMsg("newMsg");}
+async function sendRequest(){clearMsg("newMsg");const data={maNguoiDung:currentUser.maNguoiDung,diTu:$("diTu").value.trim(),den:$("den").value.trim(),noiDung:$("noiDung").value.trim(),ngayDi:$("ngayDi").value,ngayVe:$("ngayVe").value,phuongTien:$("phuongTien").value.trim(),ghiChu:$("ghiChu").value.trim()};if(!data.diTu||!data.den||!data.noiDung||!data.ngayDi||!data.ngayVe||!data.phuongTien){showMsg("newMsg","err","❌ Vui lòng nhập đủ thông tin bắt buộc.");return;}$("btnSend").disabled=true;$("btnSend").textContent="ĐANG GỬI...";try{const res=await api("tao_yeu_cau",data);if(!res.ok){showMsg("newMsg","err","❌ "+res.message);return;}showMsg("newMsg","ok","✅ Đã gửi yêu cầu: <b>"+esc(res.maYeuCau)+"</b><br>Trạng thái: "+esc(res.trangThai));clearForm();await loadMyRequests(false);}catch(e){showMsg("newMsg","err","❌ "+e.message);}finally{$("btnSend").disabled=false;$("btnSend").textContent="GỬI YÊU CẦU";}}
+async function loadMyRequests(showLoading=true){if(showLoading)$("myList").innerHTML='<div class="empty">Đang tải hồ sơ...</div>';try{const res=await api("ho_so_cua_toi",{maNguoiDung:currentUser.maNguoiDung});if(!res.ok){$("myList").innerHTML='<div class="empty">❌ '+esc(res.message)+'</div>';return;}requests=res.data||[];if(!requests.length){$("myList").innerHTML='<div class="empty">Chưa có yêu cầu nào.</div>';return;}$("myList").innerHTML=requests.map(renderItem).join("");}catch(e){$("myList").innerHTML='<div class="empty">❌ '+esc(e.message)+'</div>';}}
+function statusPill(st){const s=String(st||"");let c="";if(s.includes("HOÀN TẤT"))c="greenText";else if(s.includes("TỪ CHỐI"))c="redText";else if(s.includes("CẦN")||s.includes("CHỜ"))c="orangeText";return '<span class="pill '+c+'">'+esc(s)+'</span>';}
+function progressBar(st){let current=FLOW.indexOf(st);if(st==="CHỜ NHẬN")current=2;if(st==="ĐANG XỬ LÝ")current=1;if(st==="TỪ CHỐI"||st==="CẦN BỔ SUNG")current=1;return '<div class="progressBox"><div class="progressLine">'+FLOW.map((s,i)=>'<div class="progressItem '+(i<current?'done':(i===current?'active':''))+'"><div class="dot">'+(i<current?'✓':i+1)+'</div><div class="stepText">'+esc(s)+'</div></div>').join('')+'</div></div>';}
+function renderItem(x){return `<div class="item"><div class="topbar"><h3>${esc(x.maYeuCau)}</h3>${statusPill(x.trangThai)}</div><div class="meta"><b>Thời gian gửi:</b> ${esc(x.thoiGianGui)}<br><b>Đi:</b> ${esc(x.diTu)} → ${esc(x.den)}<br><b>Ngày:</b> ${esc(x.ngayDi)} → ${esc(x.ngayVe)}${x.soCongLenh?`<br><b>Số công lệnh:</b> ${esc(x.soCongLenh)}`:""}</div>${progressBar(x.trangThai)}<button class="secondary" onclick="viewDetail('${esc(x.maYeuCau)}')">Xem chi tiết</button></div>`;}
+async function viewDetail(ma){$("detailCard").classList.remove("hidden");$("detailBox").innerHTML='<div class="empty">Đang tải chi tiết...</div>';try{const res=await api("chi_tiet_yeu_cau",{maYeuCau:ma,maNguoiDung:currentUser.maNguoiDung});if(!res.ok){$("detailBox").innerHTML='<div class="empty">❌ '+esc(res.message)+'</div>';return;}$("detailBox").innerHTML=renderDetail(res.data);$("detailCard").scrollIntoView({behavior:"smooth"});}catch(e){$("detailBox").innerHTML='<div class="empty">❌ '+esc(e.message)+'</div>';}}
+function renderDetail(x){return `<h2>${esc(x.maYeuCau)}</h2>${statusPill(x.trangThai)}${progressBar(x.trangThai)}<div class="item"><div class="meta"><b>Người đăng ký:</b> ${esc(x.nguoiDangKy)}<br><b>Phòng/Khu:</b> ${esc(x.phongKhu)}<br><b>Đi từ:</b> ${esc(x.diTu)}<br><b>Đến:</b> ${esc(x.den)}<br><b>Nội dung:</b> ${esc(x.noiDung)}<br><b>Ngày đi:</b> ${esc(x.ngayDi)}<br><b>Ngày về:</b> ${esc(x.ngayVe)}<br><b>Phương tiện:</b> ${esc(x.phuongTien)}${x.ghiChuXuLy?`<br><b>Ghi chú xử lý:</b> ${esc(x.ghiChuXuLy)}`:""}</div>${x.linkPDF?`<a class="linkbtn" target="_blank" href="${esc(x.linkPDF)}">Mở PDF công lệnh</a>`:""}</div>${renderConfirmBox(x)}`;}
+function renderConfirmBox(x){if(!["ĐÃ CẤP CÔNG LỆNH","CHỜ NHẬN","ĐÃ BÀN GIAO - CHỜ XÁC NHẬN"].includes(x.trangThai))return "";return `<div class="item"><h3>Xác nhận đã nhận</h3><label>Người nhận thực tế</label><input id="nguoiNhanThucTe" value="${esc(currentUser.hoTen)}"><label>Lý do nhận thay nếu có</label><textarea id="lyDoNhanThay" placeholder="Nhập nếu người nhận thực tế khác người được cấp"></textarea><div class="check"><input id="dongY" type="checkbox"><span>Tôi xác nhận đã nhận công lệnh nêu trên.</span></div><button onclick="confirmReceived('${esc(x.maYeuCau)}')">TÔI ĐÃ NHẬN</button><div id="confirmMsg" class="msg"></div></div>`;}
+async function confirmReceived(ma){clearMsg("confirmMsg");if(!$("dongY").checked){showMsg("confirmMsg","err","❌ Vui lòng tích xác nhận.");return;}const nguoiNhan=$("nguoiNhanThucTe").value.trim();const lyDo=$("lyDoNhanThay").value.trim();if(!nguoiNhan){showMsg("confirmMsg","err","❌ Vui lòng nhập người nhận thực tế.");return;}try{const res=await api("xac_nhan_da_nhan",{maYeuCau:ma,maNguoiDung:currentUser.maNguoiDung,nguoiNhanThucTe:nguoiNhan,lyDoNhanThay:lyDo});if(!res.ok){showMsg("confirmMsg","err","❌ "+res.message);return;}showMsg("confirmMsg","ok","✅ "+res.message);await loadMyRequests(false);await viewDetail(ma);}catch(e){showMsg("confirmMsg","err","❌ "+e.message);}}
+function isOneSignalConfigured(){return ONESIGNAL_APP_ID && ONESIGNAL_APP_ID!=="DAN_ONESIGNAL_APP_ID_VAO_DAY";}
+function showPushBox(){if(isOneSignalConfigured())$("pushBox").classList.remove("hidden");}
+function initOneSignal(requestPermission){if(!currentUser||!isOneSignalConfigured()||!window.OneSignalDeferred)return;const basePath=location.pathname.replace(/\/[^/]*$/, "/");window.OneSignalDeferred.push(async function(OneSignal){try{await OneSignal.init({appId:ONESIGNAL_APP_ID,serviceWorkerPath:basePath+"OneSignalSDKWorker.js",serviceWorkerParam:{scope:basePath}});await OneSignal.login(currentUser.maNguoiDung);if(requestPermission){await OneSignal.Notifications.requestPermission();}}catch(e){console.warn("OneSignal init error",e);}});}
+async function enablePushAndTest(){if(!isOneSignalConfigured()){alert("Chưa thay ONESIGNAL_APP_ID trong index.html/admin.html.");return;}initOneSignal(true);setTimeout(async function(){try{const res=await api("test_push",{maNguoiDung:currentUser.maNguoiDung});alert(res.ok?res.message:("Lỗi: "+res.message));}catch(e){alert(e.message);}},1800);}
 init();
 </script>
 </body>
