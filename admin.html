@@ -4,8 +4,13 @@
   <meta charset="UTF-8">
 
   <meta
+    name="viewport"
+    content="width=device-width,initial-scale=1,viewport-fit=cover"
+  >
+
+  <meta
     http-equiv="Cache-Control"
-    content="no-cache, no-store, must-revalidate"
+    content="no-cache,no-store,must-revalidate"
   >
 
   <meta
@@ -16,11 +21,6 @@
   <meta
     http-equiv="Expires"
     content="0"
-  >
-
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0, viewport-fit=cover"
   >
 
   <meta
@@ -40,11 +40,28 @@
 
   <title>Quản trị văn bản - TEST</title>
 
-  <style>
-    @import url(
-      "https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap"
-    );
+  <link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+  >
 
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <script
+    src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js"
+    defer
+  ></script>
+
+  <style>
     :root {
       --primary: #1558d6;
       --primary-dark: #1048b5;
@@ -67,10 +84,14 @@
       --surface: #ffffff;
       --soft: #f7f9fc;
 
-      --shadow: 0 8px 24px rgba(15, 34, 65, 0.07);
+      --shadow:
+        0 8px 24px
+        rgba(15, 34, 65, 0.07);
+
       --radius: 18px;
 
-      --safe-bottom: env(safe-area-inset-bottom, 0px);
+      --safe-bottom:
+        env(safe-area-inset-bottom, 0px);
     }
 
     * {
@@ -97,7 +118,7 @@
       line-height: 1.5;
 
       padding-bottom:
-        calc(106px + var(--safe-bottom));
+        calc(105px + var(--safe-bottom));
     }
 
     button,
@@ -132,10 +153,15 @@
       width: 100%;
       min-height: 46px;
 
-      border: 1px solid #cbd6e4;
+      border:
+        1px solid
+        #cbd6e4;
+
       border-radius: 13px;
 
-      padding: 11px 13px;
+      padding:
+        11px
+        13px;
 
       background: #ffffff;
       color: var(--ink);
@@ -155,7 +181,8 @@
       border-color: var(--primary);
 
       box-shadow:
-        0 0 0 3px rgba(21, 88, 214, 0.12);
+        0 0 0 3px
+        rgba(21, 88, 214, 0.12);
     }
 
     label {
@@ -169,6 +196,10 @@
       font-weight: 700;
     }
 
+    .hidden {
+      display: none !important;
+    }
+
     .page {
       min-height: 100vh;
       padding: 12px;
@@ -179,10 +210,6 @@
       max-width: 1080px;
 
       margin: 0 auto;
-    }
-
-    .hidden {
-      display: none !important;
     }
 
     .appHeader {
@@ -337,6 +364,109 @@
       color: #b42318;
     }
 
+    .primary {
+      background: var(--primary);
+      color: #ffffff;
+    }
+
+    .secondary {
+      background: #16213a;
+      color: #ffffff;
+    }
+
+    .success {
+      background: var(--success);
+      color: #ffffff;
+    }
+
+    .ghost {
+      background: #eef2f7;
+      color: #344054;
+    }
+
+    .warning {
+      border:
+        1px solid
+        #fed7aa;
+
+      background: var(--warning-soft);
+      color: var(--warning);
+    }
+
+    .danger {
+      border:
+        1px solid
+        #fecaca;
+
+      background: var(--danger-soft);
+      color: var(--danger);
+    }
+
+    .fullBtn {
+      width: 100%;
+      margin-top: 13px;
+    }
+
+    .msg {
+      display: none;
+
+      margin-top: 11px;
+      padding: 11px 12px;
+
+      border-radius: 13px;
+
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .msg.ok {
+      display: block;
+
+      border:
+        1px solid
+        #abefc6;
+
+      background: #ecfdf3;
+      color: #067647;
+    }
+
+    .msg.err {
+      display: block;
+
+      border:
+        1px solid
+        #fecdca;
+
+      background: #fef3f2;
+      color: #b42318;
+    }
+
+    .msg.info {
+      display: block;
+
+      border:
+        1px solid
+        #b2ddff;
+
+      background: #eff8ff;
+      color: #175cd3;
+    }
+
+    .empty {
+      padding: 22px;
+
+      border-radius: 14px;
+
+      background: var(--soft);
+      color: var(--muted);
+
+      text-align: center;
+    }
+
+    /* =========================
+       THÔNG BÁO
+       ========================= */
+
     .noticeBar {
       display: grid;
 
@@ -351,7 +481,10 @@
       margin-top: 12px;
       padding: 12px;
 
-      border: 1px solid #bfdbfe;
+      border:
+        1px solid
+        #bfdbfe;
+
       border-radius: 16px;
 
       background: #eef6ff;
@@ -385,85 +518,9 @@
       white-space: nowrap;
     }
 
-    .primary {
-      background: var(--primary);
-      color: #ffffff;
-    }
-
-    .secondary {
-      background: #16213a;
-      color: #ffffff;
-    }
-
-    .success {
-      background: var(--success);
-      color: #ffffff;
-    }
-
-    .ghost {
-      background: #eef2f7;
-      color: #344054;
-    }
-
-    .danger {
-      border: 1px solid #fecaca;
-
-      background: var(--danger-soft);
-      color: var(--danger);
-    }
-
-    .warning {
-      border: 1px solid #fed7aa;
-
-      background: var(--warning-soft);
-      color: var(--warning);
-    }
-
-    .fullBtn {
-      width: 100%;
-      margin-top: 13px;
-    }
-
-    .msg {
-      display: none;
-
-      margin-top: 11px;
-      padding: 11px 12px;
-
-      border-radius: 13px;
-
-      font-size: 13px;
-      font-weight: 600;
-    }
-
-    .msg.ok {
-      display: block;
-
-      border: 1px solid #abefc6;
-
-      background: #ecfdf3;
-      color: #067647;
-    }
-
-    .msg.err {
-      display: block;
-
-      border: 1px solid #fecdca;
-
-      background: #fef3f2;
-      color: #b42318;
-    }
-
-    .empty {
-      padding: 22px;
-
-      border-radius: 14px;
-
-      background: var(--soft);
-      color: var(--muted);
-
-      text-align: center;
-    }
+    /* =========================
+       DASHBOARD
+       ========================= */
 
     .stats {
       display: grid;
@@ -477,7 +534,10 @@
     .stat {
       padding: 12px;
 
-      border: 1px solid var(--line);
+      border:
+        1px solid
+        var(--line);
+
       border-radius: 15px;
 
       background: #f8fafc;
@@ -496,6 +556,10 @@
       color: var(--muted);
       font-size: 11px;
     }
+
+    /* =========================
+       BỘ LỌC
+       ========================= */
 
     .filterBlock {
       margin-bottom: 13px;
@@ -532,7 +596,6 @@
         5px;
 
       overflow: hidden;
-
       text-overflow: ellipsis;
     }
 
@@ -561,7 +624,10 @@
         7px
         11px;
 
-      border: 1px solid transparent;
+      border:
+        1px solid
+        transparent;
+
       border-radius: 999px;
 
       background: #eef2f7;
@@ -581,7 +647,6 @@
 
     .searchBox {
       position: relative;
-
       margin-bottom: 12px;
     }
 
@@ -593,7 +658,8 @@
 
       color: #98a2b3;
 
-      transform: translateY(-50%);
+      transform:
+        translateY(-50%);
     }
 
     .searchBox input {
@@ -620,8 +686,13 @@
       letter-spacing: 0.03em;
     }
 
+    /* =========================
+       THẺ YÊU CẦU
+       ========================= */
+
     #listBox,
-    #priorityList {
+    #priorityList,
+    #logList {
       padding-bottom: 22px;
     }
 
@@ -629,7 +700,10 @@
       margin-top: 10px;
       padding: 14px;
 
-      border: 1px solid var(--line);
+      border:
+        1px solid
+        var(--line);
+
       border-radius: 16px;
 
       background: #fbfdff;
@@ -734,8 +808,7 @@
       display: grid;
 
       grid-template-columns:
-        minmax(0, 1fr)
-        minmax(0, 1fr);
+        repeat(2, minmax(0, 1fr));
 
       gap: 8px;
 
@@ -805,6 +878,10 @@
       color: #344054;
     }
 
+    /* =========================
+       CHI TIẾT
+       ========================= */
+
     .detailTop {
       display: flex;
       align-items: center;
@@ -849,7 +926,10 @@
       margin-top: 10px;
       padding: 13px;
 
-      border: 1px solid var(--line);
+      border:
+        1px solid
+        var(--line);
+
       border-radius: 14px;
 
       background: #f8fafc;
@@ -906,7 +986,10 @@
 
       padding: 11px 12px;
 
-      border: 1px solid #bfdbfe;
+      border:
+        1px solid
+        #bfdbfe;
+
       border-radius: 13px;
 
       background: #eef6ff;
@@ -1020,14 +1103,17 @@
 
       bottom:
         calc(
-          72px +
+          74px +
           var(--safe-bottom)
         );
 
       margin-top: 12px;
       padding: 10px;
 
-      border: 1px solid var(--line);
+      border:
+        1px solid
+        var(--line);
+
       border-radius: 15px;
 
       background:
@@ -1082,6 +1168,244 @@
       display: none;
     }
 
+    /* =========================
+       NHẬT KÝ
+       ========================= */
+
+    .logDescription {
+      margin:
+        -3px 0
+        15px;
+
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .advancedFilters {
+      margin-top: 12px;
+      padding: 0;
+
+      border:
+        1px solid
+        var(--line);
+
+      border-radius: 14px;
+
+      background: #f8fafc;
+
+      overflow: hidden;
+    }
+
+    .advancedFilters summary {
+      padding: 12px 14px;
+
+      color: #344054;
+
+      font-size: 13px;
+      font-weight: 700;
+
+      cursor: pointer;
+      list-style: none;
+    }
+
+    .advancedFilters summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .advancedFilters summary::after {
+      content: "⌄";
+      float: right;
+      color: #667085;
+    }
+
+    .advancedFilters[open] summary::after {
+      content: "⌃";
+    }
+
+    .advancedBody {
+      padding:
+        0 13px
+        13px;
+    }
+
+    .twoColumns {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+
+    .logActions {
+      display: grid;
+
+      grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+      gap: 8px;
+
+      margin-top: 14px;
+    }
+
+    .logActions button {
+      width: 100%;
+      font-size: 12px;
+    }
+
+    .logSummary {
+      display: grid;
+
+      grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+      gap: 8px;
+
+      margin-top: 15px;
+    }
+
+    .logSummary > div {
+      padding: 11px;
+
+      border:
+        1px solid
+        var(--line);
+
+      border-radius: 13px;
+
+      background: #f8fafc;
+
+      text-align: center;
+    }
+
+    .logSummary strong {
+      display: block;
+
+      color: #174ea6;
+
+      font-size: 20px;
+      line-height: 1.1;
+    }
+
+    .logSummary span {
+      color: var(--muted);
+      font-size: 10.5px;
+    }
+
+    .logCard {
+      margin-top: 10px;
+      padding: 14px;
+
+      border:
+        1px solid
+        var(--line);
+
+      border-radius: 15px;
+
+      background: #fbfdff;
+    }
+
+    .logCardHead {
+      display: grid;
+
+      grid-template-columns:
+        minmax(0, 1fr)
+        auto;
+
+      align-items: start;
+      gap: 9px;
+    }
+
+    .logCode {
+      color: #172033;
+
+      font-size: 15px;
+      font-weight: 800;
+
+      overflow-wrap: anywhere;
+    }
+
+    .logType {
+      margin-top: 3px;
+
+      color: var(--muted);
+
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    .logInfo {
+      display: grid;
+      gap: 6px;
+
+      margin-top: 10px;
+
+      color: #475467;
+      font-size: 12.5px;
+    }
+
+    .logInfo strong {
+      color: #344054;
+    }
+
+    .logTimelineDetails {
+      margin-top: 10px;
+
+      border-top:
+        1px dashed
+        var(--line);
+
+      padding-top: 9px;
+    }
+
+    .logTimelineDetails summary {
+      color: #475467;
+
+      font-size: 11.5px;
+      font-weight: 700;
+
+      cursor: pointer;
+      list-style: none;
+    }
+
+    .logTimelineDetails summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .logTimelineGrid {
+      display: grid;
+      gap: 5px;
+
+      margin-top: 8px;
+
+      color: #667085;
+      font-size: 11.5px;
+    }
+
+    .logCardActions {
+      display: flex;
+      justify-content: flex-end;
+      flex-wrap: wrap;
+      gap: 7px;
+
+      margin-top: 11px;
+    }
+
+    .logCardActions button,
+    .logCardActions a {
+      min-height: 38px;
+
+      padding:
+        8px
+        12px;
+
+      border-radius: 11px;
+
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    /* =========================
+       THANH ĐIỀU HƯỚNG
+       ========================= */
+
     .bottomNav {
       position: fixed;
       z-index: 50;
@@ -1093,7 +1417,7 @@
       display: grid;
 
       grid-template-columns:
-        repeat(2, minmax(0, 1fr));
+        repeat(3, minmax(0, 1fr));
 
       gap: 5px;
 
@@ -1101,7 +1425,9 @@
         7px 10px
         calc(7px + var(--safe-bottom));
 
-      border-top: 1px solid var(--line);
+      border-top:
+        1px solid
+        var(--line);
 
       background:
         rgba(255, 255, 255, 0.97);
@@ -1162,11 +1488,22 @@
 
       .stats {
         grid-template-columns:
+          repeat(3, minmax(0, 1fr));
+      }
+
+      .twoColumns {
+        grid-template-columns:
+          repeat(2, minmax(0, 1fr));
+      }
+
+      .logActions {
+        grid-template-columns:
           repeat(4, minmax(0, 1fr));
       }
 
-      .bottomNav {
-        display: none;
+      .logSummary {
+        grid-template-columns:
+          repeat(4, minmax(0, 1fr));
       }
 
       .detailGrid {
@@ -1180,13 +1517,17 @@
           minmax(0, 1fr);
       }
 
+      .actionGrid {
+        grid-template-columns:
+          repeat(3, minmax(0, 1fr));
+      }
+
       .detailActions {
         bottom: 20px;
       }
 
-      .actionGrid {
-        grid-template-columns:
-          repeat(3, minmax(0, 1fr));
+      .bottomNav {
+        display: none;
       }
     }
 
@@ -1209,11 +1550,6 @@
       }
     }
   </style>
-
-  <script
-    src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js"
-    defer
-  ></script>
 </head>
 
 <body>
@@ -1236,6 +1572,7 @@
         </div>
       </header>
 
+      <!-- ĐĂNG NHẬP -->
       <section
         id="loginCard"
         class="card"
@@ -1248,7 +1585,7 @@
 
         <div
           class="small"
-          style="margin-bottom: 10px"
+          style="margin-bottom:10px"
         >
           Chỉ tài khoản Phòng Tổ chức mới được truy cập.
         </div>
@@ -1290,6 +1627,7 @@
         ></div>
       </section>
 
+      <!-- ỨNG DỤNG -->
       <section
         id="appBox"
         class="hidden"
@@ -1413,7 +1751,7 @@
           </section>
         </section>
 
-        <!-- DANH SÁCH -->
+        <!-- DANH SÁCH YÊU CẦU -->
         <section
           id="adminRequestsView"
           class="hidden"
@@ -1528,7 +1866,6 @@
             </div>
 
             <div class="searchBox">
-
               <span class="searchIcon">
                 ⌕
               </span>
@@ -1538,7 +1875,6 @@
                 placeholder="Tìm mã, họ tên hoặc số được cấp"
                 oninput="scheduleRender()"
               >
-
             </div>
 
             <div class="listCaption">
@@ -1556,6 +1892,411 @@
           </section>
         </section>
 
+        <!-- NHẬT KÝ -->
+        <section
+          id="adminLogView"
+          class="hidden"
+        >
+          <section class="card">
+
+            <div class="sectionHead">
+              <div>
+                <h2>
+                  Nhật ký xử lý
+                </h2>
+              </div>
+
+              <button
+                class="iconBtn"
+                type="button"
+                onclick="taiNhatKy()"
+                aria-label="Làm mới nhật ký"
+              >
+                ↻
+              </button>
+            </div>
+
+            <div class="logDescription">
+              Tra cứu, thống kê và xuất báo cáo các yêu cầu trên
+              Cổng dịch vụ nội bộ.
+            </div>
+
+            <!-- THỜI GIAN NHANH -->
+            <div class="filterBlock">
+              <span class="filterLabel">
+                Thời gian nhanh
+              </span>
+
+              <div class="stateFilter">
+
+                <button
+                  class="chip active"
+                  type="button"
+                  data-log-period="ALL"
+                  onclick="chonThoiGianNhatKy('ALL',this)"
+                >
+                  Tất cả
+                </button>
+
+                <button
+                  class="chip"
+                  type="button"
+                  data-log-period="TODAY"
+                  onclick="chonThoiGianNhatKy('TODAY',this)"
+                >
+                  Hôm nay
+                </button>
+
+                <button
+                  class="chip"
+                  type="button"
+                  data-log-period="7_DAYS"
+                  onclick="chonThoiGianNhatKy('7_DAYS',this)"
+                >
+                  7 ngày
+                </button>
+
+                <button
+                  class="chip"
+                  type="button"
+                  data-log-period="THIS_MONTH"
+                  onclick="chonThoiGianNhatKy('THIS_MONTH',this)"
+                >
+                  Tháng này
+                </button>
+
+                <button
+                  class="chip"
+                  type="button"
+                  data-log-period="THIS_YEAR"
+                  onclick="chonThoiGianNhatKy('THIS_YEAR',this)"
+                >
+                  Năm nay
+                </button>
+
+              </div>
+            </div>
+
+            <!-- LOẠI VĂN BẢN -->
+            <div class="filterBlock">
+              <span class="filterLabel">
+                Loại văn bản
+              </span>
+
+              <div class="typeFilter">
+
+                <button
+                  class="chip active"
+                  type="button"
+                  data-log-kind="ALL"
+                  onclick="chonLoaiNhatKy('ALL',this)"
+                >
+                  Tất cả
+                </button>
+
+                <button
+                  class="chip"
+                  type="button"
+                  data-log-kind="CONG_LENH"
+                  onclick="chonLoaiNhatKy('CONG_LENH',this)"
+                >
+                  Công lệnh
+                </button>
+
+                <button
+                  class="chip"
+                  type="button"
+                  data-log-kind="GIAY_GIOI_THIEU"
+                  onclick="chonLoaiNhatKy('GIAY_GIOI_THIEU',this)"
+                >
+                  Giấy giới thiệu
+                </button>
+
+              </div>
+            </div>
+
+            <!-- TRẠNG THÁI -->
+            <label for="logTrangThai">
+              Trạng thái xử lý
+            </label>
+
+            <select
+              id="logTrangThai"
+              onchange="locNhatKyMoi()"
+            >
+              <option value="">
+                Tất cả trạng thái
+              </option>
+
+              <option value="MỚI GỬI">
+                Mới gửi
+              </option>
+
+              <option value="ĐÃ TIẾP NHẬN">
+                Đã tiếp nhận
+              </option>
+
+              <option value="ĐÃ CẤP">
+                Đã cấp
+              </option>
+
+              <option value="ĐÃ BÀN GIAO">
+                Chờ xác nhận
+              </option>
+
+              <option value="ĐÃ NHẬN - HOÀN TẤT">
+                Hoàn tất
+              </option>
+
+              <option value="CẦN BỔ SUNG">
+                Cần bổ sung
+              </option>
+
+              <option value="TỪ CHỐI">
+                Từ chối
+              </option>
+            </select>
+
+            <!-- TỪ KHÓA -->
+            <label for="logTuKhoa">
+              Tìm kiếm
+            </label>
+
+            <div class="searchBox">
+              <span class="searchIcon">
+                ⌕
+              </span>
+
+              <input
+                id="logTuKhoa"
+                type="search"
+                placeholder="Mã, họ tên, số văn bản, nội dung, nơi đến..."
+                oninput="henGioLocNhatKy()"
+              >
+            </div>
+
+            <!-- BỘ LỌC NÂNG CAO -->
+            <details class="advancedFilters">
+
+              <summary>
+                Bộ lọc nâng cao
+              </summary>
+
+              <div class="advancedBody">
+
+                <div class="twoColumns">
+
+                  <div>
+                    <label for="logTuNgay">
+                      Từ ngày gửi
+                    </label>
+
+                    <input
+                      id="logTuNgay"
+                      type="date"
+                      onchange="locNhatKyMoi()"
+                    >
+                  </div>
+
+                  <div>
+                    <label for="logDenNgay">
+                      Đến ngày gửi
+                    </label>
+
+                    <input
+                      id="logDenNgay"
+                      type="date"
+                      onchange="locNhatKyMoi()"
+                    >
+                  </div>
+
+                </div>
+
+                <label for="logPhongKhu">
+                  Phòng/Khu
+                </label>
+
+                <select
+                  id="logPhongKhu"
+                  onchange="locNhatKyMoi()"
+                >
+                  <option value="">
+                    Tất cả phòng/khu
+                  </option>
+
+                  <option>
+                    Ban Giám đốc
+                  </option>
+
+                  <option>
+                    Phòng Tổ chức - Hành chính
+                  </option>
+
+                  <option>
+                    Phòng Kế hoạch - Tài chính
+                  </option>
+
+                  <option>
+                    Phòng Công tác xã hội
+                  </option>
+
+                  <option>
+                    Phòng Y tế
+                  </option>
+
+                  <option>
+                    Khu I
+                  </option>
+
+                  <option>
+                    Khu II
+                  </option>
+
+                  <option>
+                    Khu III
+                  </option>
+                </select>
+
+                <label for="logSoVanBan">
+                  Số được cấp
+                </label>
+
+                <input
+                  id="logSoVanBan"
+                  inputmode="numeric"
+                  placeholder="Nhập số Công lệnh/Giấy giới thiệu"
+                  oninput="henGioLocNhatKy()"
+                >
+
+                <label for="logSapXep">
+                  Sắp xếp
+                </label>
+
+                <select
+                  id="logSapXep"
+                  onchange="locNhatKyMoi()"
+                >
+                  <option value="MOI_NHAT">
+                    Mới nhất trước
+                  </option>
+
+                  <option value="CU_NHAT">
+                    Cũ nhất trước
+                  </option>
+
+                  <option value="SO_TANG">
+                    Số văn bản tăng dần
+                  </option>
+
+                  <option value="SO_GIAM">
+                    Số văn bản giảm dần
+                  </option>
+
+                  <option value="TEN_AZ">
+                    Tên người đăng ký A–Z
+                  </option>
+                </select>
+
+              </div>
+            </details>
+
+            <!-- THAO TÁC BÁO CÁO -->
+            <div class="logActions">
+
+              <button
+                type="button"
+                class="primary"
+                onclick="locNhatKyMoi()"
+              >
+                Tìm kiếm
+              </button>
+
+              <button
+                type="button"
+                class="ghost"
+                onclick="datLaiBoLocNhatKy()"
+              >
+                Đặt lại
+              </button>
+
+              <button
+                type="button"
+                class="success"
+                onclick="xuatNhatKyCSV()"
+              >
+                Xuất CSV
+              </button>
+
+              <button
+                type="button"
+                class="secondary"
+                onclick="inBaoCaoNhatKy()"
+              >
+                In báo cáo
+              </button>
+
+            </div>
+
+            <!-- THỐNG KÊ -->
+            <div class="logSummary">
+
+              <div>
+                <strong id="logTong">
+                  0
+                </strong>
+
+                <span>
+                  Tổng hồ sơ
+                </span>
+              </div>
+
+              <div>
+                <strong id="logCongLenh">
+                  0
+                </strong>
+
+                <span>
+                  Công lệnh
+                </span>
+              </div>
+
+              <div>
+                <strong id="logGGT">
+                  0
+                </strong>
+
+                <span>
+                  Giấy giới thiệu
+                </span>
+              </div>
+
+              <div>
+                <strong id="logHoanTat">
+                  0
+                </strong>
+
+                <span>
+                  Hoàn tất
+                </span>
+              </div>
+
+            </div>
+
+            <div class="listCaption">
+              <span>
+                Kết quả nhật ký
+              </span>
+
+              <span id="logResultCount">
+                0 hồ sơ
+              </span>
+            </div>
+
+            <div id="logList"></div>
+
+          </section>
+        </section>
+
         <!-- CHI TIẾT -->
         <section
           id="adminDetailView"
@@ -1568,13 +2309,13 @@
               <button
                 class="backBtn"
                 type="button"
-                onclick="showAdminView('requests')"
+                onclick="quayLaiTuChiTiet()"
               >
                 ←
               </button>
 
               <div>
-                <h2 style="margin: 0">
+                <h2 style="margin:0">
                   Xử lý yêu cầu
                 </h2>
 
@@ -1594,6 +2335,7 @@
     </div>
   </main>
 
+  <!-- ĐIỀU HƯỚNG -->
   <nav
     id="adminBottomNav"
     class="bottomNav hidden"
@@ -1618,9 +2360,22 @@
       Yêu cầu
     </button>
 
+    <button
+      id="adminNavLog"
+      type="button"
+      onclick="showAdminView('log')"
+    >
+      <span>▦</span>
+      Nhật ký
+    </button>
+
   </nav>
 
   <script>
+    /* =========================================================
+       CẤU HÌNH
+       ========================================================= */
+
     const API_URL =
       "https://script.google.com/macros/s/AKfycbwu7jzAGZyxrJ5QEBikW0I6KSNUfwtxSEKPP2Ecajo3WL_KDXdytkEUX0qP9sHot2t4/exec";
 
@@ -1633,6 +2388,10 @@
     const ONESIGNAL_SAFARI_WEB_ID =
       "web.onesignal.auto.36c77d1a-9357-4d49-966b-0de749957ba2";
 
+    /* =========================================================
+       BIẾN HỆ THỐNG
+       ========================================================= */
+
     let currentUser =
       JSON.parse(
         localStorage.getItem(
@@ -1640,29 +2399,39 @@
         ) || "null"
       );
 
-    let requests =
-      [];
+    let requests = [];
 
-    let currentView =
-      "home";
+    let currentView = "home";
 
-    let currentDetailId =
-      "";
+    let previousViewBeforeDetail =
+      "requests";
 
-    let kindFilter =
-      "ALL";
+    let currentDetailId = "";
 
-    let stateFilter =
-      "ALL";
+    let kindFilter = "ALL";
 
-    let renderTimer =
-      null;
+    let stateFilter = "ALL";
 
-    let oneSignalInitPromise =
-      null;
+    let renderTimer = null;
+
+    let oneSignalInitPromise = null;
+
+    /* Nhật ký */
+
+    let logKind = "ALL";
+
+    let logPeriod = "ALL";
+
+    let logRenderTimer = null;
+
+    let logFilteredData = [];
 
     window.OneSignalDeferred =
       window.OneSignalDeferred || [];
+
+    /* =========================================================
+       TIỆN ÍCH CHUNG
+       ========================================================= */
 
     function $(id) {
       return document.getElementById(id);
@@ -1693,13 +2462,32 @@
       );
     }
 
+    function normalizeText(value) {
+      return String(value || "")
+        .normalize("NFD")
+        .replace(
+          /[\u0300-\u036f]/g,
+          ""
+        )
+        .replace(/đ/g, "d")
+        .replace(/Đ/g, "d")
+        .toLowerCase()
+        .trim()
+        .replace(/\s+/g, " ");
+    }
+
+    function normalizeStatus(status) {
+      return String(status || "")
+        .toUpperCase()
+        .trim();
+    }
+
     function showMsg(
       id,
       type,
       html
     ) {
-      const element =
-        $(id);
+      const element = $(id);
 
       if (!element) {
         return;
@@ -1713,19 +2501,37 @@
     }
 
     function clearMsg(id) {
-      const element =
-        $(id);
+      const element = $(id);
 
       if (!element) {
         return;
       }
 
-      element.className =
-        "msg";
-
-      element.innerHTML =
-        "";
+      element.className = "msg";
+      element.innerHTML = "";
     }
+
+    function getInitials(name) {
+      return (
+        String(name || "QT")
+          .trim()
+          .split(/\s+/)
+          .slice(-2)
+          .map(
+            function(value) {
+              return value
+                .charAt(0)
+                .toUpperCase();
+            }
+          )
+          .join("") ||
+        "QT"
+      );
+    }
+
+    /* =========================================================
+       JSONP / API
+       ========================================================= */
 
     function jsonp(params) {
       return new Promise(
@@ -1813,38 +2619,15 @@
           data || {}
         );
 
-      params.action =
-        action;
-
-      params.token =
-        API_TOKEN;
+      params.action = action;
+      params.token = API_TOKEN;
 
       return jsonp(params);
     }
 
-    function getInitials(name) {
-      return (
-        String(name || "QT")
-          .trim()
-          .split(/\s+/)
-          .slice(-2)
-          .map(
-            function(value) {
-              return value
-                .charAt(0)
-                .toUpperCase();
-            }
-          )
-          .join("") ||
-        "QT"
-      );
-    }
-
-    function normalizeStatus(status) {
-      return String(status || "")
-        .toUpperCase()
-        .trim();
-    }
+    /* =========================================================
+       XỬ LÝ LOẠI VĂN BẢN
+       ========================================================= */
 
     function getType(item) {
       const raw =
@@ -1883,6 +2666,16 @@
       );
     }
 
+    function pdfLink(item) {
+      return (
+        item.linkPDF ||
+        item.linkPdf ||
+        item.pdfUrl ||
+        item.linkFile ||
+        ""
+      );
+    }
+
     function destinationText(item) {
       if (
         getType(item) ===
@@ -1916,7 +2709,8 @@
         "GIAY_GIOI_THIEU"
       ) {
         return item.ngayHetHan
-          ? item.ngayHetHan
+          ? "Hết hạn: " +
+            item.ngayHetHan
           : "";
       }
 
@@ -1941,6 +2735,28 @@
         ""
       );
     }
+
+    function personName(item) {
+      return (
+        item.nguoiDangKy ||
+        item.hoTen ||
+        item.dongChi ||
+        ""
+      );
+    }
+
+    function departmentName(item) {
+      return (
+        item.phongKhu ||
+        item.phong ||
+        item.donVi ||
+        ""
+      );
+    }
+
+    /* =========================================================
+       TRẠNG THÁI
+       ========================================================= */
 
     function stepIndex(status) {
       const text =
@@ -2040,26 +2856,22 @@
           ? fullText
           : shortStatus(fullText);
 
-      let className =
-        "";
+      let className = "";
 
       if (
         fullText.includes("HOÀN TẤT")
       ) {
-        className =
-          "greenText";
+        className = "greenText";
       } else if (
         fullText.includes("TỪ CHỐI")
       ) {
-        className =
-          "redText";
+        className = "redText";
       } else if (
         fullText.includes("CHỜ") ||
         fullText.includes("BÀN GIAO") ||
         fullText.includes("BỔ SUNG")
       ) {
-        className =
-          "orangeText";
+        className = "orangeText";
       }
 
       return (
@@ -2084,49 +2896,34 @@
       }
 
       if (
-        status.includes(
-          "TIẾP NHẬN"
-        ) ||
-        status.includes(
-          "ĐANG XỬ LÝ"
-        ) ||
-        status.includes(
-          "BỔ SUNG"
-        )
+        status.includes("TIẾP NHẬN") ||
+        status.includes("ĐANG XỬ LÝ") ||
+        status.includes("BỔ SUNG")
       ) {
         return 1;
       }
 
       if (
-        status.includes(
-          "ĐÃ CẤP"
-        )
+        status.includes("ĐÃ CẤP")
       ) {
         return 2;
       }
 
       if (
-        status.includes(
-          "BÀN GIAO"
-        ) ||
-        status ===
-          "CHỜ NHẬN"
+        status.includes("BÀN GIAO") ||
+        status === "CHỜ NHẬN"
       ) {
         return 3;
       }
 
       if (
-        status.includes(
-          "TỪ CHỐI"
-        )
+        status.includes("TỪ CHỐI")
       ) {
         return 8;
       }
 
       if (
-        status.includes(
-          "HOÀN TẤT"
-        )
+        status.includes("HOÀN TẤT")
       ) {
         return 9;
       }
@@ -2146,6 +2943,140 @@
           }
         );
     }
+
+    /* =========================================================
+       NGÀY THÁNG
+       ========================================================= */
+
+    function parseDateSafe(value) {
+      if (!value) {
+        return null;
+      }
+
+      if (
+        value instanceof Date &&
+        !isNaN(value.getTime())
+      ) {
+        return value;
+      }
+
+      const text =
+        String(value).trim();
+
+      const vnMatch =
+        text.match(
+          /^(\d{1,2})\/(\d{1,2})\/(\d{4})(?:[ T](\d{1,2}):(\d{1,2})(?::(\d{1,2}))?)?/
+        );
+
+      if (vnMatch) {
+        return new Date(
+          Number(vnMatch[3]),
+          Number(vnMatch[2]) - 1,
+          Number(vnMatch[1]),
+          Number(vnMatch[4] || 0),
+          Number(vnMatch[5] || 0),
+          Number(vnMatch[6] || 0)
+        );
+      }
+
+      const isoMatch =
+        text.match(
+          /^(\d{4})-(\d{1,2})-(\d{1,2})(?:[T ](\d{1,2}):(\d{1,2})(?::(\d{1,2}))?)?/
+        );
+
+      if (isoMatch) {
+        return new Date(
+          Number(isoMatch[1]),
+          Number(isoMatch[2]) - 1,
+          Number(isoMatch[3]),
+          Number(isoMatch[4] || 0),
+          Number(isoMatch[5] || 0),
+          Number(isoMatch[6] || 0)
+        );
+      }
+
+      const date =
+        new Date(text);
+
+      return isNaN(date.getTime())
+        ? null
+        : date;
+    }
+
+    function getSentDate(item) {
+      return parseDateSafe(
+        item.thoiGianGui ||
+        item.ngayGui ||
+        item.ngayTao ||
+        item.thoiGianTao ||
+        ""
+      );
+    }
+
+    function dateToInput(date) {
+      if (!date) {
+        return "";
+      }
+
+      return (
+        date.getFullYear() +
+        "-" +
+        String(
+          date.getMonth() + 1
+        ).padStart(2, "0") +
+        "-" +
+        String(
+          date.getDate()
+        ).padStart(2, "0")
+      );
+    }
+
+    function startOfDay(date) {
+      const result =
+        new Date(date);
+
+      result.setHours(
+        0,
+        0,
+        0,
+        0
+      );
+
+      return result;
+    }
+
+    function endOfDay(date) {
+      const result =
+        new Date(date);
+
+      result.setHours(
+        23,
+        59,
+        59,
+        999
+      );
+
+      return result;
+    }
+
+    function fileDateText() {
+      const date =
+        new Date();
+
+      return (
+        date.getFullYear() +
+        String(
+          date.getMonth() + 1
+        ).padStart(2, "0") +
+        String(
+          date.getDate()
+        ).padStart(2, "0")
+      );
+    }
+
+    /* =========================================================
+       KHỞI TẠO / ĐĂNG NHẬP
+       ========================================================= */
 
     function init() {
       if (currentUser) {
@@ -2221,8 +3152,7 @@
         return;
       }
 
-      $("btnLogin").disabled =
-        true;
+      $("btnLogin").disabled = true;
 
       try {
         const response =
@@ -2238,7 +3168,8 @@
           showMsg(
             "loginMsg",
             "err",
-            "❌ " + response.message
+            "❌ " +
+            response.message
           );
 
           return;
@@ -2261,7 +3192,9 @@
 
         localStorage.setItem(
           "dv_admin_user",
-          JSON.stringify(currentUser)
+          JSON.stringify(
+            currentUser
+          )
         );
 
         openApp();
@@ -2269,7 +3202,8 @@
         showMsg(
           "loginMsg",
           "err",
-          "❌ " + error.message
+          "❌ " +
+          error.message
         );
       } finally {
         $("btnLogin").disabled =
@@ -2284,11 +3218,14 @@
         "dv_admin_user"
       );
 
-      currentUser =
-        null;
+      currentUser = null;
 
       location.reload();
     }
+
+    /* =========================================================
+       ĐIỀU HƯỚNG
+       ========================================================= */
 
     function showAdminView(
       name,
@@ -2300,12 +3237,12 @@
         scroll = true;
       }
 
-      currentView =
-        name;
+      currentView = name;
 
       [
         "adminHomeView",
         "adminRequestsView",
+        "adminLogView",
         "adminDetailView"
       ].forEach(
         function(id) {
@@ -2321,6 +3258,9 @@
 
         requests:
           "adminRequestsView",
+
+        log:
+          "adminLogView",
 
         detail:
           "adminDetailView"
@@ -2342,13 +3282,35 @@
         .toggle(
           "active",
           name === "requests" ||
-          name === "detail"
+          (
+            name === "detail" &&
+            previousViewBeforeDetail ===
+              "requests"
+          )
+        );
+
+      $("adminNavLog")
+        .classList
+        .toggle(
+          "active",
+          name === "log" ||
+          (
+            name === "detail" &&
+            previousViewBeforeDetail ===
+              "log"
+          )
         );
 
       if (
         name === "requests"
       ) {
         renderAdminList();
+      }
+
+      if (
+        name === "log"
+      ) {
+        locNhatKyMoi();
       }
 
       if (scroll) {
@@ -2365,14 +3327,34 @@
         currentDetailId
       ) {
         openAdminDetail(
-          currentDetailId
+          currentDetailId,
+          previousViewBeforeDetail
         );
+
+        return;
+      }
+
+      if (
+        currentView === "log"
+      ) {
+        taiNhatKy();
 
         return;
       }
 
       loadAll();
     }
+
+    function quayLaiTuChiTiet() {
+      showAdminView(
+        previousViewBeforeDetail ||
+        "requests"
+      );
+    }
+
+    /* =========================================================
+       TẢI DỮ LIỆU
+       ========================================================= */
 
     async function loadAll() {
       await Promise.all([
@@ -2418,6 +3400,11 @@
 
         $("dashboard").innerHTML =
           statHtml(
+            data.tong ?? 0,
+            "Tổng yêu cầu"
+          ) +
+
+          statHtml(
             data.moiGui ?? 0,
             "Mới gửi"
           ) +
@@ -2425,6 +3412,11 @@
           statHtml(
             data.dangXuLy ?? 0,
             "Đang xử lý"
+          ) +
+
+          statHtml(
+            data.daCap ?? 0,
+            "Đã cấp"
           ) +
 
           statHtml(
@@ -2448,12 +3440,16 @@
       value,
       label
     ) {
-      return `
-        <div class="stat">
-          <b>${esc(value)}</b>
-          <span>${esc(label)}</span>
-        </div>
-      `;
+      return (
+        '<div class="stat">' +
+          "<b>" +
+            esc(value) +
+          "</b>" +
+          "<span>" +
+            esc(label) +
+          "</span>" +
+        "</div>"
+      );
     }
 
     async function loadRequests(
@@ -2462,8 +3458,7 @@
       if (
         showLoading === undefined
       ) {
-        showLoading =
-          true;
+        showLoading = true;
       }
 
       if (showLoading) {
@@ -2481,11 +3476,9 @@
               maNguoiDung:
                 currentUser.maNguoiDung,
 
-              trangThai:
-                "",
+              trangThai: "",
 
-              tuKhoa:
-                ""
+              tuKhoa: ""
             }
           );
 
@@ -2506,6 +3499,8 @@
         renderAdminList();
 
         renderPriorityList();
+
+        locNhatKyMoi();
       } catch (error) {
         $("listBox").innerHTML =
           '<div class="empty">❌ ' +
@@ -2514,12 +3509,15 @@
       }
     }
 
+    /* =========================================================
+       DANH SÁCH YÊU CẦU
+       ========================================================= */
+
     function setKindFilter(
       filter,
       button
     ) {
-      kindFilter =
-        filter;
+      kindFilter = filter;
 
       document
         .querySelectorAll(
@@ -2544,8 +3542,7 @@
       filter,
       button
     ) {
-      stateFilter =
-        filter;
+      stateFilter = filter;
 
       document
         .querySelectorAll(
@@ -2580,19 +3577,17 @@
 
     function filterAdminRequests() {
       const keyword =
-        String(
-          $("tuKhoa")
-            ?.value || ""
-        )
-          .trim()
-          .toLowerCase();
+        normalizeText(
+          $("tuKhoa")?.value || ""
+        );
 
       return requests.filter(
         function(item) {
 
           if (
             kindFilter !== "ALL" &&
-            getType(item) !== kindFilter
+            getType(item) !==
+              kindFilter
           ) {
             return false;
           }
@@ -2611,42 +3606,35 @@
 
           if (
             stateFilter ===
-            "COMPLETED"
+            "COMPLETED" &&
+            !status.includes(
+              "HOÀN TẤT"
+            )
           ) {
-            if (
-              !status.includes(
-                "HOÀN TẤT"
-              )
-            ) {
-              return false;
-            }
+            return false;
           }
 
           if (
             stateFilter ===
-            "WAITING"
-          ) {
-            if (
-              !(
-                status.includes(
-                  "BÀN GIAO"
-                ) ||
-                status ===
-                  "CHỜ NHẬN" ||
-                status.includes(
-                  "ĐÃ CẤP"
-                )
+            "WAITING" &&
+            !(
+              status.includes(
+                "BÀN GIAO"
+              ) ||
+              status ===
+                "CHỜ NHẬN" ||
+              status.includes(
+                "ĐÃ CẤP"
               )
-            ) {
-              return false;
-            }
+            )
+          ) {
+            return false;
           }
 
           if (
             stateFilter ===
-            "PROCESSING"
-          ) {
-            if (
+            "PROCESSING" &&
+            (
               status ===
                 "MỚI GỬI" ||
               status.includes(
@@ -2657,24 +3645,23 @@
               ) ||
               status ===
                 "CHỜ NHẬN"
-            ) {
-              return false;
-            }
+            )
+          ) {
+            return false;
           }
 
           if (keyword) {
             const haystack =
-              [
-                item.maYeuCau,
-                item.nguoiDangKy,
-                item.hoTen,
-                item.phongKhu,
-                issuedNumber(item),
-                destinationText(item),
-                contentText(item)
-              ]
-                .join(" ")
-                .toLowerCase();
+              normalizeText(
+                [
+                  item.maYeuCau,
+                  personName(item),
+                  departmentName(item),
+                  issuedNumber(item),
+                  destinationText(item),
+                  contentText(item)
+                ].join(" ")
+              );
 
             if (
               !haystack.includes(
@@ -2708,8 +3695,7 @@
               .map(
                 function(item) {
                   return renderAdminCard(
-                    item,
-                    false
+                    item
                   );
                 }
               )
@@ -2749,8 +3735,7 @@
               .map(
                 function(item) {
                   return renderAdminCard(
-                    item,
-                    true
+                    item
                   );
                 }
               )
@@ -2762,10 +3747,7 @@
           );
     }
 
-    function renderAdminCard(
-      item,
-      compact
-    ) {
+    function renderAdminCard(item) {
       const number =
         issuedNumber(item);
 
@@ -2784,108 +3766,132 @@
           item.trangThai
         ) + 1;
 
-      return `
-        <article class="requestCard">
+      return (
+        '<article class="requestCard">' +
 
-          <div class="requestHead">
+          '<div class="requestHead">' +
 
-            <div>
-              <div class="requestCode">
-                ${esc(item.maYeuCau)}
-              </div>
+            "<div>" +
 
-              <div class="typeLine">
-                ${esc(typeLabel(item))}
-              </div>
-            </div>
+              '<div class="requestCode">' +
+                esc(item.maYeuCau) +
+              "</div>" +
 
-            ${statusPill(item.trangThai, false)}
+              '<div class="typeLine">' +
+                esc(typeLabel(item)) +
+              "</div>" +
 
-          </div>
+            "</div>" +
 
-          <div class="personLine">
-            ${esc(
-              item.nguoiDangKy ||
-              item.hoTen ||
+            statusPill(
+              item.trangThai,
+              false
+            ) +
+
+          "</div>" +
+
+          '<div class="personLine">' +
+            esc(
+              personName(item) ||
               "—"
-            )}
+            ) +
 
-            ${
-              item.phongKhu
-                ? `
-                  <span>
-                    · ${esc(item.phongKhu)}
-                  </span>
-                `
+            (
+              departmentName(item)
+                ? (
+                  "<span> · " +
+                    esc(
+                      departmentName(item)
+                    ) +
+                  "</span>"
+                )
                 : ""
-            }
-          </div>
+            ) +
+          "</div>" +
 
-          <div class="routeLine">
-            ${esc(destinationText(item) || "Chưa có nơi làm việc")}
-          </div>
+          '<div class="routeLine">' +
+            esc(
+              destinationText(item) ||
+              "Chưa có nơi làm việc"
+            ) +
+          "</div>" +
 
-          <div class="cardFacts">
+          '<div class="cardFacts">' +
 
-            <div class="fact">
-              <span>
-                Thời gian
-              </span>
+            '<div class="fact">' +
+              "<span>Thời gian</span>" +
+              "<strong>" +
+                esc(
+                  dateText(item) ||
+                  "—"
+                ) +
+              "</strong>" +
+            "</div>" +
 
-              <strong>
-                ${esc(dateText(item) || "—")}
-              </strong>
-            </div>
+            '<div class="fact">' +
+              "<span>Số được cấp</span>" +
+              "<strong>" +
+                esc(
+                  number ||
+                  "Chưa cấp"
+                ) +
+              "</strong>" +
+            "</div>" +
 
-            <div class="fact">
-              <span>
-                Số được cấp
-              </span>
+          "</div>" +
 
-              <strong>
-                ${esc(number || "Chưa cấp")}
-              </strong>
-            </div>
+          '<div class="cardFooter">' +
 
-          </div>
+            '<span class="stepText">' +
+              "Bước " +
+              step +
+              "/5" +
+            "</span>" +
 
-          <div class="cardFooter">
-
-            <span class="stepText">
-              Bước ${step}/5
-            </span>
-
-            <button
-              class="${
-                completed
-                  ? "smallAction viewOnly"
-                  : "primary smallAction"
-              }"
-              type="button"
-              onclick='openAdminDetail(${js(item.maYeuCau)})'
-            >
-              ${
+            "<button " +
+              'class="' +
+                (
+                  completed
+                    ? "smallAction viewOnly"
+                    : "primary smallAction"
+                ) +
+              '" ' +
+              'type="button" ' +
+              "onclick='openAdminDetail(" +
+                js(item.maYeuCau) +
+                ',"requests")\'' +
+            ">" +
+              (
                 completed
                   ? "Xem"
                   : "Xử lý"
-              }
-            </button>
+              ) +
+            "</button>" +
 
-          </div>
+          "</div>" +
 
-        </article>
-      `;
+        "</article>"
+      );
     }
 
+    /* =========================================================
+       CHI TIẾT
+       ========================================================= */
+
     function openAdminDetail(
-      maYeuCau
+      maYeuCau,
+      fromView
     ) {
       const item =
         requests.find(
           function(row) {
             return (
-              String(row.maYeuCau) ===
-              String(maYeuCau)
+              String(
+                row.maYeuCau
+              ) ===
+              String(
+                maYeuCau
+              )
             );
           }
         );
@@ -2898,6 +3904,11 @@
         return;
       }
 
+      previousViewBeforeDetail =
+        fromView ||
+        currentView ||
+        "requests";
+
       currentDetailId =
         maYeuCau;
 
@@ -2906,21 +3917,23 @@
       );
 
       $("adminDetailBox").innerHTML =
-        renderAdminDetail(
-          item
-        );
+        renderAdminDetail(item);
     }
 
     function detailField(
       label,
       value
     ) {
-      return `
-        <div class="detailField">
-          <span>${esc(label)}</span>
-          <span>${esc(value || "—")}</span>
-        </div>
-      `;
+      return (
+        '<div class="detailField">' +
+          "<span>" +
+            esc(label) +
+          "</span>" +
+          "<span>" +
+            esc(value || "—") +
+          "</span>" +
+        "</div>"
+      );
     }
 
     function renderAdminDetail(item) {
@@ -2931,16 +3944,12 @@
         issuedNumber(item);
 
       const pdf =
-        item.linkPDF ||
-        item.linkPdf ||
-        "";
+        pdfLink(item);
 
-      let information =
-        "";
+      let information = "";
 
       if (
-        type ===
-        "CONG_LENH"
+        type === "CONG_LENH"
       ) {
         information =
           detailField(
@@ -2987,124 +3996,132 @@
           );
       }
 
-      return `
-        <div class="detailHeader">
+      return (
+        '<div class="detailHeader">' +
 
-          <div>
-            <h3>
-              ${esc(item.maYeuCau)}
-            </h3>
+          "<div>" +
+            "<h3>" +
+              esc(item.maYeuCau) +
+            "</h3>" +
 
-            <div class="typeLine">
-              ${esc(typeLabel(item))}
-            </div>
-          </div>
+            '<div class="typeLine">' +
+              esc(typeLabel(item)) +
+            "</div>" +
+          "</div>" +
 
-          ${statusPill(item.trangThai, true)}
+          statusPill(
+            item.trangThai,
+            true
+          ) +
 
-        </div>
+        "</div>" +
 
-        <div class="detailSection">
+        '<div class="detailSection">' +
 
-          <h4>
-            Thông tin yêu cầu
-          </h4>
+          "<h4>Thông tin yêu cầu</h4>" +
 
-          <div class="detailGrid">
+          '<div class="detailGrid">' +
 
-            ${detailField(
+            detailField(
               "Người đăng ký",
               (
-                item.nguoiDangKy ||
-                item.hoTen ||
+                personName(item) ||
                 ""
               ) +
               (
-                item.phongKhu
-                  ? " · " +
-                    item.phongKhu
+                departmentName(item)
+                  ? (
+                    " · " +
+                    departmentName(item)
+                  )
                   : ""
               )
-            )}
+            ) +
 
-            ${information}
+            information +
 
-            ${
+            (
+              item.ghiChu
+                ? detailField(
+                    "Ghi chú",
+                    item.ghiChu
+                  )
+                : ""
+            ) +
+
+            (
               item.ghiChuXuLy
                 ? detailField(
                     "Ghi chú xử lý",
                     item.ghiChuXuLy
                   )
                 : ""
-            }
+            ) +
 
-          </div>
+          "</div>" +
 
-        </div>
+        "</div>" +
 
-        ${
+        (
           number ||
           pdf
-            ? `
-              <div class="detailSection">
+            ? (
+              '<div class="detailSection">' +
 
-                <h4>
-                  Kết quả cấp văn bản
-                </h4>
+                "<h4>Kết quả cấp văn bản</h4>" +
 
-                <div class="resultBox">
+                '<div class="resultBox">' +
 
-                  <div>
-                    <b>
-                      ${esc(typeLabel(item))}
-                    </b>
+                  "<div>" +
+                    "<b>" +
+                      esc(typeLabel(item)) +
+                    "</b>" +
 
-                    <div class="small">
-                      Số được cấp:
-                      ${esc(number || "Đang cập nhật")}
-                    </div>
-                  </div>
+                    '<div class="small">' +
+                      "Số được cấp: " +
+                      esc(
+                        number ||
+                        "Đang cập nhật"
+                      ) +
+                    "</div>" +
+                  "</div>" +
 
-                  ${
+                  (
                     pdf
-                      ? `
-                        <a
-                          class="linkbtn"
-                          target="_blank"
-                          href="${esc(pdf)}"
-                        >
-                          Mở PDF
-                        </a>
-                      `
+                      ? (
+                        '<a class="linkbtn" ' +
+                          'target="_blank" ' +
+                          'rel="noopener" ' +
+                          'href="' +
+                            esc(pdf) +
+                          '">' +
+                          "Mở PDF" +
+                        "</a>"
+                      )
                       : ""
-                  }
+                  ) +
 
-                </div>
+                "</div>" +
 
-              </div>
-            `
+              "</div>"
+            )
             : ""
-        }
+        ) +
 
-        <div class="detailSection">
+        '<div class="detailSection">' +
 
-          <h4>
-            Tiến trình xử lý
-          </h4>
+          "<h4>Tiến trình xử lý</h4>" +
 
-          ${renderTimeline(item)}
+          renderTimeline(item) +
 
-        </div>
+        "</div>" +
 
-        <div class="detailActions">
-          ${renderActions(item)}
-        </div>
+        '<div class="detailActions">' +
+          renderActions(item) +
+        "</div>" +
 
-        <div
-          id="detailMsg"
-          class="msg"
-        ></div>
-      `;
+        '<div id="detailMsg" class="msg"></div>'
+      );
     }
 
     function renderTimeline(item) {
@@ -3137,71 +4154,82 @@
           "HOÀN TẤT"
         );
 
-      return `
-        <div class="timeline">
+      return (
+        '<div class="timeline">' +
 
-          ${
-            labels.map(
-              function(label, index) {
+          labels.map(
+            function(
+              label,
+              index
+            ) {
+              const done =
+                index < currentIndex ||
+                (
+                  fullyCompleted &&
+                  index ===
+                    currentIndex
+                );
 
-                const done =
-                  index < currentIndex ||
-                  (
-                    fullyCompleted &&
-                    index === currentIndex
+              const active =
+                index === currentIndex &&
+                !fullyCompleted;
+
+              const className =
+                done
+                  ? "done"
+                  : (
+                    active
+                      ? "active"
+                      : ""
                   );
 
-                const active =
-                  index === currentIndex &&
-                  !fullyCompleted;
+              const dot =
+                index <= currentIndex
+                  ? "✓"
+                  : String(
+                      index + 1
+                    );
 
-                const className =
-                  done
-                    ? "done"
-                    : active
-                      ? "active"
-                      : "";
-
-                const dot =
-                  index <= currentIndex
-                    ? "✓"
-                    : String(index + 1);
-
-                const note =
-                  times[index] ||
-                  (
-                    active
-                      ? "Đang ở bước này"
-                      : done
+              const note =
+                times[index] ||
+                (
+                  active
+                    ? "Đang ở bước này"
+                    : (
+                      done
                         ? "Đã hoàn thành"
                         : "Chưa thực hiện"
-                  );
+                    )
+                );
 
-                return `
-                  <div class="timelineItem ${className}">
+              return (
+                '<div class="timelineItem ' +
+                  className +
+                '">' +
 
-                    <div class="timelineDot">
-                      ${dot}
-                    </div>
+                  '<div class="timelineDot">' +
+                    dot +
+                  "</div>" +
 
-                    <div>
-                      <div class="timelineTitle">
-                        ${esc(label)}
-                      </div>
+                  "<div>" +
 
-                      <div class="timelineNote">
-                        ${esc(note)}
-                      </div>
-                    </div>
+                    '<div class="timelineTitle">' +
+                      esc(label) +
+                    "</div>" +
 
-                  </div>
-                `;
-              }
-            ).join("")
-          }
+                    '<div class="timelineNote">' +
+                      esc(note) +
+                    "</div>" +
 
-        </div>
-      `;
+                  "</div>" +
+
+                "</div>"
+              );
+            }
+          ).join("") +
+
+        "</div>"
+      );
     }
 
     function renderActions(item) {
@@ -3214,6 +4242,18 @@
         getType(item);
 
       if (
+        previousViewBeforeDetail ===
+        "log"
+      ) {
+        return (
+          '<div class="small" ' +
+            'style="text-align:center;padding:8px">' +
+            "Chế độ Nhật ký chỉ tra cứu, không chỉnh sửa dữ liệu." +
+          "</div>"
+        );
+      }
+
+      if (
         status.includes(
           "HOÀN TẤT"
         ) ||
@@ -3221,80 +4261,75 @@
           "TỪ CHỐI"
         )
       ) {
-        return `
-          <div
-            class="small"
-            style="text-align:center;padding:8px"
-          >
-            Hồ sơ đã kết thúc, không còn thao tác.
-          </div>
-        `;
+        return (
+          '<div class="small" ' +
+            'style="text-align:center;padding:8px">' +
+            "Hồ sơ đã kết thúc, không còn thao tác." +
+          "</div>"
+        );
       }
 
       if (
-        status ===
-        "MỚI GỬI"
+        status === "MỚI GỬI"
       ) {
-        return `
-          <div class="actionGrid">
+        return (
+          '<div class="actionGrid">' +
 
-            ${actionButton(
+            actionButton(
               "Tiếp nhận",
               "primary",
               "updateStatus(" +
-              js(item.maYeuCau) +
-              ',"tiep_nhan")'
-            )}
+                js(item.maYeuCau) +
+                ',"tiep_nhan")'
+            ) +
 
-            ${actionButton(
+            actionButton(
               "Cấp & bàn giao",
               "success",
               "capDocument(" +
-              js(item.maYeuCau) +
-              ",true)"
-            )}
+                js(item.maYeuCau) +
+                ",true)"
+            ) +
 
-          </div>
+          "</div>" +
 
-          <details class="moreActions">
+          '<details class="moreActions">' +
 
-            <summary>
-              Thao tác khác ▾
-            </summary>
+            "<summary>" +
+              "Thao tác khác ▾" +
+            "</summary>" +
 
-            <div
-              class="actionGrid"
-              style="margin-top:8px"
-            >
+            '<div class="actionGrid" ' +
+              'style="margin-top:8px">' +
 
-              ${actionButton(
+              actionButton(
                 "Cấp nhanh",
                 "secondary",
                 "capDocument(" +
-                js(item.maYeuCau) +
-                ",false)"
-              )}
+                  js(item.maYeuCau) +
+                  ",false)"
+              ) +
 
-              ${actionButton(
+              actionButton(
                 "Yêu cầu bổ sung",
                 "warning",
                 "updateStatus(" +
-                js(item.maYeuCau) +
-                ',"bo_sung")'
-              )}
+                  js(item.maYeuCau) +
+                  ',"bo_sung")'
+              ) +
 
-              ${actionButton(
+              actionButton(
                 "Từ chối",
                 "danger",
                 "updateStatus(" +
-                js(item.maYeuCau) +
-                ',"tu_choi")'
-              )}
+                  js(item.maYeuCau) +
+                  ',"tu_choi")'
+              ) +
 
-            </div>
+            "</div>" +
 
-          </details>
-        `;
+          "</details>"
+        );
       }
 
       if (
@@ -3308,10 +4343,10 @@
           "BỔ SUNG"
         )
       ) {
-        return `
-          <div class="actionGrid">
+        return (
+          '<div class="actionGrid">' +
 
-            ${actionButton(
+            actionButton(
               (
                 type ===
                 "GIAY_GIOI_THIEU"
@@ -3320,20 +4355,20 @@
                 : "Cấp công lệnh",
               "secondary",
               "capDocument(" +
-              js(item.maYeuCau) +
-              ",false)"
-            )}
+                js(item.maYeuCau) +
+                ",false)"
+            ) +
 
-            ${actionButton(
+            actionButton(
               "Cấp & bàn giao",
               "success",
               "capDocument(" +
-              js(item.maYeuCau) +
-              ",true)"
-            )}
+                js(item.maYeuCau) +
+                ",true)"
+            ) +
 
-          </div>
-        `;
+          "</div>"
+        );
       }
 
       if (
@@ -3341,46 +4376,41 @@
           "ĐÃ CẤP"
         )
       ) {
-        return `
-          <div class="actionGrid">
+        return (
+          '<div class="actionGrid">' +
 
-            ${actionButton(
+            actionButton(
               "Xác nhận bàn giao",
               "primary",
               "updateStatus(" +
-              js(item.maYeuCau) +
-              ',"ban_giao")'
-            )}
+                js(item.maYeuCau) +
+                ',"ban_giao")'
+            ) +
 
-          </div>
-        `;
+          "</div>"
+        );
       }
 
       if (
         status.includes(
           "BÀN GIAO"
         ) ||
-        status ===
-          "CHỜ NHẬN"
+        status === "CHỜ NHẬN"
       ) {
-        return `
-          <div
-            class="small"
-            style="text-align:center;padding:8px"
-          >
-            Đang chờ người nhận xác nhận.
-          </div>
-        `;
+        return (
+          '<div class="small" ' +
+            'style="text-align:center;padding:8px">' +
+            "Đang chờ người nhận xác nhận." +
+          "</div>"
+        );
       }
 
-      return `
-        <div
-          class="small"
-          style="text-align:center;padding:8px"
-        >
-          Không có thao tác phù hợp.
-        </div>
-      `;
+      return (
+        '<div class="small" ' +
+          'style="text-align:center;padding:8px">' +
+          "Không có thao tác phù hợp." +
+        "</div>"
+      );
     }
 
     function actionButton(
@@ -3388,23 +4418,29 @@
       className,
       handler
     ) {
-      return `
-        <button
-          class="${className}"
-          type="button"
-          onclick='${handler}'
-        >
-          ${label}
-        </button>
-      `;
+      return (
+        "<button " +
+          'class="' +
+            className +
+          '" ' +
+          'type="button" ' +
+          "onclick='" +
+            handler +
+          "'>" +
+          esc(label) +
+        "</button>"
+      );
     }
+
+    /* =========================================================
+       CẬP NHẬT / CẤP VĂN BẢN
+       ========================================================= */
 
     async function updateStatus(
       maYeuCau,
       hanhDong
     ) {
-      let ghiChu =
-        "";
+      let ghiChu = "";
 
       if (
         [
@@ -3429,8 +4465,7 @@
           return;
         }
       } else if (
-        hanhDong ===
-        "ban_giao"
+        hanhDong === "ban_giao"
       ) {
         ghiChu =
           prompt(
@@ -3469,7 +4504,8 @@
         await loadAll();
 
         openAdminDetail(
-          maYeuCau
+          maYeuCau,
+          "requests"
         );
       } catch (error) {
         alert(
@@ -3486,8 +4522,12 @@
         requests.find(
           function(row) {
             return (
-              String(row.maYeuCau) ===
-              String(maYeuCau)
+              String(
+                row.maYeuCau
+              ) ===
+              String(
+                maYeuCau
+              )
             );
           }
         );
@@ -3562,7 +4602,8 @@
         await loadAll();
 
         openAdminDetail(
-          maYeuCau
+          maYeuCau,
+          "requests"
         );
       } catch (error) {
         alert(
@@ -3570,6 +4611,1242 @@
         );
       }
     }
+
+    /* =========================================================
+       NHẬT KÝ
+       ========================================================= */
+
+    async function taiNhatKy() {
+      $("logList").innerHTML =
+        '<div class="empty">' +
+        "Đang tải nhật ký..." +
+        "</div>";
+
+      await loadRequests(false);
+
+      locNhatKyMoi();
+    }
+
+    function chonThoiGianNhatKy(
+      period,
+      button
+    ) {
+      logPeriod = period;
+
+      document
+        .querySelectorAll(
+          "[data-log-period]"
+        )
+        .forEach(
+          function(element) {
+            element
+              .classList
+              .remove("active");
+          }
+        );
+
+      button
+        .classList
+        .add("active");
+
+      const today =
+        startOfDay(
+          new Date()
+        );
+
+      let fromDate = null;
+      let toDate = null;
+
+      if (
+        period === "TODAY"
+      ) {
+        fromDate =
+          new Date(today);
+
+        toDate =
+          new Date(today);
+      }
+
+      if (
+        period === "7_DAYS"
+      ) {
+        fromDate =
+          new Date(today);
+
+        fromDate.setDate(
+          fromDate.getDate() - 6
+        );
+
+        toDate =
+          new Date(today);
+      }
+
+      if (
+        period === "THIS_MONTH"
+      ) {
+        fromDate =
+          new Date(
+            today.getFullYear(),
+            today.getMonth(),
+            1
+          );
+
+        toDate =
+          new Date(today);
+      }
+
+      if (
+        period === "THIS_YEAR"
+      ) {
+        fromDate =
+          new Date(
+            today.getFullYear(),
+            0,
+            1
+          );
+
+        toDate =
+          new Date(today);
+      }
+
+      if (
+        period === "ALL"
+      ) {
+        $("logTuNgay").value = "";
+        $("logDenNgay").value = "";
+      } else {
+        $("logTuNgay").value =
+          dateToInput(fromDate);
+
+        $("logDenNgay").value =
+          dateToInput(toDate);
+      }
+
+      locNhatKyMoi();
+    }
+
+    function chonLoaiNhatKy(
+      kind,
+      button
+    ) {
+      logKind = kind;
+
+      document
+        .querySelectorAll(
+          "[data-log-kind]"
+        )
+        .forEach(
+          function(element) {
+            element
+              .classList
+              .remove("active");
+          }
+        );
+
+      button
+        .classList
+        .add("active");
+
+      locNhatKyMoi();
+    }
+
+    function henGioLocNhatKy() {
+      clearTimeout(
+        logRenderTimer
+      );
+
+      logRenderTimer =
+        setTimeout(
+          locNhatKyMoi,
+          220
+        );
+    }
+
+    function matchLogStatus(
+      itemStatus,
+      filterStatus
+    ) {
+      if (!filterStatus) {
+        return true;
+      }
+
+      const status =
+        normalizeStatus(
+          itemStatus
+        );
+
+      const filter =
+        normalizeStatus(
+          filterStatus
+        );
+
+      if (
+        filter === "MỚI GỬI"
+      ) {
+        return (
+          status === "MỚI GỬI" ||
+          status === "ĐÃ TẠO"
+        );
+      }
+
+      if (
+        filter.includes(
+          "TIẾP NHẬN"
+        )
+      ) {
+        return status.includes(
+          "TIẾP NHẬN"
+        );
+      }
+
+      if (
+        filter === "ĐÃ CẤP"
+      ) {
+        return (
+          status.includes(
+            "ĐÃ CẤP"
+          ) &&
+          !status.includes(
+            "BÀN GIAO"
+          )
+        );
+      }
+
+      if (
+        filter.includes(
+          "BÀN GIAO"
+        )
+      ) {
+        return (
+          status.includes(
+            "BÀN GIAO"
+          ) ||
+          status === "CHỜ NHẬN"
+        );
+      }
+
+      if (
+        filter.includes(
+          "HOÀN TẤT"
+        )
+      ) {
+        return status.includes(
+          "HOÀN TẤT"
+        );
+      }
+
+      if (
+        filter.includes(
+          "BỔ SUNG"
+        )
+      ) {
+        return status.includes(
+          "BỔ SUNG"
+        );
+      }
+
+      if (
+        filter.includes(
+          "TỪ CHỐI"
+        )
+      ) {
+        return status.includes(
+          "TỪ CHỐI"
+        );
+      }
+
+      return status.includes(
+        filter
+      );
+    }
+
+    function locNhatKyMoi() {
+      const statusFilter =
+        $("logTrangThai")
+          .value;
+
+      const fromValue =
+        $("logTuNgay")
+          .value;
+
+      const toValue =
+        $("logDenNgay")
+          .value;
+
+      const departmentFilter =
+        normalizeText(
+          $("logPhongKhu")
+            .value
+        );
+
+      const keyword =
+        normalizeText(
+          $("logTuKhoa")
+            .value
+        );
+
+      const numberFilter =
+        normalizeText(
+          $("logSoVanBan")
+            .value
+        );
+
+      const sortMode =
+        $("logSapXep")
+          .value;
+
+      const fromDate =
+        fromValue
+          ? startOfDay(
+              parseDateSafe(
+                fromValue
+              )
+            )
+          : null;
+
+      const toDate =
+        toValue
+          ? endOfDay(
+              parseDateSafe(
+                toValue
+              )
+            )
+          : null;
+
+      let data =
+        requests.filter(
+          function(item) {
+
+            if (
+              logKind !== "ALL" &&
+              getType(item) !==
+                logKind
+            ) {
+              return false;
+            }
+
+            if (
+              !matchLogStatus(
+                item.trangThai,
+                statusFilter
+              )
+            ) {
+              return false;
+            }
+
+            const sentDate =
+              getSentDate(item);
+
+            if (
+              fromDate &&
+              (
+                !sentDate ||
+                sentDate < fromDate
+              )
+            ) {
+              return false;
+            }
+
+            if (
+              toDate &&
+              (
+                !sentDate ||
+                sentDate > toDate
+              )
+            ) {
+              return false;
+            }
+
+            if (
+              departmentFilter &&
+              !normalizeText(
+                departmentName(item)
+              ).includes(
+                departmentFilter
+              )
+            ) {
+              return false;
+            }
+
+            if (
+              numberFilter &&
+              !normalizeText(
+                issuedNumber(item)
+              ).includes(
+                numberFilter
+              )
+            ) {
+              return false;
+            }
+
+            if (keyword) {
+              const haystack =
+                normalizeText(
+                  [
+                    item.maYeuCau,
+                    typeLabel(item),
+                    issuedNumber(item),
+                    personName(item),
+                    departmentName(item),
+                    destinationText(item),
+                    contentText(item),
+                    item.diTu,
+                    item.den,
+                    item.kinhGui,
+                    item.noiDen,
+                    item.phuongTien,
+                    item.trangThai,
+                    item.ghiChu,
+                    item.ghiChuXuLy
+                  ].join(" ")
+                );
+
+              if (
+                !haystack.includes(
+                  keyword
+                )
+              ) {
+                return false;
+              }
+            }
+
+            return true;
+          }
+        );
+
+      data =
+        sapXepNhatKy(
+          data,
+          sortMode
+        );
+
+      logFilteredData =
+        data;
+
+      capNhatThongKeNhatKy(
+        data
+      );
+
+      renderNhatKy(
+        data
+      );
+    }
+
+    function sapXepNhatKy(
+      data,
+      mode
+    ) {
+      const result =
+        data.slice();
+
+      if (
+        mode === "CU_NHAT"
+      ) {
+        result.sort(
+          function(a, b) {
+            return (
+              dateTimeValue(a) -
+              dateTimeValue(b)
+            );
+          }
+        );
+
+        return result;
+      }
+
+      if (
+        mode === "SO_TANG"
+      ) {
+        result.sort(
+          function(a, b) {
+            return (
+              documentNumberValue(
+                a,
+                true
+              ) -
+              documentNumberValue(
+                b,
+                true
+              )
+            );
+          }
+        );
+
+        return result;
+      }
+
+      if (
+        mode === "SO_GIAM"
+      ) {
+        result.sort(
+          function(a, b) {
+            return (
+              documentNumberValue(
+                b,
+                false
+              ) -
+              documentNumberValue(
+                a,
+                false
+              )
+            );
+          }
+        );
+
+        return result;
+      }
+
+      if (
+        mode === "TEN_AZ"
+      ) {
+        result.sort(
+          function(a, b) {
+            return personName(a)
+              .localeCompare(
+                personName(b),
+                "vi",
+                {
+                  sensitivity:
+                    "base"
+                }
+              );
+          }
+        );
+
+        return result;
+      }
+
+      result.sort(
+        function(a, b) {
+          return (
+            dateTimeValue(b) -
+            dateTimeValue(a)
+          );
+        }
+      );
+
+      return result;
+    }
+
+    function dateTimeValue(item) {
+      const date =
+        getSentDate(item);
+
+      return date
+        ? date.getTime()
+        : 0;
+    }
+
+    function documentNumberValue(
+      item,
+      missingLast
+    ) {
+      const raw =
+        String(
+          issuedNumber(item) || ""
+        );
+
+      const match =
+        raw.match(/\d+/);
+
+      if (!match) {
+        return missingLast
+          ? Number.MAX_SAFE_INTEGER
+          : -1;
+      }
+
+      return Number(match[0]);
+    }
+
+    function capNhatThongKeNhatKy(
+      data
+    ) {
+      const cl =
+        data.filter(
+          function(item) {
+            return (
+              getType(item) ===
+              "CONG_LENH"
+            );
+          }
+        ).length;
+
+      const ggt =
+        data.filter(
+          function(item) {
+            return (
+              getType(item) ===
+              "GIAY_GIOI_THIEU"
+            );
+          }
+        ).length;
+
+      const complete =
+        data.filter(
+          function(item) {
+            return normalizeStatus(
+              item.trangThai
+            ).includes(
+              "HOÀN TẤT"
+            );
+          }
+        ).length;
+
+      $("logTong").textContent =
+        data.length;
+
+      $("logCongLenh").textContent =
+        cl;
+
+      $("logGGT").textContent =
+        ggt;
+
+      $("logHoanTat").textContent =
+        complete;
+
+      $("logResultCount").textContent =
+        data.length +
+        " hồ sơ";
+    }
+
+    function renderNhatKy(data) {
+      $("logList").innerHTML =
+        data.length
+          ? data
+              .map(
+                function(item) {
+                  return renderLogCard(
+                    item
+                  );
+                }
+              )
+              .join("")
+          : (
+            '<div class="empty">' +
+            "Không có dữ liệu phù hợp với bộ lọc." +
+            "</div>"
+          );
+    }
+
+    function renderLogCard(item) {
+      const number =
+        issuedNumber(item);
+
+      const pdf =
+        pdfLink(item);
+
+      return (
+        '<article class="logCard">' +
+
+          '<div class="logCardHead">' +
+
+            "<div>" +
+              '<div class="logCode">' +
+                esc(item.maYeuCau) +
+              "</div>" +
+
+              '<div class="logType">' +
+                esc(typeLabel(item)) +
+                (
+                  number
+                    ? (
+                      " · Số " +
+                      esc(number)
+                    )
+                    : ""
+                ) +
+              "</div>" +
+            "</div>" +
+
+            statusPill(
+              item.trangThai,
+              false
+            ) +
+
+          "</div>" +
+
+          '<div class="logInfo">' +
+
+            "<div>" +
+              "<strong>Người đăng ký:</strong> " +
+              esc(
+                personName(item) ||
+                "—"
+              ) +
+              (
+                departmentName(item)
+                  ? (
+                    " · " +
+                    esc(
+                      departmentName(item)
+                    )
+                  )
+                  : ""
+              ) +
+            "</div>" +
+
+            "<div>" +
+              "<strong>Nơi làm việc:</strong> " +
+              esc(
+                destinationText(item) ||
+                "—"
+              ) +
+            "</div>" +
+
+            (
+              dateText(item)
+                ? (
+                  "<div>" +
+                    "<strong>Thời gian:</strong> " +
+                    esc(dateText(item)) +
+                  "</div>"
+                )
+                : ""
+            ) +
+
+            (
+              contentText(item)
+                ? (
+                  "<div>" +
+                    "<strong>Nội dung:</strong> " +
+                    esc(contentText(item)) +
+                  "</div>"
+                )
+                : ""
+            ) +
+
+            (
+              item.thoiGianGui
+                ? (
+                  "<div>" +
+                    "<strong>Gửi lúc:</strong> " +
+                    esc(item.thoiGianGui) +
+                  "</div>"
+                )
+                : ""
+            ) +
+
+          "</div>" +
+
+          '<details class="logTimelineDetails">' +
+
+            "<summary>" +
+              "Xem thời gian xử lý ▾" +
+            "</summary>" +
+
+            '<div class="logTimelineGrid">' +
+
+              "<div>" +
+                "<strong>Tiếp nhận:</strong> " +
+                esc(
+                  item.thoiGianTiepNhan ||
+                  "Chưa thực hiện"
+                ) +
+              "</div>" +
+
+              "<div>" +
+                "<strong>Cấp văn bản:</strong> " +
+                esc(
+                  item.thoiGianCap ||
+                  "Chưa thực hiện"
+                ) +
+              "</div>" +
+
+              "<div>" +
+                "<strong>Bàn giao:</strong> " +
+                esc(
+                  item.thoiGianBanGiao ||
+                  "Chưa thực hiện"
+                ) +
+              "</div>" +
+
+              "<div>" +
+                "<strong>Hoàn tất:</strong> " +
+                esc(
+                  item.thoiGianXacNhanNhan ||
+                  "Chưa thực hiện"
+                ) +
+              "</div>" +
+
+            "</div>" +
+
+          "</details>" +
+
+          '<div class="logCardActions">' +
+
+            "<button " +
+              'class="ghost" ' +
+              'type="button" ' +
+              "onclick='openAdminDetail(" +
+                js(item.maYeuCau) +
+                ',"log")\'' +
+            ">" +
+              "Xem chi tiết" +
+            "</button>" +
+
+            (
+              pdf
+                ? (
+                  '<a class="linkbtn" ' +
+                    'target="_blank" ' +
+                    'rel="noopener" ' +
+                    'href="' +
+                      esc(pdf) +
+                    '">' +
+                    "Mở PDF" +
+                  "</a>"
+                )
+                : ""
+            ) +
+
+          "</div>" +
+
+        "</article>"
+      );
+    }
+
+    function datLaiBoLocNhatKy() {
+      logKind = "ALL";
+      logPeriod = "ALL";
+
+      $("logTrangThai").value = "";
+      $("logTuNgay").value = "";
+      $("logDenNgay").value = "";
+      $("logPhongKhu").value = "";
+      $("logTuKhoa").value = "";
+      $("logSoVanBan").value = "";
+      $("logSapXep").value =
+        "MOI_NHAT";
+
+      document
+        .querySelectorAll(
+          "[data-log-period]"
+        )
+        .forEach(
+          function(element) {
+            element
+              .classList
+              .toggle(
+                "active",
+                element.dataset
+                  .logPeriod ===
+                  "ALL"
+              );
+          }
+        );
+
+      document
+        .querySelectorAll(
+          "[data-log-kind]"
+        )
+        .forEach(
+          function(element) {
+            element
+              .classList
+              .toggle(
+                "active",
+                element.dataset
+                  .logKind ===
+                  "ALL"
+              );
+          }
+        );
+
+      locNhatKyMoi();
+    }
+
+    /* =========================================================
+       XUẤT CSV
+       ========================================================= */
+
+    function csvCell(value) {
+      return (
+        '"' +
+        String(value ?? "")
+          .replace(
+            /"/g,
+            '""'
+          ) +
+        '"'
+      );
+    }
+
+    function xuatNhatKyCSV() {
+      const data =
+        logFilteredData || [];
+
+      if (!data.length) {
+        alert(
+          "Không có dữ liệu để xuất."
+        );
+
+        return;
+      }
+
+      const headers = [
+        "Mã yêu cầu",
+        "Loại văn bản",
+        "Số được cấp",
+        "Người đăng ký",
+        "Phòng/Khu",
+        "Đi từ",
+        "Đến/Nơi đến",
+        "Kính gửi",
+        "Nội dung",
+        "Ngày đi",
+        "Ngày về",
+        "Ngày hết hạn",
+        "Phương tiện",
+        "Trạng thái",
+        "Thời gian gửi",
+        "Thời gian tiếp nhận",
+        "Thời gian cấp",
+        "Thời gian bàn giao",
+        "Thời gian hoàn tất",
+        "Ghi chú",
+        "Ghi chú xử lý",
+        "Link PDF"
+      ];
+
+      const rows =
+        data.map(
+          function(item) {
+            return [
+              item.maYeuCau,
+              typeLabel(item),
+              issuedNumber(item),
+              personName(item),
+              departmentName(item),
+              item.diTu || "",
+              item.den ||
+                item.noiDen ||
+                item.noiDenGGT ||
+                "",
+              item.kinhGui || "",
+              contentText(item),
+              item.ngayDi || "",
+              item.ngayVe || "",
+              item.ngayHetHan || "",
+              item.phuongTien || "",
+              item.trangThai || "",
+              item.thoiGianGui || "",
+              item.thoiGianTiepNhan || "",
+              item.thoiGianCap || "",
+              item.thoiGianBanGiao || "",
+              item.thoiGianXacNhanNhan || "",
+              item.ghiChu || "",
+              item.ghiChuXuLy || "",
+              pdfLink(item)
+            ]
+              .map(csvCell)
+              .join(",");
+          }
+        );
+
+      const csv =
+        "\uFEFF" +
+        headers
+          .map(csvCell)
+          .join(",") +
+        "\n" +
+        rows.join("\n");
+
+      const blob =
+        new Blob(
+          [csv],
+          {
+            type:
+              "text/csv;charset=utf-8;"
+          }
+        );
+
+      const url =
+        URL.createObjectURL(blob);
+
+      const link =
+        document.createElement("a");
+
+      link.href = url;
+
+      link.download =
+        "nhat-ky-xu-ly-" +
+        fileDateText() +
+        ".csv";
+
+      document.body.appendChild(link);
+
+      link.click();
+
+      link.remove();
+
+      URL.revokeObjectURL(url);
+    }
+
+    /* =========================================================
+       IN BÁO CÁO
+       ========================================================= */
+
+    function inBaoCaoNhatKy() {
+      const data =
+        logFilteredData || [];
+
+      if (!data.length) {
+        alert(
+          "Không có dữ liệu để in."
+        );
+
+        return;
+      }
+
+      const printWindow =
+        window.open(
+          "",
+          "_blank"
+        );
+
+      if (!printWindow) {
+        alert(
+          "Trình duyệt đang chặn cửa sổ in. Vui lòng cho phép cửa sổ bật lên."
+        );
+
+        return;
+      }
+
+      const rows =
+        data.map(
+          function(item, index) {
+            return (
+              "<tr>" +
+                "<td>" +
+                  (index + 1) +
+                "</td>" +
+
+                "<td>" +
+                  esc(item.maYeuCau) +
+                "</td>" +
+
+                "<td>" +
+                  esc(typeLabel(item)) +
+                "</td>" +
+
+                "<td>" +
+                  esc(
+                    issuedNumber(item) ||
+                    ""
+                  ) +
+                "</td>" +
+
+                "<td>" +
+                  esc(personName(item)) +
+                "</td>" +
+
+                "<td>" +
+                  esc(
+                    departmentName(item)
+                  ) +
+                "</td>" +
+
+                "<td>" +
+                  esc(
+                    destinationText(item)
+                  ) +
+                "</td>" +
+
+                "<td>" +
+                  esc(
+                    contentText(item)
+                  ) +
+                "</td>" +
+
+                "<td>" +
+                  esc(
+                    item.trangThai ||
+                    ""
+                  ) +
+                "</td>" +
+
+                "<td>" +
+                  esc(
+                    item.thoiGianGui ||
+                    ""
+                  ) +
+                "</td>" +
+              "</tr>"
+            );
+          }
+        ).join("");
+
+      const html =
+        "<!DOCTYPE html>" +
+        '<html lang="vi">' +
+        "<head>" +
+          '<meta charset="UTF-8">' +
+          "<title>Báo cáo nhật ký xử lý</title>" +
+
+          "<style>" +
+            "@page{" +
+              "size:A4 landscape;" +
+              "margin:14mm;" +
+            "}" +
+
+            "body{" +
+              "font-family:'Times New Roman',serif;" +
+              "font-size:12px;" +
+              "color:#000;" +
+            "}" +
+
+            "h1{" +
+              "font-size:18px;" +
+              "text-align:center;" +
+              "margin:0 0 5px;" +
+              "text-transform:uppercase;" +
+            "}" +
+
+            ".subtitle{" +
+              "text-align:center;" +
+              "margin-bottom:15px;" +
+            "}" +
+
+            ".summary{" +
+              "margin:8px 0 12px;" +
+            "}" +
+
+            "table{" +
+              "width:100%;" +
+              "border-collapse:collapse;" +
+            "}" +
+
+            "th,td{" +
+              "border:1px solid #000;" +
+              "padding:5px;" +
+              "vertical-align:top;" +
+            "}" +
+
+            "th{" +
+              "text-align:center;" +
+              "font-weight:bold;" +
+              "background:#f1f1f1;" +
+            "}" +
+
+            ".footer{" +
+              "margin-top:20px;" +
+              "display:flex;" +
+              "justify-content:flex-end;" +
+            "}" +
+
+            ".sign{" +
+              "width:280px;" +
+              "text-align:center;" +
+            "}" +
+
+            "@media print{" +
+              ".noPrint{display:none;}" +
+            "}" +
+          "</style>" +
+        "</head>" +
+
+        "<body>" +
+
+          "<h1>" +
+            "BÁO CÁO NHẬT KÝ XỬ LÝ YÊU CẦU" +
+          "</h1>" +
+
+          '<div class="subtitle">' +
+            "Trung tâm Bảo trợ xã hội Tân Hiệp" +
+          "</div>" +
+
+          '<div class="summary">' +
+            "<b>Tổng số:</b> " +
+            data.length +
+            " hồ sơ; " +
+
+            "<b>Công lệnh:</b> " +
+            data.filter(
+              function(item) {
+                return (
+                  getType(item) ===
+                  "CONG_LENH"
+                );
+              }
+            ).length +
+            "; " +
+
+            "<b>Giấy giới thiệu:</b> " +
+            data.filter(
+              function(item) {
+                return (
+                  getType(item) ===
+                  "GIAY_GIOI_THIEU"
+                );
+              }
+            ).length +
+            "; " +
+
+            "<b>Hoàn tất:</b> " +
+            data.filter(
+              function(item) {
+                return normalizeStatus(
+                  item.trangThai
+                ).includes(
+                  "HOÀN TẤT"
+                );
+              }
+            ).length +
+          "</div>" +
+
+          "<table>" +
+            "<thead>" +
+              "<tr>" +
+                "<th>STT</th>" +
+                "<th>Mã yêu cầu</th>" +
+                "<th>Loại</th>" +
+                "<th>Số</th>" +
+                "<th>Người đăng ký</th>" +
+                "<th>Phòng/Khu</th>" +
+                "<th>Nơi làm việc</th>" +
+                "<th>Nội dung</th>" +
+                "<th>Trạng thái</th>" +
+                "<th>Thời gian gửi</th>" +
+              "</tr>" +
+            "</thead>" +
+
+            "<tbody>" +
+              rows +
+            "</tbody>" +
+          "</table>" +
+
+          '<div class="footer">' +
+            '<div class="sign">' +
+              "<b>NGƯỜI LẬP BÁO CÁO</b>" +
+              "<br><br><br><br>" +
+              esc(
+                currentUser?.hoTen ||
+                ""
+              ) +
+            "</div>" +
+          "</div>" +
+
+          "<script>" +
+            "window.onload=function(){" +
+              "window.print();" +
+            "};" +
+          "<\/script>" +
+
+        "</body>" +
+        "</html>";
+
+      printWindow.document.open();
+
+      printWindow.document.write(
+        html
+      );
+
+      printWindow.document.close();
+    }
+
+    /* =========================================================
+       ONESIGNAL
+       ========================================================= */
 
     function showPushBox() {
       if (
@@ -3609,7 +5886,9 @@
             window
               .OneSignalDeferred
               .push(
-                async function(OneSignal) {
+                async function(
+                  OneSignal
+                ) {
                   try {
                     const basePath =
                       location.pathname
@@ -3635,12 +5914,13 @@
                       },
 
                       notifyButton: {
-                        enable:
-                          false
+                        enable: false
                       }
                     });
 
-                    resolve(OneSignal);
+                    resolve(
+                      OneSignal
+                    );
                   } catch (error) {
                     console.warn(
                       "OneSignal init error",
@@ -3694,9 +5974,7 @@
           )
         );
 
-        if (
-          requestPermission
-        ) {
+        if (requestPermission) {
           await OneSignal
             .Notifications
             .requestPermission();
@@ -3747,8 +6025,10 @@
         alert(
           response.ok
             ? response.message
-            : "Lỗi: " +
+            : (
+              "Lỗi: " +
               response.message
+            )
         );
       } catch (error) {
         alert(
@@ -3767,6 +6047,10 @@
         }
       } catch (error) {}
     }
+
+    /* =========================================================
+       PHÍM ENTER
+       ========================================================= */
 
     document.addEventListener(
       "DOMContentLoaded",
@@ -3788,7 +6072,6 @@
                     "Enter"
                   ) {
                     event.preventDefault();
-
                     login();
                   }
                 }
