@@ -38,7 +38,7 @@
     href="manifest.json"
   >
 
-  <title>Cổng dịch vụ nội bộ - TEST</title>
+  <title>Quản trị văn bản - TEST</title>
 
   <style>
     @import url(
@@ -84,6 +84,7 @@
 
     body {
       margin: 0;
+
       background: var(--background);
       color: var(--ink);
 
@@ -157,12 +158,6 @@
         0 0 0 3px rgba(21, 88, 214, 0.12);
     }
 
-    input[readonly] {
-      background: #f3f6fa;
-      color: #344054;
-      font-weight: 700;
-    }
-
     label {
       display: block;
 
@@ -181,7 +176,7 @@
 
     .wrap {
       width: 100%;
-      max-width: 920px;
+      max-width: 1080px;
 
       margin: 0 auto;
     }
@@ -342,42 +337,6 @@
       color: #b42318;
     }
 
-    .summaryGrid {
-      display: grid;
-
-      grid-template-columns:
-        repeat(3, minmax(0, 1fr));
-
-      gap: 9px;
-
-      margin-top: 12px;
-    }
-
-    .summaryCard {
-      padding: 12px 8px;
-
-      border: 1px solid var(--line);
-      border-radius: 15px;
-
-      background: #ffffff;
-
-      text-align: center;
-    }
-
-    .summaryCard strong {
-      display: block;
-
-      color: #174ea6;
-
-      font-size: 22px;
-      line-height: 1.1;
-    }
-
-    .summaryCard span {
-      color: var(--muted);
-      font-size: 11px;
-    }
-
     .noticeBar {
       display: grid;
 
@@ -465,87 +424,6 @@
       margin-top: 13px;
     }
 
-    .viewIntro {
-      margin-bottom: 12px;
-    }
-
-    .viewIntro h2 {
-      margin: 0;
-
-      color: #174ea6;
-      font-size: 21px;
-    }
-
-    .viewIntro p {
-      margin:
-        4px 0
-        0;
-
-      color: var(--muted);
-      font-size: 12.5px;
-    }
-
-    .grid {
-      display: grid;
-      gap: 11px;
-    }
-
-    .two {
-      grid-template-columns: 1fr;
-    }
-
-    .docTabs {
-      display: grid;
-
-      grid-template-columns:
-        repeat(2, minmax(0, 1fr));
-
-      gap: 6px;
-
-      margin:
-        4px 0
-        14px;
-
-      padding: 5px;
-
-      border-radius: 14px;
-
-      background: #eef2f7;
-    }
-
-    .docTab {
-      min-height: 42px;
-
-      background: transparent;
-      color: #667085;
-    }
-
-    .docTab.active {
-      background: #ffffff;
-      color: #174ea6;
-
-      box-shadow:
-        0 2px 8px
-        rgba(15, 34, 65, 0.08);
-    }
-
-    .otherInput {
-      margin-top: 8px;
-    }
-
-    .backendNote {
-      margin-top: 10px;
-      padding: 10px 12px;
-
-      border: 1px solid #f6d79b;
-      border-radius: 12px;
-
-      background: #fff8e8;
-      color: #8d4b00;
-
-      font-size: 12px;
-    }
-
     .msg {
       display: none;
 
@@ -576,15 +454,6 @@
       color: #b42318;
     }
 
-    .msg.info {
-      display: block;
-
-      border: 1px solid #b2ddff;
-
-      background: #eff8ff;
-      color: #175cd3;
-    }
-
     .empty {
       padding: 22px;
 
@@ -594,6 +463,38 @@
       color: var(--muted);
 
       text-align: center;
+    }
+
+    .stats {
+      display: grid;
+
+      grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+      gap: 9px;
+    }
+
+    .stat {
+      padding: 12px;
+
+      border: 1px solid var(--line);
+      border-radius: 15px;
+
+      background: #f8fafc;
+    }
+
+    .stat b {
+      display: block;
+
+      color: #174ea6;
+
+      font-size: 23px;
+      line-height: 1.1;
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-size: 11px;
     }
 
     .filterBlock {
@@ -700,7 +601,27 @@
       padding-left: 38px;
     }
 
-    #myList {
+    .listCaption {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+
+      margin:
+        4px 0
+        8px;
+
+      color: #475467;
+
+      font-size: 11px;
+      font-weight: 700;
+
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+
+    #listBox,
+    #priorityList {
       padding-bottom: 22px;
     }
 
@@ -782,14 +703,25 @@
       color: #b42318;
     }
 
-    .compactInfo {
-      display: grid;
-      gap: 7px;
-
+    .personLine {
       margin-top: 11px;
+
+      color: #344054;
+
+      font-size: 13px;
+      font-weight: 700;
+
+      overflow-wrap: anywhere;
     }
 
-    .compactLine {
+    .personLine span {
+      color: #667085;
+      font-weight: 500;
+    }
+
+    .routeLine {
+      margin-top: 6px;
+
       color: #475467;
 
       font-size: 13px;
@@ -798,58 +730,65 @@
       overflow-wrap: anywhere;
     }
 
-    .compactLine strong {
-      color: #344054;
-      font-weight: 700;
-    }
-
-    .compactBottom {
+    .cardFacts {
       display: grid;
 
       grid-template-columns:
         minmax(0, 1fr)
-        auto;
+        minmax(0, 1fr);
 
-      align-items: end;
-      gap: 10px;
+      gap: 8px;
 
-      margin-top: 12px;
+      margin-top: 10px;
     }
 
-    .miniProgress {
-      display: grid;
-      gap: 5px;
+    .fact {
+      padding: 9px 10px;
+
+      border-radius: 11px;
+
+      background: #f1f5f9;
     }
 
-    .miniProgressLabel {
-      color: #667085;
-      font-size: 10.5px;
-      font-weight: 700;
-    }
-
-    .miniProgressTrack {
-      height: 5px;
-
-      overflow: hidden;
-
-      border-radius: 999px;
-
-      background: #dce5f1;
-    }
-
-    .miniProgressTrack span {
+    .fact span {
       display: block;
 
-      height: 100%;
+      color: #667085;
 
-      border-radius: 999px;
+      font-size: 9.5px;
+      font-weight: 700;
 
-      background:
-        linear-gradient(
-          90deg,
-          #1558d6,
-          #18a96b
-        );
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+
+    .fact strong {
+      display: block;
+
+      margin-top: 2px;
+
+      color: #344054;
+
+      font-size: 12px;
+      font-weight: 700;
+
+      overflow-wrap: anywhere;
+    }
+
+    .cardFooter {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+
+      margin-top: 11px;
+    }
+
+    .stepText {
+      color: #667085;
+
+      font-size: 11px;
+      font-weight: 700;
     }
 
     .smallAction {
@@ -859,6 +798,11 @@
       padding:
         7px
         13px;
+    }
+
+    .smallAction.viewOnly {
+      background: #eef2f7;
+      color: #344054;
     }
 
     .detailTop {
@@ -897,6 +841,7 @@
       margin: 0;
 
       font-size: 17px;
+
       overflow-wrap: anywhere;
     }
 
@@ -1069,20 +1014,72 @@
       font-size: 12px;
     }
 
-    .check {
-      display: flex;
-      align-items: flex-start;
-      gap: 9px;
+    .detailActions {
+      position: sticky;
+      z-index: 20;
 
-      margin-top: 11px;
+      bottom:
+        calc(
+          72px +
+          var(--safe-bottom)
+        );
+
+      margin-top: 12px;
+      padding: 10px;
+
+      border: 1px solid var(--line);
+      border-radius: 15px;
+
+      background:
+        rgba(255, 255, 255, 0.97);
+
+      box-shadow:
+        0 -4px 18px
+        rgba(15, 34, 65, 0.07);
+
+      backdrop-filter: blur(10px);
     }
 
-    .check input {
-      width: 19px;
-      height: 19px;
-      min-height: 19px;
+    .actionGrid {
+      display: grid;
 
-      flex: 0 0 auto;
+      grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+      gap: 8px;
+    }
+
+    .actionGrid button {
+      width: 100%;
+
+      padding:
+        9px
+        8px;
+
+      font-size: 12px;
+    }
+
+    .moreActions {
+      margin-top: 8px;
+      padding-top: 8px;
+
+      border-top:
+        1px dashed
+        var(--line);
+    }
+
+    .moreActions summary {
+      color: #475467;
+
+      font-size: 12px;
+      font-weight: 700;
+
+      cursor: pointer;
+      list-style: none;
+    }
+
+    .moreActions summary::-webkit-details-marker {
+      display: none;
     }
 
     .bottomNav {
@@ -1096,7 +1093,7 @@
       display: grid;
 
       grid-template-columns:
-        repeat(3, minmax(0, 1fr));
+        repeat(2, minmax(0, 1fr));
 
       gap: 5px;
 
@@ -1163,20 +1160,13 @@
         padding: 20px;
       }
 
-      .two {
+      .stats {
         grid-template-columns:
-          repeat(2, minmax(0, 1fr));
+          repeat(4, minmax(0, 1fr));
       }
 
       .bottomNav {
         display: none;
-      }
-
-      .summaryGrid {
-        grid-template-columns:
-          repeat(3, 180px);
-
-        justify-content: start;
       }
 
       .detailGrid {
@@ -1188,6 +1178,15 @@
         grid-template-columns:
           130px
           minmax(0, 1fr);
+      }
+
+      .detailActions {
+        bottom: 20px;
+      }
+
+      .actionGrid {
+        grid-template-columns:
+          repeat(3, minmax(0, 1fr));
       }
     }
 
@@ -1223,16 +1222,16 @@
 
       <header class="appHeader">
         <div class="appLogo">
-          📄
+          🗂️
         </div>
 
         <div>
           <h1>
-            Cổng dịch vụ nội bộ
+            Quản trị văn bản
           </h1>
 
           <p>
-            Đăng ký văn bản · Theo dõi tiến độ · Xác nhận đã nhận
+            Tiếp nhận · Cấp số · Bàn giao · Theo dõi hoàn tất
           </p>
         </div>
       </header>
@@ -1243,7 +1242,7 @@
       >
         <div class="sectionHead">
           <h2>
-            Đăng nhập
+            Đăng nhập quản trị
           </h2>
         </div>
 
@@ -1251,7 +1250,7 @@
           class="small"
           style="margin-bottom: 10px"
         >
-          Sử dụng họ tên và mã PIN đã được cấp.
+          Chỉ tài khoản Phòng Tổ chức mới được truy cập.
         </div>
 
         <label for="loginName">
@@ -1299,10 +1298,10 @@
         <section class="card userBar">
 
           <div
-            id="userAvatar"
+            id="adminAvatar"
             class="avatar"
           >
-            VC
+            QT
           </div>
 
           <div>
@@ -1342,45 +1341,11 @@
           </div>
         </section>
 
-        <!-- TRANG CHỦ -->
-        <section id="homeView">
-
-          <section class="summaryGrid">
-
-            <div class="summaryCard">
-              <strong id="sumTotal">
-                0
-              </strong>
-
-              <span>
-                Tổng hồ sơ
-              </span>
-            </div>
-
-            <div class="summaryCard">
-              <strong id="sumProcessing">
-                0
-              </strong>
-
-              <span>
-                Đang xử lý
-              </span>
-            </div>
-
-            <div class="summaryCard">
-              <strong id="sumCompleted">
-                0
-              </strong>
-
-              <span>
-                Hoàn tất
-              </span>
-            </div>
-
-          </section>
+        <!-- TỔNG QUAN -->
+        <section id="adminHomeView">
 
           <section
-            id="pushSection"
+            id="adminPushSection"
             class="noticeBar hidden"
           >
             <div class="noticeIcon">
@@ -1389,11 +1354,11 @@
 
             <div>
               <b>
-                Thông báo điện thoại
+                Thông báo quản trị
               </b>
 
               <div class="small">
-                Nhận thông báo khi hồ sơ thay đổi.
+                Nhận thông báo khi có yêu cầu mới.
               </div>
             </div>
 
@@ -1409,296 +1374,62 @@
 
             <div class="sectionHead">
               <h2>
-                Hồ sơ gần nhất
+                Tổng quan
+              </h2>
+
+              <span
+                id="totalCaption"
+                class="small"
+              >
+                Tổng: 0 hồ sơ
+              </span>
+            </div>
+
+            <div
+              id="dashboard"
+              class="stats"
+            ></div>
+
+          </section>
+
+          <section class="card">
+
+            <div class="sectionHead">
+              <h2>
+                Cần xử lý
               </h2>
 
               <button
                 class="ghost"
                 type="button"
-                onclick="showView('records')"
+                onclick="showAdminView('requests')"
               >
                 Xem tất cả
               </button>
             </div>
 
-            <div id="latestRecord"></div>
+            <div id="priorityList"></div>
 
           </section>
         </section>
 
-        <!-- GỬI YÊU CẦU -->
+        <!-- DANH SÁCH -->
         <section
-          id="requestView"
-          class="hidden"
-        >
-          <section class="card">
-
-            <div class="viewIntro">
-              <h2>
-                Gửi yêu cầu
-              </h2>
-
-              <p>
-                Chọn đúng loại văn bản và nhập đầy đủ thông tin.
-              </p>
-            </div>
-
-            <div class="docTabs">
-
-              <button
-                id="tabCL"
-                class="docTab active"
-                type="button"
-                onclick="setRequestType('CONG_LENH')"
-              >
-                Công lệnh
-              </button>
-
-              <button
-                id="tabGGT"
-                class="docTab"
-                type="button"
-                onclick="setRequestType('GIAY_GIOI_THIEU')"
-              >
-                Giấy giới thiệu
-              </button>
-
-            </div>
-
-            <!-- CÔNG LỆNH -->
-            <div id="formCL">
-
-              <label for="diTu">
-                Đi từ
-              </label>
-
-              <input
-                id="diTu"
-                value="TTBTXH Tân Hiệp"
-                readonly
-              >
-
-              <label for="den">
-                Đến
-              </label>
-
-              <select
-                id="den"
-                onchange="toggleOtherInput('den','denKhac')"
-              >
-                <option value="">
-                  -- Chọn nơi đến --
-                </option>
-
-                <option value="TTYT KV Bình Long">
-                  TTYT KV Bình Long
-                </option>
-
-                <option value="Bệnh viện ĐK Bình Phước">
-                  Bệnh viện ĐK Bình Phước
-                </option>
-
-                <option value="Bệnh viện ĐK Bình Dương">
-                  Bệnh viện ĐK Bình Dương
-                </option>
-
-                <option value="Bệnh viện Chợ Rẫy">
-                  Bệnh viện Chợ Rẫy
-                </option>
-
-                <option value="KHAC">
-                  Khác
-                </option>
-              </select>
-
-              <input
-                id="denKhac"
-                class="hidden otherInput"
-                placeholder="Nhập nơi đến cụ thể"
-              >
-
-              <label for="noiDungCL">
-                Nội dung công tác
-              </label>
-
-              <select
-                id="noiDungCL"
-                onchange="toggleOtherInput('noiDungCL','noiDungCLKhac')"
-              >
-                <option value="">
-                  -- Chọn nội dung công tác --
-                </option>
-
-                <option value="Nuôi bệnh">
-                  Nuôi bệnh
-                </option>
-
-                <option value="Chuyển viện">
-                  Chuyển viện
-                </option>
-
-                <option value="Rước bệnh nhân">
-                  Rước bệnh nhân
-                </option>
-
-                <option value="KHAC">
-                  Khác
-                </option>
-              </select>
-
-              <input
-                id="noiDungCLKhac"
-                class="hidden otherInput"
-                placeholder="Nhập nội dung công tác cụ thể"
-              >
-
-              <div class="grid two">
-
-                <div>
-                  <label for="ngayDi">
-                    Ngày đi
-                  </label>
-
-                  <input
-                    id="ngayDi"
-                    type="date"
-                  >
-                </div>
-
-                <div>
-                  <label for="ngayVe">
-                    Ngày về
-                  </label>
-
-                  <input
-                    id="ngayVe"
-                    type="date"
-                  >
-                </div>
-
-              </div>
-
-              <label for="phuongTien">
-                Phương tiện
-              </label>
-
-              <select id="phuongTien">
-
-                <option value="">
-                  -- Chọn phương tiện --
-                </option>
-
-                <option value="Xe 16 chỗ 51A-123">
-                  Xe 16 chỗ 51A-123
-                </option>
-
-                <option value="Xe cứu thương 51B-123">
-                  Xe cứu thương 51B-123
-                </option>
-
-                <option value="Xe 7 chỗ 51C-123">
-                  Xe 7 chỗ 51C-123
-                </option>
-
-                <option value="Xe tự túc">
-                  Xe tự túc
-                </option>
-
-              </select>
-            </div>
-
-            <!-- GIẤY GIỚI THIỆU -->
-            <div
-              id="formGGT"
-              class="hidden"
-            >
-
-              <label for="kinhGui">
-                Kính gửi
-              </label>
-
-              <input
-                id="kinhGui"
-                placeholder="Tên cơ quan, đơn vị"
-              >
-
-              <label for="noiDenGGT">
-                Nơi đến
-              </label>
-
-              <input
-                id="noiDenGGT"
-                placeholder="Địa điểm làm việc"
-              >
-
-              <label for="noiDungGGT">
-                Nội dung giới thiệu
-              </label>
-
-              <textarea
-                id="noiDungGGT"
-                placeholder="Nội dung liên hệ, làm việc, giải quyết công việc..."
-              ></textarea>
-
-              <label for="ngayHetHan">
-                Ngày hết hạn
-              </label>
-
-              <input
-                id="ngayHetHan"
-                type="date"
-              >
-
-              <div class="backendNote">
-                Phần giao diện Giấy giới thiệu đã hoàn chỉnh.
-                Chức năng gửi và cấp sẽ hoạt động sau khi cập nhật Code.gs.
-              </div>
-
-            </div>
-
-            <label for="ghiChu">
-              Ghi chú
-            </label>
-
-            <textarea
-              id="ghiChu"
-              placeholder="Nội dung cần lưu ý nếu có"
-            ></textarea>
-
-            <button
-              id="btnSend"
-              type="button"
-              class="primary fullBtn"
-              onclick="sendRequest()"
-            >
-              GỬI YÊU CẦU
-            </button>
-
-            <div
-              id="newMsg"
-              class="msg"
-            ></div>
-
-          </section>
-        </section>
-
-        <!-- HỒ SƠ -->
-        <section
-          id="recordsView"
+          id="adminRequestsView"
           class="hidden"
         >
           <section class="card">
 
             <div class="sectionHead">
               <h2>
-                Hồ sơ của tôi
+                Danh sách yêu cầu
               </h2>
 
               <button
                 class="iconBtn"
                 type="button"
-                onclick="loadMyRequests()"
-                aria-label="Làm mới hồ sơ"
+                onclick="loadRequests()"
+                aria-label="Làm mới danh sách"
               >
                 ↻
               </button>
@@ -1760,6 +1491,15 @@
                 <button
                   class="chip"
                   type="button"
+                  data-state="NEW"
+                  onclick="setStateFilter('NEW',this)"
+                >
+                  Mới gửi
+                </button>
+
+                <button
+                  class="chip"
+                  type="button"
                   data-state="PROCESSING"
                   onclick="setStateFilter('PROCESSING',this)"
                 >
@@ -1788,25 +1528,37 @@
             </div>
 
             <div class="searchBox">
+
               <span class="searchIcon">
                 ⌕
               </span>
 
               <input
-                id="recordKeyword"
-                placeholder="Tìm mã yêu cầu hoặc số được cấp"
-                oninput="scheduleRecordRender()"
+                id="tuKhoa"
+                placeholder="Tìm mã, họ tên hoặc số được cấp"
+                oninput="scheduleRender()"
               >
+
             </div>
 
-            <div id="myList"></div>
+            <div class="listCaption">
+              <span>
+                Kết quả
+              </span>
+
+              <span id="resultCount">
+                0 hồ sơ
+              </span>
+            </div>
+
+            <div id="listBox"></div>
 
           </section>
         </section>
 
         <!-- CHI TIẾT -->
         <section
-          id="detailView"
+          id="adminDetailView"
           class="hidden"
         >
           <section class="card">
@@ -1816,24 +1568,24 @@
               <button
                 class="backBtn"
                 type="button"
-                onclick="showView('records')"
+                onclick="showAdminView('requests')"
               >
                 ←
               </button>
 
               <div>
                 <h2 style="margin: 0">
-                  Chi tiết hồ sơ
+                  Xử lý yêu cầu
                 </h2>
 
                 <div class="small">
-                  Thông tin, kết quả và tiến trình xử lý
+                  Kiểm tra thông tin và thực hiện bước phù hợp
                 </div>
               </div>
 
             </div>
 
-            <div id="detailBox"></div>
+            <div id="adminDetailBox"></div>
 
           </section>
         </section>
@@ -1843,36 +1595,27 @@
   </main>
 
   <nav
-    id="userBottomNav"
+    id="adminBottomNav"
     class="bottomNav hidden"
   >
 
     <button
-      id="navHome"
+      id="adminNavHome"
       class="active"
       type="button"
-      onclick="showView('home')"
+      onclick="showAdminView('home')"
     >
       <span>⌂</span>
-      Trang chủ
+      Tổng quan
     </button>
 
     <button
-      id="navRequest"
+      id="adminNavRequests"
       type="button"
-      onclick="showView('request')"
-    >
-      <span>＋</span>
-      Gửi yêu cầu
-    </button>
-
-    <button
-      id="navRecords"
-      type="button"
-      onclick="showView('records')"
+      onclick="showAdminView('requests')"
     >
       <span>▤</span>
-      Hồ sơ
+      Yêu cầu
     </button>
 
   </nav>
@@ -1892,16 +1635,19 @@
 
     let currentUser =
       JSON.parse(
-        localStorage.getItem("dv_user") || "null"
+        localStorage.getItem(
+          "dv_admin_user"
+        ) || "null"
       );
 
-    let requests = [];
+    let requests =
+      [];
 
     let currentView =
       "home";
 
-    let requestType =
-      "CONG_LENH";
+    let currentDetailId =
+      "";
 
     let kindFilter =
       "ALL";
@@ -1909,7 +1655,7 @@
     let stateFilter =
       "ALL";
 
-    let recordRenderTimer =
+    let renderTimer =
       null;
 
     let oneSignalInitPromise =
@@ -2076,40 +1822,9 @@
       return jsonp(params);
     }
 
-    function todayValue() {
-      const date =
-        new Date();
-
-      return (
-        date.getFullYear() +
-        "-" +
-        String(
-          date.getMonth() + 1
-        ).padStart(2, "0") +
-        "-" +
-        String(
-          date.getDate()
-        ).padStart(2, "0")
-      );
-    }
-
-    function setToday() {
-      const value =
-        todayValue();
-
-      $("ngayDi").value =
-        value;
-
-      $("ngayVe").value =
-        value;
-
-      $("ngayHetHan").value =
-        value;
-    }
-
     function getInitials(name) {
       return (
-        String(name || "VC")
+        String(name || "QT")
           .trim()
           .split(/\s+/)
           .slice(-2)
@@ -2121,7 +1836,7 @@
             }
           )
           .join("") ||
-        "VC"
+        "QT"
       );
     }
 
@@ -2201,7 +1916,7 @@
         "GIAY_GIOI_THIEU"
       ) {
         return item.ngayHetHan
-          ? "Hết hạn: " + item.ngayHetHan
+          ? item.ngayHetHan
           : "";
       }
 
@@ -2356,9 +2071,83 @@
       );
     }
 
-    function init() {
-      setToday();
+    function priorityRank(item) {
+      const status =
+        normalizeStatus(
+          item.trangThai
+        );
 
+      if (
+        status === "MỚI GỬI"
+      ) {
+        return 0;
+      }
+
+      if (
+        status.includes(
+          "TIẾP NHẬN"
+        ) ||
+        status.includes(
+          "ĐANG XỬ LÝ"
+        ) ||
+        status.includes(
+          "BỔ SUNG"
+        )
+      ) {
+        return 1;
+      }
+
+      if (
+        status.includes(
+          "ĐÃ CẤP"
+        )
+      ) {
+        return 2;
+      }
+
+      if (
+        status.includes(
+          "BÀN GIAO"
+        ) ||
+        status ===
+          "CHỜ NHẬN"
+      ) {
+        return 3;
+      }
+
+      if (
+        status.includes(
+          "TỪ CHỐI"
+        )
+      ) {
+        return 8;
+      }
+
+      if (
+        status.includes(
+          "HOÀN TẤT"
+        )
+      ) {
+        return 9;
+      }
+
+      return 4;
+    }
+
+    function sortRequests(data) {
+      return data
+        .slice()
+        .sort(
+          function(a, b) {
+            return (
+              priorityRank(a) -
+              priorityRank(b)
+            );
+          }
+        );
+    }
+
+    function init() {
       if (currentUser) {
         openApp();
       }
@@ -2373,7 +2162,7 @@
         .classList
         .remove("hidden");
 
-      $("userBottomNav")
+      $("adminBottomNav")
         .classList
         .remove("hidden");
 
@@ -2389,19 +2178,19 @@
           .filter(Boolean)
           .join(" · ");
 
-      $("userAvatar").textContent =
+      $("adminAvatar").textContent =
         getInitials(
           currentUser.hoTen
         );
 
       showPushBox();
 
-      showView(
+      showAdminView(
         "home",
         false
       );
 
-      loadMyRequests(false);
+      loadAll();
 
       linkOneSignal(false);
     }
@@ -2455,11 +2244,23 @@
           return;
         }
 
+        if (
+          !response.user.quyenQuanTri
+        ) {
+          showMsg(
+            "loginMsg",
+            "err",
+            "❌ Tài khoản không có quyền quản trị."
+          );
+
+          return;
+        }
+
         currentUser =
           response.user;
 
         localStorage.setItem(
-          "dv_user",
+          "dv_admin_user",
           JSON.stringify(currentUser)
         );
 
@@ -2480,7 +2281,7 @@
       await logoutOneSignal();
 
       localStorage.removeItem(
-        "dv_user"
+        "dv_admin_user"
       );
 
       currentUser =
@@ -2489,7 +2290,7 @@
       location.reload();
     }
 
-    function showView(
+    function showAdminView(
       name,
       scroll
     ) {
@@ -2503,10 +2304,9 @@
         name;
 
       [
-        "homeView",
-        "requestView",
-        "recordsView",
-        "detailView"
+        "adminHomeView",
+        "adminRequestsView",
+        "adminDetailView"
       ].forEach(
         function(id) {
           $(id)
@@ -2516,57 +2316,39 @@
       );
 
       const map = {
-        home: "homeView",
-        request: "requestView",
-        records: "recordsView",
-        detail: "detailView"
+        home:
+          "adminHomeView",
+
+        requests:
+          "adminRequestsView",
+
+        detail:
+          "adminDetailView"
       };
 
       $(map[name])
         .classList
         .remove("hidden");
 
-      [
-        "navHome",
-        "navRequest",
-        "navRecords"
-      ].forEach(
-        function(id) {
-          $(id)
-            .classList
-            .remove("active");
-        }
-      );
+      $("adminNavHome")
+        .classList
+        .toggle(
+          "active",
+          name === "home"
+        );
+
+      $("adminNavRequests")
+        .classList
+        .toggle(
+          "active",
+          name === "requests" ||
+          name === "detail"
+        );
 
       if (
-        name === "home"
+        name === "requests"
       ) {
-        $("navHome")
-          .classList
-          .add("active");
-      }
-
-      if (
-        name === "request"
-      ) {
-        $("navRequest")
-          .classList
-          .add("active");
-      }
-
-      if (
-        name === "records" ||
-        name === "detail"
-      ) {
-        $("navRecords")
-          .classList
-          .add("active");
-      }
-
-      if (
-        name === "records"
-      ) {
-        renderRecords();
+        renderAdminList();
       }
 
       if (scroll) {
@@ -2579,325 +2361,102 @@
 
     function refreshCurrentView() {
       if (
-        currentView === "home" ||
-        currentView === "records"
-      ) {
-        loadMyRequests();
-
-        return;
-      }
-
-      if (
         currentView === "detail" &&
-        $("detailBox").dataset.id
+        currentDetailId
       ) {
-        viewDetail(
-          $("detailBox").dataset.id
+        openAdminDetail(
+          currentDetailId
         );
 
         return;
       }
 
-      setToday();
+      loadAll();
     }
 
-    function setRequestType(type) {
-      requestType =
-        type;
-
-      $("tabCL")
-        .classList
-        .toggle(
-          "active",
-          type === "CONG_LENH"
-        );
-
-      $("tabGGT")
-        .classList
-        .toggle(
-          "active",
-          type === "GIAY_GIOI_THIEU"
-        );
-
-      $("formCL")
-        .classList
-        .toggle(
-          "hidden",
-          type !== "CONG_LENH"
-        );
-
-      $("formGGT")
-        .classList
-        .toggle(
-          "hidden",
-          type !== "GIAY_GIOI_THIEU"
-        );
-
-      clearMsg("newMsg");
+    async function loadAll() {
+      await Promise.all([
+        loadDashboard(),
+        loadRequests(false)
+      ]);
     }
 
-    function toggleOtherInput(
-      selectId,
-      inputId
-    ) {
-      const select =
-        $(selectId);
-
-      const input =
-        $(inputId);
-
-      const show =
-        select.value === "KHAC";
-
-      input
-        .classList
-        .toggle(
-          "hidden",
-          !show
-        );
-
-      if (!show) {
-        input.value =
-          "";
-      } else {
-        setTimeout(
-          function() {
-            input.focus();
-          },
-          50
-        );
-      }
-    }
-
-    function getSelectValue(
-      selectId,
-      otherInputId
-    ) {
-      const selected =
-        $(selectId).value;
-
-      return (
-        selected === "KHAC"
-      )
-        ? $(otherInputId)
-            .value
-            .trim()
-        : selected.trim();
-    }
-
-    function clearForm() {
-      [
-        "den",
-        "noiDungCL",
-        "phuongTien",
-        "kinhGui",
-        "noiDenGGT",
-        "noiDungGGT",
-        "ghiChu"
-      ].forEach(
-        function(id) {
-          $(id).value =
-            "";
-        }
-      );
-
-      [
-        "denKhac",
-        "noiDungCLKhac"
-      ].forEach(
-        function(id) {
-          $(id).value =
-            "";
-
-          $(id)
-            .classList
-            .add("hidden");
-        }
-      );
-
-      $("diTu").value =
-        "TTBTXH Tân Hiệp";
-
-      setToday();
-    }
-
-    async function sendRequest() {
-      clearMsg("newMsg");
-
-      let action;
-      let payload;
-
-      if (
-        requestType ===
-        "CONG_LENH"
-      ) {
-        payload = {
-          maNguoiDung:
-            currentUser.maNguoiDung,
-
-          loaiGiay:
-            "CONG_LENH",
-
-          diTu:
-            $("diTu")
-              .value
-              .trim(),
-
-          den:
-            getSelectValue(
-              "den",
-              "denKhac"
-            ),
-
-          noiDung:
-            getSelectValue(
-              "noiDungCL",
-              "noiDungCLKhac"
-            ),
-
-          ngayDi:
-            $("ngayDi").value,
-
-          ngayVe:
-            $("ngayVe").value,
-
-          phuongTien:
-            $("phuongTien")
-              .value
-              .trim(),
-
-          ghiChu:
-            $("ghiChu")
-              .value
-              .trim()
-        };
-
-        if (
-          !payload.diTu ||
-          !payload.den ||
-          !payload.noiDung ||
-          !payload.ngayDi ||
-          !payload.ngayVe ||
-          !payload.phuongTien
-        ) {
-          showMsg(
-            "newMsg",
-            "err",
-            "❌ Vui lòng nhập đầy đủ thông tin Công lệnh."
-          );
-
-          return;
-        }
-
-        action =
-          "tao_yeu_cau";
-      } else {
-        payload = {
-          maNguoiDung:
-            currentUser.maNguoiDung,
-
-          loaiGiay:
-            "GIAY_GIOI_THIEU",
-
-          kinhGui:
-            $("kinhGui")
-              .value
-              .trim(),
-
-          noiDen:
-            $("noiDenGGT")
-              .value
-              .trim(),
-
-          noiDungGGT:
-            $("noiDungGGT")
-              .value
-              .trim(),
-
-          ngayHetHan:
-            $("ngayHetHan").value,
-
-          ghiChu:
-            $("ghiChu")
-              .value
-              .trim()
-        };
-
-        if (
-          !payload.kinhGui ||
-          !payload.noiDen ||
-          !payload.noiDungGGT ||
-          !payload.ngayHetHan
-        ) {
-          showMsg(
-            "newMsg",
-            "err",
-            "❌ Vui lòng nhập đầy đủ thông tin Giấy giới thiệu."
-          );
-
-          return;
-        }
-
-        action =
-          "tao_yeu_cau_gioi_thieu";
-      }
-
-      $("btnSend").disabled =
-        true;
-
-      $("btnSend").textContent =
-        "ĐANG GỬI...";
+    async function loadDashboard() {
+      $("dashboard").innerHTML =
+        '<div class="empty">' +
+        "Đang tải..." +
+        "</div>";
 
       try {
         const response =
           await api(
-            action,
-            payload
+            "admin_dashboard",
+            {
+              maNguoiDung:
+                currentUser.maNguoiDung
+            }
           );
 
         if (!response.ok) {
-          showMsg(
-            "newMsg",
-            "err",
-            "❌ " + response.message
-          );
+          $("dashboard").innerHTML =
+            '<div class="empty">❌ ' +
+            esc(response.message) +
+            "</div>";
 
           return;
         }
 
-        showMsg(
-          "newMsg",
-          "ok",
-          "✅ Đã gửi yêu cầu: <b>" +
-          esc(response.maYeuCau || "") +
-          "</b><br>" +
-          "<button " +
-          "class='secondary fullBtn' " +
-          "type='button' " +
-          "onclick='showView(\"records\")'>" +
-          "XEM HỒ SƠ" +
-          "</button>"
-        );
+        const data =
+          response.data || {};
 
-        clearForm();
+        $("totalCaption").textContent =
+          "Tổng: " +
+          String(
+            data.tong ?? 0
+          ) +
+          " hồ sơ";
 
-        await loadMyRequests(false);
+        $("dashboard").innerHTML =
+          statHtml(
+            data.moiGui ?? 0,
+            "Mới gửi"
+          ) +
+
+          statHtml(
+            data.dangXuLy ?? 0,
+            "Đang xử lý"
+          ) +
+
+          statHtml(
+            data.choNhan ?? 0,
+            "Chờ nhận"
+          ) +
+
+          statHtml(
+            data.hoanTat ?? 0,
+            "Hoàn tất"
+          );
       } catch (error) {
-        showMsg(
-          "newMsg",
-          "err",
-          "❌ " + error.message
-        );
-      } finally {
-        $("btnSend").disabled =
-          false;
-
-        $("btnSend").textContent =
-          "GỬI YÊU CẦU";
+        $("dashboard").innerHTML =
+          '<div class="empty">❌ ' +
+          esc(error.message) +
+          "</div>";
       }
     }
 
-    async function loadMyRequests(
+    function statHtml(
+      value,
+      label
+    ) {
+      return `
+        <div class="stat">
+          <b>${esc(value)}</b>
+          <span>${esc(label)}</span>
+        </div>
+      `;
+    }
+
+    async function loadRequests(
       showLoading
     ) {
       if (
@@ -2907,28 +2466,31 @@
           true;
       }
 
-      if (
-        showLoading &&
-        $("myList")
-      ) {
-        $("myList").innerHTML =
+      if (showLoading) {
+        $("listBox").innerHTML =
           '<div class="empty">' +
-          "Đang tải hồ sơ..." +
+          "Đang tải danh sách..." +
           "</div>";
       }
 
       try {
         const response =
           await api(
-            "ho_so_cua_toi",
+            "admin_danh_sach",
             {
               maNguoiDung:
-                currentUser.maNguoiDung
+                currentUser.maNguoiDung,
+
+              trangThai:
+                "",
+
+              tuKhoa:
+                ""
             }
           );
 
         if (!response.ok) {
-          $("myList").innerHTML =
+          $("listBox").innerHTML =
             '<div class="empty">❌ ' +
             esc(response.message) +
             "</div>";
@@ -2937,58 +2499,19 @@
         }
 
         requests =
-          response.data || [];
+          sortRequests(
+            response.data || []
+          );
 
-        updateSummary();
+        renderAdminList();
 
-        renderLatest();
-
-        renderRecords();
+        renderPriorityList();
       } catch (error) {
-        $("myList").innerHTML =
+        $("listBox").innerHTML =
           '<div class="empty">❌ ' +
           esc(error.message) +
           "</div>";
       }
-    }
-
-    function updateSummary() {
-      const total =
-        requests.length;
-
-      const completed =
-        requests.filter(
-          function(item) {
-            return normalizeStatus(
-              item.trangThai
-            ).includes(
-              "HOÀN TẤT"
-            );
-          }
-        ).length;
-
-      $("sumTotal").textContent =
-        total;
-
-      $("sumProcessing").textContent =
-        total - completed;
-
-      $("sumCompleted").textContent =
-        completed;
-    }
-
-    function renderLatest() {
-      $("latestRecord").innerHTML =
-        requests.length
-          ? renderRecordCard(
-              requests[0],
-              true
-            )
-          : (
-            '<div class="empty">' +
-            "Chưa có hồ sơ nào." +
-            "</div>"
-          );
     }
 
     function setKindFilter(
@@ -3014,7 +2537,7 @@
         .classList
         .add("active");
 
-      renderRecords();
+      renderAdminList();
     }
 
     function setStateFilter(
@@ -3040,25 +2563,25 @@
         .classList
         .add("active");
 
-      renderRecords();
+      renderAdminList();
     }
 
-    function scheduleRecordRender() {
+    function scheduleRender() {
       clearTimeout(
-        recordRenderTimer
+        renderTimer
       );
 
-      recordRenderTimer =
+      renderTimer =
         setTimeout(
-          renderRecords,
+          renderAdminList,
           220
         );
     }
 
-    function filteredRequests() {
+    function filterAdminRequests() {
       const keyword =
         String(
-          $("recordKeyword")
+          $("tuKhoa")
             ?.value || ""
         )
           .trim()
@@ -3078,6 +2601,13 @@
             normalizeStatus(
               item.trangThai
             );
+
+          if (
+            stateFilter === "NEW" &&
+            status !== "MỚI GỬI"
+          ) {
+            return false;
+          }
 
           if (
             stateFilter ===
@@ -3117,6 +2647,8 @@
             "PROCESSING"
           ) {
             if (
+              status ===
+                "MỚI GỬI" ||
               status.includes(
                 "HOÀN TẤT"
               ) ||
@@ -3134,10 +2666,12 @@
             const haystack =
               [
                 item.maYeuCau,
+                item.nguoiDangKy,
+                item.hoTen,
+                item.phongKhu,
                 issuedNumber(item),
                 destinationText(item),
-                typeLabel(item),
-                item.trangThai
+                contentText(item)
               ]
                 .join(" ")
                 .toLowerCase();
@@ -3156,20 +2690,24 @@
       );
     }
 
-    function renderRecords() {
-      if (!$("myList")) {
+    function renderAdminList() {
+      if (!$("listBox")) {
         return;
       }
 
       const data =
-        filteredRequests();
+        filterAdminRequests();
 
-      $("myList").innerHTML =
+      $("resultCount").textContent =
+        data.length +
+        " hồ sơ";
+
+      $("listBox").innerHTML =
         data.length
           ? data
               .map(
                 function(item) {
-                  return renderRecordCard(
+                  return renderAdminCard(
                     item,
                     false
                   );
@@ -3178,28 +2716,73 @@
               .join("")
           : (
             '<div class="empty">' +
-            "Không có hồ sơ phù hợp." +
+            "Không có yêu cầu phù hợp." +
             "</div>"
           );
     }
 
-    function renderRecordCard(
+    function renderPriorityList() {
+      const data =
+        requests
+          .filter(
+            function(item) {
+              const status =
+                normalizeStatus(
+                  item.trangThai
+                );
+
+              return (
+                !status.includes(
+                  "HOÀN TẤT"
+                ) &&
+                !status.includes(
+                  "TỪ CHỐI"
+                )
+              );
+            }
+          )
+          .slice(0, 3);
+
+      $("priorityList").innerHTML =
+        data.length
+          ? data
+              .map(
+                function(item) {
+                  return renderAdminCard(
+                    item,
+                    true
+                  );
+                }
+              )
+              .join("")
+          : (
+            '<div class="empty">' +
+            "Hiện không có hồ sơ cần xử lý." +
+            "</div>"
+          );
+    }
+
+    function renderAdminCard(
       item,
       compact
     ) {
+      const number =
+        issuedNumber(item);
+
+      const status =
+        normalizeStatus(
+          item.trangThai
+        );
+
+      const completed =
+        status.includes(
+          "HOÀN TẤT"
+        );
+
       const step =
         stepIndex(
           item.trangThai
         ) + 1;
-
-      const number =
-        issuedNumber(item);
-
-      const progress =
-        Math.min(
-          100,
-          step * 20
-        );
 
       return `
         <article class="requestCard">
@@ -3220,63 +2803,72 @@
 
           </div>
 
-          <div class="compactInfo">
-
-            <div class="compactLine">
-              <strong>Nơi làm việc:</strong>
-              ${esc(destinationText(item) || "—")}
-            </div>
-
-            <div class="compactLine">
-              <strong>Thời gian:</strong>
-              ${esc(dateText(item) || "—")}
-            </div>
+          <div class="personLine">
+            ${esc(
+              item.nguoiDangKy ||
+              item.hoTen ||
+              "—"
+            )}
 
             ${
-              !compact &&
-              item.thoiGianGui
+              item.phongKhu
                 ? `
-                  <div class="compactLine">
-                    <strong>Gửi lúc:</strong>
-                    ${esc(item.thoiGianGui)}
-                  </div>
+                  <span>
+                    · ${esc(item.phongKhu)}
+                  </span>
                 `
                 : ""
             }
+          </div>
 
-            ${
-              number
-                ? `
-                  <div class="compactLine">
-                    <strong>Số được cấp:</strong>
-                    ${esc(number)}
-                  </div>
-                `
-                : ""
-            }
+          <div class="routeLine">
+            ${esc(destinationText(item) || "Chưa có nơi làm việc")}
+          </div>
+
+          <div class="cardFacts">
+
+            <div class="fact">
+              <span>
+                Thời gian
+              </span>
+
+              <strong>
+                ${esc(dateText(item) || "—")}
+              </strong>
+            </div>
+
+            <div class="fact">
+              <span>
+                Số được cấp
+              </span>
+
+              <strong>
+                ${esc(number || "Chưa cấp")}
+              </strong>
+            </div>
 
           </div>
 
-          <div class="compactBottom">
+          <div class="cardFooter">
 
-            <div class="miniProgress">
-
-              <div class="miniProgressLabel">
-                Bước ${step}/5
-              </div>
-
-              <div class="miniProgressTrack">
-                <span style="width:${progress}%"></span>
-              </div>
-
-            </div>
+            <span class="stepText">
+              Bước ${step}/5
+            </span>
 
             <button
-              class="secondary smallAction"
+              class="${
+                completed
+                  ? "smallAction viewOnly"
+                  : "primary smallAction"
+              }"
               type="button"
-              onclick='viewDetail(${js(item.maYeuCau)})'
+              onclick='openAdminDetail(${js(item.maYeuCau)})'
             >
-              Xem
+              ${
+                completed
+                  ? "Xem"
+                  : "Xử lý"
+              }
             </button>
 
           </div>
@@ -3285,51 +2877,38 @@
       `;
     }
 
-    async function viewDetail(
+    function openAdminDetail(
       maYeuCau
     ) {
-      showView("detail");
+      const item =
+        requests.find(
+          function(row) {
+            return (
+              String(row.maYeuCau) ===
+              String(maYeuCau)
+            );
+          }
+        );
 
-      $("detailBox").dataset.id =
+      if (!item) {
+        alert(
+          "Không tìm thấy yêu cầu."
+        );
+
+        return;
+      }
+
+      currentDetailId =
         maYeuCau;
 
-      $("detailBox").innerHTML =
-        '<div class="empty">' +
-        "Đang tải chi tiết..." +
-        "</div>";
+      showAdminView(
+        "detail"
+      );
 
-      try {
-        const response =
-          await api(
-            "chi_tiet_yeu_cau",
-            {
-              maYeuCau:
-                maYeuCau,
-
-              maNguoiDung:
-                currentUser.maNguoiDung
-            }
-          );
-
-        if (!response.ok) {
-          $("detailBox").innerHTML =
-            '<div class="empty">❌ ' +
-            esc(response.message) +
-            "</div>";
-
-          return;
-        }
-
-        $("detailBox").innerHTML =
-          renderDetail(
-            response.data
-          );
-      } catch (error) {
-        $("detailBox").innerHTML =
-          '<div class="empty">❌ ' +
-          esc(error.message) +
-          "</div>";
-      }
+      $("adminDetailBox").innerHTML =
+        renderAdminDetail(
+          item
+        );
     }
 
     function detailField(
@@ -3344,7 +2923,7 @@
       `;
     }
 
-    function renderDetail(item) {
+    function renderAdminDetail(item) {
       const type =
         getType(item);
 
@@ -3437,7 +3016,7 @@
               "Người đăng ký",
               (
                 item.nguoiDangKy ||
-                currentUser.hoTen ||
+                item.hoTen ||
                 ""
               ) +
               (
@@ -3517,7 +3096,14 @@
 
         </div>
 
-        ${renderConfirmBox(item)}
+        <div class="detailActions">
+          ${renderActions(item)}
+        </div>
+
+        <div
+          id="detailMsg"
+          class="msg"
+        ></div>
       `;
     }
 
@@ -3618,165 +3204,369 @@
       `;
     }
 
-    function renderConfirmBox(item) {
+    function renderActions(item) {
       const status =
         normalizeStatus(
           item.trangThai
         );
 
-      const allowed =
-        (
-          status.includes(
-            "ĐÃ CẤP"
-          ) ||
-          status ===
-            "CHỜ NHẬN" ||
-          status.includes(
-            "BÀN GIAO"
-          )
-        ) &&
-        !status.includes(
-          "HOÀN TẤT"
-        );
+      const type =
+        getType(item);
 
-      if (!allowed) {
-        return "";
+      if (
+        status.includes(
+          "HOÀN TẤT"
+        ) ||
+        status.includes(
+          "TỪ CHỐI"
+        )
+      ) {
+        return `
+          <div
+            class="small"
+            style="text-align:center;padding:8px"
+          >
+            Hồ sơ đã kết thúc, không còn thao tác.
+          </div>
+        `;
       }
 
-      return `
-        <div class="detailSection">
+      if (
+        status ===
+        "MỚI GỬI"
+      ) {
+        return `
+          <div class="actionGrid">
 
-          <h4>
-            Xác nhận đã nhận
-          </h4>
+            ${actionButton(
+              "Tiếp nhận",
+              "primary",
+              "updateStatus(" +
+              js(item.maYeuCau) +
+              ',"tiep_nhan")'
+            )}
 
-          ${detailField(
-            "Người được cấp",
-            item.nguoiDangKy ||
-            currentUser.hoTen
-          )}
-
-          <label for="nguoiNhanThucTe">
-            Người nhận thực tế
-          </label>
-
-          <input
-            id="nguoiNhanThucTe"
-            value="${esc(currentUser.hoTen)}"
-          >
-
-          <label for="lyDoNhanThay">
-            Lý do nhận thay nếu có
-          </label>
-
-          <textarea
-            id="lyDoNhanThay"
-            placeholder="Chỉ nhập khi nhận thay"
-          ></textarea>
-
-          <div class="check">
-
-            <input
-              id="dongY"
-              type="checkbox"
-            >
-
-            <span>
-              Tôi xác nhận đã nhận văn bản nêu trên.
-            </span>
+            ${actionButton(
+              "Cấp & bàn giao",
+              "success",
+              "capDocument(" +
+              js(item.maYeuCau) +
+              ",true)"
+            )}
 
           </div>
 
-          <button
-            class="success fullBtn"
-            type="button"
-            onclick='confirmReceived(${js(item.maYeuCau)})'
-          >
-            TÔI ĐÃ NHẬN
-          </button>
+          <details class="moreActions">
 
+            <summary>
+              Thao tác khác ▾
+            </summary>
+
+            <div
+              class="actionGrid"
+              style="margin-top:8px"
+            >
+
+              ${actionButton(
+                "Cấp nhanh",
+                "secondary",
+                "capDocument(" +
+                js(item.maYeuCau) +
+                ",false)"
+              )}
+
+              ${actionButton(
+                "Yêu cầu bổ sung",
+                "warning",
+                "updateStatus(" +
+                js(item.maYeuCau) +
+                ',"bo_sung")'
+              )}
+
+              ${actionButton(
+                "Từ chối",
+                "danger",
+                "updateStatus(" +
+                js(item.maYeuCau) +
+                ',"tu_choi")'
+              )}
+
+            </div>
+
+          </details>
+        `;
+      }
+
+      if (
+        status.includes(
+          "TIẾP NHẬN"
+        ) ||
+        status.includes(
+          "ĐANG XỬ LÝ"
+        ) ||
+        status.includes(
+          "BỔ SUNG"
+        )
+      ) {
+        return `
+          <div class="actionGrid">
+
+            ${actionButton(
+              (
+                type ===
+                "GIAY_GIOI_THIEU"
+              )
+                ? "Cấp giấy giới thiệu"
+                : "Cấp công lệnh",
+              "secondary",
+              "capDocument(" +
+              js(item.maYeuCau) +
+              ",false)"
+            )}
+
+            ${actionButton(
+              "Cấp & bàn giao",
+              "success",
+              "capDocument(" +
+              js(item.maYeuCau) +
+              ",true)"
+            )}
+
+          </div>
+        `;
+      }
+
+      if (
+        status.includes(
+          "ĐÃ CẤP"
+        )
+      ) {
+        return `
+          <div class="actionGrid">
+
+            ${actionButton(
+              "Xác nhận bàn giao",
+              "primary",
+              "updateStatus(" +
+              js(item.maYeuCau) +
+              ',"ban_giao")'
+            )}
+
+          </div>
+        `;
+      }
+
+      if (
+        status.includes(
+          "BÀN GIAO"
+        ) ||
+        status ===
+          "CHỜ NHẬN"
+      ) {
+        return `
           <div
-            id="confirmMsg"
-            class="msg"
-          ></div>
+            class="small"
+            style="text-align:center;padding:8px"
+          >
+            Đang chờ người nhận xác nhận.
+          </div>
+        `;
+      }
 
+      return `
+        <div
+          class="small"
+          style="text-align:center;padding:8px"
+        >
+          Không có thao tác phù hợp.
         </div>
       `;
     }
 
-    async function confirmReceived(
-      maYeuCau
+    function actionButton(
+      label,
+      className,
+      handler
     ) {
-      clearMsg("confirmMsg");
+      return `
+        <button
+          class="${className}"
+          type="button"
+          onclick='${handler}'
+        >
+          ${label}
+        </button>
+      `;
+    }
+
+    async function updateStatus(
+      maYeuCau,
+      hanhDong
+    ) {
+      let ghiChu =
+        "";
 
       if (
-        !$("dongY").checked
+        [
+          "bo_sung",
+          "tu_choi"
+        ].includes(hanhDong)
       ) {
-        showMsg(
-          "confirmMsg",
-          "err",
-          "❌ Vui lòng tích xác nhận."
+        ghiChu =
+          prompt(
+            hanhDong === "bo_sung"
+              ? "Nhập nội dung yêu cầu bổ sung"
+              : "Nhập lý do từ chối"
+          ) || "";
+
+        if (
+          !ghiChu.trim()
+        ) {
+          alert(
+            "Chưa nhập nội dung."
+          );
+
+          return;
+        }
+      } else if (
+        hanhDong ===
+        "ban_giao"
+      ) {
+        ghiChu =
+          prompt(
+            "Ghi chú bàn giao nếu có",
+            ""
+          ) || "";
+      }
+
+      try {
+        const response =
+          await api(
+            "admin_cap_nhat",
+            {
+              maNguoiDung:
+                currentUser.maNguoiDung,
+
+              maYeuCau:
+                maYeuCau,
+
+              hanhDong:
+                hanhDong,
+
+              ghiChu:
+                ghiChu
+            }
+          );
+
+        if (!response.ok) {
+          alert(
+            response.message
+          );
+
+          return;
+        }
+
+        await loadAll();
+
+        openAdminDetail(
+          maYeuCau
+        );
+      } catch (error) {
+        alert(
+          error.message
+        );
+      }
+    }
+
+    async function capDocument(
+      maYeuCau,
+      tuDongBanGiao
+    ) {
+      const item =
+        requests.find(
+          function(row) {
+            return (
+              String(row.maYeuCau) ===
+              String(maYeuCau)
+            );
+          }
+        );
+
+      if (!item) {
+        alert(
+          "Không tìm thấy yêu cầu."
         );
 
         return;
       }
 
-      const nguoiNhan =
-        $("nguoiNhanThucTe")
-          .value
-          .trim();
+      const type =
+        getType(item);
 
-      if (!nguoiNhan) {
-        showMsg(
-          "confirmMsg",
-          "err",
-          "❌ Vui lòng nhập người nhận thực tế."
-        );
+      const action =
+        type ===
+        "GIAY_GIOI_THIEU"
+          ? "admin_cap_giay_gioi_thieu"
+          : "admin_cap_cong_lenh";
 
+      const label =
+        type ===
+        "GIAY_GIOI_THIEU"
+          ? "giấy giới thiệu"
+          : "công lệnh";
+
+      const message =
+        "Xác nhận cấp " +
+        label +
+        (
+          tuDongBanGiao
+            ? " và bàn giao"
+            : ""
+        ) +
+        " cho yêu cầu " +
+        maYeuCau +
+        "?";
+
+      if (
+        !confirm(message)
+      ) {
         return;
       }
 
       try {
         const response =
           await api(
-            "xac_nhan_da_nhan",
+            action,
             {
-              maYeuCau:
-                maYeuCau,
-
               maNguoiDung:
                 currentUser.maNguoiDung,
 
-              nguoiNhanThucTe:
-                nguoiNhan,
+              maYeuCau:
+                maYeuCau,
 
-              lyDoNhanThay:
-                $("lyDoNhanThay")
-                  .value
-                  .trim()
+              tuDongBanGiao:
+                tuDongBanGiao
+                  ? "1"
+                  : "0"
             }
           );
 
         if (!response.ok) {
-          showMsg(
-            "confirmMsg",
-            "err",
-            "❌ " + response.message
+          alert(
+            response.message
           );
 
           return;
         }
 
-        await loadMyRequests(false);
+        await loadAll();
 
-        await viewDetail(
+        openAdminDetail(
           maYeuCau
         );
       } catch (error) {
-        showMsg(
-          "confirmMsg",
-          "err",
-          "❌ " + error.message
+        alert(
+          error.message
         );
       }
     }
@@ -3784,9 +3574,9 @@
     function showPushBox() {
       if (
         ONESIGNAL_APP_ID &&
-        $("pushSection")
+        $("adminPushSection")
       ) {
-        $("pushSection")
+        $("adminPushSection")
           .classList
           .remove("hidden");
       }
@@ -3893,9 +3683,7 @@
 
         await OneSignal.User.addTag(
           "vaiTro",
-          currentUser.quyenQuanTri
-            ? "phong_to_chuc"
-            : "vien_chuc"
+          "phong_to_chuc"
         );
 
         await OneSignal.User.addTag(
