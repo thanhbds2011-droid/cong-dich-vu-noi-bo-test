@@ -34,8 +34,14 @@
       --safe-bottom:env(safe-area-inset-bottom,0px);
     }
 
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+    *{
+      box-sizing:border-box;
+    }
+
+    html{
+      scroll-behavior:smooth;
+      -webkit-text-size-adjust:100%;
+    }
 
     body{
       margin:0;
@@ -370,6 +376,16 @@
       background:#fff;
       color:#174ea6;
       box-shadow:0 2px 8px rgba(15,34,65,.08);
+    }
+
+    input[readonly]{
+      background:#f4f7fb;
+      color:#344054;
+      font-weight:700;
+    }
+
+    .otherInput{
+      margin-top:8px;
     }
 
     .backendNote{
@@ -768,21 +784,48 @@
     }
 
     @media(min-width:720px){
-      body{padding-bottom:18px}
-      .page{padding:20px}
-      .appHeader{padding:20px 22px}
-      .appHeader h1{font-size:25px}
-      .appHeader p{font-size:14px}
-      .card{padding:20px;margin-top:15px}
-      .two{grid-template-columns:1fr 1fr}
-      .bottomNav{display:none}
+      body{
+        padding-bottom:18px;
+      }
+
+      .page{
+        padding:20px;
+      }
+
+      .appHeader{
+        padding:20px 22px;
+      }
+
+      .appHeader h1{
+        font-size:25px;
+      }
+
+      .appHeader p{
+        font-size:14px;
+      }
+
+      .card{
+        padding:20px;
+        margin-top:15px;
+      }
+
+      .two{
+        grid-template-columns:1fr 1fr;
+      }
+
+      .bottomNav{
+        display:none;
+      }
+
       .summaryGrid{
         grid-template-columns:repeat(3,180px);
         justify-content:start;
       }
+
       .detailGrid{
         grid-template-columns:1fr 1fr;
       }
+
       .detailField{
         grid-template-columns:130px 1fr;
       }
@@ -804,7 +847,10 @@
     }
   </style>
 
-  <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+  <script
+    src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js"
+    defer>
+  </script>
 </head>
 
 <body>
@@ -830,6 +876,7 @@
         </div>
 
         <label for="loginName">Họ và tên</label>
+
         <input
           id="loginName"
           autocomplete="name"
@@ -837,6 +884,7 @@
         >
 
         <label for="loginPin">Mã PIN</label>
+
         <input
           id="loginPin"
           type="password"
@@ -862,7 +910,10 @@
           <div id="userAvatar" class="avatar">VC</div>
 
           <div>
-            <div id="helloUser" class="userName">Xin chào</div>
+            <div id="helloUser" class="userName">
+              Xin chào
+            </div>
+
             <div id="userInfo" class="small"></div>
           </div>
 
@@ -909,6 +960,7 @@
 
             <div>
               <b>Thông báo điện thoại</b>
+
               <div class="small">
                 Nhận thông báo khi hồ sơ thay đổi.
               </div>
@@ -965,34 +1017,88 @@
 
             <div id="formCL">
 
-              <div class="grid two">
-                <div>
-                  <label for="diTu">Đi từ</label>
-                  <input
-                    id="diTu"
-                    placeholder="TTBTXH Tân Hiệp"
-                  >
-                </div>
+              <label for="diTu">Đi từ</label>
 
-                <div>
-                  <label for="den">Đến</label>
-                  <input
-                    id="den"
-                    placeholder="Bệnh viện/địa điểm đến"
-                  >
-                </div>
-              </div>
+              <input
+                id="diTu"
+                value="TTBTXH Tân Hiệp"
+                readonly
+              >
+
+              <label for="den">Đến</label>
+
+              <select
+                id="den"
+                onchange="toggleOtherInput('den','denKhac')">
+
+                <option value="">
+                  -- Chọn nơi đến --
+                </option>
+
+                <option value="TTYT KV Bình Long">
+                  TTYT KV Bình Long
+                </option>
+
+                <option value="Bệnh viện ĐK Bình Phước">
+                  Bệnh viện ĐK Bình Phước
+                </option>
+
+                <option value="Bệnh viện ĐK Bình Dương">
+                  Bệnh viện ĐK Bình Dương
+                </option>
+
+                <option value="Bệnh viện Chợ Rẫy">
+                  Bệnh viện Chợ Rẫy
+                </option>
+
+                <option value="KHAC">
+                  Khác
+                </option>
+              </select>
+
+              <input
+                id="denKhac"
+                class="hidden otherInput"
+                placeholder="Nhập nơi đến cụ thể"
+              >
 
               <label for="noiDungCL">
                 Nội dung công tác
               </label>
 
-              <textarea
+              <select
                 id="noiDungCL"
-                placeholder="Đi công tác, chuyển viện, nuôi bệnh...">
-              </textarea>
+                onchange="toggleOtherInput('noiDungCL','noiDungCLKhac')">
+
+                <option value="">
+                  -- Chọn nội dung công tác --
+                </option>
+
+                <option value="Nuôi bệnh">
+                  Nuôi bệnh
+                </option>
+
+                <option value="Chuyển viện">
+                  Chuyển viện
+                </option>
+
+                <option value="Rước bệnh nhân">
+                  Rước bệnh nhân
+                </option>
+
+                <option value="KHAC">
+                  Khác
+                </option>
+              </select>
+
+              <input
+                id="noiDungCLKhac"
+                class="hidden otherInput"
+                placeholder="Nhập nội dung công tác cụ thể"
+              >
 
               <div class="grid two">
+
                 <div>
                   <label for="ngayDi">Ngày đi</label>
                   <input id="ngayDi" type="date">
@@ -1008,10 +1114,27 @@
                 Phương tiện
               </label>
 
-              <input
-                id="phuongTien"
-                placeholder="Xe cơ quan, xe cứu thương, xe cá nhân..."
-              >
+              <select id="phuongTien">
+                <option value="">
+                  -- Chọn phương tiện --
+                </option>
+
+                <option value="Xe 16 chỗ 51A-123">
+                  Xe 16 chỗ 51A-123
+                </option>
+
+                <option value="Xe cứu thương 51B-123">
+                  Xe cứu thương 51B-123
+                </option>
+
+                <option value="Xe 7 chỗ 51C-123">
+                  Xe 7 chỗ 51C-123
+                </option>
+
+                <option value="Xe tự túc">
+                  Xe tự túc
+                </option>
+              </select>
             </div>
 
             <div id="formGGT" class="hidden">
@@ -1047,11 +1170,15 @@
                 Ngày hết hạn
               </label>
 
-              <input id="ngayHetHan" type="date">
+              <input
+                id="ngayHetHan"
+                type="date"
+              >
 
               <div class="backendNote">
                 Giao diện Giấy giới thiệu đã sẵn sàng.
-                Chức năng gửi/cấp sẽ hoạt động sau khi bổ sung Code.gs ở bước tiếp theo.
+                Chức năng gửi/cấp sẽ hoạt động sau khi bổ sung
+                Code.gs ở bước tiếp theo.
               </div>
             </div>
 
@@ -1186,12 +1313,16 @@
     </div>
   </main>
 
-  <nav id="userBottomNav" class="bottomNav hidden">
+  <nav
+    id="userBottomNav"
+    class="bottomNav hidden">
+
     <button
       id="navHome"
       class="active"
       type="button"
       onclick="showView('home')">
+
       <span>⌂</span>
       Trang chủ
     </button>
@@ -1200,6 +1331,7 @@
       id="navRequest"
       type="button"
       onclick="showView('request')">
+
       <span>＋</span>
       Gửi yêu cầu
     </button>
@@ -1208,6 +1340,7 @@
       id="navRecords"
       type="button"
       onclick="showView('records')">
+
       <span>▤</span>
       Hồ sơ
     </button>
@@ -1270,8 +1403,12 @@
     }
 
     function js(value){
-      return JSON.stringify(String(value ?? ""))
-        .replace(/</g,"\\u003c");
+      return JSON.stringify(
+        String(value ?? "")
+      ).replace(
+        /</g,
+        "\\u003c"
+      );
     }
 
     function showMsg(id,type,html){
@@ -1305,6 +1442,7 @@
     function jsonp(params){
       return new Promise(
         function(resolve,reject){
+
           const callbackName =
             "cb_" +
             Date.now() +
@@ -1447,9 +1585,10 @@
     }
 
     function typeLabel(item){
-      return getType(item) === "GIAY_GIOI_THIEU"
-        ? "Giấy giới thiệu"
-        : "Công lệnh";
+      return getType(item) ===
+        "GIAY_GIOI_THIEU"
+          ? "Giấy giới thiệu"
+          : "Công lệnh";
     }
 
     function issuedNumber(item){
@@ -1832,9 +1971,53 @@
       clearMsg("newMsg");
     }
 
+    function toggleOtherInput(
+      selectId,
+      inputId
+    ){
+      const select =
+        $(selectId);
+
+      const input =
+        $(inputId);
+
+      const isOther =
+        select.value === "KHAC";
+
+      input
+        .classList
+        .toggle(
+          "hidden",
+          !isOther
+        );
+
+      if(!isOther){
+        input.value =
+          "";
+      }else{
+        setTimeout(
+          function(){
+            input.focus();
+          },
+          50
+        );
+      }
+    }
+
+    function getSelectValue(
+      selectId,
+      inputId
+    ){
+      const value =
+        $(selectId).value;
+
+      return value === "KHAC"
+        ? $(inputId).value.trim()
+        : value.trim();
+    }
+
     function clearForm(){
       [
-        "diTu",
         "den",
         "noiDungCL",
         "phuongTien",
@@ -1848,6 +2031,23 @@
             "";
         }
       );
+
+      [
+        "denKhac",
+        "noiDungCLKhac"
+      ].forEach(
+        function(id){
+          $(id).value =
+            "";
+
+          $(id)
+            .classList
+            .add("hidden");
+        }
+      );
+
+      $("diTu").value =
+        "TTBTXH Tân Hiệp";
 
       setToday();
     }
@@ -1873,10 +2073,16 @@
             $("diTu").value.trim(),
 
           den:
-            $("den").value.trim(),
+            getSelectValue(
+              "den",
+              "denKhac"
+            ),
 
           noiDung:
-            $("noiDungCL").value.trim(),
+            getSelectValue(
+              "noiDungCL",
+              "noiDungCLKhac"
+            ),
 
           ngayDi:
             $("ngayDi").value,
@@ -1982,7 +2188,9 @@
           "✅ Đã gửi yêu cầu: <b>" +
           esc(response.maYeuCau || "") +
           "</b><br>" +
-          "<button class='secondary fullBtn' type='button' onclick='showView(\"records\")'>" +
+          "<button class='secondary fullBtn' " +
+          "type='button' " +
+          "onclick='showView(\"records\")'>" +
           "XEM HỒ SƠ" +
           "</button>"
         );
@@ -2148,6 +2356,7 @@
     function filteredRequests(){
       return requests.filter(
         function(item){
+
           if(
             kindFilter !== "ALL" &&
             getType(item) !== kindFilter
@@ -2257,6 +2466,7 @@
 
             '<div class="metaRow">' +
               '<span>📍</span>' +
+
               '<div>' +
                 '<b>Nơi làm việc:</b> ' +
                 esc(destinationText(item)) +
@@ -2268,6 +2478,7 @@
                 ? (
                   '<div class="metaRow">' +
                     '<span>📅</span>' +
+
                     '<div>' +
                       '<b>Thời gian:</b> ' +
                       esc(dateText(item)) +
@@ -2283,6 +2494,7 @@
                 ? (
                   '<div class="metaRow">' +
                     '<span>🕒</span>' +
+
                     '<div>' +
                       '<b>Gửi lúc:</b> ' +
                       esc(item.thoiGianGui) +
@@ -2297,6 +2509,7 @@
                 ? (
                   '<div class="metaRow">' +
                     '<span>📄</span>' +
+
                     '<div>' +
                       '<b>Số được cấp:</b> ' +
                       esc(number) +
@@ -2309,9 +2522,12 @@
           '</div>' +
 
           '<div class="stepBadge">' +
-            '<span>Bước ' +
+
+            '<span>' +
+              'Bước ' +
               step +
-              '/5</span>' +
+              '/5' +
+            '</span>' +
 
             '<div class="stepMini">' +
               '<span style="width:' +
@@ -2321,9 +2537,11 @@
                 ) +
               '%"></span>' +
             '</div>' +
+
           '</div>' +
 
           '<div class="cardActions">' +
+
             '<button ' +
               'class="secondary" ' +
               'type="button" ' +
@@ -2332,6 +2550,7 @@
               ')\'>' +
               'Xem chi tiết' +
             '</button>' +
+
           '</div>' +
 
         '</article>'
@@ -2561,6 +2780,7 @@
     ){
       return (
         '<div class="detailField">' +
+
           '<span>' +
             esc(label) +
           '</span>' +
@@ -2568,6 +2788,7 @@
           '<span>' +
             esc(value || "—") +
           '</span>' +
+
         '</div>'
       );
     }
@@ -2599,6 +2820,7 @@
 
           labels.map(
             function(label,index){
+
               const className =
                 index < currentIndex
                   ? "done"
@@ -2631,6 +2853,7 @@
                   '</div>' +
 
                   '<div>' +
+
                     '<div class="timelineTitle">' +
                       label +
                     '</div>' +
@@ -2638,6 +2861,7 @@
                     '<div class="timelineNote">' +
                       esc(note) +
                     '</div>' +
+
                   '</div>' +
 
                 '</div>'
@@ -2667,6 +2891,7 @@
 
       return (
         '<div class="detailSection">' +
+
           '<h4>Xác nhận đã nhận</h4>' +
 
           detailField(
@@ -2695,11 +2920,15 @@
           '</textarea>' +
 
           '<div class="check">' +
-            '<input id="dongY" type="checkbox">' +
+
+            '<input ' +
+              'id="dongY" ' +
+              'type="checkbox">' +
 
             '<span>' +
               'Tôi xác nhận đã nhận văn bản nêu trên.' +
             '</span>' +
+
           '</div>' +
 
           '<button ' +
@@ -2712,6 +2941,7 @@
           '</button>' +
 
           '<div id="confirmMsg" class="msg"></div>' +
+
         '</div>'
       );
     }
@@ -2827,10 +3057,12 @@
       oneSignalInitPromise =
         new Promise(
           function(resolve){
+
             window
               .OneSignalDeferred
               .push(
                 async function(OneSignal){
+
                   try{
                     const basePath =
                       location.pathname
@@ -2946,7 +3178,10 @@
 
       await new Promise(
         function(resolve){
-          setTimeout(resolve,1200);
+          setTimeout(
+            resolve,
+            1200
+          );
         }
       );
 
@@ -2984,17 +3219,21 @@
     document.addEventListener(
       "DOMContentLoaded",
       function(){
+
         [
           "loginName",
           "loginPin"
         ].forEach(
           function(id){
-            const element = $(id);
+
+            const element =
+              $(id);
 
             if(element){
               element.addEventListener(
                 "keydown",
                 function(event){
+
                   if(event.key === "Enter"){
                     event.preventDefault();
                     login();
