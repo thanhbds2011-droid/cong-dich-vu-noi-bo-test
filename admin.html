@@ -1,747 +1,1220 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-  <meta http-equiv="Pragma" content="no-cache" />
-  <meta http-equiv="Expires" content="0" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <meta name="theme-color" content="#1558d6" />
-  <meta name="robots" content="noindex,nofollow" />
-  <link rel="manifest" href="manifest.json" />
-  <title>Quản trị văn bản - TEST</title>
+  <meta charset="UTF-8">
+
+  <meta
+    http-equiv="Cache-Control"
+    content="no-cache, no-store, must-revalidate"
+  >
+
+  <meta
+    http-equiv="Pragma"
+    content="no-cache"
+  >
+
+  <meta
+    http-equiv="Expires"
+    content="0"
+  >
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+  >
+
+  <meta
+    name="theme-color"
+    content="#1558d6"
+  >
+
+  <meta
+    name="robots"
+    content="noindex,nofollow"
+  >
+
+  <link
+    rel="manifest"
+    href="manifest.json"
+  >
+
+  <title>Cổng dịch vụ nội bộ - TEST</title>
 
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap');
+    @import url(
+      "https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap"
+    );
 
-    :root{
-      --primary:#1558d6;
-      --primary-soft:#eaf2ff;
-      --success:#149447;
-      --success-soft:#e8f8ee;
-      --warning:#b85a00;
-      --warning-soft:#fff2dc;
-      --danger:#bf2d2d;
-      --danger-soft:#fff0ef;
-      --ink:#172033;
-      --muted:#667085;
-      --line:#d8e2ef;
-      --bg:#edf3fa;
-      --surface:#ffffff;
-      --soft:#f7f9fc;
-      --shadow:0 8px 24px rgba(15,34,65,.07);
-      --radius:18px;
-      --safe-bottom:env(safe-area-inset-bottom,0px);
+    :root {
+      --primary: #1558d6;
+      --primary-dark: #1048b5;
+      --primary-soft: #eaf2ff;
+
+      --success: #149447;
+      --success-soft: #e6f8ed;
+
+      --warning: #b85a00;
+      --warning-soft: #fff0d5;
+
+      --danger: #bf2d2d;
+      --danger-soft: #fff0ef;
+
+      --ink: #172033;
+      --muted: #667085;
+      --line: #d7e1ed;
+
+      --background: #edf3fa;
+      --surface: #ffffff;
+      --soft: #f7f9fc;
+
+      --shadow: 0 8px 24px rgba(15, 34, 65, 0.07);
+      --radius: 18px;
+
+      --safe-bottom: env(safe-area-inset-bottom, 0px);
     }
 
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+    * {
+      box-sizing: border-box;
+    }
 
-    body{
-      margin:0;
-      background:var(--bg);
-      color:var(--ink);
-      font-family:'Be Vietnam Pro',Arial,sans-serif;
-      font-size:15px;
-      line-height:1.5;
-      padding-bottom:calc(76px + var(--safe-bottom));
+    html {
+      scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+      margin: 0;
+      background: var(--background);
+      color: var(--ink);
+
+      font-family:
+        "Be Vietnam Pro",
+        Arial,
+        sans-serif;
+
+      font-size: 15px;
+      line-height: 1.5;
+
+      padding-bottom:
+        calc(106px + var(--safe-bottom));
     }
 
     button,
     input,
     select,
-    textarea{
-      font:inherit;
+    textarea {
+      font: inherit;
     }
 
-    button{
-      min-height:44px;
-      border:0;
-      border-radius:13px;
-      padding:10px 14px;
-      font-weight:700;
-      cursor:pointer;
-      touch-action:manipulation;
+    button {
+      min-height: 42px;
+
+      border: 0;
+      border-radius: 12px;
+
+      padding: 9px 14px;
+
+      font-weight: 700;
+
+      cursor: pointer;
+      touch-action: manipulation;
     }
 
-    button:disabled{
-      opacity:.55;
-      cursor:not-allowed;
+    button:disabled {
+      opacity: 0.55;
+      cursor: not-allowed;
     }
 
     input,
     select,
-    textarea{
-      width:100%;
-      min-height:46px;
-      border:1px solid #cbd6e4;
-      border-radius:13px;
-      padding:11px 13px;
-      background:#fff;
-      color:var(--ink);
-      font-size:16px;
-      outline:none;
+    textarea {
+      width: 100%;
+      min-height: 46px;
+
+      border: 1px solid #cbd6e4;
+      border-radius: 13px;
+
+      padding: 11px 13px;
+
+      background: #ffffff;
+      color: var(--ink);
+
+      font-size: 16px;
+      outline: none;
     }
 
-    textarea{
-      min-height:90px;
-      resize:vertical;
+    textarea {
+      min-height: 90px;
+      resize: vertical;
     }
 
     input:focus,
     select:focus,
-    textarea:focus{
-      border-color:var(--primary);
-      box-shadow:0 0 0 3px rgba(21,88,214,.12);
+    textarea:focus {
+      border-color: var(--primary);
+
+      box-shadow:
+        0 0 0 3px rgba(21, 88, 214, 0.12);
     }
 
-    .page{
-      min-height:100vh;
-      padding:12px;
+    input[readonly] {
+      background: #f3f6fa;
+      color: #344054;
+      font-weight: 700;
     }
 
-    .wrap{
-      width:100%;
-      max-width:1080px;
-      margin:0 auto;
+    label {
+      display: block;
+
+      margin:
+        11px 0
+        6px;
+
+      font-size: 13px;
+      font-weight: 700;
     }
 
-    .hidden{
-      display:none!important;
+    .page {
+      min-height: 100vh;
+      padding: 12px;
     }
 
-    .appHeader{
-      display:flex;
-      align-items:center;
-      gap:12px;
-      background:linear-gradient(135deg,#1558d6,#18a96b);
-      color:#fff;
-      border-radius:20px;
-      padding:16px 17px;
-      box-shadow:var(--shadow);
+    .wrap {
+      width: 100%;
+      max-width: 920px;
+
+      margin: 0 auto;
     }
 
-    .appLogo{
-      width:44px;
-      height:44px;
-      border-radius:14px;
-      background:rgba(255,255,255,.18);
-      display:grid;
-      place-items:center;
-      font-size:23px;
-      flex:0 0 auto;
+    .hidden {
+      display: none !important;
     }
 
-    .appHeader h1{
-      font-size:20px;
-      line-height:1.25;
-      margin:0;
-      font-weight:800;
+    .appHeader {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+
+      padding: 16px 17px;
+
+      border-radius: 20px;
+
+      background:
+        linear-gradient(
+          135deg,
+          #1558d6,
+          #18a96b
+        );
+
+      color: #ffffff;
+
+      box-shadow: var(--shadow);
     }
 
-    .appHeader p{
-      font-size:12.5px;
-      margin:4px 0 0;
-      opacity:.94;
+    .appLogo {
+      display: grid;
+      place-items: center;
+
+      width: 46px;
+      height: 46px;
+
+      flex: 0 0 auto;
+
+      border-radius: 14px;
+
+      background:
+        rgba(255, 255, 255, 0.18);
+
+      font-size: 23px;
     }
 
-    .card{
-      background:var(--surface);
-      border:1px solid rgba(216,226,239,.92);
-      border-radius:var(--radius);
-      padding:16px;
-      margin-top:12px;
-      box-shadow:var(--shadow);
+    .appHeader h1 {
+      margin: 0;
+
+      font-size: 20px;
+      font-weight: 800;
+      line-height: 1.25;
     }
 
-    .sectionHead{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:10px;
-      margin-bottom:12px;
+    .appHeader p {
+      margin:
+        4px 0
+        0;
+
+      font-size: 12.5px;
+      opacity: 0.94;
+    }
+
+    .card {
+      margin-top: 12px;
+      padding: 16px;
+
+      border:
+        1px solid
+        rgba(216, 226, 239, 0.94);
+
+      border-radius: var(--radius);
+
+      background: var(--surface);
+
+      box-shadow: var(--shadow);
+    }
+
+    .sectionHead {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+
+      margin-bottom: 12px;
     }
 
     .sectionHead h2,
-    .card h2{
-      margin:0;
-      color:#174ea6;
-      font-size:20px;
-      line-height:1.25;
+    .card h2 {
+      margin: 0;
+
+      color: #174ea6;
+
+      font-size: 20px;
+      line-height: 1.25;
+    }
+
+    .small {
+      color: var(--muted);
+      font-size: 12.5px;
+    }
+
+    .userBar {
+      display: grid;
+
+      grid-template-columns:
+        auto
+        minmax(0, 1fr)
+        auto;
+
+      align-items: center;
+      gap: 11px;
+    }
+
+    .avatar {
+      display: grid;
+      place-items: center;
+
+      width: 42px;
+      height: 42px;
+
+      border-radius: 50%;
+
+      background: #e6efff;
+      color: #174ea6;
+
+      font-weight: 800;
+    }
+
+    .userName {
+      font-size: 15px;
+      font-weight: 800;
+    }
+
+    .iconActions {
+      display: flex;
+      gap: 7px;
+    }
+
+    .iconBtn {
+      display: grid;
+      place-items: center;
+
+      width: 42px;
+      min-width: 42px;
+      height: 42px;
+      min-height: 42px;
+
+      padding: 0;
+
+      background: #eef2f7;
+      color: #344054;
+
+      font-size: 18px;
+    }
+
+    .iconBtn.dangerLite {
+      color: #b42318;
+    }
+
+    .summaryGrid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+      gap: 9px;
+
+      margin-top: 12px;
+    }
+
+    .summaryCard {
+      padding: 12px 8px;
+
+      border: 1px solid var(--line);
+      border-radius: 15px;
+
+      background: #ffffff;
+
+      text-align: center;
+    }
+
+    .summaryCard strong {
+      display: block;
+
+      color: #174ea6;
+
+      font-size: 22px;
+      line-height: 1.1;
+    }
+
+    .summaryCard span {
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .noticeBar {
+      display: grid;
+
+      grid-template-columns:
+        auto
+        minmax(0, 1fr)
+        auto;
+
+      align-items: center;
+      gap: 10px;
+
+      margin-top: 12px;
+      padding: 12px;
+
+      border: 1px solid #bfdbfe;
+      border-radius: 16px;
+
+      background: #eef6ff;
+      color: #174ea6;
+    }
+
+    .noticeIcon {
+      font-size: 22px;
     }
 
-    .small{
-      color:var(--muted);
-      font-size:12.5px;
+    .noticeBar b {
+      display: block;
+      font-size: 14px;
     }
 
-    .userBar{
-      display:grid;
-      grid-template-columns:auto 1fr auto;
-      align-items:center;
-      gap:11px;
+    .noticeBar .small {
+      color: #4b6794;
+      font-size: 12px;
     }
 
-    .avatar{
-      width:42px;
-      height:42px;
-      border-radius:50%;
-      display:grid;
-      place-items:center;
-      background:#e6efff;
-      color:#174ea6;
-      font-weight:800;
+    .noticeBar button {
+      min-height: 38px;
+
+      padding:
+        7px
+        12px;
+
+      background: var(--success);
+      color: #ffffff;
+
+      white-space: nowrap;
     }
 
-    .userName{
-      font-weight:800;
-      font-size:15px;
+    .primary {
+      background: var(--primary);
+      color: #ffffff;
     }
 
-    .iconActions{
-      display:flex;
-      gap:7px;
+    .secondary {
+      background: #16213a;
+      color: #ffffff;
     }
 
-    .iconBtn{
-      min-width:42px;
-      padding:8px;
-      background:#eef2f7;
-      color:#344054;
-      font-size:0;
+    .success {
+      background: var(--success);
+      color: #ffffff;
     }
 
-    .iconBtn span{
-      font-size:18px;
+    .ghost {
+      background: #eef2f7;
+      color: #344054;
     }
 
-    .iconBtn.dangerLite{
-      color:#b42318;
+    .danger {
+      border: 1px solid #fecaca;
+
+      background: var(--danger-soft);
+      color: var(--danger);
     }
 
-    .noticeBar{
-      display:grid;
-      grid-template-columns:auto 1fr auto;
-      align-items:center;
-      gap:10px;
-      background:#eef6ff;
-      border:1px solid #bfdbfe;
-      border-radius:16px;
-      padding:12px;
-      margin-top:12px;
-      color:#174ea6;
+    .warning {
+      border: 1px solid #fed7aa;
+
+      background: var(--warning-soft);
+      color: var(--warning);
     }
 
-    .noticeIcon{
-      font-size:22px;
+    .fullBtn {
+      width: 100%;
+      margin-top: 13px;
     }
 
-    .noticeBar b{
-      display:block;
-      font-size:14px;
+    .viewIntro {
+      margin-bottom: 12px;
     }
+
+    .viewIntro h2 {
+      margin: 0;
 
-    .noticeBar .small{
-      font-size:12px;
-      color:#4b6794;
+      color: #174ea6;
+      font-size: 21px;
     }
 
-    .noticeBar button{
-      background:var(--success);
-      color:#fff;
-      white-space:nowrap;
-      min-height:40px;
-      padding:8px 12px;
+    .viewIntro p {
+      margin:
+        4px 0
+        0;
+
+      color: var(--muted);
+      font-size: 12.5px;
     }
 
-    .primary{
-      background:var(--primary);
-      color:#fff;
+    .grid {
+      display: grid;
+      gap: 11px;
     }
 
-    .secondary{
-      background:#16213a;
-      color:#fff;
+    .two {
+      grid-template-columns: 1fr;
     }
+
+    .docTabs {
+      display: grid;
+
+      grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+      gap: 6px;
+
+      margin:
+        4px 0
+        14px;
+
+      padding: 5px;
 
-    .success{
-      background:var(--success);
-      color:#fff;
+      border-radius: 14px;
+
+      background: #eef2f7;
     }
 
-    .ghost{
-      background:#eef2f7;
-      color:#344054;
+    .docTab {
+      min-height: 42px;
+
+      background: transparent;
+      color: #667085;
     }
+
+    .docTab.active {
+      background: #ffffff;
+      color: #174ea6;
 
-    .danger{
-      background:var(--danger-soft);
-      color:var(--danger);
-      border:1px solid #fecaca;
+      box-shadow:
+        0 2px 8px
+        rgba(15, 34, 65, 0.08);
     }
 
-    .warning{
-      background:var(--warning-soft);
-      color:var(--warning);
-      border:1px solid #fed7aa;
+    .otherInput {
+      margin-top: 8px;
     }
+
+    .backendNote {
+      margin-top: 10px;
+      padding: 10px 12px;
+
+      border: 1px solid #f6d79b;
+      border-radius: 12px;
+
+      background: #fff8e8;
+      color: #8d4b00;
 
-    .fullBtn{
-      width:100%;
-      margin-top:13px;
+      font-size: 12px;
     }
 
-    .msg{
-      display:none;
-      margin-top:11px;
-      border-radius:13px;
-      padding:11px 12px;
-      font-weight:600;
-      font-size:13px;
+    .msg {
+      display: none;
+
+      margin-top: 11px;
+      padding: 11px 12px;
+
+      border-radius: 13px;
+
+      font-size: 13px;
+      font-weight: 600;
     }
 
-    .msg.ok{
-      display:block;
-      background:#ecfdf3;
-      color:#067647;
-      border:1px solid #abefc6;
+    .msg.ok {
+      display: block;
+
+      border: 1px solid #abefc6;
+
+      background: #ecfdf3;
+      color: #067647;
     }
+
+    .msg.err {
+      display: block;
 
-    .msg.err{
-      display:block;
-      background:#fef3f2;
-      color:#b42318;
-      border:1px solid #fecdca;
+      border: 1px solid #fecdca;
+
+      background: #fef3f2;
+      color: #b42318;
     }
+
+    .msg.info {
+      display: block;
+
+      border: 1px solid #b2ddff;
 
-    .empty{
-      padding:22px;
-      text-align:center;
-      color:var(--muted);
-      background:var(--soft);
-      border-radius:14px;
+      background: #eff8ff;
+      color: #175cd3;
     }
+
+    .empty {
+      padding: 22px;
+
+      border-radius: 14px;
+
+      background: var(--soft);
+      color: var(--muted);
 
-    .stats{
-      display:grid;
-      grid-template-columns:repeat(2,1fr);
-      gap:9px;
+      text-align: center;
     }
 
-    .stat{
-      background:#f8fafc;
-      border:1px solid var(--line);
-      border-radius:15px;
-      padding:12px;
+    .filterBlock {
+      margin-bottom: 13px;
     }
 
-    .stat b{
-      display:block;
-      font-size:24px;
-      color:#174ea6;
-      line-height:1.1;
+    .filterLabel {
+      display: block;
+
+      margin-bottom: 6px;
+
+      color: #475467;
+
+      font-size: 11px;
+      font-weight: 700;
+
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
     }
+
+    .typeFilter {
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, minmax(0, 1fr));
 
-    .stat span{
-      font-size:11.5px;
-      color:var(--muted);
+      gap: 7px;
     }
 
-    .filterRows{
-      display:grid;
-      gap:9px;
-      margin-bottom:12px;
+    .typeFilter .chip {
+      width: 100%;
+
+      padding:
+        8px
+        5px;
+
+      overflow: hidden;
+
+      text-overflow: ellipsis;
     }
+
+    .stateFilter {
+      display: flex;
+      gap: 7px;
+
+      overflow-x: auto;
+
+      padding:
+        1px
+        1px
+        4px;
 
-    .filterChips{
-      display:flex;
-      gap:8px;
-      overflow-x:auto;
-      padding-bottom:3px;
-      scrollbar-width:none;
+      scrollbar-width: none;
     }
 
-    .filterChips::-webkit-scrollbar{
-      display:none;
+    .stateFilter::-webkit-scrollbar {
+      display: none;
     }
 
-    .chip{
-      white-space:nowrap;
-      background:#eef2f7;
-      color:#475467;
-      min-height:38px;
-      padding:8px 12px;
-      border-radius:999px;
-      font-size:12px;
+    .chip {
+      min-height: 36px;
+
+      padding:
+        7px
+        11px;
+
+      border: 1px solid transparent;
+      border-radius: 999px;
+
+      background: #eef2f7;
+      color: #475467;
+
+      font-size: 11.5px;
+
+      white-space: nowrap;
     }
 
-    .chip.active{
-      background:var(--primary-soft);
-      color:#174ea6;
-      border:1px solid #b7d0ff;
+    .chip.active {
+      border-color: #a9c7ff;
+
+      background: var(--primary-soft);
+      color: #174ea6;
     }
 
-    .searchBox{
-      position:relative;
+    .searchBox {
+      position: relative;
+
+      margin-bottom: 12px;
     }
+
+    .searchIcon {
+      position: absolute;
 
-    .searchBox span{
-      position:absolute;
-      left:13px;
-      top:12px;
-      color:#98a2b3;
+      left: 13px;
+      top: 50%;
+
+      color: #98a2b3;
+
+      transform: translateY(-50%);
     }
 
-    .searchBox input{
-      padding-left:38px;
+    .searchBox input {
+      min-height: 44px;
+      padding-left: 38px;
     }
 
-    .requestCard{
-      border:1px solid var(--line);
-      border-radius:16px;
-      background:#fbfdff;
-      padding:14px;
-      margin-top:10px;
+    #myList {
+      padding-bottom: 22px;
     }
+
+    .requestCard {
+      margin-top: 10px;
+      padding: 14px;
 
-    .requestHead{
-      display:grid;
-      grid-template-columns:minmax(0,1fr) auto;
-      gap:9px;
-      align-items:start;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+
+      background: #fbfdff;
     }
+
+    .requestHead {
+      display: grid;
+
+      grid-template-columns:
+        minmax(0, 1fr)
+        auto;
 
-    .requestCode{
-      font-size:16px;
-      font-weight:800;
-      overflow-wrap:anywhere;
+      align-items: start;
+      gap: 9px;
     }
 
-    .typeLine{
-      margin-top:3px;
-      color:#667085;
-      font-size:11.5px;
-      font-weight:600;
+    .requestCode {
+      color: #172033;
+
+      font-size: 15.5px;
+      font-weight: 800;
+      line-height: 1.35;
+
+      overflow-wrap: anywhere;
     }
+
+    .typeLine {
+      margin-top: 3px;
 
-    .statusPill{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      max-width:190px;
-      border-radius:999px;
-      padding:6px 9px;
-      background:#e8f2ff;
-      color:#175cd3;
-      font-size:10.5px;
-      font-weight:800;
-      line-height:1.25;
-      text-align:center;
+      color: #667085;
+
+      font-size: 11px;
+      font-weight: 600;
     }
+
+    .statusPill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+      max-width: 155px;
+
+      padding:
+        5px
+        9px;
+
+      border-radius: 999px;
+
+      background: #e8f2ff;
+      color: #175cd3;
 
-    .statusPill.greenText{
-      background:#dcfae6;
-      color:#067647;
+      font-size: 10px;
+      font-weight: 800;
+      line-height: 1.25;
+
+      text-align: center;
     }
 
-    .statusPill.orangeText{
-      background:#fff1d6;
-      color:#b54708;
+    .statusPill.greenText {
+      background: #dcfae6;
+      color: #067647;
     }
 
-    .statusPill.redText{
-      background:#fee4e2;
-      color:#b42318;
+    .statusPill.orangeText {
+      background: #fff1d6;
+      color: #b54708;
     }
 
-    .requestMeta{
-      margin-top:10px;
-      display:grid;
-      gap:6px;
-      color:#475467;
-      font-size:13px;
+    .statusPill.redText {
+      background: #fee4e2;
+      color: #b42318;
     }
+
+    .compactInfo {
+      display: grid;
+      gap: 7px;
 
-    .metaRow{
-      display:grid;
-      grid-template-columns:21px 1fr;
-      gap:7px;
-      align-items:start;
+      margin-top: 11px;
     }
 
-    .metaRow b{
-      color:#344054;
+    .compactLine {
+      color: #475467;
+
+      font-size: 13px;
+      line-height: 1.45;
+
+      overflow-wrap: anywhere;
     }
 
-    .listAction{
-      display:flex;
-      justify-content:flex-end;
-      margin-top:11px;
+    .compactLine strong {
+      color: #344054;
+      font-weight: 700;
     }
+
+    .compactBottom {
+      display: grid;
 
-    .listAction button{
-      min-width:104px;
+      grid-template-columns:
+        minmax(0, 1fr)
+        auto;
+
+      align-items: end;
+      gap: 10px;
+
+      margin-top: 12px;
     }
 
-    .detailTop{
-      display:flex;
-      align-items:center;
-      gap:10px;
-      margin-bottom:12px;
+    .miniProgress {
+      display: grid;
+      gap: 5px;
     }
 
-    .backBtn{
-      background:#eef2f7;
-      color:#344054;
-      min-width:44px;
-      padding:8px;
+    .miniProgressLabel {
+      color: #667085;
+      font-size: 10.5px;
+      font-weight: 700;
     }
+
+    .miniProgressTrack {
+      height: 5px;
 
-    .detailHeader{
-      display:flex;
-      justify-content:space-between;
-      gap:10px;
-      align-items:flex-start;
-      margin-bottom:12px;
+      overflow: hidden;
+
+      border-radius: 999px;
+
+      background: #dce5f1;
     }
+
+    .miniProgressTrack span {
+      display: block;
 
-    .detailHeader h3{
-      margin:0;
-      font-size:17px;
+      height: 100%;
+
+      border-radius: 999px;
+
+      background:
+        linear-gradient(
+          90deg,
+          #1558d6,
+          #18a96b
+        );
     }
+
+    .smallAction {
+      min-width: 94px;
+      min-height: 38px;
 
-    .detailSection{
-      background:#f8fafc;
-      border:1px solid var(--line);
-      border-radius:14px;
-      padding:13px;
-      margin-top:10px;
+      padding:
+        7px
+        13px;
     }
 
-    .detailSection h4{
-      margin:0 0 10px;
-      font-size:14px;
-      color:#344054;
+    .detailTop {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      margin-bottom: 12px;
     }
+
+    .backBtn {
+      display: grid;
+      place-items: center;
+
+      width: 42px;
+      min-width: 42px;
+      height: 42px;
+      min-height: 42px;
 
-    .detailGrid{
-      display:grid;
-      gap:8px;
+      padding: 0;
+
+      background: #eef2f7;
+      color: #344054;
     }
 
-    .detailField{
-      display:grid;
-      grid-template-columns:120px 1fr;
-      gap:9px;
-      font-size:13px;
+    .detailHeader {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 10px;
+
+      margin-bottom: 12px;
     }
+
+    .detailHeader h3 {
+      margin: 0;
 
-    .detailField span:first-child{
-      color:#667085;
+      font-size: 17px;
+      overflow-wrap: anywhere;
     }
 
-    .detailField span:last-child{
-      font-weight:600;
-      color:#344054;
-      overflow-wrap:anywhere;
+    .detailSection {
+      margin-top: 10px;
+      padding: 13px;
+
+      border: 1px solid var(--line);
+      border-radius: 14px;
+
+      background: #f8fafc;
     }
+
+    .detailSection h4 {
+      margin:
+        0 0
+        10px;
 
-    .resultBox{
-      display:grid;
-      grid-template-columns:1fr auto;
-      gap:10px;
-      align-items:center;
-      padding:11px 12px;
-      border-radius:13px;
-      background:#eef6ff;
-      border:1px solid #bfdbfe;
+      color: #344054;
+
+      font-size: 14px;
     }
 
-    .resultBox b{
-      display:block;
-      color:#174ea6;
+    .detailGrid {
+      display: grid;
+      gap: 8px;
     }
+
+    .detailField {
+      display: grid;
 
-    .linkbtn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      text-decoration:none;
-      background:#16213a;
-      color:#fff;
-      border-radius:11px;
-      padding:9px 12px;
-      font-weight:700;
-      font-size:12px;
+      grid-template-columns:
+        118px
+        minmax(0, 1fr);
+
+      gap: 9px;
+
+      font-size: 13px;
     }
 
-    .timeline{
-      margin-top:8px;
-      padding-left:4px;
+    .detailField span:first-child {
+      color: #667085;
     }
+
+    .detailField span:last-child {
+      color: #344054;
 
-    .timelineItem{
-      display:grid;
-      grid-template-columns:30px 1fr;
-      gap:10px;
-      position:relative;
-      padding-bottom:15px;
+      font-weight: 600;
+
+      overflow-wrap: anywhere;
     }
+
+    .resultBox {
+      display: grid;
+
+      grid-template-columns:
+        minmax(0, 1fr)
+        auto;
+
+      align-items: center;
+      gap: 10px;
+
+      padding: 11px 12px;
+
+      border: 1px solid #bfdbfe;
+      border-radius: 13px;
 
-    .timelineItem:not(:last-child)::after{
-      content:'';
-      position:absolute;
-      left:14px;
-      top:30px;
-      bottom:0;
-      width:2px;
-      background:#dbe4f0;
+      background: #eef6ff;
     }
 
-    .timelineDot{
-      width:30px;
-      height:30px;
-      border-radius:50%;
-      display:grid;
-      place-items:center;
-      background:#e7edf5;
-      color:#667085;
-      font-size:12px;
-      font-weight:800;
-      z-index:1;
+    .resultBox b {
+      display: block;
+      color: #174ea6;
     }
 
-    .timelineItem.done .timelineDot{
-      background:#16a34a;
-      color:#fff;
+    .linkbtn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+      min-height: 38px;
+
+      padding:
+        8px
+        12px;
+
+      border-radius: 11px;
+
+      background: #16213a;
+      color: #ffffff;
+
+      font-size: 12px;
+      font-weight: 700;
+
+      text-decoration: none;
     }
 
-    .timelineItem.active .timelineDot{
-      background:#1558d6;
-      color:#fff;
+    .timeline {
+      margin-top: 8px;
+      padding-left: 4px;
     }
 
-    .timelineTitle{
-      font-weight:800;
-      font-size:13px;
+    .timelineItem {
+      position: relative;
+
+      display: grid;
+
+      grid-template-columns:
+        30px
+        minmax(0, 1fr);
+
+      gap: 10px;
+
+      padding-bottom: 15px;
     }
+
+    .timelineItem:not(:last-child)::after {
+      content: "";
+
+      position: absolute;
 
-    .timelineNote{
-      font-size:12px;
-      color:var(--muted);
-      margin-top:2px;
+      left: 14px;
+      top: 30px;
+      bottom: 0;
+
+      width: 2px;
+
+      background: #dbe4f0;
     }
+
+    .timelineDot {
+      z-index: 1;
+
+      display: grid;
+      place-items: center;
+
+      width: 30px;
+      height: 30px;
+
+      border-radius: 50%;
 
-    .detailActions{
-      position:sticky;
-      bottom:calc(70px + var(--safe-bottom));
-      z-index:20;
-      background:rgba(255,255,255,.96);
-      backdrop-filter:blur(10px);
-      border:1px solid var(--line);
-      border-radius:15px;
-      padding:10px;
-      margin-top:12px;
-      box-shadow:0 -4px 18px rgba(15,34,65,.07);
+      background: #e7edf5;
+      color: #667085;
+
+      font-size: 12px;
+      font-weight: 800;
     }
 
-    .actionGrid{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:8px;
+    .timelineItem.done .timelineDot {
+      background: #16a34a;
+      color: #ffffff;
     }
 
-    .actionGrid button{
-      width:100%;
-      font-size:13px;
-      padding:9px 8px;
+    .timelineItem.active .timelineDot {
+      background: #1558d6;
+      color: #ffffff;
     }
 
-    .moreActions{
-      margin-top:8px;
-      border-top:1px dashed var(--line);
-      padding-top:8px;
+    .timelineTitle {
+      color: #344054;
+
+      font-size: 13px;
+      font-weight: 800;
     }
+
+    .timelineNote {
+      margin-top: 2px;
 
-    .moreActions summary{
-      cursor:pointer;
-      color:#475467;
-      font-weight:700;
-      font-size:13px;
-      list-style:none;
+      color: var(--muted);
+      font-size: 12px;
     }
 
-    .moreActions summary::-webkit-details-marker{
-      display:none;
+    .check {
+      display: flex;
+      align-items: flex-start;
+      gap: 9px;
+
+      margin-top: 11px;
     }
 
-    .bottomNav{
-      position:fixed;
-      left:0;
-      right:0;
-      bottom:0;
-      z-index:50;
-      background:rgba(255,255,255,.97);
-      backdrop-filter:blur(12px);
-      border-top:1px solid var(--line);
-      padding:7px 10px calc(7px + var(--safe-bottom));
-      display:grid;
-      grid-template-columns:repeat(2,1fr);
-      gap:5px;
+    .check input {
+      width: 19px;
+      height: 19px;
+      min-height: 19px;
+
+      flex: 0 0 auto;
     }
+
+    .bottomNav {
+      position: fixed;
+      z-index: 50;
 
-    .bottomNav button{
-      background:transparent;
-      color:#667085;
-      min-height:48px;
-      padding:5px;
-      font-size:10.5px;
-      border-radius:11px;
+      left: 0;
+      right: 0;
+      bottom: 0;
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+      gap: 5px;
+
+      padding:
+        7px 10px
+        calc(7px + var(--safe-bottom));
+
+      border-top: 1px solid var(--line);
+
+      background:
+        rgba(255, 255, 255, 0.97);
+
+      backdrop-filter: blur(12px);
     }
+
+    .bottomNav button {
+      min-height: 50px;
+
+      padding: 5px;
 
-    .bottomNav button span{
-      display:block;
-      font-size:18px;
-      line-height:1.15;
+      border-radius: 11px;
+
+      background: transparent;
+      color: #667085;
+
+      font-size: 10.5px;
     }
+
+    .bottomNav button span {
+      display: block;
 
-    .bottomNav button.active{
-      background:#eef4ff;
-      color:#174ea6;
+      font-size: 18px;
+      line-height: 1.15;
     }
 
-    @media(min-width:720px){
-      body{padding-bottom:18px}
-      .page{padding:20px}
-      .appHeader{padding:20px 22px}
-      .appHeader h1{font-size:25px}
-      .appHeader p{font-size:14px}
-      .card{padding:20px;margin-top:15px}
-      .stats{grid-template-columns:repeat(4,1fr)}
-      .bottomNav{display:none}
-      .detailGrid{grid-template-columns:1fr 1fr}
-      .detailField{grid-template-columns:130px 1fr}
-      .detailActions{bottom:20px}
-      .actionGrid{grid-template-columns:repeat(3,1fr)}
+    .bottomNav button.active {
+      background: #eef4ff;
+      color: #174ea6;
     }
 
-    @media(max-width:420px){
-      .detailField{
-        grid-template-columns:1fr;
-        gap:2px;
+    @media (min-width: 720px) {
+      body {
+        padding-bottom: 18px;
       }
 
-      .resultBox{
-        grid-template-columns:1fr;
+      .page {
+        padding: 20px;
       }
 
-      .resultBox .linkbtn{
-        width:100%;
+      .appHeader {
+        padding: 20px 22px;
+      }
+
+      .appHeader h1 {
+        font-size: 25px;
+      }
+
+      .appHeader p {
+        font-size: 14px;
+      }
+
+      .card {
+        margin-top: 15px;
+        padding: 20px;
+      }
+
+      .two {
+        grid-template-columns:
+          repeat(2, minmax(0, 1fr));
+      }
+
+      .bottomNav {
+        display: none;
+      }
+
+      .summaryGrid {
+        grid-template-columns:
+          repeat(3, 180px);
+
+        justify-content: start;
+      }
+
+      .detailGrid {
+        grid-template-columns:
+          repeat(2, minmax(0, 1fr));
+      }
+
+      .detailField {
+        grid-template-columns:
+          130px
+          minmax(0, 1fr);
+      }
+    }
+
+    @media (max-width: 420px) {
+      .detailField {
+        grid-template-columns: 1fr;
+        gap: 2px;
+      }
+
+      .resultBox {
+        grid-template-columns: 1fr;
+      }
+
+      .resultBox .linkbtn {
+        width: 100%;
+      }
+
+      .statusPill {
+        max-width: 135px;
       }
     }
   </style>
 
-  <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+  <script
+    src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js"
+    defer
+  ></script>
 </head>
 
 <body>
@@ -749,31 +1222,52 @@
     <div class="wrap">
 
       <header class="appHeader">
-        <div class="appLogo">🗂️</div>
+        <div class="appLogo">
+          📄
+        </div>
 
         <div>
-          <h1>Quản trị văn bản</h1>
-          <p>Tiếp nhận · Cấp số · Bàn giao · Theo dõi hoàn tất</p>
+          <h1>
+            Cổng dịch vụ nội bộ
+          </h1>
+
+          <p>
+            Đăng ký văn bản · Theo dõi tiến độ · Xác nhận đã nhận
+          </p>
         </div>
       </header>
 
-      <section id="loginCard" class="card">
+      <section
+        id="loginCard"
+        class="card"
+      >
         <div class="sectionHead">
-          <h2>Đăng nhập quản trị</h2>
+          <h2>
+            Đăng nhập
+          </h2>
         </div>
 
-        <div class="small" style="margin-bottom:10px">
-          Chỉ tài khoản Phòng Tổ chức mới được truy cập.
+        <div
+          class="small"
+          style="margin-bottom: 10px"
+        >
+          Sử dụng họ tên và mã PIN đã được cấp.
         </div>
 
-        <label for="loginName">Họ và tên</label>
+        <label for="loginName">
+          Họ và tên
+        </label>
+
         <input
           id="loginName"
           autocomplete="name"
           placeholder="Nhập họ và tên"
         >
 
-        <label for="loginPin">Mã PIN</label>
+        <label for="loginPin">
+          Mã PIN
+        </label>
+
         <input
           id="loginPin"
           type="password"
@@ -786,118 +1280,452 @@
           id="btnLogin"
           type="button"
           class="primary fullBtn"
-          onclick="login()">
+          onclick="login()"
+        >
           ĐĂNG NHẬP
         </button>
 
-        <div id="loginMsg" class="msg"></div>
+        <div
+          id="loginMsg"
+          class="msg"
+        ></div>
       </section>
 
-      <section id="appBox" class="hidden">
+      <section
+        id="appBox"
+        class="hidden"
+      >
 
         <section class="card userBar">
-          <div id="adminAvatar" class="avatar">QT</div>
+
+          <div
+            id="userAvatar"
+            class="avatar"
+          >
+            VC
+          </div>
 
           <div>
-            <div id="helloUser" class="userName">Xin chào</div>
-            <div id="userInfo" class="small"></div>
+            <div
+              id="helloUser"
+              class="userName"
+            >
+              Xin chào
+            </div>
+
+            <div
+              id="userInfo"
+              class="small"
+            ></div>
           </div>
 
           <div class="iconActions">
+
             <button
               class="iconBtn"
               type="button"
               onclick="refreshCurrentView()"
-              aria-label="Tải lại">
-              <span>↻</span>
+              aria-label="Tải lại"
+            >
+              ↻
             </button>
 
             <button
               class="iconBtn dangerLite"
               type="button"
               onclick="logout()"
-              aria-label="Đăng xuất">
-              <span>⇥</span>
+              aria-label="Đăng xuất"
+            >
+              ⇥
             </button>
+
           </div>
         </section>
 
-        <section id="adminHomeView">
+        <!-- TRANG CHỦ -->
+        <section id="homeView">
 
-          <section id="adminPushSection" class="noticeBar hidden">
-            <div class="noticeIcon">🔔</div>
+          <section class="summaryGrid">
+
+            <div class="summaryCard">
+              <strong id="sumTotal">
+                0
+              </strong>
+
+              <span>
+                Tổng hồ sơ
+              </span>
+            </div>
+
+            <div class="summaryCard">
+              <strong id="sumProcessing">
+                0
+              </strong>
+
+              <span>
+                Đang xử lý
+              </span>
+            </div>
+
+            <div class="summaryCard">
+              <strong id="sumCompleted">
+                0
+              </strong>
+
+              <span>
+                Hoàn tất
+              </span>
+            </div>
+
+          </section>
+
+          <section
+            id="pushSection"
+            class="noticeBar hidden"
+          >
+            <div class="noticeIcon">
+              🔔
+            </div>
 
             <div>
-              <b>Thông báo quản trị</b>
+              <b>
+                Thông báo điện thoại
+              </b>
+
               <div class="small">
-                Nhận thông báo khi có yêu cầu mới.
+                Nhận thông báo khi hồ sơ thay đổi.
               </div>
             </div>
 
             <button
               type="button"
-              onclick="enablePushAndTest()">
+              onclick="enablePushAndTest()"
+            >
               Bật
             </button>
           </section>
 
           <section class="card">
-            <div class="sectionHead">
-              <h2>Tổng quan</h2>
-              <span id="totalCaption" class="small">
-                Tổng: 0 hồ sơ
-              </span>
-            </div>
 
-            <div id="dashboard" class="stats"></div>
-          </section>
-
-          <section class="card">
             <div class="sectionHead">
-              <h2>Cần xử lý</h2>
+              <h2>
+                Hồ sơ gần nhất
+              </h2>
 
               <button
                 class="ghost"
                 type="button"
-                onclick="showAdminView('requests')">
+                onclick="showView('records')"
+              >
                 Xem tất cả
               </button>
             </div>
 
-            <div id="priorityList"></div>
+            <div id="latestRecord"></div>
+
           </section>
         </section>
 
-        <section id="adminRequestsView" class="hidden">
+        <!-- GỬI YÊU CẦU -->
+        <section
+          id="requestView"
+          class="hidden"
+        >
+          <section class="card">
+
+            <div class="viewIntro">
+              <h2>
+                Gửi yêu cầu
+              </h2>
+
+              <p>
+                Chọn đúng loại văn bản và nhập đầy đủ thông tin.
+              </p>
+            </div>
+
+            <div class="docTabs">
+
+              <button
+                id="tabCL"
+                class="docTab active"
+                type="button"
+                onclick="setRequestType('CONG_LENH')"
+              >
+                Công lệnh
+              </button>
+
+              <button
+                id="tabGGT"
+                class="docTab"
+                type="button"
+                onclick="setRequestType('GIAY_GIOI_THIEU')"
+              >
+                Giấy giới thiệu
+              </button>
+
+            </div>
+
+            <!-- CÔNG LỆNH -->
+            <div id="formCL">
+
+              <label for="diTu">
+                Đi từ
+              </label>
+
+              <input
+                id="diTu"
+                value="TTBTXH Tân Hiệp"
+                readonly
+              >
+
+              <label for="den">
+                Đến
+              </label>
+
+              <select
+                id="den"
+                onchange="toggleOtherInput('den','denKhac')"
+              >
+                <option value="">
+                  -- Chọn nơi đến --
+                </option>
+
+                <option value="TTYT KV Bình Long">
+                  TTYT KV Bình Long
+                </option>
+
+                <option value="Bệnh viện ĐK Bình Phước">
+                  Bệnh viện ĐK Bình Phước
+                </option>
+
+                <option value="Bệnh viện ĐK Bình Dương">
+                  Bệnh viện ĐK Bình Dương
+                </option>
+
+                <option value="Bệnh viện Chợ Rẫy">
+                  Bệnh viện Chợ Rẫy
+                </option>
+
+                <option value="KHAC">
+                  Khác
+                </option>
+              </select>
+
+              <input
+                id="denKhac"
+                class="hidden otherInput"
+                placeholder="Nhập nơi đến cụ thể"
+              >
+
+              <label for="noiDungCL">
+                Nội dung công tác
+              </label>
+
+              <select
+                id="noiDungCL"
+                onchange="toggleOtherInput('noiDungCL','noiDungCLKhac')"
+              >
+                <option value="">
+                  -- Chọn nội dung công tác --
+                </option>
+
+                <option value="Nuôi bệnh">
+                  Nuôi bệnh
+                </option>
+
+                <option value="Chuyển viện">
+                  Chuyển viện
+                </option>
+
+                <option value="Rước bệnh nhân">
+                  Rước bệnh nhân
+                </option>
+
+                <option value="KHAC">
+                  Khác
+                </option>
+              </select>
+
+              <input
+                id="noiDungCLKhac"
+                class="hidden otherInput"
+                placeholder="Nhập nội dung công tác cụ thể"
+              >
+
+              <div class="grid two">
+
+                <div>
+                  <label for="ngayDi">
+                    Ngày đi
+                  </label>
+
+                  <input
+                    id="ngayDi"
+                    type="date"
+                  >
+                </div>
+
+                <div>
+                  <label for="ngayVe">
+                    Ngày về
+                  </label>
+
+                  <input
+                    id="ngayVe"
+                    type="date"
+                  >
+                </div>
+
+              </div>
+
+              <label for="phuongTien">
+                Phương tiện
+              </label>
+
+              <select id="phuongTien">
+
+                <option value="">
+                  -- Chọn phương tiện --
+                </option>
+
+                <option value="Xe 16 chỗ 51A-123">
+                  Xe 16 chỗ 51A-123
+                </option>
+
+                <option value="Xe cứu thương 51B-123">
+                  Xe cứu thương 51B-123
+                </option>
+
+                <option value="Xe 7 chỗ 51C-123">
+                  Xe 7 chỗ 51C-123
+                </option>
+
+                <option value="Xe tự túc">
+                  Xe tự túc
+                </option>
+
+              </select>
+            </div>
+
+            <!-- GIẤY GIỚI THIỆU -->
+            <div
+              id="formGGT"
+              class="hidden"
+            >
+
+              <label for="kinhGui">
+                Kính gửi
+              </label>
+
+              <input
+                id="kinhGui"
+                placeholder="Tên cơ quan, đơn vị"
+              >
+
+              <label for="noiDenGGT">
+                Nơi đến
+              </label>
+
+              <input
+                id="noiDenGGT"
+                placeholder="Địa điểm làm việc"
+              >
+
+              <label for="noiDungGGT">
+                Nội dung giới thiệu
+              </label>
+
+              <textarea
+                id="noiDungGGT"
+                placeholder="Nội dung liên hệ, làm việc, giải quyết công việc..."
+              ></textarea>
+
+              <label for="ngayHetHan">
+                Ngày hết hạn
+              </label>
+
+              <input
+                id="ngayHetHan"
+                type="date"
+              >
+
+              <div class="backendNote">
+                Phần giao diện Giấy giới thiệu đã hoàn chỉnh.
+                Chức năng gửi và cấp sẽ hoạt động sau khi cập nhật Code.gs.
+              </div>
+
+            </div>
+
+            <label for="ghiChu">
+              Ghi chú
+            </label>
+
+            <textarea
+              id="ghiChu"
+              placeholder="Nội dung cần lưu ý nếu có"
+            ></textarea>
+
+            <button
+              id="btnSend"
+              type="button"
+              class="primary fullBtn"
+              onclick="sendRequest()"
+            >
+              GỬI YÊU CẦU
+            </button>
+
+            <div
+              id="newMsg"
+              class="msg"
+            ></div>
+
+          </section>
+        </section>
+
+        <!-- HỒ SƠ -->
+        <section
+          id="recordsView"
+          class="hidden"
+        >
           <section class="card">
 
             <div class="sectionHead">
-              <h2>Danh sách yêu cầu</h2>
+              <h2>
+                Hồ sơ của tôi
+              </h2>
 
               <button
-                class="ghost"
+                class="iconBtn"
                 type="button"
-                onclick="loadRequests()">
-                Làm mới
+                onclick="loadMyRequests()"
+                aria-label="Làm mới hồ sơ"
+              >
+                ↻
               </button>
             </div>
 
-            <div class="filterRows">
+            <div class="filterBlock">
+              <span class="filterLabel">
+                Loại văn bản
+              </span>
 
-              <div class="filterChips">
+              <div class="typeFilter">
+
                 <button
                   class="chip active"
                   type="button"
                   data-kind="ALL"
-                  onclick="setKindFilter('ALL',this)">
-                  Tất cả loại
+                  onclick="setKindFilter('ALL',this)"
+                >
+                  Tất cả
                 </button>
 
                 <button
                   class="chip"
                   type="button"
                   data-kind="CONG_LENH"
-                  onclick="setKindFilter('CONG_LENH',this)">
+                  onclick="setKindFilter('CONG_LENH',this)"
+                >
                   Công lệnh
                 </button>
 
@@ -905,33 +1733,36 @@
                   class="chip"
                   type="button"
                   data-kind="GIAY_GIOI_THIEU"
-                  onclick="setKindFilter('GIAY_GIOI_THIEU',this)">
+                  onclick="setKindFilter('GIAY_GIOI_THIEU',this)"
+                >
                   Giấy giới thiệu
                 </button>
-              </div>
 
-              <div class="filterChips">
+              </div>
+            </div>
+
+            <div class="filterBlock">
+              <span class="filterLabel">
+                Trạng thái
+              </span>
+
+              <div class="stateFilter">
+
                 <button
                   class="chip active"
                   type="button"
                   data-state="ALL"
-                  onclick="setStateFilter('ALL',this)">
+                  onclick="setStateFilter('ALL',this)"
+                >
                   Tất cả
                 </button>
 
                 <button
                   class="chip"
                   type="button"
-                  data-state="NEW"
-                  onclick="setStateFilter('NEW',this)">
-                  Mới gửi
-                </button>
-
-                <button
-                  class="chip"
-                  type="button"
                   data-state="PROCESSING"
-                  onclick="setStateFilter('PROCESSING',this)">
+                  onclick="setStateFilter('PROCESSING',this)"
+                >
                   Đang xử lý
                 </button>
 
@@ -939,7 +1770,8 @@
                   class="chip"
                   type="button"
                   data-state="WAITING"
-                  onclick="setStateFilter('WAITING',this)">
+                  onclick="setStateFilter('WAITING',this)"
+                >
                   Chờ nhận
                 </button>
 
@@ -947,72 +1779,102 @@
                   class="chip"
                   type="button"
                   data-state="COMPLETED"
-                  onclick="setStateFilter('COMPLETED',this)">
+                  onclick="setStateFilter('COMPLETED',this)"
+                >
                   Hoàn tất
                 </button>
-              </div>
 
-              <div class="searchBox">
-                <span>⌕</span>
-
-                <input
-                  id="tuKhoa"
-                  placeholder="Tìm mã yêu cầu, họ tên, số được cấp"
-                  oninput="scheduleRender()"
-                >
               </div>
             </div>
 
-            <div id="listBox"></div>
+            <div class="searchBox">
+              <span class="searchIcon">
+                ⌕
+              </span>
+
+              <input
+                id="recordKeyword"
+                placeholder="Tìm mã yêu cầu hoặc số được cấp"
+                oninput="scheduleRecordRender()"
+              >
+            </div>
+
+            <div id="myList"></div>
+
           </section>
         </section>
 
-        <section id="adminDetailView" class="hidden">
+        <!-- CHI TIẾT -->
+        <section
+          id="detailView"
+          class="hidden"
+        >
           <section class="card">
 
             <div class="detailTop">
+
               <button
                 class="backBtn"
                 type="button"
-                onclick="showAdminView('requests')">
+                onclick="showView('records')"
+              >
                 ←
               </button>
 
               <div>
-                <h2 style="margin:0">
-                  Xử lý yêu cầu
+                <h2 style="margin: 0">
+                  Chi tiết hồ sơ
                 </h2>
 
                 <div class="small">
-                  Kiểm tra thông tin và thực hiện bước phù hợp
+                  Thông tin, kết quả và tiến trình xử lý
                 </div>
               </div>
+
             </div>
 
-            <div id="adminDetailBox"></div>
+            <div id="detailBox"></div>
+
           </section>
         </section>
+
       </section>
     </div>
   </main>
 
-  <nav id="adminBottomNav" class="bottomNav hidden">
+  <nav
+    id="userBottomNav"
+    class="bottomNav hidden"
+  >
+
     <button
-      id="adminNavHome"
+      id="navHome"
       class="active"
       type="button"
-      onclick="showAdminView('home')">
+      onclick="showView('home')"
+    >
       <span>⌂</span>
-      Tổng quan
+      Trang chủ
     </button>
 
     <button
-      id="adminNavRequests"
+      id="navRequest"
       type="button"
-      onclick="showAdminView('requests')">
-      <span>▤</span>
-      Yêu cầu
+      onclick="showView('request')"
+    >
+      <span>＋</span>
+      Gửi yêu cầu
     </button>
+
+    <button
+      id="navRecords"
+      type="button"
+      onclick="showView('records')"
+    >
+      <span>▤</span>
+      Hồ sơ
+    </button>
+
   </nav>
 
   <script>
@@ -1030,51 +1892,70 @@
 
     let currentUser =
       JSON.parse(
-        localStorage.getItem(
-          "dv_admin_user"
-        ) || "null"
+        localStorage.getItem("dv_user") || "null"
       );
 
     let requests = [];
-    let currentView = "home";
-    let currentDetailId = "";
-    let kindFilter = "ALL";
-    let stateFilter = "ALL";
-    let renderTimer = null;
-    let oneSignalInitPromise = null;
+
+    let currentView =
+      "home";
+
+    let requestType =
+      "CONG_LENH";
+
+    let kindFilter =
+      "ALL";
+
+    let stateFilter =
+      "ALL";
+
+    let recordRenderTimer =
+      null;
+
+    let oneSignalInitPromise =
+      null;
 
     window.OneSignalDeferred =
       window.OneSignalDeferred || [];
 
-    function $(id){
+    function $(id) {
       return document.getElementById(id);
     }
 
-    function esc(value){
+    function esc(value) {
       return String(value ?? "")
         .replace(
           /[&<>'"]/g,
-          function(character){
+          function(character) {
             return {
-              "&":"&amp;",
-              "<":"&lt;",
-              ">":"&gt;",
-              "'":"&#39;",
-              '"':"&quot;"
+              "&": "&amp;",
+              "<": "&lt;",
+              ">": "&gt;",
+              "'": "&#39;",
+              '"': "&quot;"
             }[character];
           }
         );
     }
 
-    function js(value){
-      return JSON.stringify(String(value ?? ""))
-        .replace(/</g,"\\u003c");
+    function js(value) {
+      return JSON.stringify(
+        String(value ?? "")
+      ).replace(
+        /</g,
+        "\\u003c"
+      );
     }
 
-    function showMsg(id,type,html){
-      const element = $(id);
+    function showMsg(
+      id,
+      type,
+      html
+    ) {
+      const element =
+        $(id);
 
-      if(!element){
+      if (!element) {
         return;
       }
 
@@ -1085,10 +1966,11 @@
         html;
     }
 
-    function clearMsg(id){
-      const element = $(id);
+    function clearMsg(id) {
+      const element =
+        $(id);
 
-      if(!element){
+      if (!element) {
         return;
       }
 
@@ -1099,9 +1981,10 @@
         "";
     }
 
-    function jsonp(params){
+    function jsonp(params) {
       return new Promise(
-        function(resolve,reject){
+        function(resolve, reject) {
+
           const callbackName =
             "cb_" +
             Date.now() +
@@ -1115,11 +1998,11 @@
 
           const timer =
             setTimeout(
-              function(){
-                try{
+              function() {
+                try {
                   delete window[callbackName];
                   script.remove();
-                }catch(error){}
+                } catch (error) {}
 
                 reject(
                   new Error(
@@ -1131,10 +2014,13 @@
             );
 
           window[callbackName] =
-            function(data){
+            function(data) {
               clearTimeout(timer);
+
               delete window[callbackName];
+
               script.remove();
+
               resolve(data);
             };
 
@@ -1152,9 +2038,11 @@
             query.toString();
 
           script.onerror =
-            function(){
+            function() {
               clearTimeout(timer);
+
               delete window[callbackName];
+
               script.remove();
 
               reject(
@@ -1169,9 +2057,15 @@
       );
     }
 
-    function api(action,data){
+    function api(
+      action,
+      data
+    ) {
       const params =
-        Object.assign({},data || {});
+        Object.assign(
+          {},
+          data || {}
+        );
 
       params.action =
         action;
@@ -1182,25 +2076,62 @@
       return jsonp(params);
     }
 
-    function getInitials(name){
+    function todayValue() {
+      const date =
+        new Date();
+
       return (
-        String(name || "QT")
+        date.getFullYear() +
+        "-" +
+        String(
+          date.getMonth() + 1
+        ).padStart(2, "0") +
+        "-" +
+        String(
+          date.getDate()
+        ).padStart(2, "0")
+      );
+    }
+
+    function setToday() {
+      const value =
+        todayValue();
+
+      $("ngayDi").value =
+        value;
+
+      $("ngayVe").value =
+        value;
+
+      $("ngayHetHan").value =
+        value;
+    }
+
+    function getInitials(name) {
+      return (
+        String(name || "VC")
           .trim()
           .split(/\s+/)
           .slice(-2)
           .map(
-            function(value){
+            function(value) {
               return value
                 .charAt(0)
                 .toUpperCase();
             }
           )
           .join("") ||
-        "QT"
+        "VC"
       );
     }
 
-    function getType(item){
+    function normalizeStatus(status) {
+      return String(status || "")
+        .toUpperCase()
+        .trim();
+    }
+
+    function getType(item) {
       const raw =
         String(
           item.loaiGiay ||
@@ -1218,13 +2149,16 @@
         : "CONG_LENH";
     }
 
-    function typeLabel(item){
-      return getType(item) === "GIAY_GIOI_THIEU"
+    function typeLabel(item) {
+      return (
+        getType(item) ===
+        "GIAY_GIOI_THIEU"
+      )
         ? "Giấy giới thiệu"
         : "Công lệnh";
     }
 
-    function issuedNumber(item){
+    function issuedNumber(item) {
       return (
         item.soDuocCap ||
         item.soVanBan ||
@@ -1234,11 +2168,11 @@
       );
     }
 
-    function destinationText(item){
-      if(
+    function destinationText(item) {
+      if (
         getType(item) ===
         "GIAY_GIOI_THIEU"
-      ){
+      ) {
         return (
           item.noiDen ||
           item.noiDenGGT ||
@@ -1247,31 +2181,45 @@
         );
       }
 
+      const from =
+        item.diTu || "";
+
+      const to =
+        item.den || "";
+
       return (
-        (item.diTu || "") +
-        " → " +
-        (item.den || "")
-      );
+        from &&
+        to
+      )
+        ? from + " → " + to
+        : to || from;
     }
 
-    function dateText(item){
-      if(
+    function dateText(item) {
+      if (
         getType(item) ===
         "GIAY_GIOI_THIEU"
-      ){
+      ) {
         return item.ngayHetHan
           ? "Hết hạn: " + item.ngayHetHan
           : "";
       }
 
+      const from =
+        item.ngayDi || "";
+
+      const to =
+        item.ngayVe || "";
+
       return (
-        (item.ngayDi || "") +
-        " → " +
-        (item.ngayVe || "")
-      );
+        from &&
+        to
+      )
+        ? from + " → " + to
+        : from || to;
     }
 
-    function contentText(item){
+    function contentText(item) {
       return (
         item.noiDungGGT ||
         item.noiDung ||
@@ -1279,69 +2227,122 @@
       );
     }
 
-    function normalizeStatus(status){
-      return String(status || "")
-        .toUpperCase();
-    }
-
-    function stepIndex(status){
-      const statusText =
+    function stepIndex(status) {
+      const text =
         normalizeStatus(status);
 
-      if(
-        statusText.includes("HOÀN TẤT")
-      ){
+      if (
+        text.includes("HOÀN TẤT")
+      ) {
         return 4;
       }
 
-      if(
-        statusText.includes("BÀN GIAO") ||
-        statusText === "CHỜ NHẬN"
-      ){
+      if (
+        text.includes("BÀN GIAO") ||
+        text === "CHỜ NHẬN"
+      ) {
         return 3;
       }
 
-      if(
-        statusText.includes("ĐÃ CẤP") ||
-        statusText.includes("CẤP CÔNG LỆNH") ||
-        statusText.includes("CẤP GIẤY")
-      ){
+      if (
+        text.includes("ĐÃ CẤP") ||
+        text.includes("CẤP CÔNG LỆNH") ||
+        text.includes("CẤP GIẤY")
+      ) {
         return 2;
       }
 
-      if(
-        statusText.includes("TIẾP NHẬN") ||
-        statusText.includes("ĐANG XỬ LÝ") ||
-        statusText.includes("BỔ SUNG") ||
-        statusText.includes("TỪ CHỐI")
-      ){
+      if (
+        text.includes("TIẾP NHẬN") ||
+        text.includes("ĐANG XỬ LÝ") ||
+        text.includes("BỔ SUNG") ||
+        text.includes("TỪ CHỐI")
+      ) {
         return 1;
       }
 
       return 0;
     }
 
-    function statusPill(status){
-      const statusText =
-        String(status || "");
+    function shortStatus(status) {
+      const text =
+        normalizeStatus(status);
+
+      if (
+        text.includes("HOÀN TẤT")
+      ) {
+        return "HOÀN TẤT";
+      }
+
+      if (
+        text.includes("BÀN GIAO")
+      ) {
+        return "CHỜ XÁC NHẬN";
+      }
+
+      if (
+        text.includes("ĐÃ CẤP")
+      ) {
+        return "ĐÃ CẤP";
+      }
+
+      if (
+        text.includes("TIẾP NHẬN")
+      ) {
+        return "ĐÃ TIẾP NHẬN";
+      }
+
+      if (
+        text.includes("ĐANG XỬ LÝ")
+      ) {
+        return "ĐANG XỬ LÝ";
+      }
+
+      if (
+        text.includes("BỔ SUNG")
+      ) {
+        return "CẦN BỔ SUNG";
+      }
+
+      if (
+        text.includes("TỪ CHỐI")
+      ) {
+        return "TỪ CHỐI";
+      }
+
+      return text || "MỚI GỬI";
+    }
+
+    function statusPill(
+      status,
+      showFull
+    ) {
+      const fullText =
+        normalizeStatus(status);
+
+      const displayText =
+        showFull
+          ? fullText
+          : shortStatus(fullText);
 
       let className =
         "";
 
-      if(
-        statusText.includes("HOÀN TẤT")
-      ){
+      if (
+        fullText.includes("HOÀN TẤT")
+      ) {
         className =
           "greenText";
-      }else if(
-        statusText.includes("TỪ CHỐI")
-      ){
+      } else if (
+        fullText.includes("TỪ CHỐI")
+      ) {
         className =
           "redText";
-      }else if(
-        statusText.includes("CẦN") ||
-        statusText.includes("CHỜ")
-      ){
+      } else if (
+        fullText.includes("CHỜ") ||
+        fullText.includes("BÀN GIAO") ||
+        fullText.includes("BỔ SUNG")
+      ) {
         className =
           "orangeText";
       }
@@ -1350,18 +2351,20 @@
         '<span class="statusPill ' +
         className +
         '">' +
-        esc(statusText) +
-        '</span>'
+        esc(displayText) +
+        "</span>"
       );
     }
 
-    function init(){
-      if(currentUser){
+    function init() {
+      setToday();
+
+      if (currentUser) {
         openApp();
       }
     }
 
-    function openApp(){
+    function openApp() {
       $("loginCard")
         .classList
         .add("hidden");
@@ -1370,7 +2373,7 @@
         .classList
         .remove("hidden");
 
-      $("adminBottomNav")
+      $("userBottomNav")
         .classList
         .remove("hidden");
 
@@ -1383,30 +2386,43 @@
           currentUser.chucVu,
           currentUser.phongKhu
         ]
-        .filter(Boolean)
-        .join(" · ");
+          .filter(Boolean)
+          .join(" · ");
 
-      $("adminAvatar").textContent =
+      $("userAvatar").textContent =
         getInitials(
           currentUser.hoTen
         );
 
       showPushBox();
-      showAdminView("home",false);
-      loadAll();
+
+      showView(
+        "home",
+        false
+      );
+
+      loadMyRequests(false);
+
       linkOneSignal(false);
     }
 
-    async function login(){
+    async function login() {
       clearMsg("loginMsg");
 
       const hoTen =
-        $("loginName").value.trim();
+        $("loginName")
+          .value
+          .trim();
 
       const pin =
-        $("loginPin").value.trim();
+        $("loginPin")
+          .value
+          .trim();
 
-      if(!hoTen || !pin){
+      if (
+        !hoTen ||
+        !pin
+      ) {
         showMsg(
           "loginMsg",
           "err",
@@ -1419,17 +2435,17 @@
       $("btnLogin").disabled =
         true;
 
-      try{
+      try {
         const response =
           await api(
             "login",
             {
-              hoTen:hoTen,
-              pin:pin
+              hoTen: hoTen,
+              pin: pin
             }
           );
 
-        if(!response.ok){
+        if (!response.ok) {
           showMsg(
             "loginMsg",
             "err",
@@ -1439,42 +2455,32 @@
           return;
         }
 
-        if(!response.user.quyenQuanTri){
-          showMsg(
-            "loginMsg",
-            "err",
-            "❌ Tài khoản không có quyền quản trị."
-          );
-
-          return;
-        }
-
         currentUser =
           response.user;
 
         localStorage.setItem(
-          "dv_admin_user",
+          "dv_user",
           JSON.stringify(currentUser)
         );
 
         openApp();
-      }catch(error){
+      } catch (error) {
         showMsg(
           "loginMsg",
           "err",
           "❌ " + error.message
         );
-      }finally{
+      } finally {
         $("btnLogin").disabled =
           false;
       }
     }
 
-    async function logout(){
+    async function logout() {
       await logoutOneSignal();
 
       localStorage.removeItem(
-        "dv_admin_user"
+        "dv_user"
       );
 
       currentUser =
@@ -1483,19 +2489,26 @@
       location.reload();
     }
 
-    function showAdminView(
+    function showView(
       name,
-      scroll = true
-    ){
+      scroll
+    ) {
+      if (
+        scroll === undefined
+      ) {
+        scroll = true;
+      }
+
       currentView =
         name;
 
       [
-        "adminHomeView",
-        "adminRequestsView",
-        "adminDetailView"
+        "homeView",
+        "requestView",
+        "recordsView",
+        "detailView"
       ].forEach(
-        function(id){
+        function(id) {
           $(id)
             .classList
             .add("hidden");
@@ -1503,168 +2516,422 @@
       );
 
       const map = {
-        home:"adminHomeView",
-        requests:"adminRequestsView",
-        detail:"adminDetailView"
+        home: "homeView",
+        request: "requestView",
+        records: "recordsView",
+        detail: "detailView"
       };
 
       $(map[name])
         .classList
         .remove("hidden");
 
-      $("adminNavHome")
-        .classList
-        .toggle(
-          "active",
-          name === "home"
-        );
+      [
+        "navHome",
+        "navRequest",
+        "navRecords"
+      ].forEach(
+        function(id) {
+          $(id)
+            .classList
+            .remove("active");
+        }
+      );
 
-      $("adminNavRequests")
-        .classList
-        .toggle(
-          "active",
-          name === "requests" ||
-          name === "detail"
-        );
-
-      if(name === "requests"){
-        renderAdminList();
+      if (
+        name === "home"
+      ) {
+        $("navHome")
+          .classList
+          .add("active");
       }
 
-      if(scroll){
+      if (
+        name === "request"
+      ) {
+        $("navRequest")
+          .classList
+          .add("active");
+      }
+
+      if (
+        name === "records" ||
+        name === "detail"
+      ) {
+        $("navRecords")
+          .classList
+          .add("active");
+      }
+
+      if (
+        name === "records"
+      ) {
+        renderRecords();
+      }
+
+      if (scroll) {
         window.scrollTo({
-          top:0,
-          behavior:"smooth"
+          top: 0,
+          behavior: "smooth"
         });
       }
     }
 
-    function refreshCurrentView(){
-      if(
+    function refreshCurrentView() {
+      if (
+        currentView === "home" ||
+        currentView === "records"
+      ) {
+        loadMyRequests();
+
+        return;
+      }
+
+      if (
         currentView === "detail" &&
-        currentDetailId
-      ){
-        openAdminDetail(
-          currentDetailId
+        $("detailBox").dataset.id
+      ) {
+        viewDetail(
+          $("detailBox").dataset.id
         );
-      }else{
-        loadAll();
+
+        return;
+      }
+
+      setToday();
+    }
+
+    function setRequestType(type) {
+      requestType =
+        type;
+
+      $("tabCL")
+        .classList
+        .toggle(
+          "active",
+          type === "CONG_LENH"
+        );
+
+      $("tabGGT")
+        .classList
+        .toggle(
+          "active",
+          type === "GIAY_GIOI_THIEU"
+        );
+
+      $("formCL")
+        .classList
+        .toggle(
+          "hidden",
+          type !== "CONG_LENH"
+        );
+
+      $("formGGT")
+        .classList
+        .toggle(
+          "hidden",
+          type !== "GIAY_GIOI_THIEU"
+        );
+
+      clearMsg("newMsg");
+    }
+
+    function toggleOtherInput(
+      selectId,
+      inputId
+    ) {
+      const select =
+        $(selectId);
+
+      const input =
+        $(inputId);
+
+      const show =
+        select.value === "KHAC";
+
+      input
+        .classList
+        .toggle(
+          "hidden",
+          !show
+        );
+
+      if (!show) {
+        input.value =
+          "";
+      } else {
+        setTimeout(
+          function() {
+            input.focus();
+          },
+          50
+        );
       }
     }
 
-    async function loadAll(){
-      await Promise.all([
-        loadDashboard(),
-        loadRequests(false)
-      ]);
+    function getSelectValue(
+      selectId,
+      otherInputId
+    ) {
+      const selected =
+        $(selectId).value;
+
+      return (
+        selected === "KHAC"
+      )
+        ? $(otherInputId)
+            .value
+            .trim()
+        : selected.trim();
     }
 
-    async function loadDashboard(){
-      $("dashboard").innerHTML =
-        '<div class="empty">' +
-        'Đang tải...' +
-        '</div>';
+    function clearForm() {
+      [
+        "den",
+        "noiDungCL",
+        "phuongTien",
+        "kinhGui",
+        "noiDenGGT",
+        "noiDungGGT",
+        "ghiChu"
+      ].forEach(
+        function(id) {
+          $(id).value =
+            "";
+        }
+      );
 
-      try{
+      [
+        "denKhac",
+        "noiDungCLKhac"
+      ].forEach(
+        function(id) {
+          $(id).value =
+            "";
+
+          $(id)
+            .classList
+            .add("hidden");
+        }
+      );
+
+      $("diTu").value =
+        "TTBTXH Tân Hiệp";
+
+      setToday();
+    }
+
+    async function sendRequest() {
+      clearMsg("newMsg");
+
+      let action;
+      let payload;
+
+      if (
+        requestType ===
+        "CONG_LENH"
+      ) {
+        payload = {
+          maNguoiDung:
+            currentUser.maNguoiDung,
+
+          loaiGiay:
+            "CONG_LENH",
+
+          diTu:
+            $("diTu")
+              .value
+              .trim(),
+
+          den:
+            getSelectValue(
+              "den",
+              "denKhac"
+            ),
+
+          noiDung:
+            getSelectValue(
+              "noiDungCL",
+              "noiDungCLKhac"
+            ),
+
+          ngayDi:
+            $("ngayDi").value,
+
+          ngayVe:
+            $("ngayVe").value,
+
+          phuongTien:
+            $("phuongTien")
+              .value
+              .trim(),
+
+          ghiChu:
+            $("ghiChu")
+              .value
+              .trim()
+        };
+
+        if (
+          !payload.diTu ||
+          !payload.den ||
+          !payload.noiDung ||
+          !payload.ngayDi ||
+          !payload.ngayVe ||
+          !payload.phuongTien
+        ) {
+          showMsg(
+            "newMsg",
+            "err",
+            "❌ Vui lòng nhập đầy đủ thông tin Công lệnh."
+          );
+
+          return;
+        }
+
+        action =
+          "tao_yeu_cau";
+      } else {
+        payload = {
+          maNguoiDung:
+            currentUser.maNguoiDung,
+
+          loaiGiay:
+            "GIAY_GIOI_THIEU",
+
+          kinhGui:
+            $("kinhGui")
+              .value
+              .trim(),
+
+          noiDen:
+            $("noiDenGGT")
+              .value
+              .trim(),
+
+          noiDungGGT:
+            $("noiDungGGT")
+              .value
+              .trim(),
+
+          ngayHetHan:
+            $("ngayHetHan").value,
+
+          ghiChu:
+            $("ghiChu")
+              .value
+              .trim()
+        };
+
+        if (
+          !payload.kinhGui ||
+          !payload.noiDen ||
+          !payload.noiDungGGT ||
+          !payload.ngayHetHan
+        ) {
+          showMsg(
+            "newMsg",
+            "err",
+            "❌ Vui lòng nhập đầy đủ thông tin Giấy giới thiệu."
+          );
+
+          return;
+        }
+
+        action =
+          "tao_yeu_cau_gioi_thieu";
+      }
+
+      $("btnSend").disabled =
+        true;
+
+      $("btnSend").textContent =
+        "ĐANG GỬI...";
+
+      try {
         const response =
           await api(
-            "admin_dashboard",
+            action,
+            payload
+          );
+
+        if (!response.ok) {
+          showMsg(
+            "newMsg",
+            "err",
+            "❌ " + response.message
+          );
+
+          return;
+        }
+
+        showMsg(
+          "newMsg",
+          "ok",
+          "✅ Đã gửi yêu cầu: <b>" +
+          esc(response.maYeuCau || "") +
+          "</b><br>" +
+          "<button " +
+          "class='secondary fullBtn' " +
+          "type='button' " +
+          "onclick='showView(\"records\")'>" +
+          "XEM HỒ SƠ" +
+          "</button>"
+        );
+
+        clearForm();
+
+        await loadMyRequests(false);
+      } catch (error) {
+        showMsg(
+          "newMsg",
+          "err",
+          "❌ " + error.message
+        );
+      } finally {
+        $("btnSend").disabled =
+          false;
+
+        $("btnSend").textContent =
+          "GỬI YÊU CẦU";
+      }
+    }
+
+    async function loadMyRequests(
+      showLoading
+    ) {
+      if (
+        showLoading === undefined
+      ) {
+        showLoading =
+          true;
+      }
+
+      if (
+        showLoading &&
+        $("myList")
+      ) {
+        $("myList").innerHTML =
+          '<div class="empty">' +
+          "Đang tải hồ sơ..." +
+          "</div>";
+      }
+
+      try {
+        const response =
+          await api(
+            "ho_so_cua_toi",
             {
               maNguoiDung:
                 currentUser.maNguoiDung
             }
           );
 
-        if(!response.ok){
-          $("dashboard").innerHTML =
+        if (!response.ok) {
+          $("myList").innerHTML =
             '<div class="empty">❌ ' +
             esc(response.message) +
-            '</div>';
-
-          return;
-        }
-
-        const data =
-          response.data || {};
-
-        $("totalCaption").textContent =
-          "Tổng: " +
-          String(data.tong ?? 0) +
-          " hồ sơ";
-
-        $("dashboard").innerHTML =
-          statHtml(
-            data.moiGui ?? 0,
-            "Mới gửi"
-          ) +
-
-          statHtml(
-            data.dangXuLy ?? 0,
-            "Đang xử lý"
-          ) +
-
-          statHtml(
-            data.choNhan ?? 0,
-            "Chờ nhận"
-          ) +
-
-          statHtml(
-            data.hoanTat ?? 0,
-            "Hoàn tất"
-          );
-      }catch(error){
-        $("dashboard").innerHTML =
-          '<div class="empty">❌ ' +
-          esc(error.message) +
-          '</div>';
-      }
-    }
-
-    function statHtml(
-      value,
-      label
-    ){
-      return (
-        '<div class="stat">' +
-          '<b>' +
-            esc(value) +
-          '</b>' +
-
-          '<span>' +
-            esc(label) +
-          '</span>' +
-        '</div>'
-      );
-    }
-
-    async function loadRequests(
-      showLoading = true
-    ){
-      if(showLoading){
-        $("listBox").innerHTML =
-          '<div class="empty">' +
-          'Đang tải danh sách...' +
-          '</div>';
-      }
-
-      try{
-        const response =
-          await api(
-            "admin_danh_sach",
-            {
-              maNguoiDung:
-                currentUser.maNguoiDung,
-
-              trangThai:"",
-              tuKhoa:""
-            }
-          );
-
-        if(!response.ok){
-          $("listBox").innerHTML =
-            '<div class="empty">❌ ' +
-            esc(response.message) +
-            '</div>';
+            "</div>";
 
           return;
         }
@@ -1672,20 +2939,62 @@
         requests =
           response.data || [];
 
-        renderAdminList();
-        renderPriorityList();
-      }catch(error){
-        $("listBox").innerHTML =
+        updateSummary();
+
+        renderLatest();
+
+        renderRecords();
+      } catch (error) {
+        $("myList").innerHTML =
           '<div class="empty">❌ ' +
           esc(error.message) +
-          '</div>';
+          "</div>";
       }
+    }
+
+    function updateSummary() {
+      const total =
+        requests.length;
+
+      const completed =
+        requests.filter(
+          function(item) {
+            return normalizeStatus(
+              item.trangThai
+            ).includes(
+              "HOÀN TẤT"
+            );
+          }
+        ).length;
+
+      $("sumTotal").textContent =
+        total;
+
+      $("sumProcessing").textContent =
+        total - completed;
+
+      $("sumCompleted").textContent =
+        completed;
+    }
+
+    function renderLatest() {
+      $("latestRecord").innerHTML =
+        requests.length
+          ? renderRecordCard(
+              requests[0],
+              true
+            )
+          : (
+            '<div class="empty">' +
+            "Chưa có hồ sơ nào." +
+            "</div>"
+          );
     }
 
     function setKindFilter(
       filter,
       button
-    ){
+    ) {
       kindFilter =
         filter;
 
@@ -1694,7 +3003,7 @@
           "[data-kind]"
         )
         .forEach(
-          function(element){
+          function(element) {
             element
               .classList
               .remove("active");
@@ -1705,13 +3014,13 @@
         .classList
         .add("active");
 
-      renderAdminList();
+      renderRecords();
     }
 
     function setStateFilter(
       filter,
       button
-    ){
+    ) {
       stateFilter =
         filter;
 
@@ -1720,7 +3029,7 @@
           "[data-state]"
         )
         .forEach(
-          function(element){
+          function(element) {
             element
               .classList
               .remove("active");
@@ -1731,95 +3040,113 @@
         .classList
         .add("active");
 
-      renderAdminList();
+      renderRecords();
     }
 
-    function scheduleRender(){
-      clearTimeout(renderTimer);
+    function scheduleRecordRender() {
+      clearTimeout(
+        recordRenderTimer
+      );
 
-      renderTimer =
+      recordRenderTimer =
         setTimeout(
-          renderAdminList,
-          180
+          renderRecords,
+          220
         );
     }
 
-    function filterAdminRequests(){
+    function filteredRequests() {
       const keyword =
         String(
-          $("tuKhoa")?.value || ""
+          $("recordKeyword")
+            ?.value || ""
         )
-        .trim()
-        .toLowerCase();
+          .trim()
+          .toLowerCase();
 
       return requests.filter(
-        function(item){
-          if(
+        function(item) {
+
+          if (
             kindFilter !== "ALL" &&
             getType(item) !== kindFilter
-          ){
+          ) {
             return false;
           }
 
-          const statusText =
+          const status =
             normalizeStatus(
               item.trangThai
             );
 
-          if(
-            stateFilter === "NEW" &&
-            statusText !== "MỚI GỬI"
-          ){
-            return false;
+          if (
+            stateFilter ===
+            "COMPLETED"
+          ) {
+            if (
+              !status.includes(
+                "HOÀN TẤT"
+              )
+            ) {
+              return false;
+            }
           }
 
-          if(
-            stateFilter === "COMPLETED" &&
-            !statusText.includes("HOÀN TẤT")
-          ){
-            return false;
+          if (
+            stateFilter ===
+            "WAITING"
+          ) {
+            if (
+              !(
+                status.includes(
+                  "BÀN GIAO"
+                ) ||
+                status ===
+                  "CHỜ NHẬN" ||
+                status.includes(
+                  "ĐÃ CẤP"
+                )
+              )
+            ) {
+              return false;
+            }
           }
 
-          if(
-            stateFilter === "WAITING" &&
-            !(
-              statusText.includes("BÀN GIAO") ||
-              statusText === "CHỜ NHẬN" ||
-              statusText.includes("ĐÃ CẤP")
-            )
-          ){
-            return false;
+          if (
+            stateFilter ===
+            "PROCESSING"
+          ) {
+            if (
+              status.includes(
+                "HOÀN TẤT"
+              ) ||
+              status.includes(
+                "BÀN GIAO"
+              ) ||
+              status ===
+                "CHỜ NHẬN"
+            ) {
+              return false;
+            }
           }
 
-          if(
-            stateFilter === "PROCESSING" &&
-            (
-              statusText === "MỚI GỬI" ||
-              statusText.includes("HOÀN TẤT") ||
-              statusText.includes("BÀN GIAO") ||
-              statusText === "CHỜ NHẬN"
-            )
-          ){
-            return false;
-          }
-
-          if(keyword){
+          if (keyword) {
             const haystack =
               [
                 item.maYeuCau,
-                item.nguoiDangKy,
-                item.hoTen,
-                item.phongKhu,
-                contentText(item),
                 issuedNumber(item),
-                destinationText(item)
+                destinationText(item),
+                typeLabel(item),
+                item.trangThai
               ]
-              .join(" ")
-              .toLowerCase();
+                .join(" ")
+                .toLowerCase();
 
-            if(
-              !haystack.includes(keyword)
-            ){
+            if (
+              !haystack.includes(
+                keyword
+              )
+            ) {
               return false;
             }
           }
@@ -1829,20 +3156,20 @@
       );
     }
 
-    function renderAdminList(){
-      if(!$("listBox")){
+    function renderRecords() {
+      if (!$("myList")) {
         return;
       }
 
       const data =
-        filterAdminRequests();
+        filteredRequests();
 
-      $("listBox").innerHTML =
+      $("myList").innerHTML =
         data.length
           ? data
               .map(
-                function(item){
-                  return renderAdminCard(
+                function(item) {
+                  return renderRecordCard(
                     item,
                     false
                   );
@@ -1851,192 +3178,173 @@
               .join("")
           : (
             '<div class="empty">' +
-            'Không có yêu cầu phù hợp.' +
-            '</div>'
+            "Không có hồ sơ phù hợp." +
+            "</div>"
           );
     }
 
-    function renderPriorityList(){
-      const data =
-        requests
-          .filter(
-            function(item){
-              const statusText =
-                normalizeStatus(
-                  item.trangThai
-                );
-
-              return (
-                !statusText.includes("HOÀN TẤT") &&
-                !statusText.includes("TỪ CHỐI")
-              );
-            }
-          )
-          .slice(0,3);
-
-      $("priorityList").innerHTML =
-        data.length
-          ? data
-              .map(
-                function(item){
-                  return renderAdminCard(
-                    item,
-                    true
-                  );
-                }
-              )
-              .join("")
-          : (
-            '<div class="empty">' +
-            'Hiện không có hồ sơ cần xử lý.' +
-            '</div>'
-          );
-    }
-
-    function renderAdminCard(
+    function renderRecordCard(
       item,
       compact
-    ){
+    ) {
+      const step =
+        stepIndex(
+          item.trangThai
+        ) + 1;
+
       const number =
         issuedNumber(item);
 
-      return (
-        '<article class="requestCard">' +
+      const progress =
+        Math.min(
+          100,
+          step * 20
+        );
 
-          '<div class="requestHead">' +
+      return `
+        <article class="requestCard">
 
-            '<div>' +
-              '<div class="requestCode">' +
-                esc(item.maYeuCau) +
-              '</div>' +
+          <div class="requestHead">
 
-              '<div class="typeLine">' +
-                esc(typeLabel(item)) +
-              '</div>' +
-            '</div>' +
+            <div>
+              <div class="requestCode">
+                ${esc(item.maYeuCau)}
+              </div>
 
-            statusPill(item.trangThai) +
+              <div class="typeLine">
+                ${esc(typeLabel(item))}
+              </div>
+            </div>
 
-          '</div>' +
+            ${statusPill(item.trangThai, false)}
 
-          '<div class="requestMeta">' +
+          </div>
 
-            '<div class="metaRow">' +
-              '<span>👤</span>' +
+          <div class="compactInfo">
 
-              '<div>' +
-                '<b>' +
-                  esc(
-                    item.nguoiDangKy ||
-                    item.hoTen ||
-                    ""
-                  ) +
-                '</b>' +
+            <div class="compactLine">
+              <strong>Nơi làm việc:</strong>
+              ${esc(destinationText(item) || "—")}
+            </div>
 
-                (
-                  item.phongKhu
-                    ? " · " + esc(item.phongKhu)
-                    : ""
-                ) +
-              '</div>' +
-            '</div>' +
+            <div class="compactLine">
+              <strong>Thời gian:</strong>
+              ${esc(dateText(item) || "—")}
+            </div>
 
-            '<div class="metaRow">' +
-              '<span>📍</span>' +
-
-              '<div>' +
-                '<b>Nơi làm việc:</b> ' +
-                esc(destinationText(item)) +
-              '</div>' +
-            '</div>' +
-
-            (
-              dateText(item)
-                ? (
-                  '<div class="metaRow">' +
-                    '<span>📅</span>' +
-
-                    '<div>' +
-                      '<b>Thời gian:</b> ' +
-                      esc(dateText(item)) +
-                    '</div>' +
-                  '</div>'
-                )
-                : ""
-            ) +
-
-            (
+            ${
               !compact &&
-              number
-                ? (
-                  '<div class="metaRow">' +
-                    '<span>📄</span>' +
-
-                    '<div>' +
-                      '<b>Số được cấp:</b> ' +
-                      esc(number) +
-                    '</div>' +
-                  '</div>'
-                )
+              item.thoiGianGui
+                ? `
+                  <div class="compactLine">
+                    <strong>Gửi lúc:</strong>
+                    ${esc(item.thoiGianGui)}
+                  </div>
+                `
                 : ""
-            ) +
+            }
 
-          '</div>' +
+            ${
+              number
+                ? `
+                  <div class="compactLine">
+                    <strong>Số được cấp:</strong>
+                    ${esc(number)}
+                  </div>
+                `
+                : ""
+            }
 
-          '<div class="listAction">' +
-            '<button ' +
-              'class="primary" ' +
-              'type="button" ' +
-              'onclick=\'openAdminDetail(' +
-                js(item.maYeuCau) +
-              ')\'>' +
+          </div>
 
-              (
-                normalizeStatus(
-                  item.trangThai
-                ).includes("HOÀN TẤT")
-                  ? "Xem"
-                  : "Xử lý"
-              ) +
+          <div class="compactBottom">
 
-            '</button>' +
-          '</div>' +
+            <div class="miniProgress">
 
-        '</article>'
-      );
+              <div class="miniProgressLabel">
+                Bước ${step}/5
+              </div>
+
+              <div class="miniProgressTrack">
+                <span style="width:${progress}%"></span>
+              </div>
+
+            </div>
+
+            <button
+              class="secondary smallAction"
+              type="button"
+              onclick='viewDetail(${js(item.maYeuCau)})'
+            >
+              Xem
+            </button>
+
+          </div>
+
+        </article>
+      `;
     }
 
-    function openAdminDetail(
+    async function viewDetail(
       maYeuCau
-    ){
-      const item =
-        requests.find(
-          function(row){
-            return (
-              String(row.maYeuCau) ===
-              String(maYeuCau)
-            );
-          }
-        );
+    ) {
+      showView("detail");
 
-      if(!item){
-        alert(
-          "Không tìm thấy yêu cầu."
-        );
-
-        return;
-      }
-
-      currentDetailId =
+      $("detailBox").dataset.id =
         maYeuCau;
 
-      showAdminView("detail");
+      $("detailBox").innerHTML =
+        '<div class="empty">' +
+        "Đang tải chi tiết..." +
+        "</div>";
 
-      $("adminDetailBox").innerHTML =
-        renderAdminDetail(item);
+      try {
+        const response =
+          await api(
+            "chi_tiet_yeu_cau",
+            {
+              maYeuCau:
+                maYeuCau,
+
+              maNguoiDung:
+                currentUser.maNguoiDung
+            }
+          );
+
+        if (!response.ok) {
+          $("detailBox").innerHTML =
+            '<div class="empty">❌ ' +
+            esc(response.message) +
+            "</div>";
+
+          return;
+        }
+
+        $("detailBox").innerHTML =
+          renderDetail(
+            response.data
+          );
+      } catch (error) {
+        $("detailBox").innerHTML =
+          '<div class="empty">❌ ' +
+          esc(error.message) +
+          "</div>";
+      }
     }
 
-    function renderAdminDetail(item){
+    function detailField(
+      label,
+      value
+    ) {
+      return `
+        <div class="detailField">
+          <span>${esc(label)}</span>
+          <span>${esc(value || "—")}</span>
+        </div>
+      `;
+    }
+
+    function renderDetail(item) {
       const type =
         getType(item);
 
@@ -2051,16 +3359,14 @@
       let information =
         "";
 
-      if(
+      if (
         type ===
         "CONG_LENH"
-      ){
+      ) {
         information =
           detailField(
             "Hành trình",
-            (item.diTu || "") +
-            " → " +
-            (item.den || "")
+            destinationText(item)
           ) +
 
           detailField(
@@ -2070,16 +3376,14 @@
 
           detailField(
             "Ngày đi - về",
-            (item.ngayDi || "") +
-            " → " +
-            (item.ngayVe || "")
+            dateText(item)
           ) +
 
           detailField(
             "Phương tiện",
             item.phuongTien || ""
           );
-      }else{
+      } else {
         information =
           detailField(
             "Kính gửi",
@@ -2104,130 +3408,120 @@
           );
       }
 
-      return (
-        '<div class="detailHeader">' +
+      return `
+        <div class="detailHeader">
 
-          '<div>' +
-            '<h3>' +
-              esc(item.maYeuCau) +
-            '</h3>' +
+          <div>
+            <h3>
+              ${esc(item.maYeuCau)}
+            </h3>
 
-            '<div class="typeLine">' +
-              esc(typeLabel(item)) +
-            '</div>' +
-          '</div>' +
+            <div class="typeLine">
+              ${esc(typeLabel(item))}
+            </div>
+          </div>
 
-          statusPill(item.trangThai) +
+          ${statusPill(item.trangThai, true)}
 
-        '</div>' +
+        </div>
 
-        '<div class="detailSection">' +
-          '<h4>Thông tin yêu cầu</h4>' +
+        <div class="detailSection">
 
-          '<div class="detailGrid">' +
+          <h4>
+            Thông tin yêu cầu
+          </h4>
 
-            detailField(
+          <div class="detailGrid">
+
+            ${detailField(
               "Người đăng ký",
               (
                 item.nguoiDangKy ||
-                item.hoTen ||
+                currentUser.hoTen ||
                 ""
               ) +
               (
                 item.phongKhu
-                  ? " · " + item.phongKhu
+                  ? " · " +
+                    item.phongKhu
                   : ""
               )
-            ) +
+            )}
 
-            information +
+            ${information}
 
-            (
+            ${
               item.ghiChuXuLy
                 ? detailField(
                     "Ghi chú xử lý",
                     item.ghiChuXuLy
                   )
                 : ""
-            ) +
+            }
 
-          '</div>' +
-        '</div>' +
+          </div>
 
-        (
-          number || pdf
-            ? (
-              '<div class="detailSection">' +
-                '<h4>Kết quả cấp văn bản</h4>' +
+        </div>
 
-                '<div class="resultBox">' +
+        ${
+          number ||
+          pdf
+            ? `
+              <div class="detailSection">
 
-                  '<div>' +
-                    '<b>' +
-                      esc(typeLabel(item)) +
-                    '</b>' +
+                <h4>
+                  Kết quả cấp văn bản
+                </h4>
 
-                    '<div class="small">' +
-                      'Số được cấp: ' +
-                      esc(
-                        number ||
-                        "Đang cập nhật"
-                      ) +
-                    '</div>' +
-                  '</div>' +
+                <div class="resultBox">
 
-                  (
+                  <div>
+                    <b>
+                      ${esc(typeLabel(item))}
+                    </b>
+
+                    <div class="small">
+                      Số được cấp:
+                      ${esc(number || "Đang cập nhật")}
+                    </div>
+                  </div>
+
+                  ${
                     pdf
-                      ? (
-                        '<a ' +
-                          'class="linkbtn" ' +
-                          'target="_blank" ' +
-                          'href="' +
-                            esc(pdf) +
-                          '">' +
-                          'Mở PDF' +
-                        '</a>'
-                      )
+                      ? `
+                        <a
+                          class="linkbtn"
+                          target="_blank"
+                          href="${esc(pdf)}"
+                        >
+                          Mở PDF
+                        </a>
+                      `
                       : ""
-                  ) +
+                  }
 
-                '</div>' +
-              '</div>'
-            )
+                </div>
+
+              </div>
+            `
             : ""
-        ) +
+        }
 
-        '<div class="detailSection">' +
-          '<h4>Tiến trình xử lý</h4>' +
-          renderTimeline(item) +
-        '</div>' +
+        <div class="detailSection">
 
-        '<div class="detailActions">' +
-          renderActions(item) +
-        '</div>' +
+          <h4>
+            Tiến trình xử lý
+          </h4>
 
-        '<div id="detailMsg" class="msg"></div>'
-      );
+          ${renderTimeline(item)}
+
+        </div>
+
+        ${renderConfirmBox(item)}
+      `;
     }
 
-    function detailField(
-      label,
-      value
-    ){
-      return (
-        '<div class="detailField">' +
-          '<span>' +
-            esc(label) +
-          '</span>' +
-
-          '<span>' +
-            esc(value || "—") +
-          '</span>' +
-        '</div>'
-      );
-    }
-
-    function renderTimeline(item){
+    function renderTimeline(item) {
       const labels = [
         "Đã gửi yêu cầu",
         "Phòng Tổ chức tiếp nhận",
@@ -2244,403 +3538,228 @@
         item.thoiGianXacNhanNhan
       ];
 
-      const currentIndex =
-        stepIndex(
-          item.trangThai
-        );
-
-      return (
-        '<div class="timeline">' +
-
-          labels.map(
-            function(label,index){
-              const className =
-                index < currentIndex
-                  ? "done"
-                  : index === currentIndex
-                    ? "active"
-                    : "";
-
-              const dot =
-                index <= currentIndex
-                  ? "✓"
-                  : String(index + 1);
-
-              const note =
-                times[index] ||
-                (
-                  index === currentIndex
-                    ? "Đang ở bước này"
-                    : index < currentIndex
-                      ? "Đã hoàn thành"
-                      : "Chưa thực hiện"
-                );
-
-              return (
-                '<div class="timelineItem ' +
-                  className +
-                '">' +
-
-                  '<div class="timelineDot">' +
-                    dot +
-                  '</div>' +
-
-                  '<div>' +
-                    '<div class="timelineTitle">' +
-                      label +
-                    '</div>' +
-
-                    '<div class="timelineNote">' +
-                      esc(note) +
-                    '</div>' +
-                  '</div>' +
-
-                '</div>'
-              );
-            }
-          ).join("") +
-
-        '</div>'
-      );
-    }
-
-    function renderActions(item){
-      const statusText =
+      const status =
         normalizeStatus(
           item.trangThai
         );
 
-      const type =
-        getType(item);
+      const currentIndex =
+        stepIndex(status);
 
-      if(
-        statusText.includes("HOÀN TẤT") ||
-        statusText.includes("TỪ CHỐI")
-      ){
-        return (
-          '<div class="small" ' +
-            'style="text-align:center;padding:8px">' +
-            'Hồ sơ đã kết thúc, không còn thao tác.' +
-          '</div>'
-        );
-      }
-
-      if(
-        statusText ===
-        "MỚI GỬI"
-      ){
-        return (
-          '<div class="actionGrid">' +
-
-            actionButton(
-              "Tiếp nhận",
-              "primary",
-              "updateStatus(" +
-              js(item.maYeuCau) +
-              ',"tiep_nhan")'
-            ) +
-
-            actionButton(
-              "Cấp & bàn giao",
-              "success",
-              "capDocument(" +
-              js(item.maYeuCau) +
-              ",true)"
-            ) +
-
-          '</div>' +
-
-          '<details class="moreActions">' +
-            '<summary>Thao tác khác ▾</summary>' +
-
-            '<div class="actionGrid">' +
-
-              actionButton(
-                "Cấp nhanh",
-                "secondary",
-                "capDocument(" +
-                js(item.maYeuCau) +
-                ",false)"
-              ) +
-
-              actionButton(
-                "Yêu cầu bổ sung",
-                "warning",
-                "updateStatus(" +
-                js(item.maYeuCau) +
-                ',"bo_sung")'
-              ) +
-
-              actionButton(
-                "Từ chối",
-                "danger",
-                "updateStatus(" +
-                js(item.maYeuCau) +
-                ',"tu_choi")'
-              ) +
-
-            '</div>' +
-          '</details>'
-        );
-      }
-
-      if(
-        statusText.includes("TIẾP NHẬN") ||
-        statusText.includes("ĐANG XỬ LÝ") ||
-        statusText.includes("BỔ SUNG")
-      ){
-        return (
-          '<div class="actionGrid">' +
-
-            actionButton(
-              (
-                type ===
-                "GIAY_GIOI_THIEU"
-                  ? "Cấp giấy giới thiệu"
-                  : "Cấp công lệnh"
-              ),
-              "secondary",
-              "capDocument(" +
-              js(item.maYeuCau) +
-              ",false)"
-            ) +
-
-            actionButton(
-              "Cấp & bàn giao",
-              "success",
-              "capDocument(" +
-              js(item.maYeuCau) +
-              ",true)"
-            ) +
-
-          '</div>'
-        );
-      }
-
-      if(
-        statusText.includes("ĐÃ CẤP")
-      ){
-        return (
-          '<div class="actionGrid">' +
-
-            actionButton(
-              "Xác nhận bàn giao",
-              "primary",
-              "updateStatus(" +
-              js(item.maYeuCau) +
-              ',"ban_giao")'
-            ) +
-
-          '</div>'
-        );
-      }
-
-      if(
-        statusText.includes("BÀN GIAO") ||
-        statusText === "CHỜ NHẬN"
-      ){
-        return (
-          '<div class="small" ' +
-            'style="text-align:center;padding:8px">' +
-            'Đang chờ người nhận xác nhận.' +
-          '</div>'
-        );
-      }
-
-      return (
-        '<div class="small" ' +
-          'style="text-align:center;padding:8px">' +
-          'Không có thao tác phù hợp.' +
-        '</div>'
-      );
-    }
-
-    function actionButton(
-      label,
-      className,
-      handler
-    ){
-      return (
-        '<button ' +
-          'class="' +
-            className +
-          '" ' +
-          'type="button" ' +
-          'onclick=\'' +
-            handler +
-          '\'>' +
-          label +
-        '</button>'
-      );
-    }
-
-    async function updateStatus(
-      maYeuCau,
-      hanhDong
-    ){
-      let ghiChu =
-        "";
-
-      if(
-        [
-          "bo_sung",
-          "tu_choi"
-        ].includes(hanhDong)
-      ){
-        ghiChu =
-          prompt(
-            hanhDong === "bo_sung"
-              ? "Nhập nội dung yêu cầu bổ sung"
-              : "Nhập lý do từ chối"
-          ) || "";
-
-        if(!ghiChu.trim()){
-          alert(
-            "Chưa nhập nội dung."
-          );
-
-          return;
-        }
-      }else if(
-        hanhDong ===
-        "ban_giao"
-      ){
-        ghiChu =
-          prompt(
-            "Ghi chú bàn giao nếu có",
-            ""
-          ) || "";
-      }
-
-      clearMsg("detailMsg");
-
-      try{
-        const response =
-          await api(
-            "admin_cap_nhat",
-            {
-              maNguoiDung:
-                currentUser.maNguoiDung,
-
-              maYeuCau:
-                maYeuCau,
-
-              hanhDong:
-                hanhDong,
-
-              ghiChu:
-                ghiChu
-            }
-          );
-
-        if(!response.ok){
-          showMsg(
-            "detailMsg",
-            "err",
-            "❌ " + response.message
-          );
-
-          return;
-        }
-
-        showMsg(
-          "detailMsg",
-          "ok",
-          "✅ " + response.message
+      const fullyCompleted =
+        status.includes(
+          "HOÀN TẤT"
         );
 
-        await loadAll();
-        openAdminDetail(maYeuCau);
-      }catch(error){
-        showMsg(
-          "detailMsg",
-          "err",
-          "❌ " + error.message
-        );
-      }
-    }
+      return `
+        <div class="timeline">
 
-    async function capDocument(
-      maYeuCau,
-      tuDongBanGiao
-    ){
-      const item =
-        requests.find(
-          function(row){
-            return (
-              String(row.maYeuCau) ===
-              String(maYeuCau)
-            );
+          ${
+            labels.map(
+              function(label, index) {
+
+                const done =
+                  index < currentIndex ||
+                  (
+                    fullyCompleted &&
+                    index === currentIndex
+                  );
+
+                const active =
+                  index === currentIndex &&
+                  !fullyCompleted;
+
+                const className =
+                  done
+                    ? "done"
+                    : active
+                      ? "active"
+                      : "";
+
+                const dot =
+                  index <= currentIndex
+                    ? "✓"
+                    : String(index + 1);
+
+                const note =
+                  times[index] ||
+                  (
+                    active
+                      ? "Đang ở bước này"
+                      : done
+                        ? "Đã hoàn thành"
+                        : "Chưa thực hiện"
+                  );
+
+                return `
+                  <div class="timelineItem ${className}">
+
+                    <div class="timelineDot">
+                      ${dot}
+                    </div>
+
+                    <div>
+                      <div class="timelineTitle">
+                        ${esc(label)}
+                      </div>
+
+                      <div class="timelineNote">
+                        ${esc(note)}
+                      </div>
+                    </div>
+
+                  </div>
+                `;
+              }
+            ).join("")
           }
+
+        </div>
+      `;
+    }
+
+    function renderConfirmBox(item) {
+      const status =
+        normalizeStatus(
+          item.trangThai
         );
 
-      if(!item){
-        alert(
-          "Không tìm thấy yêu cầu."
+      const allowed =
+        (
+          status.includes(
+            "ĐÃ CẤP"
+          ) ||
+          status ===
+            "CHỜ NHẬN" ||
+          status.includes(
+            "BÀN GIAO"
+          )
+        ) &&
+        !status.includes(
+          "HOÀN TẤT"
+        );
+
+      if (!allowed) {
+        return "";
+      }
+
+      return `
+        <div class="detailSection">
+
+          <h4>
+            Xác nhận đã nhận
+          </h4>
+
+          ${detailField(
+            "Người được cấp",
+            item.nguoiDangKy ||
+            currentUser.hoTen
+          )}
+
+          <label for="nguoiNhanThucTe">
+            Người nhận thực tế
+          </label>
+
+          <input
+            id="nguoiNhanThucTe"
+            value="${esc(currentUser.hoTen)}"
+          >
+
+          <label for="lyDoNhanThay">
+            Lý do nhận thay nếu có
+          </label>
+
+          <textarea
+            id="lyDoNhanThay"
+            placeholder="Chỉ nhập khi nhận thay"
+          ></textarea>
+
+          <div class="check">
+
+            <input
+              id="dongY"
+              type="checkbox"
+            >
+
+            <span>
+              Tôi xác nhận đã nhận văn bản nêu trên.
+            </span>
+
+          </div>
+
+          <button
+            class="success fullBtn"
+            type="button"
+            onclick='confirmReceived(${js(item.maYeuCau)})'
+          >
+            TÔI ĐÃ NHẬN
+          </button>
+
+          <div
+            id="confirmMsg"
+            class="msg"
+          ></div>
+
+        </div>
+      `;
+    }
+
+    async function confirmReceived(
+      maYeuCau
+    ) {
+      clearMsg("confirmMsg");
+
+      if (
+        !$("dongY").checked
+      ) {
+        showMsg(
+          "confirmMsg",
+          "err",
+          "❌ Vui lòng tích xác nhận."
         );
 
         return;
       }
 
-      const type =
-        getType(item);
+      const nguoiNhan =
+        $("nguoiNhanThucTe")
+          .value
+          .trim();
 
-      const action =
-        type === "GIAY_GIOI_THIEU"
-          ? "admin_cap_giay_gioi_thieu"
-          : "admin_cap_cong_lenh";
+      if (!nguoiNhan) {
+        showMsg(
+          "confirmMsg",
+          "err",
+          "❌ Vui lòng nhập người nhận thực tế."
+        );
 
-      const label =
-        type === "GIAY_GIOI_THIEU"
-          ? "giấy giới thiệu"
-          : "công lệnh";
-
-      if(
-        !confirm(
-          "Xác nhận cấp " +
-          label +
-          (
-            tuDongBanGiao
-              ? " và bàn giao"
-              : ""
-          ) +
-          " cho yêu cầu " +
-          maYeuCau +
-          "?"
-        )
-      ){
         return;
       }
 
-      clearMsg("detailMsg");
-
-      showMsg(
-        "detailMsg",
-        "ok",
-        "⏳ Đang cấp văn bản, vui lòng chờ..."
-      );
-
-      try{
+      try {
         const response =
           await api(
-            action,
+            "xac_nhan_da_nhan",
             {
-              maNguoiDung:
-                currentUser.maNguoiDung,
-
               maYeuCau:
                 maYeuCau,
 
-              tuDongBanGiao:
-                tuDongBanGiao
-                  ? "1"
-                  : "0"
+              maNguoiDung:
+                currentUser.maNguoiDung,
+
+              nguoiNhanThucTe:
+                nguoiNhan,
+
+              lyDoNhanThay:
+                $("lyDoNhanThay")
+                  .value
+                  .trim()
             }
           );
 
-        if(!response.ok){
+        if (!response.ok) {
           showMsg(
-            "detailMsg",
+            "confirmMsg",
             "err",
             "❌ " + response.message
           );
@@ -2648,35 +3767,32 @@
           return;
         }
 
-        showMsg(
-          "detailMsg",
-          "ok",
-          "✅ " + esc(response.message)
-        );
+        await loadMyRequests(false);
 
-        await loadAll();
-        openAdminDetail(maYeuCau);
-      }catch(error){
+        await viewDetail(
+          maYeuCau
+        );
+      } catch (error) {
         showMsg(
-          "detailMsg",
+          "confirmMsg",
           "err",
           "❌ " + error.message
         );
       }
     }
 
-    function showPushBox(){
-      if(
+    function showPushBox() {
+      if (
         ONESIGNAL_APP_ID &&
-        $("adminPushSection")
-      ){
-        $("adminPushSection")
+        $("pushSection")
+      ) {
+        $("pushSection")
           .classList
           .remove("hidden");
       }
     }
 
-    function externalId(){
+    function externalId() {
       return (
         currentUser &&
         currentUser.maNguoiDung
@@ -2690,19 +3806,21 @@
         : "";
     }
 
-    function initOneSignal(){
-      if(oneSignalInitPromise){
+    function initOneSignal() {
+      if (
+        oneSignalInitPromise
+      ) {
         return oneSignalInitPromise;
       }
 
       oneSignalInitPromise =
         new Promise(
-          function(resolve){
+          function(resolve) {
             window
               .OneSignalDeferred
               .push(
-                async function(OneSignal){
-                  try{
+                async function(OneSignal) {
+                  try {
                     const basePath =
                       location.pathname
                         .replace(
@@ -2721,17 +3839,19 @@
                         basePath +
                         "OneSignalSDKWorker.js",
 
-                      serviceWorkerParam:{
-                        scope:basePath
+                      serviceWorkerParam: {
+                        scope:
+                          basePath
                       },
 
-                      notifyButton:{
-                        enable:false
+                      notifyButton: {
+                        enable:
+                          false
                       }
                     });
 
                     resolve(OneSignal);
-                  }catch(error){
+                  } catch (error) {
                     console.warn(
                       "OneSignal init error",
                       error
@@ -2749,19 +3869,19 @@
 
     async function linkOneSignal(
       requestPermission
-    ){
-      if(!currentUser){
+    ) {
+      if (!currentUser) {
         return false;
       }
 
       const OneSignal =
         await initOneSignal();
 
-      if(!OneSignal){
+      if (!OneSignal) {
         return false;
       }
 
-      try{
+      try {
         await OneSignal.login(
           externalId()
         );
@@ -2773,7 +3893,9 @@
 
         await OneSignal.User.addTag(
           "vaiTro",
-          "phong_to_chuc"
+          currentUser.quyenQuanTri
+            ? "phong_to_chuc"
+            : "vien_chuc"
         );
 
         await OneSignal.User.addTag(
@@ -2784,14 +3906,16 @@
           )
         );
 
-        if(requestPermission){
+        if (
+          requestPermission
+        ) {
           await OneSignal
             .Notifications
             .requestPermission();
         }
 
         return true;
-      }catch(error){
+      } catch (error) {
         console.warn(
           "OneSignal link error",
           error
@@ -2801,11 +3925,11 @@
       }
     }
 
-    async function enablePushAndTest(){
+    async function enablePushAndTest() {
       const linked =
         await linkOneSignal(true);
 
-      if(!linked){
+      if (!linked) {
         alert(
           "Không thể liên kết thiết bị với OneSignal."
         );
@@ -2814,12 +3938,15 @@
       }
 
       await new Promise(
-        function(resolve){
-          setTimeout(resolve,1200);
+        function(resolve) {
+          setTimeout(
+            resolve,
+            1200
+          );
         }
       );
 
-      try{
+      try {
         const response =
           await api(
             "test_push",
@@ -2832,40 +3959,48 @@
         alert(
           response.ok
             ? response.message
-            : "Lỗi: " + response.message
+            : "Lỗi: " +
+              response.message
         );
-      }catch(error){
-        alert(error.message);
+      } catch (error) {
+        alert(
+          error.message
+        );
       }
     }
 
-    async function logoutOneSignal(){
-      try{
+    async function logoutOneSignal() {
+      try {
         const OneSignal =
           await initOneSignal();
 
-        if(OneSignal){
+        if (OneSignal) {
           await OneSignal.logout();
         }
-      }catch(error){}
+      } catch (error) {}
     }
 
     document.addEventListener(
       "DOMContentLoaded",
-      function(){
+      function() {
         [
           "loginName",
           "loginPin"
         ].forEach(
-          function(id){
-            const element = $(id);
+          function(id) {
+            const element =
+              $(id);
 
-            if(element){
+            if (element) {
               element.addEventListener(
                 "keydown",
-                function(event){
-                  if(event.key === "Enter"){
+                function(event) {
+                  if (
+                    event.key ===
+                    "Enter"
+                  ) {
                     event.preventDefault();
+
                     login();
                   }
                 }
