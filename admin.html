@@ -9,23 +9,27 @@
   <meta name="theme-color" content="#1558d6" />
   <meta name="robots" content="noindex,nofollow" />
   <link rel="manifest" href="manifest.json" />
-  <title>Quản trị công lệnh - TEST</title>
+  <title>Quản trị văn bản - TEST</title>
 
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap');
 
     :root{
       --primary:#1558d6;
-      --success:#159947;
-      --warning:#c96b08;
-      --danger:#c92a2a;
+      --primary-soft:#eaf2ff;
+      --success:#149447;
+      --success-soft:#e8f8ee;
+      --warning:#b85a00;
+      --warning-soft:#fff2dc;
+      --danger:#bf2d2d;
+      --danger-soft:#fff0ef;
       --ink:#172033;
       --muted:#667085;
-      --line:#d9e2ef;
-      --bg:#eef4fb;
-      --surface:#fff;
+      --line:#d8e2ef;
+      --bg:#edf3fa;
+      --surface:#ffffff;
       --soft:#f7f9fc;
-      --shadow:0 10px 28px rgba(15,34,65,.08);
+      --shadow:0 8px 24px rgba(15,34,65,.07);
       --radius:18px;
       --safe-bottom:env(safe-area-inset-bottom,0px);
     }
@@ -40,16 +44,21 @@
       font-family:'Be Vietnam Pro',Arial,sans-serif;
       font-size:15px;
       line-height:1.5;
-      padding-bottom:calc(78px + var(--safe-bottom));
+      padding-bottom:calc(76px + var(--safe-bottom));
     }
 
-    button,input,select,textarea{font:inherit}
+    button,
+    input,
+    select,
+    textarea{
+      font:inherit;
+    }
 
     button{
       min-height:44px;
       border:0;
       border-radius:13px;
-      padding:10px 15px;
+      padding:10px 14px;
       font-weight:700;
       cursor:pointer;
       touch-action:manipulation;
@@ -119,7 +128,7 @@
       background:rgba(255,255,255,.18);
       display:grid;
       place-items:center;
-      font-size:24px;
+      font-size:23px;
       flex:0 0 auto;
     }
 
@@ -138,7 +147,7 @@
 
     .card{
       background:var(--surface);
-      border:1px solid rgba(217,226,239,.88);
+      border:1px solid rgba(216,226,239,.92);
       border-radius:var(--radius);
       padding:16px;
       margin-top:12px;
@@ -266,14 +275,14 @@
     }
 
     .danger{
-      background:#fff1f1;
-      color:#b42318;
+      background:var(--danger-soft);
+      color:var(--danger);
       border:1px solid #fecaca;
     }
 
     .warning{
-      background:#fff7ed;
-      color:#b54708;
+      background:var(--warning-soft);
+      color:var(--warning);
       border:1px solid #fed7aa;
     }
 
@@ -338,35 +347,53 @@
       color:var(--muted);
     }
 
-    .quickGrid{
+    .filterRows{
       display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:10px;
-    }
-
-    .quickCard{
-      border:1px solid var(--line);
-      background:var(--soft);
-      border-radius:15px;
-      padding:14px;
-      text-align:left;
-    }
-
-    .quickCard strong{
-      display:block;
-      color:#174ea6;
-      font-size:14px;
-    }
-
-    .quickCard span{
-      font-size:12px;
-      color:var(--muted);
-    }
-
-    .filterGrid{
-      display:grid;
-      grid-template-columns:1fr;
       gap:9px;
+      margin-bottom:12px;
+    }
+
+    .filterChips{
+      display:flex;
+      gap:8px;
+      overflow-x:auto;
+      padding-bottom:3px;
+      scrollbar-width:none;
+    }
+
+    .filterChips::-webkit-scrollbar{
+      display:none;
+    }
+
+    .chip{
+      white-space:nowrap;
+      background:#eef2f7;
+      color:#475467;
+      min-height:38px;
+      padding:8px 12px;
+      border-radius:999px;
+      font-size:12px;
+    }
+
+    .chip.active{
+      background:var(--primary-soft);
+      color:#174ea6;
+      border:1px solid #b7d0ff;
+    }
+
+    .searchBox{
+      position:relative;
+    }
+
+    .searchBox span{
+      position:absolute;
+      left:13px;
+      top:12px;
+      color:#98a2b3;
+    }
+
+    .searchBox input{
+      padding-left:38px;
     }
 
     .requestCard{
@@ -374,7 +401,7 @@
       border-radius:16px;
       background:#fbfdff;
       padding:14px;
-      margin-top:11px;
+      margin-top:10px;
     }
 
     .requestHead{
@@ -388,6 +415,13 @@
       font-size:16px;
       font-weight:800;
       overflow-wrap:anywhere;
+    }
+
+    .typeLine{
+      margin-top:3px;
+      color:#667085;
+      font-size:11.5px;
+      font-weight:600;
     }
 
     .statusPill{
@@ -440,10 +474,13 @@
     }
 
     .listAction{
-      display:grid;
-      grid-template-columns:1fr;
-      gap:8px;
+      display:flex;
+      justify-content:flex-end;
       margin-top:11px;
+    }
+
+    .listAction button{
+      min-width:104px;
     }
 
     .detailTop{
@@ -460,11 +497,69 @@
       padding:8px;
     }
 
-    .detailPanel{
+    .detailHeader{
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+      align-items:flex-start;
+      margin-bottom:12px;
+    }
+
+    .detailHeader h3{
+      margin:0;
+      font-size:17px;
+    }
+
+    .detailSection{
       background:#f8fafc;
       border:1px solid var(--line);
       border-radius:14px;
       padding:13px;
+      margin-top:10px;
+    }
+
+    .detailSection h4{
+      margin:0 0 10px;
+      font-size:14px;
+      color:#344054;
+    }
+
+    .detailGrid{
+      display:grid;
+      gap:8px;
+    }
+
+    .detailField{
+      display:grid;
+      grid-template-columns:120px 1fr;
+      gap:9px;
+      font-size:13px;
+    }
+
+    .detailField span:first-child{
+      color:#667085;
+    }
+
+    .detailField span:last-child{
+      font-weight:600;
+      color:#344054;
+      overflow-wrap:anywhere;
+    }
+
+    .resultBox{
+      display:grid;
+      grid-template-columns:1fr auto;
+      gap:10px;
+      align-items:center;
+      padding:11px 12px;
+      border-radius:13px;
+      background:#eef6ff;
+      border:1px solid #bfdbfe;
+    }
+
+    .resultBox b{
+      display:block;
+      color:#174ea6;
     }
 
     .linkbtn{
@@ -474,17 +569,15 @@
       text-decoration:none;
       background:#16213a;
       color:#fff;
-      border-radius:12px;
+      border-radius:11px;
       padding:9px 12px;
       font-weight:700;
-      font-size:13px;
-      margin-top:10px;
-      min-height:42px;
+      font-size:12px;
     }
 
     .timeline{
-      margin-top:14px;
-      padding-left:6px;
+      margin-top:8px;
+      padding-left:4px;
     }
 
     .timelineItem{
@@ -492,7 +585,7 @@
       grid-template-columns:30px 1fr;
       gap:10px;
       position:relative;
-      padding-bottom:16px;
+      padding-bottom:15px;
     }
 
     .timelineItem:not(:last-child)::after{
@@ -539,11 +632,23 @@
       margin-top:2px;
     }
 
+    .detailActions{
+      position:sticky;
+      bottom:calc(70px + var(--safe-bottom));
+      z-index:20;
+      background:rgba(255,255,255,.96);
+      backdrop-filter:blur(10px);
+      border:1px solid var(--line);
+      border-radius:15px;
+      padding:10px;
+      margin-top:12px;
+      box-shadow:0 -4px 18px rgba(15,34,65,.07);
+    }
+
     .actionGrid{
       display:grid;
       grid-template-columns:1fr 1fr;
       gap:8px;
-      margin-top:12px;
     }
 
     .actionGrid button{
@@ -612,11 +717,27 @@
       .appHeader h1{font-size:25px}
       .appHeader p{font-size:14px}
       .card{padding:20px;margin-top:15px}
-      .filterGrid{grid-template-columns:1fr 1.4fr auto}
-      .stats{grid-template-columns:repeat(6,1fr)}
+      .stats{grid-template-columns:repeat(4,1fr)}
       .bottomNav{display:none}
-      .listAction{grid-template-columns:180px}
+      .detailGrid{grid-template-columns:1fr 1fr}
+      .detailField{grid-template-columns:130px 1fr}
+      .detailActions{bottom:20px}
       .actionGrid{grid-template-columns:repeat(3,1fr)}
+    }
+
+    @media(max-width:420px){
+      .detailField{
+        grid-template-columns:1fr;
+        gap:2px;
+      }
+
+      .resultBox{
+        grid-template-columns:1fr;
+      }
+
+      .resultBox .linkbtn{
+        width:100%;
+      }
     }
   </style>
 
@@ -626,12 +747,13 @@
 <body>
   <main class="page">
     <div class="wrap">
+
       <header class="appHeader">
         <div class="appLogo">🗂️</div>
 
         <div>
-          <h1>Quản trị công lệnh</h1>
-          <p>Tiếp nhận · Cấp công lệnh · Bàn giao · Theo dõi hoàn tất</p>
+          <h1>Quản trị văn bản</h1>
+          <p>Tiếp nhận · Cấp số · Bàn giao · Theo dõi hoàn tất</p>
         </div>
       </header>
 
@@ -641,18 +763,30 @@
         </div>
 
         <div class="small" style="margin-bottom:10px">
-          Chỉ tài khoản Phòng Tổ chức có mã TC/TCHC/PTOC/ADMIN mới được truy cập.
+          Chỉ tài khoản Phòng Tổ chức mới được truy cập.
         </div>
 
         <label for="loginName">Họ và tên</label>
-        <input id="loginName" autocomplete="name" placeholder="Nhập họ và tên">
+        <input
+          id="loginName"
+          autocomplete="name"
+          placeholder="Nhập họ và tên"
+        >
 
         <label for="loginPin">Mã PIN</label>
-        <input id="loginPin" type="password" inputmode="numeric"
-               autocomplete="current-password" placeholder="Nhập mã PIN">
+        <input
+          id="loginPin"
+          type="password"
+          inputmode="numeric"
+          autocomplete="current-password"
+          placeholder="Nhập mã PIN"
+        >
 
-        <button id="btnLogin" type="button" class="primary fullBtn"
-                onclick="login()">
+        <button
+          id="btnLogin"
+          type="button"
+          class="primary fullBtn"
+          onclick="login()">
           ĐĂNG NHẬP
         </button>
 
@@ -660,6 +794,7 @@
       </section>
 
       <section id="appBox" class="hidden">
+
         <section class="card userBar">
           <div id="adminAvatar" class="avatar">QT</div>
 
@@ -669,35 +804,49 @@
           </div>
 
           <div class="iconActions">
-            <button class="iconBtn" type="button"
-                    onclick="refreshCurrentView()" aria-label="Tải lại">
+            <button
+              class="iconBtn"
+              type="button"
+              onclick="refreshCurrentView()"
+              aria-label="Tải lại">
               <span>↻</span>
             </button>
 
-            <button class="iconBtn dangerLite" type="button"
-                    onclick="logout()" aria-label="Đăng xuất">
+            <button
+              class="iconBtn dangerLite"
+              type="button"
+              onclick="logout()"
+              aria-label="Đăng xuất">
               <span>⇥</span>
             </button>
           </div>
         </section>
 
-        <!-- TRANG TỔNG QUAN QUẢN TRỊ -->
         <section id="adminHomeView">
+
           <section id="adminPushSection" class="noticeBar hidden">
             <div class="noticeIcon">🔔</div>
 
             <div>
               <b>Thông báo quản trị</b>
-              <div class="small">Nhận thông báo khi có yêu cầu mới.</div>
+              <div class="small">
+                Nhận thông báo khi có yêu cầu mới.
+              </div>
             </div>
 
-            <button type="button" onclick="enablePushAndTest()">Bật</button>
+            <button
+              type="button"
+              onclick="enablePushAndTest()">
+              Bật
+            </button>
           </section>
 
           <section class="card">
             <div class="sectionHead">
               <h2>Tổng quan</h2>
-              <span class="small">Cập nhật trực tiếp</span>
+              <span id="totalCaption" class="small">
+                Tổng: 0 hồ sơ
+              </span>
             </div>
 
             <div id="dashboard" class="stats"></div>
@@ -705,88 +854,135 @@
 
           <section class="card">
             <div class="sectionHead">
-              <h2>Thao tác nhanh</h2>
-            </div>
+              <h2>Cần xử lý</h2>
 
-            <div class="quickGrid">
-              <button class="quickCard" type="button"
-                      onclick="showAdminView('requests')">
-                <strong>▤ Danh sách yêu cầu</strong>
-                <span>Tiếp nhận và xử lý hồ sơ</span>
-              </button>
-
-              <button class="quickCard" type="button"
-                      onclick="loadAll()">
-                <strong>↻ Làm mới dữ liệu</strong>
-                <span>Cập nhật Dashboard và danh sách</span>
-              </button>
-            </div>
-          </section>
-
-          <section class="card">
-            <div class="sectionHead">
-              <h2>Yêu cầu mới nhất</h2>
-
-              <button class="ghost" type="button"
-                      onclick="showAdminView('requests')">
+              <button
+                class="ghost"
+                type="button"
+                onclick="showAdminView('requests')">
                 Xem tất cả
               </button>
             </div>
 
-            <div id="latestAdminRequest"></div>
+            <div id="priorityList"></div>
           </section>
         </section>
 
-        <!-- DANH SÁCH YÊU CẦU -->
         <section id="adminRequestsView" class="hidden">
           <section class="card">
+
             <div class="sectionHead">
               <h2>Danh sách yêu cầu</h2>
 
-              <button class="ghost" type="button"
-                      onclick="loadRequests()">
+              <button
+                class="ghost"
+                type="button"
+                onclick="loadRequests()">
                 Làm mới
               </button>
             </div>
 
-            <div class="filterGrid">
-              <select id="locTrangThai">
-                <option value="">Tất cả trạng thái</option>
-                <option>MỚI GỬI</option>
-                <option>ĐÃ TIẾP NHẬN</option>
-                <option>ĐANG XỬ LÝ</option>
-                <option>CẦN BỔ SUNG</option>
-                <option>TỪ CHỐI</option>
-                <option>ĐÃ CẤP CÔNG LỆNH</option>
-                <option>CHỜ NHẬN</option>
-                <option>ĐÃ BÀN GIAO - CHỜ XÁC NHẬN</option>
-                <option>ĐÃ NHẬN - HOÀN TẤT</option>
-              </select>
+            <div class="filterRows">
 
-              <input id="tuKhoa"
-                     placeholder="Tìm mã, họ tên, nội dung, số công lệnh">
+              <div class="filterChips">
+                <button
+                  class="chip active"
+                  type="button"
+                  data-kind="ALL"
+                  onclick="setKindFilter('ALL',this)">
+                  Tất cả loại
+                </button>
 
-              <button class="primary" type="button"
-                      onclick="loadRequests()">
-                Lọc
-              </button>
+                <button
+                  class="chip"
+                  type="button"
+                  data-kind="CONG_LENH"
+                  onclick="setKindFilter('CONG_LENH',this)">
+                  Công lệnh
+                </button>
+
+                <button
+                  class="chip"
+                  type="button"
+                  data-kind="GIAY_GIOI_THIEU"
+                  onclick="setKindFilter('GIAY_GIOI_THIEU',this)">
+                  Giấy giới thiệu
+                </button>
+              </div>
+
+              <div class="filterChips">
+                <button
+                  class="chip active"
+                  type="button"
+                  data-state="ALL"
+                  onclick="setStateFilter('ALL',this)">
+                  Tất cả
+                </button>
+
+                <button
+                  class="chip"
+                  type="button"
+                  data-state="NEW"
+                  onclick="setStateFilter('NEW',this)">
+                  Mới gửi
+                </button>
+
+                <button
+                  class="chip"
+                  type="button"
+                  data-state="PROCESSING"
+                  onclick="setStateFilter('PROCESSING',this)">
+                  Đang xử lý
+                </button>
+
+                <button
+                  class="chip"
+                  type="button"
+                  data-state="WAITING"
+                  onclick="setStateFilter('WAITING',this)">
+                  Chờ nhận
+                </button>
+
+                <button
+                  class="chip"
+                  type="button"
+                  data-state="COMPLETED"
+                  onclick="setStateFilter('COMPLETED',this)">
+                  Hoàn tất
+                </button>
+              </div>
+
+              <div class="searchBox">
+                <span>⌕</span>
+
+                <input
+                  id="tuKhoa"
+                  placeholder="Tìm mã yêu cầu, họ tên, số được cấp"
+                  oninput="scheduleRender()"
+                >
+              </div>
             </div>
 
             <div id="listBox"></div>
           </section>
         </section>
 
-        <!-- CHI TIẾT XỬ LÝ -->
         <section id="adminDetailView" class="hidden">
           <section class="card">
+
             <div class="detailTop">
-              <button class="backBtn" type="button"
-                      onclick="showAdminView('requests')">
+              <button
+                class="backBtn"
+                type="button"
+                onclick="showAdminView('requests')">
                 ←
               </button>
 
               <div>
-                <h2 style="margin:0">Xử lý yêu cầu</h2>
+                <h2 style="margin:0">
+                  Xử lý yêu cầu
+                </h2>
+
                 <div class="small">
                   Kiểm tra thông tin và thực hiện bước phù hợp
                 </div>
@@ -801,14 +997,19 @@
   </main>
 
   <nav id="adminBottomNav" class="bottomNav hidden">
-    <button id="adminNavHome" class="active" type="button"
-            onclick="showAdminView('home')">
+    <button
+      id="adminNavHome"
+      class="active"
+      type="button"
+      onclick="showAdminView('home')">
       <span>⌂</span>
       Tổng quan
     </button>
 
-    <button id="adminNavRequests" type="button"
-            onclick="showAdminView('requests')">
+    <button
+      id="adminNavRequests"
+      type="button"
+      onclick="showAdminView('requests')">
       <span>▤</span>
       Yêu cầu
     </button>
@@ -818,7 +1019,8 @@
     const API_URL =
       "https://script.google.com/macros/s/AKfycbwu7jzAGZyxrJ5QEBikW0I6KSNUfwtxSEKPP2Ecajo3WL_KDXdytkEUX0qP9sHot2t4/exec";
 
-    const API_TOKEN = "DICHVU_NOIBO_TEST_2026";
+    const API_TOKEN =
+      "DICHVU_NOIBO_TEST_2026";
 
     const ONESIGNAL_APP_ID =
       "c7579ace-17b7-4357-9607-33f074e689b2";
@@ -826,22 +1028,19 @@
     const ONESIGNAL_SAFARI_WEB_ID =
       "web.onesignal.auto.36c77d1a-9357-4d49-966b-0de749957ba2";
 
-    const FLOW = [
-      "MỚI GỬI",
-      "ĐÃ TIẾP NHẬN",
-      "ĐÃ CẤP CÔNG LỆNH",
-      "ĐÃ BÀN GIAO - CHỜ XÁC NHẬN",
-      "ĐÃ NHẬN - HOÀN TẤT"
-    ];
-
     let currentUser =
       JSON.parse(
-        localStorage.getItem("dv_admin_user") || "null"
+        localStorage.getItem(
+          "dv_admin_user"
+        ) || "null"
       );
 
     let requests = [];
     let currentView = "home";
     let currentDetailId = "";
+    let kindFilter = "ALL";
+    let stateFilter = "ALL";
+    let renderTimer = null;
     let oneSignalInitPromise = null;
 
     window.OneSignalDeferred =
@@ -852,18 +1051,19 @@
     }
 
     function esc(value){
-      return String(value ?? "").replace(
-        /[&<>'"]/g,
-        function(character){
-          return {
-            "&":"&amp;",
-            "<":"&lt;",
-            ">":"&gt;",
-            "'":"&#39;",
-            '"':"&quot;"
-          }[character];
-        }
-      );
+      return String(value ?? "")
+        .replace(
+          /[&<>'"]/g,
+          function(character){
+            return {
+              "&":"&amp;",
+              "<":"&lt;",
+              ">":"&gt;",
+              "'":"&#39;",
+              '"':"&quot;"
+            }[character];
+          }
+        );
     }
 
     function js(value){
@@ -878,8 +1078,11 @@
         return;
       }
 
-      element.className = "msg " + type;
-      element.innerHTML = html;
+      element.className =
+        "msg " + type;
+
+      element.innerHTML =
+        html;
     }
 
     function clearMsg(id){
@@ -889,67 +1092,92 @@
         return;
       }
 
-      element.className = "msg";
-      element.innerHTML = "";
+      element.className =
+        "msg";
+
+      element.innerHTML =
+        "";
     }
 
     function jsonp(params){
-      return new Promise(function(resolve,reject){
-        if(!API_URL){
-          reject(new Error("Chưa cấu hình API_URL"));
-          return;
+      return new Promise(
+        function(resolve,reject){
+          const callbackName =
+            "cb_" +
+            Date.now() +
+            "_" +
+            Math.floor(
+              Math.random() * 100000
+            );
+
+          const script =
+            document.createElement("script");
+
+          const timer =
+            setTimeout(
+              function(){
+                try{
+                  delete window[callbackName];
+                  script.remove();
+                }catch(error){}
+
+                reject(
+                  new Error(
+                    "Kết nối Apps Script quá thời gian chờ."
+                  )
+                );
+              },
+              30000
+            );
+
+          window[callbackName] =
+            function(data){
+              clearTimeout(timer);
+              delete window[callbackName];
+              script.remove();
+              resolve(data);
+            };
+
+          const query =
+            new URLSearchParams(params);
+
+          query.set(
+            "callback",
+            callbackName
+          );
+
+          script.src =
+            API_URL +
+            "?" +
+            query.toString();
+
+          script.onerror =
+            function(){
+              clearTimeout(timer);
+              delete window[callbackName];
+              script.remove();
+
+              reject(
+                new Error(
+                  "Không kết nối được Apps Script."
+                )
+              );
+            };
+
+          document.body.appendChild(script);
         }
-
-        const callbackName =
-          "cb_" +
-          Date.now() +
-          "_" +
-          Math.floor(Math.random() * 100000);
-
-        const script = document.createElement("script");
-
-        const timer = setTimeout(function(){
-          try{
-            delete window[callbackName];
-            script.remove();
-          }catch(error){}
-
-          reject(
-            new Error("Kết nối Apps Script quá thời gian chờ.")
-          );
-        },30000);
-
-        window[callbackName] = function(data){
-          clearTimeout(timer);
-          delete window[callbackName];
-          script.remove();
-          resolve(data);
-        };
-
-        const query = new URLSearchParams(params);
-        query.set("callback",callbackName);
-
-        script.src =
-          API_URL + "?" + query.toString();
-
-        script.onerror = function(){
-          clearTimeout(timer);
-          delete window[callbackName];
-          script.remove();
-
-          reject(
-            new Error("Không kết nối được Apps Script.")
-          );
-        };
-
-        document.body.appendChild(script);
-      });
+      );
     }
 
     function api(action,data){
-      const params = Object.assign({},data || {});
-      params.action = action;
-      params.token = API_TOKEN;
+      const params =
+        Object.assign({},data || {});
+
+      params.action =
+        action;
+
+      params.token =
+        API_TOKEN;
 
       return jsonp(params);
     }
@@ -960,10 +1188,170 @@
           .trim()
           .split(/\s+/)
           .slice(-2)
-          .map(function(value){
-            return value.charAt(0).toUpperCase();
-          })
-          .join("") || "QT"
+          .map(
+            function(value){
+              return value
+                .charAt(0)
+                .toUpperCase();
+            }
+          )
+          .join("") ||
+        "QT"
+      );
+    }
+
+    function getType(item){
+      const raw =
+        String(
+          item.loaiGiay ||
+          item.loaiVanBan ||
+          item.loaiYeuCau ||
+          "CÔNG LỆNH"
+        ).toUpperCase();
+
+      return (
+        raw.includes("GIỚI") ||
+        raw.includes("GIOI") ||
+        raw.includes("GGT")
+      )
+        ? "GIAY_GIOI_THIEU"
+        : "CONG_LENH";
+    }
+
+    function typeLabel(item){
+      return getType(item) === "GIAY_GIOI_THIEU"
+        ? "Giấy giới thiệu"
+        : "Công lệnh";
+    }
+
+    function issuedNumber(item){
+      return (
+        item.soDuocCap ||
+        item.soVanBan ||
+        item.soGiayGioiThieu ||
+        item.soCongLenh ||
+        ""
+      );
+    }
+
+    function destinationText(item){
+      if(
+        getType(item) ===
+        "GIAY_GIOI_THIEU"
+      ){
+        return (
+          item.noiDen ||
+          item.noiDenGGT ||
+          item.kinhGui ||
+          ""
+        );
+      }
+
+      return (
+        (item.diTu || "") +
+        " → " +
+        (item.den || "")
+      );
+    }
+
+    function dateText(item){
+      if(
+        getType(item) ===
+        "GIAY_GIOI_THIEU"
+      ){
+        return item.ngayHetHan
+          ? "Hết hạn: " + item.ngayHetHan
+          : "";
+      }
+
+      return (
+        (item.ngayDi || "") +
+        " → " +
+        (item.ngayVe || "")
+      );
+    }
+
+    function contentText(item){
+      return (
+        item.noiDungGGT ||
+        item.noiDung ||
+        ""
+      );
+    }
+
+    function normalizeStatus(status){
+      return String(status || "")
+        .toUpperCase();
+    }
+
+    function stepIndex(status){
+      const statusText =
+        normalizeStatus(status);
+
+      if(
+        statusText.includes("HOÀN TẤT")
+      ){
+        return 4;
+      }
+
+      if(
+        statusText.includes("BÀN GIAO") ||
+        statusText === "CHỜ NHẬN"
+      ){
+        return 3;
+      }
+
+      if(
+        statusText.includes("ĐÃ CẤP") ||
+        statusText.includes("CẤP CÔNG LỆNH") ||
+        statusText.includes("CẤP GIẤY")
+      ){
+        return 2;
+      }
+
+      if(
+        statusText.includes("TIẾP NHẬN") ||
+        statusText.includes("ĐANG XỬ LÝ") ||
+        statusText.includes("BỔ SUNG") ||
+        statusText.includes("TỪ CHỐI")
+      ){
+        return 1;
+      }
+
+      return 0;
+    }
+
+    function statusPill(status){
+      const statusText =
+        String(status || "");
+
+      let className =
+        "";
+
+      if(
+        statusText.includes("HOÀN TẤT")
+      ){
+        className =
+          "greenText";
+      }else if(
+        statusText.includes("TỪ CHỐI")
+      ){
+        className =
+          "redText";
+      }else if(
+        statusText.includes("CẦN") ||
+        statusText.includes("CHỜ")
+      ){
+        className =
+          "orangeText";
+      }
+
+      return (
+        '<span class="statusPill ' +
+        className +
+        '">' +
+        esc(statusText) +
+        '</span>'
       );
     }
 
@@ -974,12 +1362,21 @@
     }
 
     function openApp(){
-      $("loginCard").classList.add("hidden");
-      $("appBox").classList.remove("hidden");
-      $("adminBottomNav").classList.remove("hidden");
+      $("loginCard")
+        .classList
+        .add("hidden");
+
+      $("appBox")
+        .classList
+        .remove("hidden");
+
+      $("adminBottomNav")
+        .classList
+        .remove("hidden");
 
       $("helloUser").textContent =
-        "Xin chào, " + currentUser.hoTen;
+        "Xin chào, " +
+        currentUser.hoTen;
 
       $("userInfo").textContent =
         [
@@ -990,7 +1387,9 @@
         .join(" · ");
 
       $("adminAvatar").textContent =
-        getInitials(currentUser.hoTen);
+        getInitials(
+          currentUser.hoTen
+        );
 
       showPushBox();
       showAdminView("home",false);
@@ -1013,19 +1412,22 @@
           "err",
           "❌ Vui lòng nhập họ tên và mã PIN."
         );
+
         return;
       }
 
-      $("btnLogin").disabled = true;
+      $("btnLogin").disabled =
+        true;
 
       try{
-        const response = await api(
-          "login",
-          {
-            hoTen:hoTen,
-            pin:pin
-          }
-        );
+        const response =
+          await api(
+            "login",
+            {
+              hoTen:hoTen,
+              pin:pin
+            }
+          );
 
         if(!response.ok){
           showMsg(
@@ -1033,6 +1435,7 @@
             "err",
             "❌ " + response.message
           );
+
           return;
         }
 
@@ -1042,10 +1445,12 @@
             "err",
             "❌ Tài khoản không có quyền quản trị."
           );
+
           return;
         }
 
-        currentUser = response.user;
+        currentUser =
+          response.user;
 
         localStorage.setItem(
           "dv_admin_user",
@@ -1060,33 +1465,42 @@
           "❌ " + error.message
         );
       }finally{
-        $("btnLogin").disabled = false;
+        $("btnLogin").disabled =
+          false;
       }
     }
 
     async function logout(){
       await logoutOneSignal();
 
-      localStorage.removeItem("dv_admin_user");
+      localStorage.removeItem(
+        "dv_admin_user"
+      );
 
-      currentUser = null;
+      currentUser =
+        null;
+
       location.reload();
     }
 
-    function showAdminView(name,scroll){
-      if(scroll === undefined){
-        scroll = true;
-      }
-
-      currentView = name;
+    function showAdminView(
+      name,
+      scroll = true
+    ){
+      currentView =
+        name;
 
       [
         "adminHomeView",
         "adminRequestsView",
         "adminDetailView"
-      ].forEach(function(id){
-        $(id).classList.add("hidden");
-      });
+      ].forEach(
+        function(id){
+          $(id)
+            .classList
+            .add("hidden");
+        }
+      );
 
       const map = {
         home:"adminHomeView",
@@ -1094,18 +1508,28 @@
         detail:"adminDetailView"
       };
 
-      $(map[name]).classList.remove("hidden");
+      $(map[name])
+        .classList
+        .remove("hidden");
 
       $("adminNavHome")
         .classList
-        .toggle("active",name === "home");
+        .toggle(
+          "active",
+          name === "home"
+        );
 
       $("adminNavRequests")
         .classList
         .toggle(
           "active",
-          name === "requests" || name === "detail"
+          name === "requests" ||
+          name === "detail"
         );
+
+      if(name === "requests"){
+        renderAdminList();
+      }
 
       if(scroll){
         window.scrollTo({
@@ -1116,70 +1540,78 @@
     }
 
     function refreshCurrentView(){
-      if(currentView === "detail" && currentDetailId){
-        openAdminDetail(currentDetailId);
+      if(
+        currentView === "detail" &&
+        currentDetailId
+      ){
+        openAdminDetail(
+          currentDetailId
+        );
       }else{
         loadAll();
       }
     }
 
     async function loadAll(){
-      await loadDashboard();
-      await loadRequests(false);
+      await Promise.all([
+        loadDashboard(),
+        loadRequests(false)
+      ]);
     }
 
     async function loadDashboard(){
       $("dashboard").innerHTML =
-        '<div class="empty">Đang tải...</div>';
+        '<div class="empty">' +
+        'Đang tải...' +
+        '</div>';
 
       try{
-        const response = await api(
-          "admin_dashboard",
-          {
-            maNguoiDung:currentUser.maNguoiDung
-          }
-        );
+        const response =
+          await api(
+            "admin_dashboard",
+            {
+              maNguoiDung:
+                currentUser.maNguoiDung
+            }
+          );
 
         if(!response.ok){
           $("dashboard").innerHTML =
             '<div class="empty">❌ ' +
             esc(response.message) +
             '</div>';
+
           return;
         }
 
-        const data = response.data || {};
+        const data =
+          response.data || {};
+
+        $("totalCaption").textContent =
+          "Tổng: " +
+          String(data.tong ?? 0) +
+          " hồ sơ";
 
         $("dashboard").innerHTML =
-          '<div class="stat">' +
-            '<b>' + esc(data.tong ?? 0) + '</b>' +
-            '<span>Tổng yêu cầu</span>' +
-          '</div>' +
+          statHtml(
+            data.moiGui ?? 0,
+            "Mới gửi"
+          ) +
 
-          '<div class="stat">' +
-            '<b>' + esc(data.moiGui ?? 0) + '</b>' +
-            '<span>Mới gửi</span>' +
-          '</div>' +
+          statHtml(
+            data.dangXuLy ?? 0,
+            "Đang xử lý"
+          ) +
 
-          '<div class="stat">' +
-            '<b>' + esc(data.dangXuLy ?? 0) + '</b>' +
-            '<span>Đang xử lý</span>' +
-          '</div>' +
+          statHtml(
+            data.choNhan ?? 0,
+            "Chờ nhận"
+          ) +
 
-          '<div class="stat">' +
-            '<b>' + esc(data.daCap ?? 0) + '</b>' +
-            '<span>Đã cấp</span>' +
-          '</div>' +
-
-          '<div class="stat">' +
-            '<b>' + esc(data.choNhan ?? 0) + '</b>' +
-            '<span>Chờ nhận</span>' +
-          '</div>' +
-
-          '<div class="stat">' +
-            '<b>' + esc(data.hoanTat ?? 0) + '</b>' +
-            '<span>Hoàn tất</span>' +
-          '</div>';
+          statHtml(
+            data.hoanTat ?? 0,
+            "Hoàn tất"
+          );
       }catch(error){
         $("dashboard").innerHTML =
           '<div class="empty">❌ ' +
@@ -1188,38 +1620,60 @@
       }
     }
 
-    async function loadRequests(showLoading){
-      if(showLoading === undefined){
-        showLoading = true;
-      }
+    function statHtml(
+      value,
+      label
+    ){
+      return (
+        '<div class="stat">' +
+          '<b>' +
+            esc(value) +
+          '</b>' +
 
+          '<span>' +
+            esc(label) +
+          '</span>' +
+        '</div>'
+      );
+    }
+
+    async function loadRequests(
+      showLoading = true
+    ){
       if(showLoading){
         $("listBox").innerHTML =
-          '<div class="empty">Đang tải danh sách...</div>';
+          '<div class="empty">' +
+          'Đang tải danh sách...' +
+          '</div>';
       }
 
       try{
-        const response = await api(
-          "admin_danh_sach",
-          {
-            maNguoiDung:currentUser.maNguoiDung,
-            trangThai:$("locTrangThai").value,
-            tuKhoa:$("tuKhoa").value.trim()
-          }
-        );
+        const response =
+          await api(
+            "admin_danh_sach",
+            {
+              maNguoiDung:
+                currentUser.maNguoiDung,
+
+              trangThai:"",
+              tuKhoa:""
+            }
+          );
 
         if(!response.ok){
           $("listBox").innerHTML =
             '<div class="empty">❌ ' +
             esc(response.message) +
             '</div>';
+
           return;
         }
 
-        requests = response.data || [];
+        requests =
+          response.data || [];
 
         renderAdminList();
-        renderLatestAdmin();
+        renderPriorityList();
       }catch(error){
         $("listBox").innerHTML =
           '<div class="empty">❌ ' +
@@ -1228,105 +1682,283 @@
       }
     }
 
-    function renderLatestAdmin(){
-      if(!requests.length){
-        $("latestAdminRequest").innerHTML =
-          '<div class="empty">Chưa có yêu cầu nào.</div>';
-        return;
-      }
+    function setKindFilter(
+      filter,
+      button
+    ){
+      kindFilter =
+        filter;
 
-      $("latestAdminRequest").innerHTML =
-        renderAdminCard(requests[0],true);
+      document
+        .querySelectorAll(
+          "[data-kind]"
+        )
+        .forEach(
+          function(element){
+            element
+              .classList
+              .remove("active");
+          }
+        );
+
+      button
+        .classList
+        .add("active");
+
+      renderAdminList();
     }
 
-    function renderAdminList(){
-      if(!requests.length){
-        $("listBox").innerHTML =
-          '<div class="empty">Không có yêu cầu phù hợp.</div>';
-        return;
-      }
+    function setStateFilter(
+      filter,
+      button
+    ){
+      stateFilter =
+        filter;
 
-      $("listBox").innerHTML =
-        requests
-          .map(function(item){
-            return renderAdminCard(item,false);
-          })
-          .join("");
+      document
+        .querySelectorAll(
+          "[data-state]"
+        )
+        .forEach(
+          function(element){
+            element
+              .classList
+              .remove("active");
+          }
+        );
+
+      button
+        .classList
+        .add("active");
+
+      renderAdminList();
     }
 
-    function statusPill(status){
-      const text = String(status || "");
-      let className = "";
+    function scheduleRender(){
+      clearTimeout(renderTimer);
 
-      if(text.includes("HOÀN TẤT")){
-        className = "greenText";
-      }else if(text.includes("TỪ CHỐI")){
-        className = "redText";
-      }else if(
-        text.includes("CẦN") ||
-        text.includes("CHỜ")
-      ){
-        className = "orangeText";
-      }
+      renderTimer =
+        setTimeout(
+          renderAdminList,
+          180
+        );
+    }
 
-      return (
-        '<span class="statusPill ' +
-        className +
-        '">' +
-        esc(text) +
-        '</span>'
+    function filterAdminRequests(){
+      const keyword =
+        String(
+          $("tuKhoa")?.value || ""
+        )
+        .trim()
+        .toLowerCase();
+
+      return requests.filter(
+        function(item){
+          if(
+            kindFilter !== "ALL" &&
+            getType(item) !== kindFilter
+          ){
+            return false;
+          }
+
+          const statusText =
+            normalizeStatus(
+              item.trangThai
+            );
+
+          if(
+            stateFilter === "NEW" &&
+            statusText !== "MỚI GỬI"
+          ){
+            return false;
+          }
+
+          if(
+            stateFilter === "COMPLETED" &&
+            !statusText.includes("HOÀN TẤT")
+          ){
+            return false;
+          }
+
+          if(
+            stateFilter === "WAITING" &&
+            !(
+              statusText.includes("BÀN GIAO") ||
+              statusText === "CHỜ NHẬN" ||
+              statusText.includes("ĐÃ CẤP")
+            )
+          ){
+            return false;
+          }
+
+          if(
+            stateFilter === "PROCESSING" &&
+            (
+              statusText === "MỚI GỬI" ||
+              statusText.includes("HOÀN TẤT") ||
+              statusText.includes("BÀN GIAO") ||
+              statusText === "CHỜ NHẬN"
+            )
+          ){
+            return false;
+          }
+
+          if(keyword){
+            const haystack =
+              [
+                item.maYeuCau,
+                item.nguoiDangKy,
+                item.hoTen,
+                item.phongKhu,
+                contentText(item),
+                issuedNumber(item),
+                destinationText(item)
+              ]
+              .join(" ")
+              .toLowerCase();
+
+            if(
+              !haystack.includes(keyword)
+            ){
+              return false;
+            }
+          }
+
+          return true;
+        }
       );
     }
 
-    function renderAdminCard(item,compact){
+    function renderAdminList(){
+      if(!$("listBox")){
+        return;
+      }
+
+      const data =
+        filterAdminRequests();
+
+      $("listBox").innerHTML =
+        data.length
+          ? data
+              .map(
+                function(item){
+                  return renderAdminCard(
+                    item,
+                    false
+                  );
+                }
+              )
+              .join("")
+          : (
+            '<div class="empty">' +
+            'Không có yêu cầu phù hợp.' +
+            '</div>'
+          );
+    }
+
+    function renderPriorityList(){
+      const data =
+        requests
+          .filter(
+            function(item){
+              const statusText =
+                normalizeStatus(
+                  item.trangThai
+                );
+
+              return (
+                !statusText.includes("HOÀN TẤT") &&
+                !statusText.includes("TỪ CHỐI")
+              );
+            }
+          )
+          .slice(0,3);
+
+      $("priorityList").innerHTML =
+        data.length
+          ? data
+              .map(
+                function(item){
+                  return renderAdminCard(
+                    item,
+                    true
+                  );
+                }
+              )
+              .join("")
+          : (
+            '<div class="empty">' +
+            'Hiện không có hồ sơ cần xử lý.' +
+            '</div>'
+          );
+    }
+
+    function renderAdminCard(
+      item,
+      compact
+    ){
+      const number =
+        issuedNumber(item);
+
       return (
         '<article class="requestCard">' +
 
           '<div class="requestHead">' +
-            '<div class="requestCode">' +
-              esc(item.maYeuCau) +
+
+            '<div>' +
+              '<div class="requestCode">' +
+                esc(item.maYeuCau) +
+              '</div>' +
+
+              '<div class="typeLine">' +
+                esc(typeLabel(item)) +
+              '</div>' +
             '</div>' +
+
             statusPill(item.trangThai) +
+
           '</div>' +
 
           '<div class="requestMeta">' +
 
             '<div class="metaRow">' +
               '<span>👤</span>' +
-              '<div><b>' +
-                esc(item.nguoiDangKy) +
-                '</b> · ' +
-                esc(item.chucVu) +
-                ' · ' +
-                esc(item.phongKhu) +
+
+              '<div>' +
+                '<b>' +
+                  esc(
+                    item.nguoiDangKy ||
+                    item.hoTen ||
+                    ""
+                  ) +
+                '</b>' +
+
+                (
+                  item.phongKhu
+                    ? " · " + esc(item.phongKhu)
+                    : ""
+                ) +
               '</div>' +
             '</div>' +
 
             '<div class="metaRow">' +
               '<span>📍</span>' +
-              '<div><b>Hành trình:</b> ' +
-                esc(item.diTu) +
-                ' → ' +
-                esc(item.den) +
-              '</div>' +
-            '</div>' +
 
-            '<div class="metaRow">' +
-              '<span>📅</span>' +
-              '<div><b>Thời gian:</b> ' +
-                esc(item.ngayDi) +
-                ' → ' +
-                esc(item.ngayVe) +
+              '<div>' +
+                '<b>Nơi làm việc:</b> ' +
+                esc(destinationText(item)) +
               '</div>' +
             '</div>' +
 
             (
-              !compact
+              dateText(item)
                 ? (
                   '<div class="metaRow">' +
-                    '<span>📝</span>' +
-                    '<div><b>Nội dung:</b> ' +
-                      esc(item.noiDung) +
+                    '<span>📅</span>' +
+
+                    '<div>' +
+                      '<b>Thời gian:</b> ' +
+                      esc(dateText(item)) +
                     '</div>' +
                   '</div>'
                 )
@@ -1334,12 +1966,15 @@
             ) +
 
             (
-              item.soCongLenh
+              !compact &&
+              number
                 ? (
                   '<div class="metaRow">' +
                     '<span>📄</span>' +
-                    '<div><b>Số công lệnh:</b> ' +
-                      esc(item.soCongLenh) +
+
+                    '<div>' +
+                      '<b>Số được cấp:</b> ' +
+                      esc(number) +
                     '</div>' +
                   '</div>'
                 )
@@ -1349,108 +1984,51 @@
           '</div>' +
 
           '<div class="listAction">' +
-            '<button class="primary" type="button" ' +
+            '<button ' +
+              'class="primary" ' +
+              'type="button" ' +
               'onclick=\'openAdminDetail(' +
                 js(item.maYeuCau) +
-              ')\'>Xem và xử lý</button>' +
+              ')\'>' +
+
+              (
+                normalizeStatus(
+                  item.trangThai
+                ).includes("HOÀN TẤT")
+                  ? "Xem"
+                  : "Xử lý"
+              ) +
+
+            '</button>' +
           '</div>' +
 
         '</article>'
       );
     }
 
-    function stepIndex(status){
-      let index = FLOW.indexOf(status);
-
-      if(status === "CHỜ NHẬN"){
-        index = 2;
-      }
-
-      if(status === "ĐANG XỬ LÝ"){
-        index = 1;
-      }
-
-      if(
-        status === "TỪ CHỐI" ||
-        status === "CẦN BỔ SUNG"
-      ){
-        index = 1;
-      }
-
-      return Math.max(index,0);
-    }
-
-    function renderTimeline(item){
-      const labels = [
-        "Đã gửi yêu cầu",
-        "Phòng Tổ chức tiếp nhận",
-        "Đã cấp công lệnh",
-        "Đã bàn giao",
-        "Đã nhận - hoàn tất"
-      ];
-
-      const index = stepIndex(item.trangThai);
-
-      return (
-        '<div class="timeline">' +
-
-        labels.map(function(label,itemIndex){
-          const className =
-            itemIndex < index
-              ? "done"
-              : itemIndex === index
-                ? "active"
-                : "";
-
-          const note =
-            itemIndex === index
-              ? "Đang ở bước này"
-              : itemIndex < index
-                ? "Đã hoàn thành"
-                : "Chưa thực hiện";
-
-          return (
-            '<div class="timelineItem ' +
-            className +
-            '">' +
-
-              '<div class="timelineDot">' +
-                (
-                  itemIndex < index
-                    ? "✓"
-                    : itemIndex + 1
-                ) +
-              '</div>' +
-
-              '<div>' +
-                '<div class="timelineTitle">' +
-                  label +
-                '</div>' +
-                '<div class="timelineNote">' +
-                  note +
-                '</div>' +
-              '</div>' +
-
-            '</div>'
-          );
-        }).join("") +
-
-        '</div>'
-      );
-    }
-
-    function openAdminDetail(maYeuCau){
+    function openAdminDetail(
+      maYeuCau
+    ){
       const item =
-        requests.find(function(row){
-          return String(row.maYeuCau) === String(maYeuCau);
-        });
+        requests.find(
+          function(row){
+            return (
+              String(row.maYeuCau) ===
+              String(maYeuCau)
+            );
+          }
+        );
 
       if(!item){
-        alert("Không tìm thấy yêu cầu.");
+        alert(
+          "Không tìm thấy yêu cầu."
+        );
+
         return;
       }
 
-      currentDetailId = maYeuCau;
+      currentDetailId =
+        maYeuCau;
 
       showAdminView("detail");
 
@@ -1459,244 +2037,449 @@
     }
 
     function renderAdminDetail(item){
+      const type =
+        getType(item);
+
+      const number =
+        issuedNumber(item);
+
+      const pdf =
+        item.linkPDF ||
+        item.linkPdf ||
+        "";
+
+      let information =
+        "";
+
+      if(
+        type ===
+        "CONG_LENH"
+      ){
+        information =
+          detailField(
+            "Hành trình",
+            (item.diTu || "") +
+            " → " +
+            (item.den || "")
+          ) +
+
+          detailField(
+            "Nội dung",
+            contentText(item)
+          ) +
+
+          detailField(
+            "Ngày đi - về",
+            (item.ngayDi || "") +
+            " → " +
+            (item.ngayVe || "")
+          ) +
+
+          detailField(
+            "Phương tiện",
+            item.phuongTien || ""
+          );
+      }else{
+        information =
+          detailField(
+            "Kính gửi",
+            item.kinhGui || ""
+          ) +
+
+          detailField(
+            "Nơi đến",
+            item.noiDen ||
+            item.noiDenGGT ||
+            ""
+          ) +
+
+          detailField(
+            "Nội dung",
+            contentText(item)
+          ) +
+
+          detailField(
+            "Ngày hết hạn",
+            item.ngayHetHan || ""
+          );
+      }
+
       return (
-        '<div class="requestHead">' +
-          '<div class="requestCode">' +
-            esc(item.maYeuCau) +
+        '<div class="detailHeader">' +
+
+          '<div>' +
+            '<h3>' +
+              esc(item.maYeuCau) +
+            '</h3>' +
+
+            '<div class="typeLine">' +
+              esc(typeLabel(item)) +
+            '</div>' +
           '</div>' +
+
           statusPill(item.trangThai) +
+
         '</div>' +
 
-        '<div class="detailPanel" style="margin-top:12px">' +
+        '<div class="detailSection">' +
+          '<h4>Thông tin yêu cầu</h4>' +
 
-          '<div class="requestMeta">' +
+          '<div class="detailGrid">' +
 
-            '<div class="metaRow">' +
-              '<span>👤</span>' +
-              '<div><b>Người đăng ký:</b> ' +
-                esc(item.nguoiDangKy) +
-                ' · ' +
-                esc(item.chucVu) +
-                ' · ' +
-                esc(item.phongKhu) +
-              '</div>' +
-            '</div>' +
-
-            '<div class="metaRow">' +
-              '<span>📍</span>' +
-              '<div><b>Hành trình:</b> ' +
-                esc(item.diTu) +
-                ' → ' +
-                esc(item.den) +
-              '</div>' +
-            '</div>' +
-
-            '<div class="metaRow">' +
-              '<span>📝</span>' +
-              '<div><b>Nội dung:</b> ' +
-                esc(item.noiDung) +
-              '</div>' +
-            '</div>' +
-
-            '<div class="metaRow">' +
-              '<span>📅</span>' +
-              '<div><b>Ngày:</b> ' +
-                esc(item.ngayDi) +
-                ' → ' +
-                esc(item.ngayVe) +
-              '</div>' +
-            '</div>' +
-
-            '<div class="metaRow">' +
-              '<span>🚗</span>' +
-              '<div><b>Phương tiện:</b> ' +
-                esc(item.phuongTien) +
-              '</div>' +
-            '</div>' +
-
-            (
-              item.soCongLenh
-                ? (
-                  '<div class="metaRow">' +
-                    '<span>📄</span>' +
-                    '<div><b>Số công lệnh:</b> ' +
-                      esc(item.soCongLenh) +
-                    '</div>' +
-                  '</div>'
-                )
-                : ""
+            detailField(
+              "Người đăng ký",
+              (
+                item.nguoiDangKy ||
+                item.hoTen ||
+                ""
+              ) +
+              (
+                item.phongKhu
+                  ? " · " + item.phongKhu
+                  : ""
+              )
             ) +
+
+            information +
 
             (
               item.ghiChuXuLy
-                ? (
-                  '<div class="metaRow">' +
-                    '<span>💬</span>' +
-                    '<div><b>Ghi chú xử lý:</b> ' +
-                      esc(item.ghiChuXuLy) +
-                    '</div>' +
-                  '</div>'
-                )
+                ? detailField(
+                    "Ghi chú xử lý",
+                    item.ghiChuXuLy
+                  )
                 : ""
             ) +
 
           '</div>' +
-
-          (
-            item.linkPDF
-              ? (
-                '<a class="linkbtn" target="_blank" href="' +
-                  esc(item.linkPDF) +
-                '">MỞ PDF</a>'
-              )
-              : ""
-          ) +
-
         '</div>' +
 
-        renderTimeline(item) +
+        (
+          number || pdf
+            ? (
+              '<div class="detailSection">' +
+                '<h4>Kết quả cấp văn bản</h4>' +
 
-        renderActions(item) +
+                '<div class="resultBox">' +
+
+                  '<div>' +
+                    '<b>' +
+                      esc(typeLabel(item)) +
+                    '</b>' +
+
+                    '<div class="small">' +
+                      'Số được cấp: ' +
+                      esc(
+                        number ||
+                        "Đang cập nhật"
+                      ) +
+                    '</div>' +
+                  '</div>' +
+
+                  (
+                    pdf
+                      ? (
+                        '<a ' +
+                          'class="linkbtn" ' +
+                          'target="_blank" ' +
+                          'href="' +
+                            esc(pdf) +
+                          '">' +
+                          'Mở PDF' +
+                        '</a>'
+                      )
+                      : ""
+                  ) +
+
+                '</div>' +
+              '</div>'
+            )
+            : ""
+        ) +
+
+        '<div class="detailSection">' +
+          '<h4>Tiến trình xử lý</h4>' +
+          renderTimeline(item) +
+        '</div>' +
+
+        '<div class="detailActions">' +
+          renderActions(item) +
+        '</div>' +
 
         '<div id="detailMsg" class="msg"></div>'
       );
     }
 
-    function renderActions(item){
-      const status = String(item.trangThai || "");
+    function detailField(
+      label,
+      value
+    ){
+      return (
+        '<div class="detailField">' +
+          '<span>' +
+            esc(label) +
+          '</span>' +
 
-      const mainActions = [];
-      const moreActions = [];
-
-      if(status === "MỚI GỬI"){
-        mainActions.push(
-          buttonHtml(
-            "Tiếp nhận",
-            "primary",
-            "updateStatus(" +
-              js(item.maYeuCau) +
-              ',"tiep_nhan")'
-          )
-        );
-
-        mainActions.push(
-          buttonHtml(
-            "Cấp & bàn giao",
-            "success",
-            "capCongLenh(" +
-              js(item.maYeuCau) +
-              ",true)"
-          )
-        );
-
-        moreActions.push(
-          buttonHtml(
-            "Cấp nhanh",
-            "secondary",
-            "capCongLenh(" +
-              js(item.maYeuCau) +
-              ",false)"
-          )
-        );
-
-        moreActions.push(
-          buttonHtml(
-            "Yêu cầu bổ sung",
-            "warning",
-            "updateStatus(" +
-              js(item.maYeuCau) +
-              ',"bo_sung")'
-          )
-        );
-
-        moreActions.push(
-          buttonHtml(
-            "Từ chối",
-            "danger",
-            "updateStatus(" +
-              js(item.maYeuCau) +
-              ',"tu_choi")'
-          )
-        );
-      }else if(
-        [
-          "ĐÃ TIẾP NHẬN",
-          "ĐANG XỬ LÝ",
-          "CẦN BỔ SUNG"
-        ].includes(status)
-      ){
-        mainActions.push(
-          buttonHtml(
-            "Cấp công lệnh",
-            "secondary",
-            "capCongLenh(" +
-              js(item.maYeuCau) +
-              ",false)"
-          )
-        );
-
-        mainActions.push(
-          buttonHtml(
-            "Cấp & bàn giao",
-            "success",
-            "capCongLenh(" +
-              js(item.maYeuCau) +
-              ",true)"
-          )
-        );
-      }else if(
-        status === "ĐÃ CẤP CÔNG LỆNH"
-      ){
-        mainActions.push(
-          buttonHtml(
-            "Xác nhận bàn giao",
-            "primary",
-            "updateStatus(" +
-              js(item.maYeuCau) +
-              ',"ban_giao")'
-          )
-        );
-      }else{
-        mainActions.push(
-          '<button class="ghost" type="button" ' +
-          'onclick="alert(\'Hồ sơ đang ở trạng thái: ' +
-          esc(status) +
-          '\')">Xem trạng thái</button>'
-        );
-      }
-
-      let html =
-        '<div class="actionGrid">' +
-          mainActions.join("") +
-        '</div>';
-
-      if(moreActions.length){
-        html +=
-          '<details class="moreActions">' +
-            '<summary>Thao tác khác ▾</summary>' +
-            '<div class="actionGrid">' +
-              moreActions.join("") +
-            '</div>' +
-          '</details>';
-      }
-
-      return html;
+          '<span>' +
+            esc(value || "—") +
+          '</span>' +
+        '</div>'
+      );
     }
 
-    function buttonHtml(label,className,handler){
+    function renderTimeline(item){
+      const labels = [
+        "Đã gửi yêu cầu",
+        "Phòng Tổ chức tiếp nhận",
+        "Đã cấp văn bản",
+        "Đã bàn giao",
+        "Đã nhận - hoàn tất"
+      ];
+
+      const times = [
+        item.thoiGianGui,
+        item.thoiGianTiepNhan,
+        item.thoiGianCap,
+        item.thoiGianBanGiao,
+        item.thoiGianXacNhanNhan
+      ];
+
+      const currentIndex =
+        stepIndex(
+          item.trangThai
+        );
+
       return (
-        '<button class="' +
-        className +
-        '" type="button" onclick=\'' +
-        handler +
-        '\'>' +
-        label +
+        '<div class="timeline">' +
+
+          labels.map(
+            function(label,index){
+              const className =
+                index < currentIndex
+                  ? "done"
+                  : index === currentIndex
+                    ? "active"
+                    : "";
+
+              const dot =
+                index <= currentIndex
+                  ? "✓"
+                  : String(index + 1);
+
+              const note =
+                times[index] ||
+                (
+                  index === currentIndex
+                    ? "Đang ở bước này"
+                    : index < currentIndex
+                      ? "Đã hoàn thành"
+                      : "Chưa thực hiện"
+                );
+
+              return (
+                '<div class="timelineItem ' +
+                  className +
+                '">' +
+
+                  '<div class="timelineDot">' +
+                    dot +
+                  '</div>' +
+
+                  '<div>' +
+                    '<div class="timelineTitle">' +
+                      label +
+                    '</div>' +
+
+                    '<div class="timelineNote">' +
+                      esc(note) +
+                    '</div>' +
+                  '</div>' +
+
+                '</div>'
+              );
+            }
+          ).join("") +
+
+        '</div>'
+      );
+    }
+
+    function renderActions(item){
+      const statusText =
+        normalizeStatus(
+          item.trangThai
+        );
+
+      const type =
+        getType(item);
+
+      if(
+        statusText.includes("HOÀN TẤT") ||
+        statusText.includes("TỪ CHỐI")
+      ){
+        return (
+          '<div class="small" ' +
+            'style="text-align:center;padding:8px">' +
+            'Hồ sơ đã kết thúc, không còn thao tác.' +
+          '</div>'
+        );
+      }
+
+      if(
+        statusText ===
+        "MỚI GỬI"
+      ){
+        return (
+          '<div class="actionGrid">' +
+
+            actionButton(
+              "Tiếp nhận",
+              "primary",
+              "updateStatus(" +
+              js(item.maYeuCau) +
+              ',"tiep_nhan")'
+            ) +
+
+            actionButton(
+              "Cấp & bàn giao",
+              "success",
+              "capDocument(" +
+              js(item.maYeuCau) +
+              ",true)"
+            ) +
+
+          '</div>' +
+
+          '<details class="moreActions">' +
+            '<summary>Thao tác khác ▾</summary>' +
+
+            '<div class="actionGrid">' +
+
+              actionButton(
+                "Cấp nhanh",
+                "secondary",
+                "capDocument(" +
+                js(item.maYeuCau) +
+                ",false)"
+              ) +
+
+              actionButton(
+                "Yêu cầu bổ sung",
+                "warning",
+                "updateStatus(" +
+                js(item.maYeuCau) +
+                ',"bo_sung")'
+              ) +
+
+              actionButton(
+                "Từ chối",
+                "danger",
+                "updateStatus(" +
+                js(item.maYeuCau) +
+                ',"tu_choi")'
+              ) +
+
+            '</div>' +
+          '</details>'
+        );
+      }
+
+      if(
+        statusText.includes("TIẾP NHẬN") ||
+        statusText.includes("ĐANG XỬ LÝ") ||
+        statusText.includes("BỔ SUNG")
+      ){
+        return (
+          '<div class="actionGrid">' +
+
+            actionButton(
+              (
+                type ===
+                "GIAY_GIOI_THIEU"
+                  ? "Cấp giấy giới thiệu"
+                  : "Cấp công lệnh"
+              ),
+              "secondary",
+              "capDocument(" +
+              js(item.maYeuCau) +
+              ",false)"
+            ) +
+
+            actionButton(
+              "Cấp & bàn giao",
+              "success",
+              "capDocument(" +
+              js(item.maYeuCau) +
+              ",true)"
+            ) +
+
+          '</div>'
+        );
+      }
+
+      if(
+        statusText.includes("ĐÃ CẤP")
+      ){
+        return (
+          '<div class="actionGrid">' +
+
+            actionButton(
+              "Xác nhận bàn giao",
+              "primary",
+              "updateStatus(" +
+              js(item.maYeuCau) +
+              ',"ban_giao")'
+            ) +
+
+          '</div>'
+        );
+      }
+
+      if(
+        statusText.includes("BÀN GIAO") ||
+        statusText === "CHỜ NHẬN"
+      ){
+        return (
+          '<div class="small" ' +
+            'style="text-align:center;padding:8px">' +
+            'Đang chờ người nhận xác nhận.' +
+          '</div>'
+        );
+      }
+
+      return (
+        '<div class="small" ' +
+          'style="text-align:center;padding:8px">' +
+          'Không có thao tác phù hợp.' +
+        '</div>'
+      );
+    }
+
+    function actionButton(
+      label,
+      className,
+      handler
+    ){
+      return (
+        '<button ' +
+          'class="' +
+            className +
+          '" ' +
+          'type="button" ' +
+          'onclick=\'' +
+            handler +
+          '\'>' +
+          label +
         '</button>'
       );
     }
 
-    async function updateStatus(maYeuCau,hanhDong){
-      let ghiChu = "";
+    async function updateStatus(
+      maYeuCau,
+      hanhDong
+    ){
+      let ghiChu =
+        "";
 
       if(
         [
@@ -1712,10 +2495,16 @@
           ) || "";
 
         if(!ghiChu.trim()){
-          alert("Chưa nhập nội dung.");
+          alert(
+            "Chưa nhập nội dung."
+          );
+
           return;
         }
-      }else if(hanhDong === "ban_giao"){
+      }else if(
+        hanhDong ===
+        "ban_giao"
+      ){
         ghiChu =
           prompt(
             "Ghi chú bàn giao nếu có",
@@ -1726,15 +2515,23 @@
       clearMsg("detailMsg");
 
       try{
-        const response = await api(
-          "admin_cap_nhat",
-          {
-            maNguoiDung:currentUser.maNguoiDung,
-            maYeuCau:maYeuCau,
-            hanhDong:hanhDong,
-            ghiChu:ghiChu
-          }
-        );
+        const response =
+          await api(
+            "admin_cap_nhat",
+            {
+              maNguoiDung:
+                currentUser.maNguoiDung,
+
+              maYeuCau:
+                maYeuCau,
+
+              hanhDong:
+                hanhDong,
+
+              ghiChu:
+                ghiChu
+            }
+          );
 
         if(!response.ok){
           showMsg(
@@ -1742,6 +2539,7 @@
             "err",
             "❌ " + response.message
           );
+
           return;
         }
 
@@ -1752,16 +2550,7 @@
         );
 
         await loadAll();
-
-        const updated =
-          requests.find(function(item){
-            return String(item.maYeuCau) === String(maYeuCau);
-          });
-
-        if(updated){
-          $("adminDetailBox").innerHTML =
-            renderAdminDetail(updated);
-        }
+        openAdminDetail(maYeuCau);
       }catch(error){
         showMsg(
           "detailMsg",
@@ -1771,13 +2560,55 @@
       }
     }
 
-    async function capCongLenh(maYeuCau,tuDongBanGiao){
-      const text =
-        tuDongBanGiao
-          ? "Xác nhận cấp và bàn giao yêu cầu "
-          : "Xác nhận cấp công lệnh cho yêu cầu ";
+    async function capDocument(
+      maYeuCau,
+      tuDongBanGiao
+    ){
+      const item =
+        requests.find(
+          function(row){
+            return (
+              String(row.maYeuCau) ===
+              String(maYeuCau)
+            );
+          }
+        );
 
-      if(!confirm(text + maYeuCau + "?")){
+      if(!item){
+        alert(
+          "Không tìm thấy yêu cầu."
+        );
+
+        return;
+      }
+
+      const type =
+        getType(item);
+
+      const action =
+        type === "GIAY_GIOI_THIEU"
+          ? "admin_cap_giay_gioi_thieu"
+          : "admin_cap_cong_lenh";
+
+      const label =
+        type === "GIAY_GIOI_THIEU"
+          ? "giấy giới thiệu"
+          : "công lệnh";
+
+      if(
+        !confirm(
+          "Xác nhận cấp " +
+          label +
+          (
+            tuDongBanGiao
+              ? " và bàn giao"
+              : ""
+          ) +
+          " cho yêu cầu " +
+          maYeuCau +
+          "?"
+        )
+      ){
         return;
       }
 
@@ -1786,21 +2617,26 @@
       showMsg(
         "detailMsg",
         "ok",
-        "⏳ Đang cấp công lệnh, vui lòng chờ..."
+        "⏳ Đang cấp văn bản, vui lòng chờ..."
       );
 
       try{
-        const response = await api(
-          "admin_cap_cong_lenh",
-          {
-            maNguoiDung:currentUser.maNguoiDung,
-            maYeuCau:maYeuCau,
-            tuDongBanGiao:
-              tuDongBanGiao
-                ? "1"
-                : "0"
-          }
-        );
+        const response =
+          await api(
+            action,
+            {
+              maNguoiDung:
+                currentUser.maNguoiDung,
+
+              maYeuCau:
+                maYeuCau,
+
+              tuDongBanGiao:
+                tuDongBanGiao
+                  ? "1"
+                  : "0"
+            }
+          );
 
         if(!response.ok){
           showMsg(
@@ -1808,6 +2644,7 @@
             "err",
             "❌ " + response.message
           );
+
           return;
         }
 
@@ -1818,16 +2655,7 @@
         );
 
         await loadAll();
-
-        const updated =
-          requests.find(function(item){
-            return String(item.maYeuCau) === String(maYeuCau);
-          });
-
-        if(updated){
-          $("adminDetailBox").innerHTML =
-            renderAdminDetail(updated);
-        }
+        openAdminDetail(maYeuCau);
       }catch(error){
         showMsg(
           "detailMsg",
@@ -1855,7 +2683,9 @@
       )
         ? (
           "CL_" +
-          String(currentUser.maNguoiDung).trim()
+          String(
+            currentUser.maNguoiDung
+          ).trim()
         )
         : "";
     }
@@ -1866,43 +2696,60 @@
       }
 
       oneSignalInitPromise =
-        new Promise(function(resolve){
-          window.OneSignalDeferred.push(
-            async function(OneSignal){
-              try{
-                const basePath =
-                  location.pathname.replace(/\/[^/]*$/,"/");
+        new Promise(
+          function(resolve){
+            window
+              .OneSignalDeferred
+              .push(
+                async function(OneSignal){
+                  try{
+                    const basePath =
+                      location.pathname
+                        .replace(
+                          /\/[^/]*$/,
+                          "/"
+                        );
 
-                await OneSignal.init({
-                  appId:ONESIGNAL_APP_ID,
-                  safari_web_id:ONESIGNAL_SAFARI_WEB_ID,
-                  serviceWorkerPath:
-                    basePath + "OneSignalSDKWorker.js",
-                  serviceWorkerParam:{
-                    scope:basePath
-                  },
-                  notifyButton:{
-                    enable:false
+                    await OneSignal.init({
+                      appId:
+                        ONESIGNAL_APP_ID,
+
+                      safari_web_id:
+                        ONESIGNAL_SAFARI_WEB_ID,
+
+                      serviceWorkerPath:
+                        basePath +
+                        "OneSignalSDKWorker.js",
+
+                      serviceWorkerParam:{
+                        scope:basePath
+                      },
+
+                      notifyButton:{
+                        enable:false
+                      }
+                    });
+
+                    resolve(OneSignal);
+                  }catch(error){
+                    console.warn(
+                      "OneSignal init error",
+                      error
+                    );
+
+                    resolve(null);
                   }
-                });
-
-                resolve(OneSignal);
-              }catch(error){
-                console.warn(
-                  "OneSignal init error",
-                  error
-                );
-
-                resolve(null);
-              }
-            }
-          );
-        });
+                }
+              );
+          }
+        );
 
       return oneSignalInitPromise;
     }
 
-    async function linkOneSignal(requestPermission){
+    async function linkOneSignal(
+      requestPermission
+    ){
       if(!currentUser){
         return false;
       }
@@ -1915,7 +2762,9 @@
       }
 
       try{
-        await OneSignal.login(externalId());
+        await OneSignal.login(
+          externalId()
+        );
 
         await OneSignal.User.addTag(
           "heThong",
@@ -1929,11 +2778,16 @@
 
         await OneSignal.User.addTag(
           "maNguoiDung",
-          String(currentUser.maNguoiDung || "")
+          String(
+            currentUser.maNguoiDung ||
+            ""
+          )
         );
 
         if(requestPermission){
-          await OneSignal.Notifications.requestPermission();
+          await OneSignal
+            .Notifications
+            .requestPermission();
         }
 
         return true;
@@ -1955,20 +2809,25 @@
         alert(
           "Không thể liên kết thiết bị với OneSignal."
         );
+
         return;
       }
 
-      await new Promise(function(resolve){
-        setTimeout(resolve,1200);
-      });
+      await new Promise(
+        function(resolve){
+          setTimeout(resolve,1200);
+        }
+      );
 
       try{
-        const response = await api(
-          "test_push",
-          {
-            maNguoiDung:currentUser.maNguoiDung
-          }
-        );
+        const response =
+          await api(
+            "test_push",
+            {
+              maNguoiDung:
+                currentUser.maNguoiDung
+            }
+          );
 
         alert(
           response.ok
@@ -1997,21 +2856,23 @@
         [
           "loginName",
           "loginPin"
-        ].forEach(function(id){
-          const element = $(id);
+        ].forEach(
+          function(id){
+            const element = $(id);
 
-          if(element){
-            element.addEventListener(
-              "keydown",
-              function(event){
-                if(event.key === "Enter"){
-                  event.preventDefault();
-                  login();
+            if(element){
+              element.addEventListener(
+                "keydown",
+                function(event){
+                  if(event.key === "Enter"){
+                    event.preventDefault();
+                    login();
+                  }
                 }
-              }
-            );
+              );
+            }
           }
-        });
+        );
       }
     );
 
